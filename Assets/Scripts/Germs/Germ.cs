@@ -21,7 +21,7 @@ public class Germ : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (HandAnimations.scrubVelocity > 0)
+        if (ScrubEvent.scrubVelocity > 0)
         {
             //thisTransform.parent = null;
             //thisRb.isKinematic = false;
