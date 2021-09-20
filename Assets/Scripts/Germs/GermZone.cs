@@ -14,7 +14,7 @@ public class GermZone : MonoBehaviour
 
     private Transform thisTransform;
 
-    private void Awake()
+    private void Start()
     {
         thisTransform = transform;
 
