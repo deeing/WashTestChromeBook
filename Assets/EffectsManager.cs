@@ -6,6 +6,8 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
 {
     [SerializeField]
     private ParticleSystem celebrationParticles;
+    [SerializeField]
+    private ParticleSystem bubblesParticles;
 
     protected override void Awake()
     {
@@ -19,4 +21,10 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
     {
         celebrationParticles.Play();
     }
+
+    public void Bubbles()
+    {
+        bubblesParticles.Play();
+    }
+
 }

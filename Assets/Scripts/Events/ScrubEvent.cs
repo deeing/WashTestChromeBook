@@ -27,6 +27,7 @@ public class ScrubEvent : PlayerEvent
         if (twistAmount > 0)
         {
             GermManager.instance.KillRandomGerm();
+            EffectsManager.instance.Bubbles();
         }
     }
 }
