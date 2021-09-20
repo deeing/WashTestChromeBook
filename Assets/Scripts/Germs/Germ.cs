@@ -19,7 +19,7 @@ public class Germ : MonoBehaviour
         thisRb.isKinematic = false;
     }*/
 
-    public void OnTriggerEnter(Collider collision)
+    /*public void OnTriggerEnter(Collider collision)
     {
         if (ScrubEvent.scrubVelocity > 0)
         {
@@ -27,5 +27,5 @@ public class Germ : MonoBehaviour
             //thisRb.isKinematic = false;
             Destroy(gameObject);
         }
-    }
+    }*/
 }

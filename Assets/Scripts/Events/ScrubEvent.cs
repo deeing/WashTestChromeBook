@@ -9,7 +9,6 @@ public class ScrubEvent : PlayerEvent
     [SerializeField]
     private float crossFadetime = .25f;
 
-    public static float scrubVelocity = 0f;
 
     public override void SetupEvent()
     {
@@ -17,13 +16,17 @@ public class ScrubEvent : PlayerEvent
     }
     public override bool CheckEndEvent()
     {
-        return false;
+        return !GermManager.instance.HasGerms();
     }
 
     public override void DoEvent()
     {
         float twistAmount = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees()) * twistSensitivity;
         HandAnimations.instance.PlayAnimation("Scrub", twistAmount);
-        scrubVelocity = twistAmount;
+
+        if (twistAmount > 0)
+        {
+            GermManager.instance.KillRandomGerm();
+        }
     }
 }

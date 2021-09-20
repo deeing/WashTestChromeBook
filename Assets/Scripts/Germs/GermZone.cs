@@ -27,7 +27,8 @@ public class GermZone : MonoBehaviour
         {
             Vector3 pos = thisTransform.position + Random.insideUnitSphere.normalized * maxDistanceFromOrigin;
 
-            Instantiate(germPrefab, pos, Quaternion.identity, thisTransform);
+            GameObject newGerm = Instantiate(germPrefab, pos, Quaternion.identity, thisTransform);
+            GermManager.instance.RegisterGerm(newGerm);
         }
     }
 }

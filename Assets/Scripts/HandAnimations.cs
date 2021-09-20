@@ -23,6 +23,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         animationTime = 0f;
     }
 
+    public void Stop()
+    {
+        anim.enabled = false;
+    }
+
     public void PlayAnimation(string animationName, float animationIncrease)
     {
         //anim.speed = 0;

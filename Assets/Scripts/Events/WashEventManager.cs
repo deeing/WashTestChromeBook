@@ -17,6 +17,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
     private WaitForSeconds waitBetweenEvents;
     private bool isTransitioning = false;
+    private bool finishedEvents = false;
 
     protected override void Awake()
     {
@@ -56,7 +57,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
     private void Update()
     {
-        if (isTransitioning)
+        if (isTransitioning || finishedEvents)
         {
             return;
         }
@@ -65,7 +66,16 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
         if (currentWashEvent.CheckEndEvent())
         {
-            StartCoroutine(NextEvent());
+            // has a next event to go to
+            if (currEventIndex + 1 < washEvents.Count)
+            {
+                StartCoroutine(NextEvent());
+            }
+            else
+            {
+                currentWashEvent.EndEvent();
+                EndScene();
+            }
         }
     }
 
@@ -85,5 +95,11 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
         currentWashEvent.StartEvent();
         isTransitioning = false;
+    }
+
+    private void EndScene()
+    {
+        HandAnimations.instance.Stop();
+        finishedEvents = true;
     }
 }

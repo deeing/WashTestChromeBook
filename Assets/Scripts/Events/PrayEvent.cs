@@ -6,8 +6,6 @@ public class PrayEvent : PlayerEvent
 {
     [SerializeField]
     private float pinchSensitivity = .002f;
-    [SerializeField]
-    ParticleSystem horayParticles;
 
     public override void DoEvent()
     {
@@ -24,11 +22,4 @@ public class PrayEvent : PlayerEvent
     {
         return HandAnimations.instance.IsAnimationFinished();
     }
-
-    public override void EndEvent()
-    {
-        base.EndEvent();
-        horayParticles.Play();
-    }
-
 }

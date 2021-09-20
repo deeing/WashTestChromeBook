@@ -23,7 +23,7 @@ public abstract class PlayerEvent : WashEvent
 
     public override void EndEvent()
     {
-        Debug.Log("TESTING");
+        EffectsManager.instance.Celebrate();
         if (tutorialObject)
         {
             tutorialObject.SetActive(false);
