@@ -101,5 +101,6 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     {
         HandAnimations.instance.Stop();
         finishedEvents = true;
+        MenuManager.instance.ShowEnd();
     }
 }
