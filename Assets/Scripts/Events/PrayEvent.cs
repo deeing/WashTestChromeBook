@@ -27,6 +27,7 @@ public class PrayEvent : PlayerEvent
 
     public override void EndEvent()
     {
+        base.EndEvent();
         horayParticles.Play();
     }
 

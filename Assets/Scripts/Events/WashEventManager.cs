@@ -51,6 +51,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     {
         currentWashEvent = washEvents[0];
         currentWashEvent.SetupEvent();
+        currentWashEvent.StartEvent();
     }
 
     private void Update()
@@ -82,6 +83,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
         yield return waitBetweenEvents;
 
+        currentWashEvent.StartEvent();
         isTransitioning = false;
     }
 }
