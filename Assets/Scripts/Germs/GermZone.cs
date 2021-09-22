@@ -11,6 +11,8 @@ public class GermZone : MonoBehaviour
     private float maxDistanceFromOrigin = 1f;
     [SerializeField]
     private GameObject germPrefab;
+    [SerializeField]
+    private GermType germType = GermType.PALM;
 
     private Transform thisTransform;
 
@@ -28,7 +30,7 @@ public class GermZone : MonoBehaviour
             Vector3 pos = thisTransform.position + Random.insideUnitSphere.normalized * maxDistanceFromOrigin;
 
             GameObject newGerm = Instantiate(germPrefab, pos, Quaternion.identity, thisTransform);
-            GermManager.instance.RegisterGerm(newGerm);
+            GermManager.instance.RegisterGerm(newGerm, germType);
         }
     }
 }

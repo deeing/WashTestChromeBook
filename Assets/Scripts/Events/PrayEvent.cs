@@ -15,7 +15,7 @@ public class PrayEvent : PlayerEvent
             float lastFingerDistance = Lean.Touch.LeanGesture.GetLastScaledDistance();
 
             float pinchAmounnt = (lastFingerDistance - currFingerDistance) * pinchSensitivity;
-            HandAnimations.instance.PlayAnimation("Pray", pinchAmounnt);
+            HandAnimations.instance.PlayAnimationStep("Pray", pinchAmounnt);
         }
     }
     public override bool CheckEndEvent()

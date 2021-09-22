@@ -5,8 +5,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
 {
     [SerializeField] private Animator anim;
 
-    [SerializeField, Range(0,1)]
+    [Range(0,1)]
     private float animationTime = 0f;
+    [Range(0, 1)]
+    private float crossFadeTime = 0f;
+    private float crossFadeLimit = 1f; // WHY ISNT THIS ALWAYS ONE?
 
     protected override void Awake()
     {
@@ -21,6 +24,8 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public void Reset()
     {
         animationTime = 0f;
+        crossFadeTime = 0f;
+        anim.speed = 0;
     }
 
     public void Stop()
@@ -28,7 +33,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.enabled = false;
     }
 
-    public void PlayAnimation(string animationName, float animationIncrease)
+    public void PlayAnimationStep(string animationName, float animationIncrease)
     {
         //anim.speed = 0;
         animationTime += animationIncrease;
@@ -41,9 +46,22 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.CrossFade(nextAnim, fadeTime);
     }
 
+    public void CrossFadeStep(string nextAnim, float fadeTime, float timeOffsetIncrease, float crossFadeLimit)
+    {
+        this.crossFadeLimit = crossFadeLimit;
+        anim.speed = 0f;
+        crossFadeTime += timeOffsetIncrease;
+        anim.CrossFade(nextAnim, fadeTime, -1, float.NegativeInfinity, crossFadeTime);
+    }
+
     public bool IsAnimationFinished()
     {
         return animationTime >= 1f;
+    }
+
+    public bool IsCrossFadeFinished()
+    {
+        return crossFadeTime >= crossFadeLimit;
     }
 
 }

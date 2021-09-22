@@ -7,7 +7,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     [SerializeField]
     private PercentageBar germBar;
 
-    private List<GameObject> allGerms;
+    private Dictionary<GermType, List<GameObject>> allGerms;
 
     private int maxNumGerms = 0;
 
@@ -18,37 +18,67 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
             return;
         }
 
-        allGerms = new List<GameObject>();
+        allGerms = new Dictionary<GermType, List<GameObject>>();
     }
 
-    public void RegisterGerm(GameObject germ)
+    public List<GameObject> GetGermListOfType(GermType type)
     {
-        allGerms.Add(germ);
+        if (allGerms.ContainsKey(type))
+        {
+            return allGerms[type];
+        } else
+        {
+            return new List<GameObject>();
+        }
+    }
+
+    public void RegisterGerm(GameObject germ, GermType type)
+    {
+        List<GameObject> germList = GetGermListOfType(type);
+        germList.Add(germ);
+        allGerms[type] = germList;
         maxNumGerms++;
     }
 
-    public void KillRandomGerm()
+    public void KillRandomGermOfType(GermType type)
     {
-        if (allGerms.Count <= 0)
+        List<GameObject> germList = GetGermListOfType(type);
+        if (germList.Count <= 0)
         {
             return;
         }
 
-        int randomIndex = Random.Range(0, allGerms.Count);
-        GameObject randomGerm = allGerms[randomIndex];
-        allGerms.RemoveAt(randomIndex);
+        int randomIndex = Random.Range(0, germList.Count);
+        GameObject randomGerm = germList[randomIndex];
+        germList.RemoveAt(randomIndex);
         UpdateGermBar();
 
         Destroy(randomGerm);
     }
 
+    private int CountAllGerms()
+    {
+        int numGerms = 0;
+        foreach(KeyValuePair<GermType, List<GameObject>> germPair in allGerms)
+        {
+            numGerms += germPair.Value.Count;
+        }
+
+        return numGerms;
+    }
+
     private void UpdateGermBar()
     {
-        germBar.UpdatePercentage((float)allGerms.Count / (float)maxNumGerms);
+        germBar.UpdatePercentage((float)CountAllGerms() / (float)maxNumGerms);
     }
 
     public bool HasGerms()
     {
-        return allGerms.Count > 0;
+        return CountAllGerms() > 0;
+    }
+
+    public bool HasGermsOfType(GermType type)
+    {
+        return allGerms[type].Count > 0;
     }
 }

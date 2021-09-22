@@ -1,5 +1,6 @@
 public enum GermType
 {
     NO_TYPE,
-    PALM
+    PALM,
+    FINGERTIPS
 }

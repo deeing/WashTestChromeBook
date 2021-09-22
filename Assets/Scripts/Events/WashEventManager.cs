@@ -13,6 +13,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private List<WashEvent> washEvents = new List<WashEvent>();
 
     private int currEventIndex = 0;
+    [SerializeField]
     private WashEvent currentWashEvent;
 
     private WaitForSeconds waitBetweenEvents;
@@ -41,7 +42,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         foreach(Transform child in transform)
         {
             WashEvent washEvent = child.GetComponent<WashEvent>();
-            if (washEvent)
+            if (washEvent && washEvent.gameObject.activeInHierarchy)
             {
                 washEvents.Add(washEvent);
             }
