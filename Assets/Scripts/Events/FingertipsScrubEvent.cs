@@ -2,28 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FingertipsScrubEvent : PlayerEvent
+public class FingertipsScrubEvent : ScrubEvent
 {
-    [SerializeField]
-    private float twistSensitivity = .002f;
-    [SerializeField]
-    private float crossFadetime = .25f;
-
-
-    public override bool CheckEndEvent()
+    public override void DoIdle()
     {
-        return !GermManager.instance.HasGermsOfType(GermType.FINGERTIPS);
+        HandAnimations.instance.CrossFade("FingertipsIdle", crossFadetime);
     }
 
-    public override void DoEvent()
+    public override void DoScrub()
     {
-        float twistAmount = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees()) * twistSensitivity;
-        HandAnimations.instance.PlayAnimationStep("FingertipsScrub", twistAmount);
+        HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
+    }
 
-        if (twistAmount > 0)
-        {
-            GermManager.instance.KillRandomGermOfType(GermType.FINGERTIPS);
-            EffectsManager.instance.Bubbles();
-        }
+    public override float DoTouchInput()
+    {
+        return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
+    }
+
+    public override GermType GetGermType()
+    {
+        return GermType.FINGERTIPS;
     }
 }

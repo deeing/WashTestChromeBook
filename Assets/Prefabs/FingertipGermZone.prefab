@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030cdca6d153ad943bcf14ca7ed6480f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numGerms: 100
+  numGerms: 20
   maxDistanceFromOrigin: 0.01
   germPrefab: {fileID: 6184444396136220864, guid: 966ef9c7474c6d04ca21d3bcfdfda337, type: 3}
   germType: 2

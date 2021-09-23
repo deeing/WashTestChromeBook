@@ -18,6 +18,9 @@ public class TopDropMenu : MonoBehaviour
 
     private RectTransform rect;
     private WaitForSeconds startWait;
+    private float originalY;
+
+    private bool isShowing = false;
 
     private void Awake()
     {
@@ -26,7 +29,9 @@ public class TopDropMenu : MonoBehaviour
         {
             startWait = new WaitForSeconds(startDelayTime);
             StartCoroutine(DelayedStart());
+            isShowing = true;
         }
+        originalY = rect.position.y;
     }
 
     private IEnumerator DelayedStart()
@@ -39,6 +44,19 @@ public class TopDropMenu : MonoBehaviour
     public void Show()
     {
         rect.DOAnchorPosY(targetY, transitionTime);
+        isShowing = true;
+    }
+
+    public void Hide()
+    {
+        rect.DOAnchorPosY(originalY, transitionTime);
+        isShowing = false;
+    }
+
+    public void Toggle()
+    {
+        isShowing = !isShowing;
+        rect.DOAnchorPosY(isShowing ? targetY : originalY, transitionTime);
     }
 
 }

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0083, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030cdca6d153ad943bcf14ca7ed6480f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numGerms: 50
+  numGerms: 1
   maxDistanceFromOrigin: 0.01
   germPrefab: {fileID: 6184444396136220864, guid: 966ef9c7474c6d04ca21d3bcfdfda337, type: 3}
+  germType: 1

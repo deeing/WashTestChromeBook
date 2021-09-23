@@ -2,32 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrubEvent : PlayerEvent
+public abstract class ScrubEvent : PlayerEvent
 {
     [SerializeField]
-    private float twistSensitivity = .002f;
+    protected float sensitivity = .002f;
     [SerializeField]
-    private float crossFadetime = .25f;
+    protected float crossFadetime = .25f;
+    [SerializeField]
+    [Tooltip("If idle after this time, we transition to the idle animation")]
+    private float idleTime = .5f;
 
+    public float touchInput { get; private set; } = 0f;
+    private WaitForSeconds idleWait;
+    private Coroutine idleCoroutine;
+    private bool isIdle = false;
+    private GermType germType;
 
     public override void SetupEvent()
     {
-        HandAnimations.instance.CrossFade("Scrub", crossFadetime);
+        idleWait = new WaitForSeconds(idleTime);
+        germType = GetGermType();
     }
+
     public override bool CheckEndEvent()
     {
-        return !GermManager.instance.HasGermsOfType(GermType.PALM);
+        return !GermManager.instance.HasGermsOfType(germType);
     }
+
+    public abstract GermType GetGermType();
+    public abstract void DoScrub();
+
+    public abstract void DoIdle();
+
+    public abstract float DoTouchInput();
 
     public override void DoEvent()
     {
-        float twistAmount = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees()) * twistSensitivity;
-        HandAnimations.instance.PlayAnimationStep("Scrub", twistAmount);
+        touchInput = DoTouchInput() * sensitivity;
 
-        if (twistAmount > 0)
+        if (touchInput > 0)
         {
-            GermManager.instance.KillRandomGermOfType(GermType.PALM);
+            GermManager.instance.KillRandomGermOfType(germType);
             EffectsManager.instance.Bubbles();
+            DoScrub();
+            if (idleCoroutine != null)
+            {
+                StopCoroutine(idleCoroutine);
+                idleCoroutine = null;
+                isIdle = false;
+            }
+        } else
+        {
+            if (idleCoroutine == null)
+            {
+                idleCoroutine = StartCoroutine(SetIdle());
+            } else if (isIdle)
+            {
+                DoIdle();
+            }
         }
+    }
+
+    private IEnumerator SetIdle()
+    {
+        yield return idleWait;
+        isIdle = true;
     }
 }
