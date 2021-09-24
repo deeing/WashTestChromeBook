@@ -11,7 +11,8 @@ public class FingertipsScrubEvent : ScrubEvent
 
     public override void DoScrub()
     {
-        HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
+        //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
+        HandAnimations.instance.TransitionPlay("FingertipsScrub", crossFadetime, touchInput);
     }
 
     public override float DoTouchInput()

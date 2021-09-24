@@ -11,6 +11,10 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     private float crossFadeTime = 0f;
     private float crossFadeLimit = 1f; // WHY ISNT THIS ALWAYS ONE?
 
+    private string transitionAnimation = "";
+    private bool finishedTransition = false;
+    private Coroutine transitionCoroutine = null;
+
     protected override void Awake()
     {
         if (!InitializeSingleton(this))
@@ -33,15 +37,44 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.enabled = false;
     }
 
+    public void TransitionPlay(string animationName, float fadeTime, float animationIncrease)
+    {
+        if (transitionAnimation == animationName)
+        {
+            if (finishedTransition)
+            {
+                PlayAnimationStep(animationName, animationIncrease);
+                transitionCoroutine = null;
+            }
+        } else
+        {
+            CrossFade(animationName, fadeTime);
+            crossFadeTime = 0;
+            finishedTransition = false;
+            if (transitionCoroutine != null)
+            {
+                StopCoroutine(transitionCoroutine);
+            }
+            transitionCoroutine = StartCoroutine(FinishTransition(fadeTime));
+        }
+    }
+
+    private IEnumerator FinishTransition(float transitionTime)
+    {
+        yield return new WaitForSeconds(transitionTime);
+        finishedTransition = true;
+    }
+
     public void PlayAnimationStep(string animationName, float animationIncrease)
     {
-        //anim.speed = 0;
+        anim.speed = 0;
         animationTime += animationIncrease;
         anim.Play(animationName, 0, animationTime);
     }
 
     public void CrossFade(string nextAnim, float fadeTime)
     {
+        transitionAnimation = nextAnim;
         anim.speed = 1f;
         anim.CrossFade(nextAnim, fadeTime);
     }
@@ -62,6 +95,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public bool IsCrossFadeFinished()
     {
         return crossFadeTime >= crossFadeLimit;
+    }
+
+    public bool IsPlayingAnimation(string animationName)
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(animationName);
     }
 
 }

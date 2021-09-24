@@ -3166,7 +3166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 844875473}
   pinchSensitivity: 0.005
-  transitionTime: 1
+  transitionTime: 0.2
   crossFadeLimit: 0.5
 --- !u!4 &694873403 stripped
 Transform:
@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 701087450}
-  sensitivity: 0.002
+  sensitivity: 0.01
   crossFadetime: 0.1
   idleTime: 0.1
 --- !u!1 &790596358
@@ -3831,7 +3831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 1384905345}
-  sensitivity: 0.002
+  sensitivity: 0.01
   crossFadetime: 0.1
   idleTime: 0.1
 --- !u!1 &826684331
@@ -9554,9 +9554,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 3795463}
-  twistSensitivity: 0.05
-  transitionTime: 10
-  crossFadeLimit: 0.3
+  twistSensitivity: 0.1
+  transitionTime: 0.2
+  crossFadeLimit: 0.5
 --- !u!1001 &986828905
 PrefabInstance:
   m_ObjectHideFlags: 0
