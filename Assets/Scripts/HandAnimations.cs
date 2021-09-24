@@ -29,7 +29,6 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     {
         animationTime = 0f;
         crossFadeTime = 0f;
-        anim.speed = 0;
     }
 
     public void Stop()
@@ -69,6 +68,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     {
         anim.speed = 0;
         animationTime += animationIncrease;
+        animationTime = Mathf.Clamp(animationTime, 0f, animationTime);
         anim.Play(animationName, 0, animationTime);
     }
 

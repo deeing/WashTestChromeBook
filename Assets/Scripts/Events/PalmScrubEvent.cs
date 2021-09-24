@@ -19,7 +19,7 @@ public class PalmScrubEvent : ScrubEvent
 
     public override void DoIdle()
     {
-        HandAnimations.instance.CrossFade("Pray", crossFadetime);
+        HandAnimations.instance.CrossFade("ScrubIdle", crossFadetime);
     }
 
     public override float DoTouchInput()

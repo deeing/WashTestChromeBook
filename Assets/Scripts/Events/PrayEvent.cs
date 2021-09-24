@@ -15,19 +15,19 @@ public class PrayEvent : PlayerEvent
 
     public override void DoEvent()
     {
-        if (Lean.Touch.LeanGesture.GetPinchScale() < 1f)
+        if (Lean.Touch.LeanGesture.GetPinchScale() != 1f)
         {
             float currFingerDistance = Lean.Touch.LeanGesture.GetScaledDistance();
             float lastFingerDistance = Lean.Touch.LeanGesture.GetLastScaledDistance();
 
             float pinchAmounnt = (lastFingerDistance - currFingerDistance);
             float transitionTimeIncrease = pinchAmounnt * pinchSensitivity;
-            //HandAnimations.instance.PlayAnimationStep("Pray", pinchAmounnt);
-            HandAnimations.instance.CrossFadeStep("Pray", transitionTime, transitionTimeIncrease, crossFadeLimit);
-        }
+            HandAnimations.instance.PlayAnimationStep("ScrubSwitch", transitionTimeIncrease);
+            //HandAnimations.instance.CrossFadeStep("ScrubSwitch", transitionTime, transitionTimeIncrease, crossFadeLimit);
+        } 
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeFinished();
+        return HandAnimations.instance.IsAnimationFinished();
     }
 }

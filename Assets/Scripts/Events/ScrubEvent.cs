@@ -68,4 +68,10 @@ public abstract class ScrubEvent : PlayerEvent
         yield return idleWait;
         isIdle = true;
     }
+
+    public override void EndEvent()
+    {
+        base.EndEvent();
+        DoIdle();
+    }
 }
