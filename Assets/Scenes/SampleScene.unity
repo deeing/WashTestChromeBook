@@ -2320,6 +2320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   germBar: {fileID: 93286978}
+  handObjects:
+  - {fileID: 910563743961693928}
+  - {fileID: 1938841059}
 --- !u!1001 &388101945
 PrefabInstance:
   m_ObjectHideFlags: 0

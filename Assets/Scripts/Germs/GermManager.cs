@@ -7,6 +7,10 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     [SerializeField]
     private PercentageBar germBar;
 
+    [SerializeField]
+    private GameObject[] handObjects;
+    private List<Material> handMaterials;
+
     private Dictionary<GermType, List<GameObject>> allGerms;
 
     private int maxNumGerms = 0;
@@ -19,6 +23,11 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         }
 
         allGerms = new Dictionary<GermType, List<GameObject>>();
+        handMaterials = new List<Material>();
+        foreach (GameObject hand in handObjects)
+        {
+           handMaterials.Add(hand.GetComponent<SkinnedMeshRenderer>().material);
+        }
     }
 
     public List<GameObject> GetGermListOfType(GermType type)
@@ -52,6 +61,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         GameObject randomGerm = germList[randomIndex];
         germList.RemoveAt(randomIndex);
         UpdateGermBar();
+        UpdateHandTexture();
 
         Destroy(randomGerm);
     }
@@ -70,6 +80,14 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     private void UpdateGermBar()
     {
         germBar.UpdatePercentage((float)CountAllGerms() / (float)maxNumGerms);
+    }
+
+    private void UpdateHandTexture()
+    {
+        foreach (Material handMat in handMaterials)
+        {
+            handMat.SetFloat("_BlendAlpha", (float)CountAllGerms() / (float)maxNumGerms);
+        }
     }
 
     public bool HasGerms()
