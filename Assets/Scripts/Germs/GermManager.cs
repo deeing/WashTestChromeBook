@@ -13,10 +13,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     private List<Material> handMaterials;
 
     [SerializeField]
-    private GameObject testWindow;
-    Material[] windowMaterials;
-
-    [SerializeField]
     private ProjectionFadeModifier projectionFade;
     [SerializeField]
     private ProjectionScaleModifier projectionScale1;
@@ -43,7 +39,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
            handMaterials.Add(hand.GetComponent<SkinnedMeshRenderer>().material);
         }
 
-        windowMaterials = testWindow.GetComponent<MeshRenderer>().materials;
         germMaxMap = new Dictionary<GermType, int>();
     }
 
@@ -87,7 +82,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         germList.RemoveAt(randomIndex);
         UpdateGermBar();
         UpdateHandTexture();
-        UpdateWindow();
         UpdateSplotches();
 
 
@@ -132,18 +126,8 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         }
     }
 
-    private void UpdateWindow()
-    {
-        int palm = CountGermsOfType(GermType.PALM);
-        int tips = CountGermsOfType(GermType.FINGERTIPS);
-
-        windowMaterials[0].SetFloat("_BlendAlpha", (float)palm / (float)germMaxMap[GermType.PALM]);
-        windowMaterials[1].SetFloat("_BlendAlpha", (float)tips / (float)germMaxMap[GermType.FINGERTIPS]);
-    }
-
     private void UpdateSplotches()
     {
-        //projection.Properties[""]
         projectionFade.SetAlpha(GermPercentage());
         projectionScale1.SetSize(GermPercentage());
         projectionScale2.SetSize(GermPercentage());
