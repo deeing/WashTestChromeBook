@@ -11,7 +11,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     private float crossFadeTime = 0f;
     private float crossFadeLimit = 1f; // WHY ISNT THIS ALWAYS ONE?
 
-    private string transitionAnimation = "";
+    private string crossFadeAnimation = "";
     private bool finishedTransition = false;
     private Coroutine transitionCoroutine = null;
 
@@ -22,14 +22,12 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
             return;
         }
         Reset();
-        anim.speed = 0;
     }
 
     public void Reset()
     {
         animationTime = 0f;
         crossFadeTime = 0f;
-        anim.speed = 0;
     }
 
     public void Stop()
@@ -37,9 +35,10 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.enabled = false;
     }
 
+    // cross fades to an animation and then starts to play it
     public void TransitionPlay(string animationName, float fadeTime, float animationIncrease)
     {
-        if (transitionAnimation == animationName)
+        if (IsCrossFading(animationName))
         {
             if (finishedTransition)
             {
@@ -59,6 +58,25 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         }
     }
 
+    // plays a transition animation and then starts to play animation
+    public void TransitionPlay(string animationName, string transitionAnimation, float fadeTime, float animationIncrease)
+    {
+        if (finishedTransition)
+        {
+            PlayAnimationStep(animationName, animationIncrease);
+            transitionCoroutine = null;
+        }
+        else
+        {
+            if (!IsPlayingAnimation(transitionAnimation))
+            {
+                PlayAnimation(transitionAnimation, fadeTime);
+                finishedTransition = false;
+                transitionCoroutine = StartCoroutine(FinishTransition(fadeTime));
+            }
+        }
+    }
+
     private IEnumerator FinishTransition(float transitionTime)
     {
         yield return new WaitForSeconds(transitionTime);
@@ -72,9 +90,20 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.Play(animationName, 0, animationTime);
     }
 
+    public void PlayAnimation(string animationName, float animTime)
+    {
+        anim.speed = 1;
+        anim.Play(animationName, 0, animTime);
+    }
+
     public void CrossFade(string nextAnim, float fadeTime)
     {
-        transitionAnimation = nextAnim;
+        // block if already fading
+        if (IsCrossFading(nextAnim))
+        {
+            return;
+        }
+        crossFadeAnimation = nextAnim;
         anim.speed = 1f;
         anim.CrossFade(nextAnim, fadeTime);
     }
@@ -95,6 +124,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public bool IsCrossFadeFinished()
     {
         return crossFadeTime >= crossFadeLimit;
+    }
+
+    public bool IsCrossFading(string animationName)
+    {
+        return crossFadeAnimation == animationName;
     }
 
     public bool IsPlayingAnimation(string animationName)
