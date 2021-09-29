@@ -130,7 +130,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     {
         projectionFade.SetAlpha(GermPercentage());
         projectionScale1.SetSize(GermPercentage());
-        projectionScale2.SetSize(GermPercentage());
+       // projectionScale2.SetSize(GermPercentage());
     }
 
     public bool HasGerms()

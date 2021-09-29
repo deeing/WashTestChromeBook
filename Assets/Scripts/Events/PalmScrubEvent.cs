@@ -12,14 +12,14 @@ public class PalmScrubEvent : ScrubEvent
 
     public override void DoScrub()
     {
-        //HandAnimations.instance.PlayAnimationStep("Scrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Scrub", crossFadetime, touchInput);
+        //HandAnimations.instance.PlayAnimationStep("Palm Scrub", touchInput);
+        HandAnimations.instance.TransitionPlay("Palm Scrub", crossFadetime, touchInput);
 
     }
 
     public override void DoIdle()
     {
-        HandAnimations.instance.CrossFade("Pray", crossFadetime);
+        HandAnimations.instance.CrossFade("Palm Idle", crossFadetime);
     }
 
     public override float DoTouchInput()
