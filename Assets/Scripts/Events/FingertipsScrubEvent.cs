@@ -24,4 +24,9 @@ public class FingertipsScrubEvent : ScrubEvent
     {
         return GermType.FINGERTIPS;
     }
+
+    public override string GetEventName()
+    {
+        return "Fingertips";
+    }
 }

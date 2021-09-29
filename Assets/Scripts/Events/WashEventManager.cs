@@ -20,6 +20,10 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private bool isTransitioning = false;
     private bool finishedEvents = false;
 
+    private float washEventsStartTime = 0f;
+
+    private Dictionary<string, float> timeRecordings = new Dictionary<string, float>();
+
     protected override void Awake()
     {
         if (!InitializeSingleton(this))
@@ -54,6 +58,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         currentWashEvent = washEvents[0];
         currentWashEvent.SetupEvent();
         currentWashEvent.StartEvent();
+        washEventsStartTime = Time.time;
     }
 
     private void Update()
@@ -102,6 +107,62 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     {
         HandAnimations.instance.Stop();
         finishedEvents = true;
-        MenuManager.instance.ShowEnd();
+
+        float endTime = Time.time;
+        AddTimeRecording("Total Time", endTime - washEventsStartTime);
+        string germReport = GermManager.instance.GetGermReport();
+        MenuManager.instance.ShowEnd(GetAllTimeRecordings(), germReport);
+    }
+
+    public void AddTimeRecording(string name, float time)
+    {
+        timeRecordings.Add(name, time);
+    }
+
+    public List<string> GetAllTimeRecordings()
+    {
+        List<string> timeRecordingsList = new List<string>();
+
+        foreach(KeyValuePair<string, float> timeRecord in timeRecordings)
+        {
+            string currRecording = timeRecord.Key + " time " + DisplayTime(Mathf.FloorToInt(timeRecord.Value));
+            timeRecordingsList.Add(currRecording);
+        }
+
+        return timeRecordingsList;
+    }
+
+    private string DisplayTime(int totalSeconds)
+    {
+        string displayString = "";
+
+        // hours
+        if (totalSeconds / 60 / 60 > 0)
+        {
+            string hours = (totalSeconds / 60 / 60).ToString();
+            displayString += ZeroPadded(hours) + ":";
+        } else if (totalSeconds / 60 > 0)
+        {
+            string minutes = (totalSeconds / 60).ToString();
+            displayString += ZeroPadded(minutes);
+        } else
+        {
+            string seconds = (totalSeconds % 60).ToString();
+            displayString += ":" + ZeroPadded(seconds);
+        }
+
+        return displayString;
+    }
+
+    // zero pads to the left if there is only one digit
+    private string ZeroPadded(string number)
+    {
+        if (number.Length <= 1)
+        {
+            return "0" + number;
+        } else
+        {
+            return number;
+        }
     }
 }

@@ -27,4 +27,9 @@ public class PalmScrubEvent : ScrubEvent
     {
         return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
     }
+
+    public override string GetEventName()
+    {
+        return "Palm Scrub";
+    }
 }

@@ -179,6 +179,7 @@ MonoBehaviour:
   transitionTime: 0.2
   startDelayTime: 0.2
   showOnStart: 1
+  menuText: {fileID: 0}
 --- !u!114 &3795466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3356,6 +3357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 844875473}
+  shouldTimeEvent: 0
   pinchSensitivity: 0.005
   transitionTime: 0.2
   crossFadeLimit: 0.5
@@ -3496,6 +3498,7 @@ MonoBehaviour:
   transitionTime: 0.2
   startDelayTime: 0.2
   showOnStart: 1
+  menuText: {fileID: 0}
 --- !u!114 &701087453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3819,6 +3822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 701087450}
+  shouldTimeEvent: 0
   sensitivity: 0.01
   crossFadetime: 0.1
   idleTime: 0.1
@@ -4022,6 +4026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 1384905345}
+  shouldTimeEvent: 1
   sensitivity: 0.01
   crossFadetime: 0.1
   idleTime: 0.1
@@ -4165,6 +4170,7 @@ MonoBehaviour:
   transitionTime: 0.2
   startDelayTime: 1
   showOnStart: 1
+  menuText: {fileID: 0}
 --- !u!1 &846538533
 GameObject:
   m_ObjectHideFlags: 0
@@ -9745,6 +9751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialObject: {fileID: 3795463}
+  shouldTimeEvent: 0
   twistSensitivity: 0.1
   transitionTime: 0.2
   crossFadeLimit: 0.5
@@ -10991,7 +10998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254834729}
   m_LocalRotation: {x: 0.15935186, y: -0.9198392, z: 0.021556258, w: -0.35782424}
-  m_LocalPosition: {x: 0.000197, y: 0.001146, z: -0.000388}
+  m_LocalPosition: {x: -0.000091, y: 0.000377, z: 0.000216}
   m_LocalScale: {x: 0.0009945213, y: 0.0010047012, z: 0.0010005275}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11084,7 +11091,7 @@ MonoBehaviour:
   _TilingOffset: 469
   _MaskBase: 470
   _MaskLayers: 471
-  instanceID: 83394
+  instanceID: 298704
 --- !u!1 &1257239105
 GameObject:
   m_ObjectHideFlags: 0
@@ -11571,7 +11578,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 482748843}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1351220071
 MeshRenderer:
@@ -11813,6 +11820,7 @@ MonoBehaviour:
   transitionTime: 0.2
   startDelayTime: 0.2
   showOnStart: 1
+  menuText: {fileID: 0}
 --- !u!114 &1384905348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12794,7 +12802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_15
+  m_text: WashTest_16
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18115,7 +18123,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 800, y: 200}
+  m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1906104474
 MonoBehaviour:
@@ -18133,6 +18141,7 @@ MonoBehaviour:
   transitionTime: 0.2
   startDelayTime: 0.2
   showOnStart: 1
+  menuText: {fileID: 1028915886}
 --- !u!114 &1906104475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18274,6 +18283,7 @@ MonoBehaviour:
   transitionTime: 0.5
   startDelayTime: 0
   showOnStart: 0
+  menuText: {fileID: 0}
 --- !u!114 &1935815958
 MonoBehaviour:
   m_ObjectHideFlags: 0

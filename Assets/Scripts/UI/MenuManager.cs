@@ -15,9 +15,23 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         }
     }
 
-    public void ShowEnd()
+    public void ShowEnd(List<string> timeRecordings, string germReport)
     {
         endMenu.gameObject.SetActive(true);
         endMenu.Show();
+
+        endMenu.SetText(BuildEndMenuText(timeRecordings, germReport));
+    }
+
+    private string BuildEndMenuText(List<string> timeRecordings, string germReport)
+    {
+        string endMenuText = "";
+        foreach (string record in timeRecordings)
+        {
+            endMenuText += record + "\n";
+        }
+
+        endMenuText += germReport;
+        return endMenuText;
     }
 }

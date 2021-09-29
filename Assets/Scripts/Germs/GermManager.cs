@@ -142,9 +142,25 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     {
         return (float)CountAllGerms() / (float)maxNumGerms;
     }
+    
+    public float GermPercentageByType(GermType type)
+    {
+        return ((float)allGerms[type].Count / (float)germMaxMap[type]);
+    }
 
     public bool HasGermsOfType(GermType type)
     {
         return allGerms[type].Count > 0;
+    }
+
+    public string GetGermReport()
+    {
+        string report = "\nPercentage of Germs Left:\n";
+        foreach(KeyValuePair<GermType, int> germMapPair in germMaxMap)
+        {
+            report += germMapPair.Key + ": " + (GermPercentageByType(germMapPair.Key) * 100) + "%\n";
+        }
+
+        return report;
     }
 }

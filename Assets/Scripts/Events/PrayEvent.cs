@@ -32,4 +32,9 @@ public class PrayEvent : PlayerEvent
         return HandAnimations.instance.IsCrossFadeFinished();
         //return HandAnimations.instance.IsAnimationFinished();
     }
+
+    public override string GetEventName()
+    {
+        return "Scrub Switch";
+    }
 }

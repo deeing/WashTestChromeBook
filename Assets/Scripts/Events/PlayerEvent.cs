@@ -7,10 +7,15 @@ public abstract class PlayerEvent : WashEvent
     [SerializeField]
     [Tooltip("Tutorial that should show when this event starts")]
     private GameObject tutorialObject;
+    [SerializeField]
+    [Tooltip("Whether or not we should time the completion of the current event")]
+    private bool shouldTimeEvent = false;
+
+    private float eventStart = 0;
 
     public override void SetupEvent()
     {
-        // make start optional for player events to reduce dead code
+        // make it so not all of the children need an empty function
     }
 
     public override void StartEvent()
@@ -18,6 +23,11 @@ public abstract class PlayerEvent : WashEvent
         if (tutorialObject)
         {
             tutorialObject.SetActive(true);
+        }
+
+        if (shouldTimeEvent)
+        {
+            eventStart = Time.time;
         }
     }
 
@@ -28,5 +38,13 @@ public abstract class PlayerEvent : WashEvent
         {
             tutorialObject.SetActive(false);
         }
+
+        if (shouldTimeEvent)
+        {
+            float eventEnd = Time.time;
+            WashEventManager.instance.AddTimeRecording(GetEventName(), eventEnd - eventStart);
+        }
     }
+
+    public abstract string GetEventName();
 }

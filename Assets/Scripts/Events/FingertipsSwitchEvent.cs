@@ -32,4 +32,9 @@ public class FingertipsSwitchEvent : PlayerEvent
     {
         return HandAnimations.instance.IsCrossFadeFinished();
     }
+
+    public override string GetEventName()
+    {
+        return "Fingertips Switch";
+    }
 }
