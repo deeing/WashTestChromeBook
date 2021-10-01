@@ -22,7 +22,7 @@ public class FingertipsScrubEvent : ScrubEvent
 
     public override GermType GetGermType()
     {
-        return GermType.FINGERTIPS;
+        return GermType.Fingertips;
     }
 
     public override string GetEventName()

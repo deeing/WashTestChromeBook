@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LlockhamIndustries.Decals;
+using Wash.Utilities;
 
 public class GermManager : SingletonMonoBehaviour<GermManager>
 {
@@ -158,7 +159,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         string report = "\nPercentage of Germs Left:\n";
         foreach(KeyValuePair<GermType, int> germMapPair in germMaxMap)
         {
-            report += germMapPair.Key + ": " + (GermPercentageByType(germMapPair.Key) * 100) + "%\n";
+            report += germMapPair.Key.GetDescription() + ": " + (GermPercentageByType(germMapPair.Key) * 100) + "%\n";
         }
 
         return report;

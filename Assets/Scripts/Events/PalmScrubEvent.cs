@@ -7,7 +7,7 @@ public class PalmScrubEvent : ScrubEvent
 
     public override GermType GetGermType()
     {
-        return GermType.PALM;
+        return GermType.Palm;
     }
 
     public override void DoScrub()
