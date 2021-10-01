@@ -73,6 +73,6 @@ public abstract class ScrubEvent : PlayerEvent
     {
         base.EndEvent();
 
-        DoIdle();
+        HandAnimations.instance.CrossFade("Idle", .2f);
     }
 }

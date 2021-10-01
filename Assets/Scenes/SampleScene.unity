@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
-  timeBetweenEvents: 1
+  timeBetweenEvents: 0.3
   currentWashEvent: {fileID: 0}
 --- !u!4 &267649305
 Transform:
@@ -10715,7 +10715,7 @@ MonoBehaviour:
   _TilingOffset: 469
   _MaskBase: 470
   _MaskLayers: 471
-  instanceID: 23412
+  instanceID: 27866
 --- !u!1 &1257239105
 GameObject:
   m_ObjectHideFlags: 0
