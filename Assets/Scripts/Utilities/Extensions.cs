@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NuclearOption.Utilities
+namespace Wash.Utilities
 {
     public static class Extensions
     {

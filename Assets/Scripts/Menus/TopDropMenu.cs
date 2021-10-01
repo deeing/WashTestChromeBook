@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class TopDropMenu : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class TopDropMenu : MonoBehaviour
     private float startDelayTime = 1f;
     [SerializeField]
     private bool showOnStart;
+    [SerializeField]
+    private TMP_Text menuText;
 
     private RectTransform rect;
     private WaitForSeconds startWait;
@@ -57,6 +60,11 @@ public class TopDropMenu : MonoBehaviour
     {
         isShowing = !isShowing;
         rect.DOAnchorPosY(isShowing ? targetY : originalY, transitionTime);
+    }
+
+    public void SetText(string text)
+    {
+        menuText.text = text;
     }
 
 }

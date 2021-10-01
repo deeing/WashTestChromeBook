@@ -20,19 +20,21 @@ public class FingertipsSwitchEvent : PlayerEvent
 
     public override void DoEvent()
     {
-        if (Lean.Touch.LeanGesture.GetPinchScale() < 1f)
-        {
-            float twistAmount = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees()) * twistSensitivity;
+        float twistAmount = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees()) * twistSensitivity;
 
-            if (twistAmount != 0)
-            {
-                float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
-                HandAnimations.instance.CrossFadeStep("FingertipsIdle", transitionTime, transitionTimeIncrease, crossFadeLimit);
-            }
+        if (twistAmount != 0)
+        {
+            float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
+            HandAnimations.instance.CrossFadeStep("FingertipsIdle", transitionTime, transitionTimeIncrease, crossFadeLimit);
         }
     }
     public override bool CheckEndEvent()
     {
         return HandAnimations.instance.IsCrossFadeFinished();
+    }
+
+    public override string GetEventName()
+    {
+        return "Fingertips Switch";
     }
 }

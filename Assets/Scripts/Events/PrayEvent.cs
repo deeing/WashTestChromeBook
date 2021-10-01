@@ -22,12 +22,19 @@ public class PrayEvent : PlayerEvent
 
             float pinchAmounnt = (lastFingerDistance - currFingerDistance);
             float transitionTimeIncrease = pinchAmounnt * pinchSensitivity;
-            //HandAnimations.instance.PlayAnimationStep("Pray", pinchAmounnt);
-            HandAnimations.instance.CrossFadeStep("Pray", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            //HandAnimations.instance.PlayAnimationStep("Palm Idle", transitionTimeIncrease);
+            HandAnimations.instance.CrossFadeStep("Palm Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+           // HandAnimations.instance.CrossFade("Palm Idle", transitionTime);
         }
     }
     public override bool CheckEndEvent()
     {
         return HandAnimations.instance.IsCrossFadeFinished();
+        //return HandAnimations.instance.IsAnimationFinished();
+    }
+
+    public override string GetEventName()
+    {
+        return "Scrub Switch";
     }
 }

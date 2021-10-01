@@ -12,7 +12,7 @@ public class GermZone : MonoBehaviour
     [SerializeField]
     private GameObject germPrefab;
     [SerializeField]
-    private GermType germType = GermType.PALM;
+    private GermType germType = GermType.Palm;
 
     private Transform thisTransform;
 
