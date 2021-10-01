@@ -78,6 +78,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-3562707947616168542
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wrist Left Scrub
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: ba1bade8ac2910c4081455098d05e8cc, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-2092934703556446942
 AnimatorState:
   serializedVersion: 6
@@ -152,14 +178,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &5254934426329396211
+--- !u!1102 &4840977461406737019
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FingertipsIdle
+  m_Name: Wrist Left Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -172,7 +198,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 69761d4dfdbdf2e4681275187702c2fe, type: 2}
+  m_Motion: {fileID: 7400000, guid: 26c5b406a83f886429208a976c1f2e57, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -232,8 +258,11 @@ AnimatorStateMachine:
     m_State: {fileID: 7505437327543006451}
     m_Position: {x: 600, y: 230, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5254934426329396211}
-    m_Position: {x: 940, y: 220, z: 0}
+    m_State: {fileID: 4840977461406737019}
+    m_Position: {x: 900, y: 230, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3562707947616168542}
+    m_Position: {x: 900, y: 290, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
