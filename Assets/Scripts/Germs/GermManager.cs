@@ -129,8 +129,8 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
 
     private void UpdateSplotches()
     {
-        projectionFade.SetAlpha(GermPercentage());
-        projectionScale1.SetSize(GermPercentage());
+        //projectionFade.SetAlpha(GermPercentage());
+       // projectionScale1.SetSize(GermPercentage());
        // projectionScale2.SetSize(GermPercentage());
     }
 
