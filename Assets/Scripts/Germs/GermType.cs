@@ -11,5 +11,7 @@ public enum GermType
     [Description("Back of Right Hand")]
     BackOfHandR,
     [Description("Left Wrist")]
-    WristL
+    WristL,
+    [Description("Left Thumb")]
+    ThumbL
 }
