@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5808473359616782395}
   - component: {fileID: 5808473359616782392}
   - component: {fileID: 5808473359616782393}
+  - component: {fileID: 9051848058685366679}
   m_Layer: 0
   m_Name: SplotchProjector
   m_TagString: Decal
@@ -151,7 +152,7 @@ MonoBehaviour:
   _TilingOffset: 469
   _MaskBase: 470
   _MaskLayers: 471
-  instanceID: 226832
+  instanceID: 38276
 --- !u!114 &5808473359616782392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808473359616782390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4fdc34e15718424ca3ea0168bfb3b38, type: 3}
   m_Name: 
@@ -200,8 +201,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808473359616782390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 417359784b1069e4ab59632fa02ff822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9051848058685366679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808473359616782390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25daf7c9298f8fd46aa629e16ece5331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  germType: 1

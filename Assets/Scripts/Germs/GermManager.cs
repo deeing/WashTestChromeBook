@@ -13,14 +13,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     private GameObject[] handObjects;
     private List<Material> handMaterials;
 
-    [SerializeField]
-    private ProjectionFadeModifier projectionFade;
-    [SerializeField]
-    private ProjectionScaleModifier projectionScale1;
-    [SerializeField]
-    private ProjectionScaleModifier projectionScale2;
-
-
     private Dictionary<GermType, List<GameObject>> allGerms;
 
     private int maxNumGerms = 0;
@@ -130,8 +122,8 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
     private void UpdateSplotches()
     {
         //projectionFade.SetAlpha(GermPercentage());
-       // projectionScale1.SetSize(GermPercentage());
-       // projectionScale2.SetSize(GermPercentage());
+        // projectionScale1.SetSize(GermPercentage());
+        // projectionScale2.SetSize(GermPercentage());
     }
 
     public bool HasGerms()
