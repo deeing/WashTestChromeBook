@@ -7,22 +7,82 @@ public class DecalSpawnZone : MonoBehaviour
 {
     [SerializeField]
     float radius = 1f;
+    [SerializeField]
+    float numGerms = 100f;
     public GermType germType  = GermType.Palm;
 
-    public Dictionary<Vector3, Vector3> GetPointsInZone(Dictionary<Vector3, Vector3> decalPositionPool)
-    {
-        Transform thisTransform = transform;
-        Dictionary<Vector3, Vector3> pointsInZone = new Dictionary<Vector3, Vector3>();
+    private int maxFails = 1000;
 
-        foreach (KeyValuePair<Vector3, Vector3> pointPair in decalPositionPool)
+    public Dictionary<Vector3, Vector3> GenerateGermsForZone(Transform meshTransform, Vector3[] meshPoints)
+    {
+        List<int> triangleStartIndexInZone = new List<int>();
+        Dictionary<Vector3, Vector3> germPositions = new Dictionary<Vector3, Vector3>();
+
+        // find triangles that start in the zone
+        for (int i = 0; i < meshPoints.Length; i += 3)
         {
-            if (Vector3.Distance(thisTransform.position, pointPair.Key) < radius)
+            Vector3 triangleStart = meshTransform.TransformPoint(meshPoints[i]);
+            Vector3 triangle2 = meshTransform.TransformPoint(meshPoints[i + 1]);
+            Vector3 triangle3 = meshTransform.TransformPoint(meshPoints[i + 1]);
+
+            if (ContainsPoint(triangleStart) || ContainsPoint(triangle2) || ContainsPoint(triangle3))
             {
-                pointsInZone.Add(pointPair.Key, pointPair.Value);
+                Debug.Log("found ");
+                triangleStartIndexInZone.Add(i);
             }
         }
 
-        return pointsInZone;
+        int currentTries = 0;
+        while (currentTries < numGerms + maxFails && germPositions.Count < numGerms)
+        {
+            int triStart = triangleStartIndexInZone.RandomElement();
+
+            float a = Random.value;
+            float b = Random.value;
+
+            if (a + b >= 1)
+            { // reflect back if > 1
+                a = 1 - a;
+                b = 1 - b;
+            }
+
+            Vector3 newPointOnMesh = meshPoints[triStart] + (a * (meshPoints[triStart + 1] - meshPoints[triStart])) + (b * (meshPoints[triStart + 2] - meshPoints[triStart])); // apply formula to get new random point inside triangle
+
+            newPointOnMesh = meshTransform.TransformPoint(newPointOnMesh); // convert back to worldspace
+
+            Vector3 rayOrigin = transform.position; // put the ray randomly around the transform
+            Vector3 rayDirection = newPointOnMesh - rayOrigin;
+            RaycastHit hitPoint;
+            if (Physics.Raycast(rayOrigin, rayDirection, out hitPoint, 100f))
+            {
+                germPositions.Add(newPointOnMesh, rayDirection);
+            }
+            currentTries++;
+        }
+
+        Debug.Log("In the end we found " + germPositions.Count + " for " + germType);
+
+        return germPositions;
+    }
+
+
+    // shoots out random rays (doesn't seem to work as well?)
+    public Dictionary<Vector3, Vector3> GenerateGermsForZone()
+    {
+        int currentTries = 0;
+        Dictionary<Vector3, Vector3> germPositions = new Dictionary<Vector3, Vector3>();
+        while (currentTries < numGerms + maxFails && germPositions.Count < numGerms)
+        {
+            if (Physics.Raycast(transform.position, Random.onUnitSphere, out RaycastHit hitPoint, 100f))
+            {
+                if (ContainsPoint(hitPoint.point))
+                {
+                    germPositions.Add(hitPoint.point, hitPoint.normal);
+                }
+            }
+            currentTries++;
+        }
+        return germPositions;
     }
 
     public bool ContainsPoint(Vector3 point)

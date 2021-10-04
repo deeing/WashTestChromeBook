@@ -26,11 +26,11 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         }
 
         allGerms = new Dictionary<GermType, List<GameObject>>();
-        handMaterials = new List<Material>();
+        /*handMaterials = new List<Material>();
         foreach (GameObject hand in handObjects)
         {
            handMaterials.Add(hand.GetComponent<SkinnedMeshRenderer>().material);
-        }
+        }*/
 
         germMaxMap = new Dictionary<GermType, int>();
     }
@@ -74,7 +74,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         GameObject randomGerm = germList[randomIndex];
         germList.RemoveAt(randomIndex);
         UpdateGermBar();
-        UpdateHandTexture();
+        //UpdateHandTexture();
         UpdateSplotches();
 
 

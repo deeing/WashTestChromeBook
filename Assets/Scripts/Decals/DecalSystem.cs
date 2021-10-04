@@ -28,16 +28,26 @@ public class DecalSystem : MonoBehaviour
         bakedMesh = new Mesh();
         skinnedMesh.BakeMesh(bakedMesh);
 
-        BuildDecalPositionPool(decalPoolSize);
+        //BuildDecalPositionPool(decalPoolSize);
 
         // loop through each point in the pool and create it if it is in any of the zones
-        foreach (KeyValuePair<Vector3, Vector3> pointPair in decalPositionPool)
+        /*foreach (KeyValuePair<Vector3, Vector3> pointPair in decalPositionPool)
         {
             DecalSpawnZone decalZone = FindDecalZoneForPoint(pointPair.Key);
             if (decalZone != null)
             {
                 GameObject newGerm = CreateDecal(pointPair.Key, pointPair.Value);
                 newGerm.GetComponent<GermProjector>().SetGermType(decalZone.germType);
+            }
+        }*/
+
+        foreach(DecalSpawnZone zone in decalSpawnZones)
+        {
+            Dictionary<Vector3, Vector3> germPositions = zone.GenerateGermsForZone(transform, bakedMesh.vertices);
+            foreach (KeyValuePair<Vector3, Vector3> germPair in germPositions)
+            {
+                GameObject newGerm = CreateDecal(germPair.Key, germPair.Value);
+                newGerm.GetComponent<GermProjector>().SetGermType(zone.germType);
             }
         }
     }
@@ -100,7 +110,7 @@ public class DecalSystem : MonoBehaviour
     public GameObject CreateDecal(Vector3 pointOnMesh, Vector3 normal)
     {
         Transform nearestParent = FindNearestDecalParent(pointOnMesh);
-        GameObject newDecal = Instantiate(decalPrefab, pointOnMesh, Quaternion.LookRotation(normal, Vector3.up), transform);
+        GameObject newDecal = Instantiate(decalPrefab, pointOnMesh, Quaternion.Euler(normal), transform);
 
         // set parent after so that it doesn't get affected by the weird scale of the eventual parent
         newDecal.transform.parent = nearestParent;
