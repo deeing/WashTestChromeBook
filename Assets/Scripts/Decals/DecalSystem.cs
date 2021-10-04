@@ -19,31 +19,25 @@ public class DecalSystem : MonoBehaviour
     // Maps a vector3 along a mesh that is a possible decal spot to its normal
     private Dictionary<Vector3, Vector3> decalPositionPool;
 
-    Mesh bakedMesh;
+    private Mesh bakedMesh;
+    private MeshCollider collider;
+
 
     public void BuildAllDecals()
     {
+        collider = GetComponent<MeshCollider>();
         DestroyAllDecals();
         decalParents = FindObjectsOfType<DecalParent>();
         bakedMesh = new Mesh();
         skinnedMesh.BakeMesh(bakedMesh);
+        collider.sharedMesh = null;
+        collider.sharedMesh = bakedMesh;
 
-        //BuildDecalPositionPool(decalPoolSize);
-
-        // loop through each point in the pool and create it if it is in any of the zones
-        /*foreach (KeyValuePair<Vector3, Vector3> pointPair in decalPositionPool)
-        {
-            DecalSpawnZone decalZone = FindDecalZoneForPoint(pointPair.Key);
-            if (decalZone != null)
-            {
-                GameObject newGerm = CreateDecal(pointPair.Key, pointPair.Value);
-                newGerm.GetComponent<GermProjector>().SetGermType(decalZone.germType);
-            }
-        }*/
 
         foreach(DecalSpawnZone zone in decalSpawnZones)
         {
-            Dictionary<Vector3, Vector3> germPositions = zone.GenerateGermsForZone(transform, bakedMesh.vertices);
+            //Dictionary<Vector3, Vector3> germPositions = zone.GenerateGermsForZone(transform, bakedMesh.vertices);
+            Dictionary<Vector3, Vector3> germPositions = zone.GenerateGermsForZone();
             foreach (KeyValuePair<Vector3, Vector3> germPair in germPositions)
             {
                 GameObject newGerm = CreateDecal(germPair.Key, germPair.Value);
