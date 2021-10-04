@@ -11,8 +11,10 @@ public class DecalSpawnZone : MonoBehaviour
     float numGerms = 100f;
     public GermType germType  = GermType.Palm;
 
+    // max number of times the zone can fail to generate a germ before we quit
     private int maxFails = 1000;
 
+    // currently unused - generates splotch by mesh triangles
     public Dictionary<Vector3, Vector3> GenerateGermsForZone(Transform meshTransform, Vector3[] meshPoints)
     {
         List<int> triangleStartIndexInZone = new List<int>();
@@ -27,7 +29,6 @@ public class DecalSpawnZone : MonoBehaviour
 
             if (ContainsPoint(triangleStart) || ContainsPoint(triangle2) || ContainsPoint(triangle3))
             {
-                Debug.Log("found ");
                 triangleStartIndexInZone.Add(i);
             }
         }
@@ -60,13 +61,13 @@ public class DecalSpawnZone : MonoBehaviour
             currentTries++;
         }
 
-        Debug.Log("In the end we found " + germPositions.Count + " for " + germType);
+        //Debug.Log("In the end we found " + germPositions.Count + " for " + germType);
 
         return germPositions;
     }
 
 
-    // shoots out random rays (doesn't seem to work as well?)
+    // shoots out random rays and makes a projector wherever it hits (requires mesh collider to work well)
     public Dictionary<Vector3, Vector3> GenerateGermsForZone()
     {
         int currentTries = 0;
