@@ -52,10 +52,11 @@ public class DecalSystem : MonoBehaviour
     public GameObject CreateDecal(Vector3 pointOnMesh, Vector3 normal)
     {
         Transform nearestParent = FindNearestDecalParent(pointOnMesh);
-        GameObject newDecal = Instantiate(decalPrefab, pointOnMesh, Quaternion.Euler(normal), transform);
+        GameObject newDecal = Instantiate(decalPrefab, pointOnMesh, Quaternion.identity, transform);
 
         // set parent after so that it doesn't get affected by the weird scale of the eventual parent
         newDecal.transform.parent = nearestParent;
+        newDecal.transform.LookAt(pointOnMesh-normal);
 
         return newDecal;
     }
