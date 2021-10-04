@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5808473359616782392}
   - component: {fileID: 5808473359616782393}
   - component: {fileID: 9051848058685366679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SplotchProjector
   m_TagString: Decal
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
   _TilingOffset: 469
   _MaskBase: 470
   _MaskLayers: 471
-  instanceID: 240712
+  instanceID: 344854
 --- !u!114 &5808473359616782392
 MonoBehaviour:
   m_ObjectHideFlags: 0
