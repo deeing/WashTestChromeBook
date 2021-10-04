@@ -10,7 +10,14 @@ public class DecalSystem : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer skinnedMesh;
     [SerializeField]
+    [Tooltip("Min multiplier for germ decal projectors to add some randomness")]
+    private float minScaleMultiplier = 1f;
+    [SerializeField]
+    [Tooltip("Max multiplier for germ decal projectors to add some randomness")]
+    private float maxScaleMultiplier = 1f;
+    [SerializeField]
     private DecalSpawnZone[] decalSpawnZones;
+
 
     private DecalParent[] decalParents;
 
@@ -53,6 +60,9 @@ public class DecalSystem : MonoBehaviour
     {
         Transform nearestParent = FindNearestDecalParent(pointOnMesh);
         GameObject newDecal = Instantiate(decalPrefab, pointOnMesh, Quaternion.identity, transform);
+
+        float randomScaleMultiplier = Random.Range(minScaleMultiplier, maxScaleMultiplier);
+        newDecal.transform.localScale = newDecal.transform.localScale * randomScaleMultiplier;
 
         // set parent after so that it doesn't get affected by the weird scale of the eventual parent
         newDecal.transform.parent = nearestParent;

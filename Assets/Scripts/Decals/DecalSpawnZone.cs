@@ -5,11 +5,12 @@ using Wash.Utilities;
 
 public class DecalSpawnZone : MonoBehaviour
 {
-    [SerializeField]
-    float radius = 1f;
-    [SerializeField]
-    float numGerms = 100f;
     public GermType germType  = GermType.Palm;
+   
+    [SerializeField]
+    private float radius = 1f;
+    [SerializeField]
+    private float numGerms = 100f;
 
     // max number of times the zone can fail to generate a germ before we quit
     private int maxFails = 1000;
