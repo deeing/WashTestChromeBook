@@ -15,6 +15,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private int currEventIndex = 0;
     [SerializeField]
     private WashEvent currentWashEvent;
+    private WashEvent prevWashEvent = null;
 
     private WaitForSeconds waitBetweenEvents;
     private bool isTransitioning = false;
@@ -88,6 +89,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private IEnumerator NextEvent()
     {
         // end the old
+        prevWashEvent = currentWashEvent;
         currentWashEvent.EndEvent();
         isTransitioning = true;
 
@@ -164,5 +166,10 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         {
             return number;
         }
+    }
+
+    public WashEvent GetPrevEvent()
+    {
+        return prevWashEvent;
     }
 }

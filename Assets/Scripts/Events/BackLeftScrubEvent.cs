@@ -25,8 +25,8 @@ public class BackLeftScrubEvent : ScrubEvent
         return GermType.BackOfHandL;
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Fingertips";
+        return PlayerEventType.BackOfHandLScrub;
     }
 }

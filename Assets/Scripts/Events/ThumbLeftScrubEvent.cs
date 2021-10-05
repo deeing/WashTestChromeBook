@@ -25,8 +25,8 @@ public class ThumbLeftScrubEvent : ScrubEvent
         return GermType.ThumbL;
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Thumb Left";
+        return PlayerEventType.ThumbLScrub;
     }
 }
