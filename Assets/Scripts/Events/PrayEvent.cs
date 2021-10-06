@@ -33,8 +33,8 @@ public class PrayEvent : PlayerEvent
         //return HandAnimations.instance.IsAnimationFinished();
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Scrub Switch";
+        return PlayerEventType.PalmSwitch;
     }
 }

@@ -25,6 +25,7 @@ public class WristLeftSwitchEvent : PlayerEvent
         if (twistAmount != 0)
         {
             float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
+
             HandAnimations.instance.CrossFadeStep("Wrist Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
         }
     }
@@ -33,8 +34,8 @@ public class WristLeftSwitchEvent : PlayerEvent
         return HandAnimations.instance.IsCrossFadeFinished();
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Wrist Switch";
+        return PlayerEventType.WristLSwitch;
     }
 }

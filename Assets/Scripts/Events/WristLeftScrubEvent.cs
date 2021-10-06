@@ -25,8 +25,8 @@ public class WristLeftScrubEvent : ScrubEvent
         return GermType.WristL;
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Wrist Left";
+        return PlayerEventType.WristLScrub;
     }
 }

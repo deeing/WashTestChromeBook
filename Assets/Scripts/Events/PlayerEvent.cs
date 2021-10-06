@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wash.Utilities;
 
 public abstract class PlayerEvent : WashEvent
 {
@@ -42,9 +43,9 @@ public abstract class PlayerEvent : WashEvent
         if (shouldTimeEvent)
         {
             float eventEnd = Time.time;
-            WashEventManager.instance.AddTimeRecording(GetEventName(), eventEnd - eventStart);
+            WashEventManager.instance.AddTimeRecording(GetEventType().GetDescription(), eventEnd - eventStart);
         }
     }
 
-    public abstract string GetEventName();
+    public abstract PlayerEventType GetEventType();
 }

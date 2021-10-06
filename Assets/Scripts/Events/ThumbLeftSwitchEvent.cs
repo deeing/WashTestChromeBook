@@ -25,16 +25,25 @@ public class ThumbLeftSwitchEvent : PlayerEvent
         if (twistAmount != 0)
         {
             float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
-            HandAnimations.instance.CrossFadeStep("Thumb Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            TweenAnimation[] tweenAnimations = HandAnimations.instance.FindTweenAnimations(GetEventType());
+
+            if (tweenAnimations != null)
+            {
+                HandAnimations.instance.CrossFadeTweenStep("Thumb Left Idle", tweenAnimations, transitionTime, transitionTimeIncrease, crossFadeLimit);
+            } else
+            {
+                HandAnimations.instance.CrossFadeStep("Thumb Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            }
+
         }
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeFinished();
+        return HandAnimations.instance.IsCrossFadeWithTweensFinished();
     }
 
-    public override string GetEventName()
+    public override PlayerEventType GetEventType()
     {
-        return "Thumb Left Switch";
+        return PlayerEventType.ThumbLSwitch;
     }
 }
