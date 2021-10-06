@@ -9,9 +9,9 @@ public class ThumbLeftSwitchEvent : PlayerEvent
     [SerializeField]
     [Tooltip("Total time it would take for transition animation to complete.")]
     private float transitionTime = 1f;
-    [SerializeField]
-    [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
-    private float crossFadeLimit = .5f;
+   // [SerializeField]
+   // [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
+   // private float crossFadeLimit = .5f;
 
     public override void SetupEvent()
     {
@@ -25,21 +25,13 @@ public class ThumbLeftSwitchEvent : PlayerEvent
         if (twistAmount != 0)
         {
             float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
-            TweenAnimation[] tweenAnimations = HandAnimations.instance.FindTweenAnimations(GetEventType());
-
-            if (tweenAnimations != null)
-            {
-                HandAnimations.instance.CrossFadeTweenStep("Thumb Left Idle", tweenAnimations, transitionTime, transitionTimeIncrease, crossFadeLimit);
-            } else
-            {
-                HandAnimations.instance.CrossFadeStep("Thumb Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
-            }
+            HandAnimations.instance.PlayAnimationStep("Thumb Left Switch", transitionTimeIncrease);
 
         }
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeWithTweensFinished();
+        return HandAnimations.instance.IsAnimationFinished();
     }
 
     public override PlayerEventType GetEventType()

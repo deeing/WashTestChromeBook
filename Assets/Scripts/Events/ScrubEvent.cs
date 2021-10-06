@@ -11,6 +11,9 @@ public abstract class ScrubEvent : PlayerEvent
     [SerializeField]
     [Tooltip("If idle after this time, we transition to the idle animation")]
     private float idleTime = .5f;
+    [SerializeField]
+    [Tooltip("Time for return to neutral animation after scrubbing finishes")]
+    protected float returnNeutralTime = .5f;
 
     public float touchInput { get; private set; } = 0f;
     private WaitForSeconds idleWait;
@@ -35,6 +38,8 @@ public abstract class ScrubEvent : PlayerEvent
     public abstract void DoIdle();
 
     public abstract float DoTouchInput();
+
+    public abstract void ReturnToNeutral();
 
     public override void DoEvent()
     {
@@ -73,6 +78,6 @@ public abstract class ScrubEvent : PlayerEvent
     {
         base.EndEvent();
 
-        DoIdle();
+        ReturnToNeutral();
     }
 }
