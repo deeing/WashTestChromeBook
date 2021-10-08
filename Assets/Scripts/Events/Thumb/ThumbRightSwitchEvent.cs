@@ -33,6 +33,6 @@ public class ThumbRightSwitchEvent : PlayerEvent
 
     public override PlayerEventType GetEventType()
     {
-        return PlayerEventType.ThumbLSwitch;
+        return PlayerEventType.ThumbRSwitch;
     }
 }

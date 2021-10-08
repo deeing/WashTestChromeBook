@@ -33,5 +33,13 @@ public enum PlayerEventType
     [Description("Between Fingers Switch")]
     BetweenFingersSwitch,
     [Description("Between Fingers")]
-    BetweenFingersScrub
+    BetweenFingersScrub,
+    [Description("Left Fingernails Switch")]
+    FingernailsLSwitch,
+    [Description("Left Fingernails")]
+    FingernailsLScrub,
+    [Description("Right Fingernails Switch")]
+    FingernailsRSwitch,
+    [Description("Right Fingernails")]
+    FingernailsRScrub
 }
