@@ -2,7 +2,7 @@ using System.ComponentModel;
 public enum GermType
 {
     NO_TYPE,
-    [Description("Palm")]
+    [Description("Palms")]
     Palm,
     [Description("Fingertips")]
     Fingertips,
@@ -13,5 +13,7 @@ public enum GermType
     [Description("Left Wrist")]
     WristL,
     [Description("Left Thumb")]
-    ThumbL
+    ThumbL,
+    [Description("Between Fingers")]
+    BetweenFingers
 }

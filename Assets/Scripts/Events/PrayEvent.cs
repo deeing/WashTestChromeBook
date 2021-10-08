@@ -22,7 +22,7 @@ public class PrayEvent : PlayerEvent
 
             float pinchAmounnt = (lastFingerDistance - currFingerDistance);
             float transitionTimeIncrease = pinchAmounnt * pinchSensitivity;
-            HandAnimations.instance.PlayAnimationStep("Palm Together", transitionTimeIncrease);
+            HandAnimations.instance.PlayAnimationStep("Palm Switch", transitionTimeIncrease);
             //HandAnimations.instance.CrossFadeStep("Palm Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
            // HandAnimations.instance.CrossFade("Palm Idle", transitionTime);
         }
