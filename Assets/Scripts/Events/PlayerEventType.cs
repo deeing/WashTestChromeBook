@@ -26,6 +26,10 @@ public enum PlayerEventType
     ThumbLSwitch,
     [Description("Left Thumb")]
     ThumbLScrub,
+    [Description("Right Thumb Switch")]
+    ThumbRSwitch,
+    [Description("Right Thumb")]
+    ThumbRScrub,
     [Description("Between Fingers Switch")]
     BetweenFingersSwitch,
     [Description("Between Fingers")]

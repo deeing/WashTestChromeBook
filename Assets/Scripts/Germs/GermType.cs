@@ -14,6 +14,8 @@ public enum GermType
     WristL,
     [Description("Left Thumb")]
     ThumbL,
+    [Description("Right Thumb")]
+    ThumbR,
     [Description("Between Fingers")]
     BetweenFingers
 }
