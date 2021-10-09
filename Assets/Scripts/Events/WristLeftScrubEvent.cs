@@ -29,4 +29,9 @@ public class WristLeftScrubEvent : ScrubEvent
     {
         return PlayerEventType.WristLScrub;
     }
+
+    public override void ReturnToNeutral()
+    {
+        HandAnimations.instance.PlayAnimation("Wrist Left Return", returnNeutralTime);
+    }
 }

@@ -1,10 +1,11 @@
 using System.ComponentModel;
 public enum PlayerEventType
 {
-    [Description("Palm Switch")]
+    [Description("Left Palm Switch")]
     PalmSwitch,
-    [Description("Palm")]
+    [Description("Palms")]
     PalmScrub,
+    PalmRScrub,
     [Description("Fingertips Switch")]
     FingertipsSwitch,
     [Description("Fingertips")]
@@ -24,5 +25,21 @@ public enum PlayerEventType
     [Description("Left Thumb Switch")]
     ThumbLSwitch,
     [Description("Left Thumb")]
-    ThumbLScrub
+    ThumbLScrub,
+    [Description("Right Thumb Switch")]
+    ThumbRSwitch,
+    [Description("Right Thumb")]
+    ThumbRScrub,
+    [Description("Between Fingers Switch")]
+    BetweenFingersSwitch,
+    [Description("Between Fingers")]
+    BetweenFingersScrub,
+    [Description("Left Fingernails Switch")]
+    FingernailsLSwitch,
+    [Description("Left Fingernails")]
+    FingernailsLScrub,
+    [Description("Right Fingernails Switch")]
+    FingernailsRSwitch,
+    [Description("Right Fingernails")]
+    FingernailsRScrub
 }

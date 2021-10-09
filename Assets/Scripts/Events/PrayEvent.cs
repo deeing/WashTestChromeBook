@@ -9,9 +9,9 @@ public class PrayEvent : PlayerEvent
     [SerializeField]
     [Tooltip("Total time it would take for transition animation to complete.")]
     private float transitionTime = 1f;
-    [SerializeField]
-    [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
-    private float crossFadeLimit = .05f;    
+   // [SerializeField]
+   // [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
+ //   private float crossFadeLimit = .05f;    
 
     public override void DoEvent()
     {
@@ -22,15 +22,15 @@ public class PrayEvent : PlayerEvent
 
             float pinchAmounnt = (lastFingerDistance - currFingerDistance);
             float transitionTimeIncrease = pinchAmounnt * pinchSensitivity;
-            //HandAnimations.instance.PlayAnimationStep("Palm Idle", transitionTimeIncrease);
-            HandAnimations.instance.CrossFadeStep("Palm Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            HandAnimations.instance.PlayAnimationStep("Palm Switch", transitionTimeIncrease);
+            //HandAnimations.instance.CrossFadeStep("Palm Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
            // HandAnimations.instance.CrossFade("Palm Idle", transitionTime);
         }
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeFinished();
-        //return HandAnimations.instance.IsAnimationFinished();
+        //return HandAnimations.instance.IsCrossFadeFinished();
+        return HandAnimations.instance.IsAnimationFinished();
     }
 
     public override PlayerEventType GetEventType()

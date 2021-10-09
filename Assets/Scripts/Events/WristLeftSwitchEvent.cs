@@ -9,9 +9,9 @@ public class WristLeftSwitchEvent : PlayerEvent
     [SerializeField]
     [Tooltip("Total time it would take for transition animation to complete.")]
     private float transitionTime = 1f;
-    [SerializeField]
-    [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
-    private float crossFadeLimit = .5f;
+   // [SerializeField]
+   // [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
+   // private float crossFadeLimit = .5f;
 
     public override void SetupEvent()
     {
@@ -26,12 +26,13 @@ public class WristLeftSwitchEvent : PlayerEvent
         {
             float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
 
-            HandAnimations.instance.CrossFadeStep("Wrist Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            //HandAnimations.instance.CrossFadeStep("Wrist Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            HandAnimations.instance.PlayAnimationStep("Wrist Left Switch", transitionTimeIncrease);
         }
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeFinished();
+        return HandAnimations.instance.IsAnimationFinished();
     }
 
     public override PlayerEventType GetEventType()

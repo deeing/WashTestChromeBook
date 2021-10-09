@@ -9,9 +9,9 @@ public class BackLeftSwitchEvent : PlayerEvent
     [SerializeField]
     [Tooltip("Total time it would take for transition animation to complete.")]
     private float transitionTime = 1f;
-    [SerializeField]
-    [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
-    private float crossFadeLimit = .05f;
+   // [SerializeField]
+  //  [Tooltip("Ending normalized time for the crossfade (figure out why this isn't just 1")]
+   // private float crossFadeLimit = .05f;
 
     public override void SetupEvent()
     {
@@ -25,12 +25,13 @@ public class BackLeftSwitchEvent : PlayerEvent
         if (twistAmount != 0)
         {
             float transitionTimeIncrease = Mathf.Abs(twistAmount) * twistSensitivity;
-            HandAnimations.instance.CrossFadeStep("Back Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            //HandAnimations.instance.CrossFadeStep("Back Left Idle", transitionTime, transitionTimeIncrease, crossFadeLimit);
+            HandAnimations.instance.PlayAnimationStep("Back Left Switch", transitionTimeIncrease);
         }
     }
     public override bool CheckEndEvent()
     {
-        return HandAnimations.instance.IsCrossFadeFinished();
+        return HandAnimations.instance.IsAnimationFinished();
     }
 
     public override PlayerEventType GetEventType()

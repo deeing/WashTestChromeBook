@@ -29,4 +29,9 @@ public class FingertipsScrubEvent : ScrubEvent
     {
         return PlayerEventType.FingertipsScrub;
     }
+
+    public override void ReturnToNeutral()
+    {
+        HandAnimations.instance.CrossFade("Idle", returnNeutralTime);
+    }
 }

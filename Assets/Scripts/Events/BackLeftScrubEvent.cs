@@ -29,4 +29,9 @@ public class BackLeftScrubEvent : ScrubEvent
     {
         return PlayerEventType.BackOfHandLScrub;
     }
+
+    public override void ReturnToNeutral()
+    {
+        HandAnimations.instance.PlayAnimation("Back Left Return", returnNeutralTime);
+    }
 }
