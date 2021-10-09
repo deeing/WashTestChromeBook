@@ -20,6 +20,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private WaitForSeconds waitBetweenEvents;
     private bool isTransitioning = false;
     private bool finishedEvents = false;
+    public bool isInspectionMode = false;
 
     private float washEventsStartTime = 0f;
 
@@ -64,7 +65,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
     private void Update()
     {
-        if (isTransitioning || finishedEvents)
+        if (isTransitioning || finishedEvents || isInspectionMode)
         {
             return;
         }
