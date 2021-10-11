@@ -19,12 +19,21 @@ public class UVLight : MonoBehaviour
         originalMaterial = skinnedMesh.materials[1];
     }
 
+    public void OnDisable()
+    {
+        SetUvMode(false);
+    }
+
     public void ToggleUvMode()
     {
-        isOn = !isOn;
+        SetUvMode(!isOn);
+    }
 
-        SetGermsVisible(isOn);
-        SetHandMaterial(isOn);
+    private void SetUvMode(bool status)
+    {
+        isOn = status;
+        SetGermsVisible(status);
+        SetHandMaterial(status);
     }
 
     private void SetGermsVisible(bool status)

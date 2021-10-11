@@ -22,6 +22,10 @@ public enum PlayerEventType
     WristLSwitch,
     [Description("Left Wrist")]
     WristLScrub,
+    [Description("Right Wrist Switch")]
+    WristRSwitch,
+    [Description("Right Wrist")]
+    WristRScrub,
     [Description("Left Thumb Switch")]
     ThumbLSwitch,
     [Description("Left Thumb")]
