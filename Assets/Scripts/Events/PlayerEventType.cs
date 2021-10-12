@@ -5,11 +5,14 @@ public enum PlayerEventType
     PalmSwitch,
     [Description("Palms")]
     PalmScrub,
-    PalmRScrub,
-    [Description("Fingertips Switch")]
-    FingertipsSwitch,
-    [Description("Fingertips")]
-    FingertipsScrub,
+    [Description("Fingertips Left Switch")]
+    FingertipsLSwitch,
+    [Description("Fingertips Left")]
+    FingertipsLScrub,
+    [Description("Fingertips Right Switch")]
+    FingertipsRSwitch,
+    [Description("Fingertips Right")]
+    FingertipsRScrub,
     [Description("Back of Left Hand Switch")]
     BackOfHandLSwitch,
     [Description("Back of Left Hand")]

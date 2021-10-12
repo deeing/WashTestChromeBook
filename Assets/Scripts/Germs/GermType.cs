@@ -4,8 +4,10 @@ public enum GermType
     NO_TYPE,
     [Description("Palms")]
     Palm,
-    [Description("Fingertips")]
-    Fingertips,
+    [Description("Fingertips Left")]
+    FingertipsL,
+    [Description("Fingertips Right")]
+    FingertipsR,
     [Description("Back of Left Hand")]
     BackOfHandL,
     [Description("Back of Right Hand")]
