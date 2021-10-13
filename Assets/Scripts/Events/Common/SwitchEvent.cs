@@ -12,7 +12,7 @@ public abstract class SwitchEvent : PlayerEvent
     public abstract void DoSwitch();
     public override void DoEvent()
     {
-        touchInputwithSensitivity = DoTouchInput() * sensitivity;
+        touchInputwithSensitivity = DoTouchInput() * sensitivity * GetSensitivityAdjustment();
 
         if (touchInputwithSensitivity != 0)
         {

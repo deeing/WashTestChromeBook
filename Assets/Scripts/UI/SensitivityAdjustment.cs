@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wash.Utilities;
+using TMPro;
+using System.Text;
 
 public class SensitivityAdjustment : MonoBehaviour
 {
@@ -9,16 +12,107 @@ public class SensitivityAdjustment : MonoBehaviour
     [SerializeField]
     private Transform sensitivityAdjustmentContainer;
     [SerializeField]
+    private GameObject exportArea;
+    [SerializeField]
+    private TMP_Text exportText;
+    [SerializeField]
     private GameObject sensitivityInputValuePrefab;
+
+    // map of the event name to the sensitivity value
+    private Dictionary<string, float> savedAdjustmentValues = new Dictionary<string, float>();
+
+    private const string savedAdjustementsKey = "Sensitivity Adjustment Values";
+    private const string savedAdjustmentFile = "sensitivityAdjustments.json";
 
     private void Start()
     {
-        foreach(Transform evt in eventsContainer)
+        Dictionary<string, float> previousSave;
+        
+        try
+        {
+            previousSave = (Dictionary<string, float>)ES3.Load(savedAdjustementsKey, savedAdjustmentFile);
+        } catch (System.IO.FileNotFoundException e)
+        {
+            previousSave = null;
+        }
+
+        if (previousSave != null)
+        {
+            Debug.Log("previous save detected");
+            savedAdjustmentValues = previousSave;
+            SetupUI(true);
+        }
+        else
+        {
+            Debug.Log("no previous save detected");
+            SetupUI(false);
+        }
+    }
+
+    public void SetupUI(bool loadFromPrevious)
+    {
+        foreach (Transform evt in eventsContainer)
         {
             AdjustableSensitivity adjust = evt.GetComponent<AdjustableSensitivity>();
 
             GameObject sensInputVal = Instantiate(sensitivityInputValuePrefab, sensitivityAdjustmentContainer);
-            sensInputVal.GetComponent<AdjustableInputValue>().SetTitle(adjust.GetEventName());
+
+            if (loadFromPrevious)
+            {
+                adjust.SetSensitivityAdjustment(savedAdjustmentValues[adjust.GetEventName()]);
+            } else
+            {
+                savedAdjustmentValues.Add(adjust.GetEventName(), adjust.GetSensitivityAdjustment());
+            }
+
+            sensInputVal.GetComponent<AdjustableInputValue>().SetAdjustableSensitivity(adjust);
+            sensInputVal.GetComponent<AdjustableInputValue>().RegisterParent(this);
         }
+    }
+
+    public void SaveAllValues()
+    {
+        ES3.Save(savedAdjustementsKey, savedAdjustmentValues, savedAdjustmentFile);
+    }
+
+    public void DeleteAllValues()
+    {
+        ES3.DeleteFile(savedAdjustmentFile);
+        savedAdjustmentValues = new Dictionary<string, float>();
+        sensitivityAdjustmentContainer.DestroyAllChildren();
+        foreach (Transform evt in eventsContainer)
+        {
+            AdjustableSensitivity adjust = evt.GetComponent<AdjustableSensitivity>();
+
+            GameObject sensInputVal = Instantiate(sensitivityInputValuePrefab, sensitivityAdjustmentContainer);
+
+            savedAdjustmentValues.Add(adjust.GetEventName(), 1f);
+            adjust.SetSensitivityAdjustment(1f);
+
+            sensInputVal.GetComponent<AdjustableInputValue>().SetAdjustableSensitivity(adjust);
+            sensInputVal.GetComponent<AdjustableInputValue>().RegisterParent(this);
+        }
+    }
+
+    public void UpdateSavedSensitivity(string eventName, float val)
+    {
+        savedAdjustmentValues[eventName] = val;
+    }
+
+    public void ExportValues()
+    {
+        exportArea.SetActive(true);
+        exportText.text = PrintSavedValues();
+    }
+
+    private string PrintSavedValues()
+    {
+        StringBuilder retVal = new StringBuilder();
+        foreach (KeyValuePair<string, float> keypair in savedAdjustmentValues)
+        {
+            retVal.AppendLine(keypair.Key + ":" + keypair.Value);
+        }
+
+        return retVal.ToString();
     }
 }

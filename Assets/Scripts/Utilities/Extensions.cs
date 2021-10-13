@@ -103,5 +103,15 @@ namespace Wash.Utilities
             return null;
         }
         #endregion
+
+        #region Transform
+        public static void DestroyAllChildren(this Transform value)
+        {
+            foreach (Transform child in value)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+        #endregion
     }
 }

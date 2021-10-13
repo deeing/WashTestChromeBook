@@ -6,7 +6,7 @@ public class BackRightSwitchEvent : SwitchEvent
 {
     public override PlayerEventType GetEventType()
     {
-        return PlayerEventType.BackOfHandLSwitch;
+        return PlayerEventType.BackOfHandRSwitch;
     }
 
     public override float DoTouchInput()

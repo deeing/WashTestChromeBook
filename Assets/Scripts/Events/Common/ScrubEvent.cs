@@ -44,7 +44,7 @@ public abstract class ScrubEvent : PlayerEvent
 
     public override void DoEvent()
     {
-        touchInputWithSensitivity = DoTouchInput() * sensitivity;
+        touchInputWithSensitivity = DoTouchInput() * sensitivity * GetSensitivityAdjustment();
 
         if (touchInputWithSensitivity > 0)
         {
