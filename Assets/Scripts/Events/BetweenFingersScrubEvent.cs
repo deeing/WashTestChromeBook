@@ -6,13 +6,13 @@ public class BetweenFingersScrubEvent : ScrubEvent
 {
     public override void DoIdle()
     {
-        HandAnimations.instance.CrossFade("Between Fingers Idle", crossFadetime);
+        HandAnimations.instance.CrossFade("Between Fingers Idle", idleTransitionTime);
     }
 
     public override void DoScrub()
     {
         //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Between Fingers Scrub", crossFadetime, touchInput);
+        HandAnimations.instance.TransitionPlay("Between Fingers Scrub", idleTransitionTime, touchInput);
     }
 
     public override float DoTouchInput()

@@ -6,13 +6,13 @@ public class BackLeftScrubEvent : ScrubEvent
 {
     public override void DoIdle()
     {
-        HandAnimations.instance.CrossFade("Back Left Idle", crossFadetime);
+        HandAnimations.instance.CrossFade("Back Left Idle", idleTransitionTime);
     }
 
     public override void DoScrub()
     {
         //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Back Left Scrub", crossFadetime, touchInput);
+        HandAnimations.instance.TransitionPlay("Back Left Scrub", idleTransitionTime, touchInput);
     }
 
     public override float DoTouchInput()

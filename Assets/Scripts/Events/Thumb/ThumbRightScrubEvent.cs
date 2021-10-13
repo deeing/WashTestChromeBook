@@ -6,13 +6,13 @@ public class ThumbRightScrubEvent : ScrubEvent
 {
     public override void DoIdle()
     {
-        HandAnimations.instance.CrossFade("Thumb Right Idle", crossFadetime);
+        HandAnimations.instance.CrossFade("Thumb Right Idle", idleTransitionTime);
     }
 
     public override void DoScrub()
     {
         //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Thumb Right Scrub", crossFadetime, touchInput);
+        HandAnimations.instance.TransitionPlay("Thumb Right Scrub", idleTransitionTime, touchInput);
     }
 
     public override float DoTouchInput()

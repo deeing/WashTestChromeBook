@@ -7,10 +7,11 @@ public abstract class ScrubEvent : PlayerEvent
     [SerializeField]
     protected float sensitivity = .002f;
     [SerializeField]
-    protected float crossFadetime = .25f;
-    [SerializeField]
-    [Tooltip("If idle after this time, we transition to the idle animation")]
+    [Tooltip("If user gives no input after this time, we transition to the idle animation")]
     private float idleTime = .5f;
+    [SerializeField]
+    [Tooltip("How long the idle transition animation should take.")]
+    protected float idleTransitionTime = .25f;
     [SerializeField]
     [Tooltip("Time for return to neutral animation after scrubbing finishes")]
     protected float returnNeutralTime = .5f;
