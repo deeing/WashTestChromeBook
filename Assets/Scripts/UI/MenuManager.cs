@@ -6,6 +6,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
     [SerializeField]
     private TopDropMenu endMenu;
+    [SerializeField]
+    private AlertMenu alertMenu;
 
     protected override void Awake()
     {
@@ -33,5 +35,11 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
 
         endMenuText += germReport;
         return endMenuText;
+    }
+
+
+    public void ShowAlert(string message, float duration)
+    {
+        alertMenu.Alert(message, duration);
     }
 }

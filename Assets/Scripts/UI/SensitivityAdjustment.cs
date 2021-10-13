@@ -14,7 +14,7 @@ public class SensitivityAdjustment : MonoBehaviour
     [SerializeField]
     private GameObject exportArea;
     [SerializeField]
-    private TMP_Text exportText;
+    private TMP_InputField exportText;
     [SerializeField]
     private GameObject sensitivityInputValuePrefab;
 
@@ -73,10 +73,12 @@ public class SensitivityAdjustment : MonoBehaviour
     public void SaveAllValues()
     {
         ES3.Save(savedAdjustementsKey, savedAdjustmentValues, savedAdjustmentFile);
+        MenuManager.instance.ShowAlert("Saved sensitivity values", 1f);
     }
 
     public void DeleteAllValues()
     {
+        MenuManager.instance.ShowAlert("Deleted sensitivity values", 1f);
         ES3.DeleteFile(savedAdjustmentFile);
         savedAdjustmentValues = new Dictionary<string, float>();
         sensitivityAdjustmentContainer.DestroyAllChildren();
@@ -114,5 +116,11 @@ public class SensitivityAdjustment : MonoBehaviour
         }
 
         return retVal.ToString();
+    }
+
+    public void CopyToClipboard()
+    {
+        GUIUtility.systemCopyBuffer = PrintSavedValues();
+        MenuManager.instance.ShowAlert("Copied to clipboard", 1f);
     }
 }
