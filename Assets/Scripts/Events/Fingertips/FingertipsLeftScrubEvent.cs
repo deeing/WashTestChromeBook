@@ -11,7 +11,7 @@ public class FingertipsLeftScrubEvent : ScrubEvent
 
     public override void DoScrub()
     {
-        HandAnimations.instance.TransitionPlay("Fingertips Left Scrub", idleTransitionTime, touchInput);
+        HandAnimations.instance.TransitionPlay("Fingertips Left Scrub", idleTransitionTime, touchInputWithSensitivity);
     }
 
     public override float DoTouchInput()
