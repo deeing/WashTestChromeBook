@@ -6,4 +6,6 @@ public interface AdjustableSensitivity
 {
     public void SetSensitivityAdjustment(float sensitivityAdjustment);
     public float GetSensitivityAdjustment();
+
+    public string GetEventName();
 }

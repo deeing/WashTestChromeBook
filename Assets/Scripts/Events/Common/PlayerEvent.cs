@@ -61,4 +61,9 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     {
         return sensitivityAdjustment;
     }
+
+    public string GetEventName()
+    {
+        return GetEventType().GetDescription();
+    }
 }
