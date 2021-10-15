@@ -8,9 +8,11 @@ public class VideoCutscene : CutsceneEvent
     [SerializeField]
     private VideoClip videoClip;
 
+    private VideoManager videoManager;
+
     public override bool CheckEndEvent()
     {
-        return VideoManager.instance.isFinished;
+        return videoManager.isFinished;
     }
 
     public override void DoEvent()
@@ -20,17 +22,18 @@ public class VideoCutscene : CutsceneEvent
 
     public override void EndEvent()
     {
-        VideoManager.instance.HideVideoCanvas(1f);
+        videoManager.HideVideoCanvas(1f);
     }
 
     public override void SetupEvent()
     {
-        VideoManager.instance.SetVideo(videoClip);
+        videoManager = WashEventManager.instance.videoManager;
+        videoManager.SetVideo(videoClip);
     }
 
     public override void StartEvent()
     {
-        //VideoManager.instance.FadePlay(5f);
-        VideoManager.instance.Play();
+        videoManager.FadePlay(3f);
+        //videoManager.Play();
     }
 }

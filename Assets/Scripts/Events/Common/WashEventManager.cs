@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 {
+    public VideoManager videoManager;
+
     [SerializeField]
     private bool playOnStart = true;
     [SerializeField]
     private float timeBetweenEvents = 1f;
+
 
     // wash events will be children of this manager each with a single WashEvent component on it
     private List<WashEvent> washEvents = new List<WashEvent>();

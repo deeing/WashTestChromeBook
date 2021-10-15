@@ -5,21 +5,19 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using DG.Tweening;
 
-public class VideoManager : SingletonMonoBehaviour<VideoManager>
+public class VideoManager : MonoBehaviour
 {
     [SerializeField]
     private VideoPlayer videoPlayer;
     [SerializeField]
     private RawImage videoRender;
+    [SerializeField]
+    private Image fadeBlackImage;
 
     public bool isFinished { get; private set; } = false;
 
-    protected override void Awake()
+    private void Awake()
     {
-        if(!InitializeSingleton(this))
-        {
-            return;
-        }
         videoPlayer.loopPointReached += FadeToBlack;
     }
 
@@ -31,7 +29,9 @@ public class VideoManager : SingletonMonoBehaviour<VideoManager>
 
     public void FadePlay(float duration)
     {
-        videoRender.DOColor(Color.white, duration).OnComplete(Play);
+        //videoRender.DOColor(Color.white, duration).OnComplete(Play);
+        fadeBlackImage.DOFade(0f, duration);
+        Play();
     }
 
     public void Play()
@@ -42,7 +42,9 @@ public class VideoManager : SingletonMonoBehaviour<VideoManager>
 
     public void FadeToBlack(VideoPlayer vp)
     {
+        //fadeBlackImage.DOFade(255f, 3f).OnComplete(FinishedPlaying);
         videoRender.DOColor(Color.black, 1f).OnComplete(FinishedPlaying);
+
     }
 
     public void FinishedPlaying()
@@ -53,5 +55,6 @@ public class VideoManager : SingletonMonoBehaviour<VideoManager>
     public void HideVideoCanvas(float duration)
     {
         videoRender.DOFade(0f, duration);
+        //fadeBlackImage.DOFade(0f, duration);
     }
 }
