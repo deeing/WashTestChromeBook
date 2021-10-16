@@ -55,18 +55,22 @@ public class SensitivityAdjustment : MonoBehaviour
         {
             AdjustableSensitivity adjust = evt.GetComponent<AdjustableSensitivity>();
 
-            GameObject sensInputVal = Instantiate(sensitivityInputValuePrefab, sensitivityAdjustmentContainer);
+            if (adjust != null)
+            {
+                GameObject sensInputVal = Instantiate(sensitivityInputValuePrefab, sensitivityAdjustmentContainer);
 
-            if (loadFromPrevious)
-            {
-                adjust.SetSensitivityAdjustment(savedAdjustmentValues[adjust.GetEventName()]);
-            } else
-            {
-                savedAdjustmentValues.Add(adjust.GetEventName(), adjust.GetSensitivityAdjustment());
+                if (loadFromPrevious)
+                {
+                    adjust.SetSensitivityAdjustment(savedAdjustmentValues[adjust.GetEventName()]);
+                }
+                else
+                {
+                    savedAdjustmentValues.Add(adjust.GetEventName(), adjust.GetSensitivityAdjustment());
+                }
+
+                sensInputVal.GetComponent<AdjustableInputValue>().SetAdjustableSensitivity(adjust);
+                sensInputVal.GetComponent<AdjustableInputValue>().RegisterParent(this);
             }
-
-            sensInputVal.GetComponent<AdjustableInputValue>().SetAdjustableSensitivity(adjust);
-            sensInputVal.GetComponent<AdjustableInputValue>().RegisterParent(this);
         }
     }
 

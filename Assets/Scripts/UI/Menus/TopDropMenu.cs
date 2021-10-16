@@ -4,67 +4,20 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class TopDropMenu : MonoBehaviour
+public class TopDropMenu : SlideInMenu
 {
     [SerializeField]
     private float targetY = -100f;
-    [SerializeField]
-    private float transitionTime = 2f;
-
-    [SerializeField]
-    [Tooltip("If show on start, how much time should we wait before showing")]
-    private float startDelayTime = 1f;
-    [SerializeField]
-    private bool showOnStart;
-    [SerializeField]
-    private TMP_Text menuText;
-
-    private RectTransform rect;
-    private WaitForSeconds startWait;
+    
     private float originalY;
 
-    private bool isShowing = false;
-
-    private void Awake()
+    public override void Setup()
     {
-        rect = (RectTransform)transform;
-        if (showOnStart)
-        {
-            startWait = new WaitForSeconds(startDelayTime);
-            StartCoroutine(DelayedStart());
-            isShowing = true;
-        }
         originalY = rect.position.y;
     }
 
-    private IEnumerator DelayedStart()
+    public override void SetVisible(bool status)
     {
-        yield return startWait;
-        Show();
-
+        rect.DOAnchorPosY(status ? targetY : originalY, transitionTime);
     }
-
-    public void Show()
-    {
-        rect.DOAnchorPosY(targetY, transitionTime);
-        isShowing = true;
-    }
-
-    public void Hide()
-    {
-        rect.DOAnchorPosY(originalY, transitionTime);
-        isShowing = false;
-    }
-
-    public void Toggle()
-    {
-        isShowing = !isShowing;
-        rect.DOAnchorPosY(isShowing ? targetY : originalY, transitionTime);
-    }
-
-    public void SetText(string text)
-    {
-        menuText.text = text;
-    }
-
 }

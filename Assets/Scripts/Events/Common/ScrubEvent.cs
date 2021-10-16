@@ -26,6 +26,7 @@ public abstract class ScrubEvent : PlayerEvent
     {
         idleWait = new WaitForSeconds(idleTime);
         germType = GetGermType();
+        GermManager.instance.ShowGermBar(germType);
     }
 
     public override bool CheckEndEvent()
@@ -78,7 +79,7 @@ public abstract class ScrubEvent : PlayerEvent
     public override void EndEvent()
     {
         base.EndEvent();
-
+        GermManager.instance.HideGermBar();
         ReturnToNeutral();
     }
 }

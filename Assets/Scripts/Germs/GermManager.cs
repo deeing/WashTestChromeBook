@@ -7,10 +7,9 @@ using Wash.Utilities;
 public class GermManager : SingletonMonoBehaviour<GermManager>
 {
     [SerializeField]
-    private PercentageBar germBar;
+    private GermBar germBar;
 
     [SerializeField]
-    private GameObject[] handObjects;
     private List<Material> handMaterials;
 
     private Dictionary<GermType, List<GameObject>> allGerms;
@@ -26,12 +25,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         }
 
         allGerms = new Dictionary<GermType, List<GameObject>>();
-        /*handMaterials = new List<Material>();
-        foreach (GameObject hand in handObjects)
-        {
-           handMaterials.Add(hand.GetComponent<SkinnedMeshRenderer>().material);
-        }*/
-
         germMaxMap = new Dictionary<GermType, int>();
     }
 
@@ -73,10 +66,8 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         int randomIndex = Random.Range(0, germList.Count);
         GameObject randomGerm = germList[randomIndex];
         germList.RemoveAt(randomIndex);
-        UpdateGermBar();
+        UpdateGermBarWithType(type);
         //UpdateHandTexture();
-        UpdateSplotches();
-
 
         Destroy(randomGerm);
     }
@@ -105,10 +96,26 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
 
         return numGerms;
     }
+    
+    public void ShowGermBar(GermType type)
+    {
+        UpdateGermBarWithType(type);
+        germBar.Show();
+    }
+
+    public void HideGermBar()
+    {
+        germBar.Hide();
+    }
 
     private void UpdateGermBar()
     {
-        germBar.UpdatePercentage((float)CountAllGerms() / (float)maxNumGerms);
+        germBar.UpdateGermPercentage((float)CountAllGerms() / (float)maxNumGerms);
+    }
+
+    private void UpdateGermBarWithType(GermType type)
+    {
+        germBar.UpdateGermPercentage(GermPercentageByType(type));
     }
 
     private void UpdateHandTexture()
@@ -117,13 +124,6 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         {
             handMat.SetFloat("_BlendAlpha", (float)CountAllGerms() / (float)maxNumGerms);
         }
-    }
-
-    private void UpdateSplotches()
-    {
-        //projectionFade.SetAlpha(GermPercentage());
-        // projectionScale1.SetSize(GermPercentage());
-        // projectionScale2.SetSize(GermPercentage());
     }
 
     public bool HasGerms()
