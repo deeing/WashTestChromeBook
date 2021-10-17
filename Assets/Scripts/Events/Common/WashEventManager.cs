@@ -10,6 +10,8 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     private bool playOnStart = true;
     [SerializeField]
     private float timeBetweenEvents = 1f;
+    [SerializeField]
+    private CheckList checklist;
 
 
     // wash events will be children of this manager each with a single WashEvent component on it
@@ -175,5 +177,11 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     public WashEvent GetPrevEvent()
     {
         return prevWashEvent;
+    }
+
+    public GameObject RegisterCheckListItem(string checkListTitle)
+    {
+
+        return null;
     }
 }
