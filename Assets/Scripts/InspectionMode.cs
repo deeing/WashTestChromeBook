@@ -12,6 +12,8 @@ public class InspectionMode : MonoBehaviour
     private GameObject cameraButtons;
     [SerializeField]
     private Animator cinemachine;
+    [SerializeField]
+    private GameObject checkList;
 
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
@@ -31,6 +33,7 @@ public class InspectionMode : MonoBehaviour
         isInspectionMode = status;
         uvLightButton.SetActive(status);
         cameraButtons.SetActive(status);
+        checkList.SetActive(!status);
         WashEventManager.instance.isInspectionMode = status;
 
         if (status)
