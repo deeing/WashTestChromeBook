@@ -8,6 +8,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private TopDropMenu endMenu;
     [SerializeField]
     private AlertMenu alertMenu;
+    [SerializeField]
+    private CheckList checkList;
 
     protected override void Awake()
     {
@@ -41,5 +43,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ShowAlert(string message, float duration)
     {
         alertMenu.Alert(message, duration);
+    }
+
+    public void CheckListCheckOffItem()
+    {
+        checkList.CheckOffItem();
     }
 }

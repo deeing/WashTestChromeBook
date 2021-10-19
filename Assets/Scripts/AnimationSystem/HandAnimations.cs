@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
 {
-    [SerializeField] private Animator anim;
+    [SerializeField] 
+    private Animator anim;
 
     [Range(0,1)]
     private float animationTime = 0f;
@@ -12,6 +13,8 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     private float crossFadeLimit = 1f; // WHY ISNT THIS ALWAYS ONE?
     [SerializeField]
     private TransitionTweenSettings transitionTweenSettings;
+    [SerializeField]
+    private Animator cinemachine;
 
     private string crossFadeAnimation = "";
     private bool finishedTransition = false;
@@ -185,5 +188,10 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         }
 
         return null;
+    }
+
+    public void CameraAnimation(string animationName, float animTime)
+    {
+        cinemachine.Play(animationName, 0, animTime);
     }
 }

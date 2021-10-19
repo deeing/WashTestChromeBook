@@ -12,6 +12,9 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     [Tooltip("Whether or not we should time the completion of the current event")]
     private bool shouldTimeEvent = false;
     [SerializeField]
+    [Tooltip("Whether or not we should have this as a checklist item")]
+    private bool shouldBeChecklistEvent = false;
+    [SerializeField]
     [Tooltip("How much the player wants to adjust the sensitivity of this event's input")]
     private float sensitivityAdjustment = 1f;
 
@@ -48,6 +51,11 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
             float eventEnd = Time.time;
             WashEventManager.instance.AddTimeRecording(GetEventType().GetDescription(), eventEnd - eventStart);
         }
+
+        if (shouldBeChecklistEvent)
+        {
+            MenuManager.instance.CheckListCheckOffItem();
+        }
     }
 
     public abstract PlayerEventType GetEventType();
@@ -65,5 +73,10 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     public string GetEventName()
     {
         return GetEventType().GetDescription();
+    }
+
+    public bool GetShouldBeChecklistEvent()
+    {
+        return shouldBeChecklistEvent;
     }
 }
