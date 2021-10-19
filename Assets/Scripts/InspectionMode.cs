@@ -16,6 +16,11 @@ public class InspectionMode : MonoBehaviour
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
 
+    private void Awake()
+    {
+        cinemachine.Play("Intro Cinematic");
+    }
+
     public void ToggleInspectionMode()
     {
         SetInspectionMode(!isInspectionMode);

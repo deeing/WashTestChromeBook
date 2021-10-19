@@ -41,7 +41,10 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         SetupWashEvents();
 
         waitBetweenEvents = new WaitForSeconds(timeBetweenEvents);
+    }
 
+    private void Start()
+    {
         if (playOnStart)
         {
             StartWashEvents();
