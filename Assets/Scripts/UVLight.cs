@@ -34,6 +34,7 @@ public class UVLight : MonoBehaviour
         isOn = status;
         SetGermsVisible(status);
         SetHandMaterial(status);
+        EffectsManager.instance.ToggleSuds(!status);
     }
 
     private void SetGermsVisible(bool status)

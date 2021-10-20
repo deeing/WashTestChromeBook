@@ -46,6 +46,7 @@ public abstract class ScrubEvent : PlayerEvent
     public override void DoEvent()
     {
         touchInputWithSensitivity = DoTouchInput() * sensitivity * GetSensitivityAdjustment();
+        EffectsManager.instance.PlaySuds(GetEventType());
 
         if (touchInputWithSensitivity > 0)
         {
