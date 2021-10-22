@@ -46,7 +46,33 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     }
 
     // cross fades to an animation and then starts to play it
-    public void TransitionPlay(string animationName, float fadeTime, float animationIncrease)
+    public void TransitionPlay(string animationName, float animationTime, float fadeTime)
+    {
+        if (IsCrossFading(animationName))
+        {
+            if (finishedTransition)
+            {
+                PlayAnimation(animationName, animationTime);
+                transitionCoroutine = null;
+                crossFadeTime = 0;
+                finishedTransition = false;
+            }
+        }
+        else
+        {
+            CrossFade(animationName, fadeTime);
+            crossFadeTime = 0;
+            finishedTransition = false;
+            if (transitionCoroutine != null)
+            {
+                StopCoroutine(transitionCoroutine);
+            }
+            transitionCoroutine = StartCoroutine(FinishTransition(fadeTime));
+        }
+    }
+
+    // cross fades to an animation and then starts to play it in steps
+    public void TransitionPlayStep(string animationName, float fadeTime, float animationIncrease)
     {
         if (IsCrossFading(animationName))
         {
@@ -69,7 +95,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     }
 
     // plays a transition animation and then starts to play animation
-    public void TransitionPlay(string animationName, string transitionAnimation, float fadeTime, float animationIncrease)
+    public void TransitionPlayStep(string animationName, string transitionAnimation, float fadeTime, float animationIncrease)
     {
         if (finishedTransition)
         {

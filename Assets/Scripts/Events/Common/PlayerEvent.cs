@@ -18,11 +18,21 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     [Tooltip("How much the player wants to adjust the sensitivity of this event's input")]
     private float sensitivityAdjustment = 1f;
 
+    // How long in seconcds it takes for player to become impatient
+    protected float impatienceThreshold = 8f;
+    // Duration in seconds for the impatience animation to finish and return to idle (not used for normalized animation time)
+    protected float impatienceAnimDuration = 3f;
+    protected WaitForSeconds impatienceWait;
+    // how long user has been idle
+    protected float impatienceTimer = 0f;
+    protected bool isImpatient = false;
+
     private float eventStart = 0;
 
     public override void SetupEvent()
     {
         // make it so not all of the children need an empty function
+        impatienceWait = new WaitForSeconds(impatienceAnimDuration);
     }
 
     public override void StartEvent()
@@ -78,5 +88,39 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     public bool GetShouldBeChecklistEvent()
     {
         return shouldBeChecklistEvent;
+    }
+
+    protected void ResetImpatienceTimer()
+    {
+        impatienceTimer = 0f;
+    }
+
+    protected void IncrementImpatienceTimer(float time)
+    {
+        impatienceTimer += time;
+    }
+
+    protected virtual string GetImpatienceAnimationName()
+    {
+        return null;
+    }
+
+    protected void HandleImpatience()
+    {
+        HandAnimations.instance.TransitionPlay(GetImpatienceAnimationName(), 1f, .2f);
+        isImpatient = true;
+        StartCoroutine(ImpatienceEnd());
+    }
+
+    public IEnumerator ImpatienceEnd()
+    {
+        yield return impatienceWait;
+        isImpatient = false;
+        impatienceTimer = 0f;
+    }
+
+    protected bool HasImpatienceAnim()
+    {
+        return GetImpatienceAnimationName() != null;
     }
 }

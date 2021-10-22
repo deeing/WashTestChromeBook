@@ -12,7 +12,7 @@ public class ThumbRightScrubEvent : ScrubEvent
     public override void DoScrub()
     {
         //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Thumb Right Scrub", idleTransitionTime, touchInputWithSensitivity);
+        HandAnimations.instance.TransitionPlayStep("Thumb Right Scrub", idleTransitionTime, touchInputWithSensitivity);
     }
 
     public override float DoTouchInput()

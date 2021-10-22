@@ -14,7 +14,7 @@ public class PalmScrubEvent : ScrubEvent
     {
         //HandAnimations.instance.PlayAnimationStep("Palm Scrub", touchInput);
         //HandAnimations.instance.TransitionPlay("Palm Scrub", "Palm Together", crossFadetime, touchInput);
-        HandAnimations.instance.TransitionPlay("Palm Scrub", idleTransitionTime, touchInputWithSensitivity);
+        HandAnimations.instance.TransitionPlayStep("Palm Scrub", idleTransitionTime, touchInputWithSensitivity);
 
     }
 

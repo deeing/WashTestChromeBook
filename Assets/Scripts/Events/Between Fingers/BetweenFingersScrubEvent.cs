@@ -12,7 +12,7 @@ public class BetweenFingersScrubEvent : ScrubEvent
     public override void DoScrub()
     {
         //HandAnimations.instance.PlayAnimationStep("FingertipsScrub", touchInput);
-        HandAnimations.instance.TransitionPlay("Between Fingers Scrub", idleTransitionTime, touchInputWithSensitivity);
+        HandAnimations.instance.TransitionPlayStep("Between Fingers Scrub", idleTransitionTime, touchInputWithSensitivity);
     }
 
     public override float DoTouchInput()

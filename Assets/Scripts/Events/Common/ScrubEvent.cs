@@ -24,6 +24,7 @@ public abstract class ScrubEvent : PlayerEvent
 
     public override void SetupEvent()
     {
+        base.SetupEvent();
         idleWait = new WaitForSeconds(idleTime);
         germType = GetGermType();
         GermManager.instance.ShowGermBar(germType);
@@ -58,15 +59,26 @@ public abstract class ScrubEvent : PlayerEvent
                 StopCoroutine(idleCoroutine);
                 idleCoroutine = null;
                 isIdle = false;
+                isImpatient = false;
+                ResetImpatienceTimer();
             }
         } else
         {
             if (idleCoroutine == null)
             {
                 idleCoroutine = StartCoroutine(SetIdle());
-            } else if (isIdle)
+            }
+            else if (isIdle && !isImpatient)
             {
-                DoIdle();
+                IncrementImpatienceTimer(Time.deltaTime);
+                if (HasImpatienceAnim() && impatienceTimer > impatienceThreshold)
+                {
+                    HandleImpatience();
+                }
+                else
+                {
+                    DoIdle();
+                }
             }
         }
     }

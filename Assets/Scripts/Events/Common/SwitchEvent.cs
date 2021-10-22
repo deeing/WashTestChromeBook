@@ -7,6 +7,8 @@ public abstract class SwitchEvent : PlayerEvent
     private float sensitivity = .005f;
     public float touchInputwithSensitivity { get; private set; } = 0f;
 
+    private bool isIdle = false;
+
     public abstract float DoTouchInput();
 
     public abstract void DoSwitch();
@@ -17,7 +19,33 @@ public abstract class SwitchEvent : PlayerEvent
         if (touchInputwithSensitivity != 0)
         {
             DoSwitch();
+            ResetImpatienceTimer();
+            isIdle = false;
         }
+        else if(!isImpatient)
+        {
+            IncrementImpatienceTimer(Time.deltaTime);
+            if (impatienceTimer > impatienceThreshold)
+            {
+                HandleImpatience();
+                isIdle = false;
+            }
+            else if (!isIdle) 
+            {
+                NeutralIdle();
+                isIdle = true;
+            }
+        } 
+    }
+
+    private void NeutralIdle()
+    {
+        HandAnimations.instance.TransitionPlay("Idle", 1f, .2f);
+    }
+
+    protected override string GetImpatienceAnimationName()
+    {
+        return "Neutral Impatience";
     }
 
     public override bool CheckEndEvent()
