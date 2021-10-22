@@ -70,7 +70,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
 
     private void Update()
     {
-        if (isTransitioning || finishedEvents || isInspectionMode)
+        if (isTransitioning || finishedEvents)
         {
             return;
         }

@@ -3,20 +3,17 @@ using UnityEngine;
 
 public abstract class SwitchEvent : PlayerEvent
 {
-    [SerializeField]
-    private float sensitivity = .005f;
+
     public float touchInputwithSensitivity { get; private set; } = 0f;
 
     private bool isIdle = false;
     private bool unMoved = true;
 
-    public abstract float DoTouchInput();
-
     public abstract void DoSwitch();
+
     public override void DoEvent()
     {
-        touchInputwithSensitivity = DoTouchInput() * sensitivity * GetSensitivityAdjustment();
-
+        touchInputwithSensitivity = HandleInput();
         if (touchInputwithSensitivity != 0)
         {
             DoSwitch();

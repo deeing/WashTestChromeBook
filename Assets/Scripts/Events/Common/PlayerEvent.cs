@@ -6,6 +6,8 @@ using Wash.Utilities;
 public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
 {
     [SerializeField]
+    private float sensitivity = .005f;
+    [SerializeField]
     [Tooltip("Tutorial that should show when this event starts")]
     private GameObject tutorialObject;
     [SerializeField]
@@ -65,6 +67,19 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
         if (shouldBeChecklistEvent)
         {
             MenuManager.instance.CheckListCheckOffItem();
+        }
+    }
+
+    public abstract float DoTouchInput();
+    public float HandleInput()
+    {
+        if (WashEventManager.instance.isInspectionMode)
+        {
+            return 0;
+        }
+        else
+        {
+            return DoTouchInput() * sensitivity * GetSensitivityAdjustment();
         }
     }
 

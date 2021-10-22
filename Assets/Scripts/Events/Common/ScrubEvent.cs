@@ -5,8 +5,6 @@ using UnityEngine;
 public abstract class ScrubEvent : PlayerEvent
 {
     [SerializeField]
-    protected float sensitivity = .002f;
-    [SerializeField]
     [Tooltip("If user gives no input after this time, we transition to the idle animation")]
     private float idleTime = .5f;
     [SerializeField]
@@ -40,13 +38,11 @@ public abstract class ScrubEvent : PlayerEvent
 
     public abstract void DoIdle();
 
-    public abstract float DoTouchInput();
-
     public abstract void ReturnToNeutral();
 
     public override void DoEvent()
     {
-        touchInputWithSensitivity = DoTouchInput() * sensitivity * GetSensitivityAdjustment();
+        touchInputWithSensitivity = HandleInput();
         EffectsManager.instance.PlaySuds(GetEventType());
 
         if (touchInputWithSensitivity > 0)

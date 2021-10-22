@@ -27,7 +27,7 @@ public class CheckList : MonoBehaviour
         {
             PlayerEvent playerEvent = washEvent.GetComponent<PlayerEvent>();
 
-            if (playerEvent != null && playerEvent.GetShouldBeChecklistEvent())
+            if (playerEvent != null && playerEvent.gameObject.activeSelf && playerEvent.GetShouldBeChecklistEvent())
             {
                 GameObject checklistItemObj = Instantiate(checkListItemPrefab, checkListItemContainer);
                 CheckListItem checkListItem = checklistItemObj.GetComponent<CheckListItem>();
