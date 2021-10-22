@@ -71,4 +71,10 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
         }
     }
 
+    // shows or hides the fire
+    public void ToggleFire(bool status)
+    {
+
+    }
+
 }

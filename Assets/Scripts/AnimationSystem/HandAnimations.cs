@@ -45,6 +45,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.enabled = false;
     }
 
+    // cross fades to an animation and starts to play it with a standard time
+    public void TransitionPlay(string animationName)
+    {
+        TransitionPlay(animationName, 1f, .2f);
+    }
     // cross fades to an animation and then starts to play it
     public void TransitionPlay(string animationName, float animationTime, float fadeTime)
     {

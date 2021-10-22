@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class PalmScrubEvent : ScrubEvent
 {
+    [SerializeField]
+    [Tooltip("Max input amount that this event can take before triggering the fire event")]
+    private float fireInputLimit = 15f;
+
+    // whether or not we have caught on fire
+    private bool isOnFire = false;
+    private bool isPlayingFireanimation = false;
+    private float animationFireTime = 2f;
+    private WaitForSeconds animationFireWait;
+
+    public override void SetupEvent()
+    {
+        base.SetupEvent();
+        animationFireWait = new WaitForSeconds(animationFireTime);
+    }
 
     public override GermType GetGermType()
     {
@@ -18,6 +33,36 @@ public class PalmScrubEvent : ScrubEvent
 
     }
 
+    public override void DoEvent()
+    {
+        if (!isOnFire)
+        {
+            base.DoEvent();
+        } else
+        {
+            DoFire();
+        }
+    }
+
+    private void DoFire()
+    {
+        if (!isPlayingFireanimation)
+        {
+            HandAnimations.instance.TransitionPlay("Fire Hands");
+            EffectsManager.instance.ToggleFire(true);
+            isPlayingFireanimation = true;
+            StartCoroutine(TurnOffFire());
+        }
+    }
+
+    private IEnumerator TurnOffFire()
+    {
+        yield return animationFireWait;
+        isPlayingFireanimation = false;
+        isOnFire = false;
+        EffectsManager.instance.ToggleFire(false);
+    }
+
     public override void DoIdle()
     {
         HandAnimations.instance.CrossFade("Palm Idle", idleTransitionTime);
@@ -25,8 +70,15 @@ public class PalmScrubEvent : ScrubEvent
 
     public override float DoTouchInput()
     {
-        return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
+        float input = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
+        if (input > fireInputLimit)
+        {
+            Debug.Log("CAUGHT ON FIRE WITH SPEED OF " + input);
+            isOnFire = true;
+        }
+        return input;
     }
+
 
     public override PlayerEventType GetEventType()
     {
