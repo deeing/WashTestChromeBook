@@ -10,6 +10,8 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
     private ParticleSystem bubblesParticles;
     [SerializeField]
     private PlayerEventToSudsMapping[] playerEventToSuds;
+    [SerializeField]
+    private GameObject[] fires;
 
     private Dictionary<PlayerEventType, ParticleSystem> playerEventsToSudsMap;
     // suds systems that are currently playing
@@ -74,7 +76,10 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
     // shows or hides the fire
     public void ToggleFire(bool status)
     {
-
+        foreach(GameObject fire in fires)
+        {
+            fire.SetActive(status);
+        }
     }
 
 }

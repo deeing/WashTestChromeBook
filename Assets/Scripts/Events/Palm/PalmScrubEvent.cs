@@ -11,13 +11,18 @@ public class PalmScrubEvent : ScrubEvent
     // whether or not we have caught on fire
     private bool isOnFire = false;
     private bool isPlayingFireanimation = false;
+    // time for animation to play
     private float animationFireTime = 2f;
     private WaitForSeconds animationFireWait;
+    // time for fire particles to play
+    private float particleFireTime = 1.3f;
+    private WaitForSeconds particleFireWait;
 
     public override void SetupEvent()
     {
         base.SetupEvent();
         animationFireWait = new WaitForSeconds(animationFireTime);
+        particleFireWait = new WaitForSeconds(particleFireTime);
     }
 
     public override GermType GetGermType()
@@ -52,6 +57,7 @@ public class PalmScrubEvent : ScrubEvent
             EffectsManager.instance.ToggleFire(true);
             isPlayingFireanimation = true;
             StartCoroutine(TurnOffFire());
+            StartCoroutine(TurnOffParticles());
         }
     }
 
@@ -60,6 +66,11 @@ public class PalmScrubEvent : ScrubEvent
         yield return animationFireWait;
         isPlayingFireanimation = false;
         isOnFire = false;
+    }
+
+    private IEnumerator TurnOffParticles()
+    {
+        yield return particleFireWait;
         EffectsManager.instance.ToggleFire(false);
     }
 
