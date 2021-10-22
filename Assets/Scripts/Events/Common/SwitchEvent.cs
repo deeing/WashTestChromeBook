@@ -8,6 +8,7 @@ public abstract class SwitchEvent : PlayerEvent
     public float touchInputwithSensitivity { get; private set; } = 0f;
 
     private bool isIdle = false;
+    private bool unMoved = true;
 
     public abstract float DoTouchInput();
 
@@ -21,11 +22,12 @@ public abstract class SwitchEvent : PlayerEvent
             DoSwitch();
             ResetImpatienceTimer();
             isIdle = false;
+            unMoved = false;
         }
         else if(!isImpatient)
         {
             IncrementImpatienceTimer(Time.deltaTime);
-            if (impatienceTimer > impatienceThreshold)
+            if (unMoved && impatienceTimer > impatienceThreshold)
             {
                 HandleImpatience();
                 isIdle = false;
