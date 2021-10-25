@@ -84,7 +84,6 @@ public class PalmScrubEvent : ScrubEvent
         float input = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
         if (input > fireInputLimit)
         {
-            Debug.Log("CAUGHT ON FIRE WITH SPEED OF " + input);
             isOnFire = true;
         }
         return input;

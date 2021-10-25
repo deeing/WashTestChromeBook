@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private AlertMenu alertMenu;
     [SerializeField]
     private CheckList checkList;
+    [SerializeField]
+    private GameObject buildPanel;
+    [SerializeField]
+    private GameObject settingsButton;
 
     protected override void Awake()
     {
@@ -39,6 +44,20 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         return endMenuText;
     }
 
+    public void ToggleBuildPanel(bool status)
+    {
+        buildPanel.SetActive(status);
+    }
+
+    public void ToggleSettings(bool status)
+    {
+        settingsButton.SetActive(status);
+    }
+
+    public void ToggleCheckList(bool status)
+    {
+        checkList.gameObject.SetActive(status);
+    }
 
     public void ShowAlert(string message, float duration)
     {
