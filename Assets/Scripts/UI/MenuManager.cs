@@ -15,6 +15,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private GameObject buildPanel;
     [SerializeField]
     private GameObject settingsButton;
+    [SerializeField]
+    private PoseOptionsMenu poseOptionsMenu;
+    [SerializeField]
+    private LeftSlideMenu switchPromptMenu;
 
     protected override void Awake()
     {
@@ -22,6 +26,27 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         {
             return;
         }
+    }
+
+    public void DisplayPoseOptions(List<MusicSwitchEvent> starterEvents, MusicSwitchEvent currentEvent)
+    {
+        poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
+    }
+
+    public void DisplaySwitchPrompt(string promptText)
+    {
+        switchPromptMenu.SetText(promptText);
+        switchPromptMenu.Show();
+    }
+
+    public void HidePoseOptions()
+    {
+        poseOptionsMenu.Hide();
+    }
+
+    public void HideSwitchPrompt()
+    {
+        switchPromptMenu.Hide();
     }
 
     public void ShowEnd(List<string> timeRecordings, string germReport)
