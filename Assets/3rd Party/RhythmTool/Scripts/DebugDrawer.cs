@@ -10,6 +10,9 @@ namespace RhythmTool
     [RequireComponent(typeof(RhythmPlayer)), AddComponentMenu("RhythmTool/Debug Drawer", -2)]
     public class DebugDrawer : MonoBehaviour
     {
+
+        [SerializeField]
+        private float top = 10f;
         /// <summary>
         /// The RhythmPlayer that is being drawn.
         /// </summary>
@@ -31,7 +34,7 @@ namespace RhythmTool
 
             List<Track> tracks = rhythmPlayer.rhythmData.tracks;
 
-            using (new GUI.GroupScope(new Rect(10, 10, width, (height + padding) * tracks.Count)))
+            using (new GUI.GroupScope(new Rect(10, top, width, (height + padding) * tracks.Count)))
             {
                 Rect rect = new Rect(0, 0, width, height);
 

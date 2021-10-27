@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wash.Utilities;
+using TMPro;
+using System.Text;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
@@ -11,13 +13,18 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private MusicSwitchEvent[] starterSwitchEvents;
     [SerializeField]
-    private float startingOffset = 5f;
+    private float startingOffset = 2f;
+    [SerializeField]
+    private int beatsPerMeasure = 4;
+    [SerializeField]
+    private TMP_Text debugText;
 
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
 
-    private bool hasStarted = false;
-    private int numBeats = 0; 
+    private bool isPlaying = false;
+    private int numBeats = 0;
+    private int measure = 0;
 
     protected override void Awake()
     {
@@ -52,25 +59,67 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         yield return new WaitForSeconds(startingOffset);
         currentWashEvent.SetupEvent();
-        hasStarted = true;
+        isPlaying = true;
     }
 
     private void HandleBeat(Beat beat)
     {
-        if (hasStarted)
+        if (isPlaying)
         {
-            currentWashEvent.DoEvent(beat);
+            if (currentWashEvent.IsFinished())
+            {
+                NextEvent();
+            } else
+            {
+                currentWashEvent.DoEvent(beat);
+            }
         }
+        ShowDebug(beat);
+        IncrementBeats();
+    }
+
+    private void IncrementBeats()
+    {
         numBeats++;
+        measure = numBeats / beatsPerMeasure;
+    }
+
+    private void ShowDebug(Beat beat)
+    {
+        StringBuilder text = new StringBuilder();
+        text.AppendLine("Measure: " + measure + " Beat:" + (numBeats % beatsPerMeasure + 1));
+        text.AppendLine("Total Beats: " + numBeats);
+        text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));
+
+        debugText.text = text.ToString();
+    }
+
+    private void NextEvent()
+    {
+        MusicWashEvent nextEvent = currentWashEvent.GetNextWashEvent();
+
+        if (currentWashEvent is MusicSwitchEvent)
+        {
+            RemoveStarterSwitchEvent((MusicSwitchEvent)currentWashEvent);
+        }
+
+        if (nextEvent == null)
+        {
+            if (starterEvents.Count > 0)
+            {
+                ChangeEventRandom();
+            } else
+            {
+                EndGame();
+            }
+        } else
+        {
+            ChangeEvent(nextEvent);
+        }
     }
 
     public void ChangeEvent(MusicWashEvent nextEvent) 
     {
-        if (nextEvent == null)
-        {
-            EndGame();
-            return;
-        }
         currentWashEvent = nextEvent;
         nextEvent.SetupEvent();
     }
@@ -91,5 +140,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void EndGame()
     {
         Debug.Log("PUT END GAME STUFF HERE");
+        isPlaying = false;
     }
 }
