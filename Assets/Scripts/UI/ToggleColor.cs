@@ -12,7 +12,7 @@ public class ToggleColor : MonoBehaviour
     [SerializeField]
     private Color startingColor = Color.white;
     [SerializeField]
-    private Color toggledColor = Color.white;
+    private Color toggledColor = Color.white    ;
     [SerializeField]
     private Image image;
     [SerializeField]
