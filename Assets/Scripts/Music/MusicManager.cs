@@ -11,11 +11,16 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private RhythmEventProvider eventProvider;
     [SerializeField]
+    private RhythmEventProvider futureEventProvider;
+    [SerializeField]
     private MusicSwitchEvent[] starterSwitchEvents;
     [SerializeField]
     private float startingOffset = 2f;
     [SerializeField]
     private int beatsPerMeasure = 4;
+    [SerializeField]
+    [Tooltip("How many beats a single input move takes")]
+    private int beatsPerInputPeriod = 1;
     [SerializeField]
     private TMP_Text debugText;
 
@@ -25,6 +30,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private bool isPlaying = false;
     private int numBeats = 0;
     private int measure = 0;
+
+    private Beat currentBeat = null;
+    private List<Beat> futureBeats = new List<Beat>();
 
     protected override void Awake()
     {
@@ -41,6 +49,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void SetupRhythm()
     {
         eventProvider.Register<Beat>(HandleBeat);
+        futureEventProvider.Register<Beat>(HandleFutureBeats);
     }
 
     private void SetupEvents()
@@ -74,8 +83,17 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
                 currentWashEvent.DoEvent(beat);
             }
         }
+        currentBeat = beat;
         ShowDebug(beat);
         IncrementBeats();
+    }
+
+    private void HandleFutureBeats(Beat beat)
+    {
+        if (isPlaying)
+        {
+            futureBeats.Add(beat);
+        }
     }
 
     private void IncrementBeats()
@@ -84,12 +102,44 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         measure = numBeats / beatsPerMeasure;
     }
 
+    // Gets the offset number of beats after the given beat
+    public Beat GetNextBeat(Beat beat, int offset)
+    {
+        if (futureBeats.Count <= offset || currentBeat == null)
+        {
+            return null;
+        }
+        int currentBeatIndex = 0;
+        for (int i=futureBeats.Count-1; i >= 0; i--)
+        {
+            Beat curr = futureBeats[i];
+            if (curr.timestamp <= beat.timestamp)
+            {
+                currentBeatIndex = i;
+                break;
+            }
+        }
+        return futureBeats[currentBeatIndex + offset];
+    }
+
+    public Beat GetNextBeat(Beat beat)
+    {
+        return GetNextBeat(beat, beatsPerInputPeriod);
+    }
+
+    public int GetBeatsPerInputPeriod()
+    {
+        return beatsPerInputPeriod;
+    }
+
     private void ShowDebug(Beat beat)
     {
         StringBuilder text = new StringBuilder();
         text.AppendLine("Measure: " + measure + " Beat:" + (numBeats % beatsPerMeasure + 1));
         text.AppendLine("Total Beats: " + numBeats);
+        text.AppendLine("BPM: " + beat.bpm);
         text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));
+        text.AppendLine("Next Beat: " + (Mathf.Round(GetNextBeat(beat, 1).timestamp * 100f) / 100f));
 
         debugText.text = text.ToString();
     }

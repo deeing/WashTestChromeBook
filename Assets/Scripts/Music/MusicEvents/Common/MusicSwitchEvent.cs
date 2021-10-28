@@ -6,10 +6,7 @@ using Wash.Utilities;
 public abstract class MusicSwitchEvent :  MusicPlayerEvent
 {
     [SerializeField]
-    protected MusicWashEvent nextWashEvent;
-    [SerializeField]
     protected float switchAnimationTime = 1f;
-
 
     public override void SetupEvent()
     {
@@ -29,14 +26,12 @@ public abstract class MusicSwitchEvent :  MusicPlayerEvent
 
     public void SuccessfulSwitch()
     {
-        Debug.Log("YAY");
         EffectsManager.instance.Celebrate();
         DoSwitch();
     }
 
     public void FailedSwitch()
     {
-        Debug.Log("Lol you suck");
         DoSwitch();
     }
 
@@ -59,10 +54,5 @@ public abstract class MusicSwitchEvent :  MusicPlayerEvent
     public override void DoEvent(Beat beat)
     {
 
-    }
-
-    public override MusicWashEvent GetNextWashEvent()
-    {
-        return nextWashEvent;
     }
 }

@@ -3,27 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicScrubEvent : MusicPlayerEvent
+public abstract class MusicScrubEvent : MusicPlayerEvent
 {
+    [SerializeField]
+    [Tooltip("Rhythym-synced inputs for this scrub event")]
+    private RhythymInput rhythmInput;
+
+    public override void SetupEvent()
+    {
+        rhythmInput.Toggle(true);
+        rhythmInput.RegisterWashEvent(this);
+        StartAnimation();
+        StopAnimation();
+    }
+
     public override void DoEvent(Beat beat)
     {
-        throw new System.NotImplementedException();
+        rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
     }
 
     public override PlayerEventType GetEventType()
     {
-        throw new System.NotImplementedException();
+        return PlayerEventType.PalmScrub;
     }
 
-    public override MusicWashEvent GetNextWashEvent()
+    public override void OnInput(bool status)
     {
-        throw new System.NotImplementedException();
+        base.OnInput(status);
+
+        if (status)
+        {
+            PlayAnimation();
+        } else
+        {
+            StopAnimation();
+        }
     }
 
-    public override void SetupEvent()
+    public abstract void StartAnimation();
+    public void PlayAnimation()
     {
-        throw new System.NotImplementedException();
+        HandAnimations.instance.Resume();
     }
-
-
+    public void StopAnimation()
+    {
+        HandAnimations.instance.Pause();
+    }
 }
