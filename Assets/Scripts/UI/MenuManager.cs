@@ -19,6 +19,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private PoseOptionsMenu poseOptionsMenu;
     [SerializeField]
     private LeftSlideMenu switchPromptMenu;
+    [SerializeField]
+    private TopDropMenu preSong;
 
     protected override void Awake()
     {
@@ -92,5 +94,16 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void CheckListCheckOffItem()
     {
         checkList.CheckOffItem();
+    }
+
+    public void TogglePreSongMenu(bool status)
+    {
+        if (status)
+        {
+            preSong.Show();
+        } else
+        {
+            preSong.Hide();
+        }
     }
 }

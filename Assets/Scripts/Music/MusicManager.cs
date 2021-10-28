@@ -69,11 +69,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         yield return new WaitForSeconds(startingOffset);
         currentWashEvent.SetupEvent();
         isPlaying = true;
+        MenuManager.instance.TogglePreSongMenu(false);
     }
 
     private void HandleBeat(Beat beat)
     {
-        if (isPlaying)
+        if (currentWashEvent != null)
         {
             if (currentWashEvent.IsFinished())
             {
@@ -90,10 +91,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void HandleFutureBeats(Beat beat)
     {
-        if (isPlaying)
-        {
-            futureBeats.Add(beat);
-        }
+        futureBeats.Add(beat);
     }
 
     private void IncrementBeats()
