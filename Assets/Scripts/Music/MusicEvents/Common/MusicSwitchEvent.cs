@@ -3,20 +3,35 @@ using System.Collections;
 using UnityEngine;
 using Wash.Utilities;
 
-public abstract class MusicSwitchEvent :  MusicPlayerEvent
+public class MusicSwitchEvent :  MusicPlayerEvent
 {
     [SerializeField]
     protected float switchAnimationTime = 1f;
+    [SerializeField]
+    private PlayerEventType eventType;
+    [SerializeField]
+    private string animationName;
+
+    private bool eventStarted = false;
 
     public override void SetupEvent()
     {
         DisplayPoseOptions();
-        ShowPrompt();
     }
 
-    public void ShowPrompt()
+    public void ShowPrompt(Beat beat)
     {
-        MenuManager.instance.DisplaySwitchPrompt(GetEventType().GetDescription());
+        string text = GetEventType().GetDescription();
+        float promptTime = GetPromptTravelTime(beat);
+        MenuManager.instance.DisplaySwitchPrompt(text, promptTime);
+    }
+
+    private float GetPromptTravelTime(Beat beat)
+    {
+        float currentBeatTime = beat.timestamp;
+        Beat nextBeat = MusicManager.instance.GetNextBeat(beat, numMeasures * MusicManager.instance.GetBeatsPerMeasure());
+        float nextBeatTime = nextBeat.timestamp;
+        return nextBeatTime - currentBeatTime;
     }
 
     public void DisplayPoseOptions()
@@ -49,10 +64,22 @@ public abstract class MusicSwitchEvent :  MusicPlayerEvent
         hasFinished = true;
     }
 
-    public abstract void PlaySwitchAnimation();
+    public void PlaySwitchAnimation()
+    {
+        HandAnimations.instance.TransitionPlay(animationName);
+    }
 
     public override void DoEvent(Beat beat)
     {
+        if (!eventStarted)
+        {
+            ShowPrompt(beat);
+            eventStarted = true;
+        }
+    }
 
+    public override PlayerEventType GetEventType()
+    {
+        return eventType;
     }
 }

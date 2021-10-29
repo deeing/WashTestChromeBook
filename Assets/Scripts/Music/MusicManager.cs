@@ -11,11 +11,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private RhythmEventProvider eventProvider;
     [SerializeField]
-    private RhythmEventProvider futureEventProvider;
+    private Transform startEventsContainer;
     [SerializeField]
-    private MusicSwitchEvent[] starterSwitchEvents;
-    [SerializeField]
-    private float startingOffset = 2f;
+    private float startingBeatOffset = 2f;
     [SerializeField]
     private int beatsPerMeasure = 4;
     [SerializeField]
@@ -28,11 +26,13 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public MusicWashEvent currentWashEvent { get; private set; }
 
     private bool isPlaying = false;
-    private int numBeats = 0;
     private int measure = 0;
 
+    private int currentBeatIndex = 0;
     private Beat currentBeat = null;
-    private List<Beat> futureBeats = new List<Beat>();
+    private RhythmData songData;
+    private Track<Beat> beatsData;
+    private List<Beat> allBeats = new List<Beat>();
 
     protected override void Awake()
     {
@@ -43,18 +43,24 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         SetupRhythm();
         SetupEvents();
-        StartCoroutine(StartWashing());
+        //StartCoroutine(StartWashing());
     }
 
     private void SetupRhythm()
     {
         eventProvider.Register<Beat>(HandleBeat);
-        futureEventProvider.Register<Beat>(HandleFutureBeats);
+        songData = GetComponent<RhythmPlayer>().rhythmData;
+        beatsData = songData.GetTrack<Beat>();
+        beatsData.GetFeatures(allBeats, 0f, songData.audioClip.length);
     }
 
     private void SetupEvents()
     {
-        starterEvents = new List<MusicSwitchEvent>(starterSwitchEvents);
+        starterEvents = new List<MusicSwitchEvent>();
+        foreach (Transform child in startEventsContainer)
+        {
+            starterEvents.Add(child.GetComponent<MusicSwitchEvent>());
+        }
         currentWashEvent = GetRandomStarter();
     }
 
@@ -64,9 +70,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         return randomStarter;
     }
 
-    private IEnumerator StartWashing()
+    private void StartWashing()
     {
-        yield return new WaitForSeconds(startingOffset);
+        //yield return new WaitForSeconds(startingOffset);
         currentWashEvent.SetupEvent();
         isPlaying = true;
         MenuManager.instance.TogglePreSongMenu(false);
@@ -74,7 +80,14 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void HandleBeat(Beat beat)
     {
-        if (currentWashEvent != null)
+        if (!isPlaying)
+        {
+            if (currentBeatIndex >= startingBeatOffset)
+            {
+                StartWashing();
+            }
+        }
+        else if (currentWashEvent != null)
         {
             if (currentWashEvent.IsFinished())
             {
@@ -89,35 +102,28 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         IncrementBeats();
     }
 
-    private void HandleFutureBeats(Beat beat)
-    {
-        futureBeats.Add(beat);
-    }
-
     private void IncrementBeats()
     {
-        numBeats++;
-        measure = numBeats / beatsPerMeasure;
+        currentBeatIndex++;
+        measure = currentBeatIndex / beatsPerMeasure;
+    }
+
+    // Gets the offset number of beats after current beat
+    public Beat GetNextBeat(int offset)
+    {
+        return GetNextBeat(currentBeatIndex, offset);
     }
 
     // Gets the offset number of beats after the given beat
+    public Beat GetNextBeat(int beatIndex, int offset)
+    {
+        return allBeats[beatIndex + offset];
+    }
+
     public Beat GetNextBeat(Beat beat, int offset)
     {
-        if (futureBeats.Count <= offset || currentBeat == null)
-        {
-            return null;
-        }
-        int currentBeatIndex = 0;
-        for (int i=futureBeats.Count-1; i >= 0; i--)
-        {
-            Beat curr = futureBeats[i];
-            if (curr.timestamp <= beat.timestamp)
-            {
-                currentBeatIndex = i;
-                break;
-            }
-        }
-        return futureBeats[currentBeatIndex + offset];
+        int beatIndex = beatsData.GetIndex(beat);
+        return allBeats[beatIndex + offset];
     }
 
     public Beat GetNextBeat(Beat beat)
@@ -130,14 +136,19 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         return beatsPerInputPeriod;
     }
 
+    public int GetBeatsPerMeasure()
+    {
+        return beatsPerMeasure;
+    }
+
     private void ShowDebug(Beat beat)
     {
         StringBuilder text = new StringBuilder();
-        text.AppendLine("Measure: " + measure + " Beat:" + (numBeats % beatsPerMeasure + 1));
-        text.AppendLine("Total Beats: " + numBeats);
+        text.AppendLine("Measure: " + measure + " Beat:" + (currentBeatIndex % beatsPerMeasure + 1));
+        text.AppendLine("Total Beats: " + currentBeatIndex);
         text.AppendLine("BPM: " + beat.bpm);
         text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));
-        text.AppendLine("Next Beat: " + (Mathf.Round(GetNextBeat(beat, 1).timestamp * 100f) / 100f));
+        text.AppendLine("Next Beat: " + (Mathf.Round(GetNextBeat(1).timestamp * 100f) / 100f));
 
         debugText.text = text.ToString();
     }

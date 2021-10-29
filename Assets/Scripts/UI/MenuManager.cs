@@ -18,7 +18,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     [SerializeField]
     private PoseOptionsMenu poseOptionsMenu;
     [SerializeField]
-    private LeftSlideMenu switchPromptMenu;
+    private SwitchPrompt switchPromptMenu;
     [SerializeField]
     private TopDropMenu preSong;
 
@@ -35,10 +35,9 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
     }
 
-    public void DisplaySwitchPrompt(string promptText)
+    public void DisplaySwitchPrompt(string promptText, float time)
     {
-        switchPromptMenu.SetText(promptText);
-        switchPromptMenu.Show();
+        switchPromptMenu.ShowPrompt(promptText, time);
     }
 
     public void HidePoseOptions()
@@ -48,7 +47,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
 
     public void HideSwitchPrompt()
     {
-        switchPromptMenu.Hide();
+        switchPromptMenu.HidePrompt();
     }
 
     public void ShowEnd(List<string> timeRecordings, string germReport)

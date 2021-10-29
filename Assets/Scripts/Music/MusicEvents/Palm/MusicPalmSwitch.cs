@@ -9,8 +9,8 @@ public class MusicPalmSwitch : MusicSwitchEvent
         return PlayerEventType.PalmSwitch;
     }
 
-    public override void PlaySwitchAnimation()
+    /*public override void PlaySwitchAnimation()
     {
         HandAnimations.instance.TransitionPlay("Palm Switch");
-    }
+    }*/
 }
