@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class SwitchPrompt : MonoBehaviour
 {
     [SerializeField]
     private Transform switchTargetPosition;
+    [SerializeField]
+    private TMP_Text promptText;
+    [SerializeField]
+    private GameObject promptContainer;
 
     private Transform thisTransform;
     private Vector3 originalPosition;
@@ -17,13 +22,16 @@ public class SwitchPrompt : MonoBehaviour
         originalPosition = thisTransform.position;
     }
 
-    public void ShowPrompt(string Text, float time)
+    public void ShowPrompt(string text, float time)
     {
+        promptContainer.SetActive(true);
+        promptText.text = text;
         thisTransform.DOMove(switchTargetPosition.position, time).SetEase(Ease.Linear);
     }
 
     public void HidePrompt()
     {
+        promptContainer.SetActive(false);
         thisTransform.position = originalPosition;
     }
 }
