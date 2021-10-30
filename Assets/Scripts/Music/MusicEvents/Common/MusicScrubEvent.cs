@@ -19,6 +19,9 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     private bool isPlayingEndAnimation = false;
 
+    // Just testing, see if you want to make this a field
+    private float endingOffset = -.5f;
+
     public override void SetupEvent()
     {
         isPlayingEndAnimation = false;  
@@ -83,7 +86,7 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     private IEnumerator FinishScrub()
     {
-        yield return new WaitForSeconds(scrubAnimationTime);
+        yield return new WaitForSeconds(scrubAnimationTime + endingOffset);
         hasFinished = true;
     }
 

@@ -203,6 +203,13 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void EndGame()
     {
         Debug.Log("PUT END GAME STUFF HERE");
+
+        MenuManager.instance.ShowAlert("You did it! (Put end game stuf here)", 5f);
         isPlaying = false;
+    }
+
+    public void OnDestroy()
+    {
+        eventProvider.Unregister<Beat>(HandleBeat);
     }
 }

@@ -16,17 +16,23 @@ public class MovingButton : MonoBehaviour
     private void Awake()
     {
         thisTransform = (RectTransform)transform;
+        transform.DOKill();
     }
 
     public void Move(float time)
     {
         if (moveToTarget)
         {
-            thisTransform.DOMove(targetPoint.position, time, true);
+            transform.DOMove(targetPoint.position, time, true);
         } else
         {
-            thisTransform.DOMove(startingPoint.position, time, true);
+            transform.DOMove(startingPoint.position, time, true);
         }
         moveToTarget = !moveToTarget;
+    }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
     }
 }

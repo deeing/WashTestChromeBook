@@ -13,6 +13,9 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     private bool eventStarted = false;
     private bool isStarterEvent = false;
 
+    // Just testing, see if you want to make this a field
+    private float endingOffset = -.5f;
+
     public override void SetupEvent()
     {
         hasFinished = false;
@@ -73,7 +76,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     
     private IEnumerator FinishSwitch()
     {
-        yield return new WaitForSeconds(switchAnimationTime);
+        yield return new WaitForSeconds(switchAnimationTime + endingOffset);
         hasFinished = true;
     }
 

@@ -35,4 +35,9 @@ public class SwitchPrompt : MonoBehaviour
         thisTransform.position = originalPosition;
         promptContainer.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        thisTransform.DOKill();
+    }
 }
