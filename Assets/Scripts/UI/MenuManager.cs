@@ -35,6 +35,11 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
     }
 
+    public void DisplayPoseOptions(MusicWashEvent nextEvent, MusicSwitchEvent currentEvent)
+    {
+        poseOptionsMenu.DisplayPoseOptions(nextEvent, currentEvent);
+    }
+
     public void DisplaySwitchPrompt(string promptText, float time)
     {
         switchPromptMenu.ShowPrompt(promptText, time);

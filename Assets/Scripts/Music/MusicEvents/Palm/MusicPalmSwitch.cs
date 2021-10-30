@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class MusicPalmSwitch : MusicSwitchEvent
 {
-    public override PlayerEventType GetEventType()
-    {
-        return PlayerEventType.PalmSwitch;
-    }
+
 
     /*public override void PlaySwitchAnimation()
     {

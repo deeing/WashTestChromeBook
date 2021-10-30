@@ -12,7 +12,7 @@ public class PoseOption : MonoBehaviour
     private bool isCorrectOption = false;
     private MusicSwitchEvent currentSwitchEvent;
 
-    public void SetupPoseOption(MusicSwitchEvent optionSwitchEvent, MusicSwitchEvent correctSwitchEvent)
+    public void SetupPoseOption(MusicWashEvent optionSwitchEvent, MusicSwitchEvent correctSwitchEvent)
     {
         poseText.text = optionSwitchEvent.GetEventType().GetDescription();
         isCorrectOption = optionSwitchEvent.GetEventType() == correctSwitchEvent.GetEventType();

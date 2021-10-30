@@ -7,4 +7,5 @@ public interface MusicWashEvent
     PlayerEventType GetEventType();
     bool IsFinished();
     MusicWashEvent GetNextWashEvent();
+    void EndEvent();
 }

@@ -8,15 +8,23 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     [SerializeField]
     protected float switchAnimationTime = 1f;
     [SerializeField]
-    private PlayerEventType eventType;
-    [SerializeField]
     private string animationName;
 
     private bool eventStarted = false;
+    private bool isStarterEvent = false;
 
     public override void SetupEvent()
     {
-        DisplayPoseOptions();
+        hasFinished = false;
+        eventStarted = false;
+
+        if (isStarterEvent)
+        {
+            DisplayPoseOptions();
+        } else
+        {
+            DisplayPoseOptions(nextEvent);
+        }
     }
 
     public void ShowPrompt(Beat beat)
@@ -37,6 +45,11 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     public void DisplayPoseOptions()
     {
         MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this);
+    }
+
+    public void DisplayPoseOptions(MusicWashEvent nextEvent)
+    {
+        MenuManager.instance.DisplayPoseOptions(nextEvent, this);
     }
 
     public void SuccessfulSwitch()
@@ -78,8 +91,8 @@ public class MusicSwitchEvent :  MusicPlayerEvent
         }
     }
 
-    public override PlayerEventType GetEventType()
+    public void RegisterAsStartEvent()
     {
-        return eventType;
+        isStarterEvent = true;
     }
 }

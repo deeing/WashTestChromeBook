@@ -59,7 +59,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         starterEvents = new List<MusicSwitchEvent>();
         foreach (Transform child in startEventsContainer)
         {
-            starterEvents.Add(child.GetComponent<MusicSwitchEvent>());
+            MusicSwitchEvent startEvent = child.GetComponent<MusicSwitchEvent>();
+            startEvent.RegisterAsStartEvent();
+            starterEvents.Add(startEvent);
         }
         currentWashEvent = GetRandomStarter();
     }
@@ -188,12 +190,14 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         ChangeEvent(GetRandomStarter());
     }
 
-    public void RemoveStarterSwitchEvent(MusicSwitchEvent removeEvent)
+    public bool RemoveStarterSwitchEvent(MusicSwitchEvent removeEvent)
     {
         if (starterEvents.Contains(removeEvent))
         {
             starterEvents.Remove(removeEvent);
+            return true;
         }
+        return false;
     }
 
     private void EndGame()

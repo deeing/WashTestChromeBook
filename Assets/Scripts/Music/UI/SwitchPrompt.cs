@@ -24,6 +24,7 @@ public class SwitchPrompt : MonoBehaviour
 
     public void ShowPrompt(string text, float time)
     {
+        thisTransform.position = originalPosition;
         promptContainer.SetActive(true);
         promptText.text = text;
         thisTransform.DOMove(switchTargetPosition.position, time).SetEase(Ease.Linear);
@@ -31,7 +32,7 @@ public class SwitchPrompt : MonoBehaviour
 
     public void HidePrompt()
     {
-        promptContainer.SetActive(false);
         thisTransform.position = originalPosition;
+        promptContainer.SetActive(false);
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MusicPalmScrubEvent : MusicScrubEvent
 {
-    public override void StartAnimation()
-    {
-        HandAnimations.instance.PlayAnimation("Palm Scrub", 1f);
-    }
+    //public override void StartAnimation()
+  //  {
+    //    HandAnimations.instance.PlayAnimation("Palm Scrub", 1f);
+    //}
 }

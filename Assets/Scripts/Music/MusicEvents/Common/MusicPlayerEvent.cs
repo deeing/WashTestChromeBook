@@ -10,11 +10,16 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     protected int numMeasures = 2;
     [SerializeField]
     protected MusicPlayerEvent nextEvent;
+    [SerializeField]
+    private PlayerEventType eventType;
 
     protected bool hasFinished = false;
 
     public abstract void DoEvent(Beat beat);
-    public abstract PlayerEventType GetEventType();
+    public PlayerEventType GetEventType()
+    {
+        return eventType;
+    }
     public abstract void SetupEvent();
 
     public virtual void OnInput(bool status)
@@ -32,4 +37,8 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
         return hasFinished;
     }
 
+    public virtual void EndEvent()
+    {
+        // you don't have to end if you don't want to 
+    }
 }
