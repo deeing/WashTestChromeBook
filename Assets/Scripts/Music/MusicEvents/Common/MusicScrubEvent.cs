@@ -94,10 +94,7 @@ public class MusicScrubEvent : MusicPlayerEvent
     {
         // only update if better than what was previously there
         // (otherwise a great score might overwrite a perfect one)
-        if (status > latestRhythmInputStatus)
-        {
-            latestRhythmInputStatus = status;
-        }
+        latestRhythmInputStatus = status;
     }
 
     public override void EndEvent()

@@ -7,7 +7,6 @@ public class VerticalParallelDrag : RhythymInput
 {
     [SerializeField]
     private MovingButton leftButton;
-
     [SerializeField]
     private MovingButton rightButton;
 
