@@ -22,7 +22,7 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     }
     public abstract void SetupEvent();
 
-    public virtual void OnInput(bool status)
+    public virtual void OnInput(RhythmInputStatus status)
     {
         // What to do when receives player input
     }

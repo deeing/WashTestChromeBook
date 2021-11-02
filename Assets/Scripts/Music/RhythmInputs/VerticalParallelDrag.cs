@@ -11,7 +11,7 @@ public class VerticalParallelDrag : RhythymInput
     [SerializeField]
     private MovingButton rightButton;
 
-    public override void DoBeatWithoutOffBeat(Beat currentBeat, Beat nextBeat)
+    public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
         leftButton.Move(nextBeat.timestamp - currentBeat.timestamp);
         rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);

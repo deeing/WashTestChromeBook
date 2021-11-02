@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Wash.Utilities;
 
 public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
@@ -21,6 +23,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private SwitchPrompt switchPromptMenu;
     [SerializeField]
     private TopDropMenu preSong;
+    [SerializeField]
+    private ScoreMenu scoreMenu;
+    [SerializeField]
+    private TMP_Text rhythmStatusText;
 
     protected override void Awake()
     {
@@ -109,5 +115,15 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         {
             preSong.Hide();
         }
+    }
+    
+    public void IncreaseScore(float amount)
+    {
+        scoreMenu.IncreaseScore(amount);
+    }
+
+    public void ShowRhythmStatus(RhythmInputStatus status)
+    {
+        rhythmStatusText.text = status.GetDescription();
     }
 }

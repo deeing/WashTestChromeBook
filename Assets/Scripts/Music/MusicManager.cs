@@ -22,6 +22,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private TMP_Text debugText;
 
+    // put these into an SO later
+    public float MISS_POINTS = 0f;
+    public float GOOD_POINTS = 1f;
+    public float GREAT_POINTS = 2f;
+    public float PERFECT_POINTS = 5f;
+
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
 

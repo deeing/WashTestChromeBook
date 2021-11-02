@@ -20,16 +20,16 @@ public abstract class RhythymInput : MonoBehaviour
         beatCounter = 0;
     }
 
-    private bool isOffBeat()
+    private bool IsOffBeat()
     {
         return beatCounter != 0;
     }
 
     public virtual void DoBeat(Beat currentBeat, Beat nextBeat)
     {
-        if (!isOffBeat())
+        if (!IsOffBeat())
         {
-            DoBeatWithoutOffBeat(currentBeat, nextBeat);
+            HandleBeat(currentBeat, nextBeat);
         }
         IncrementBeatCounter();
     }
@@ -49,7 +49,7 @@ public abstract class RhythymInput : MonoBehaviour
         registeredEvent = musicPlayerEvent;
     }
 
-    public void DoInput(bool status)
+    public void DoInput(RhythmInputStatus status)
     {
         if (registeredEvent)
         {
@@ -57,5 +57,25 @@ public abstract class RhythymInput : MonoBehaviour
         }
     }
 
-    public abstract void DoBeatWithoutOffBeat(Beat currentBeat, Beat nextBeat);
+    public void DoInputMiss()
+    {
+        DoInput(RhythmInputStatus.Miss);
+    }
+
+    public void DoInputGood()
+    {
+        DoInput(RhythmInputStatus.Good);
+    }
+
+    public void DoInputGreat()
+    {
+        DoInput(RhythmInputStatus.Great);
+    }
+
+    public void DoInputPerfect()
+    {
+        DoInput(RhythmInputStatus.Perfect);
+    }
+
+    public abstract void HandleBeat(Beat currentBeat, Beat nextBeat);
 }

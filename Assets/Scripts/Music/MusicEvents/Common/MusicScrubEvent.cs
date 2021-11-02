@@ -22,6 +22,9 @@ public class MusicScrubEvent : MusicPlayerEvent
     // Just testing, see if you want to make this a field
     private float endingOffset = -.5f;
 
+    // latest updated rhythm input status for this beat
+    private RhythmInputStatus latestRhythmInputStatus = RhythmInputStatus.Miss;
+
     public override void SetupEvent()
     {
         isPlayingEndAnimation = false;  
@@ -38,23 +41,62 @@ public class MusicScrubEvent : MusicPlayerEvent
         if (numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
         {
             rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
-        } else if (!isPlayingEndAnimation)
+            HandleScore();
+        }
+        else if (!isPlayingEndAnimation)
         {
             EndAnimation();
         }
         numBeatsInEvent++;
     }
 
-    public override void OnInput(bool status)
+    private void HandleScore()
+    {
+        float scoreAmount = 0f;
+        switch (latestRhythmInputStatus)
+        {
+            case RhythmInputStatus.Perfect:
+                scoreAmount = MusicManager.instance.PERFECT_POINTS;
+                break;
+            case RhythmInputStatus.Great:
+                scoreAmount = MusicManager.instance.GREAT_POINTS;
+                break;
+            case RhythmInputStatus.Good:
+                scoreAmount = MusicManager.instance.GOOD_POINTS;
+                break;
+            default:
+                scoreAmount = MusicManager.instance.MISS_POINTS;
+                break;
+        }
+
+        MenuManager.instance.IncreaseScore(scoreAmount);
+        MenuManager.instance.ShowRhythmStatus(latestRhythmInputStatus);
+        latestRhythmInputStatus = RhythmInputStatus.Miss;
+    }
+
+    public override void OnInput(RhythmInputStatus status)
     {
         base.OnInput(status);
 
-        if (status)
-        {
-            PlayAnimation();
-        } else
+        if (status == RhythmInputStatus.Miss)
         {
             StopAnimation();
+        }
+        else
+        {
+            PlayAnimation();
+        }
+
+        UpdateRhythmInputStatus(status);
+    }
+
+    private void UpdateRhythmInputStatus(RhythmInputStatus status)
+    {
+        // only update if better than what was previously there
+        // (otherwise a great score might overwrite a perfect one)
+        if (status > latestRhythmInputStatus)
+        {
+            latestRhythmInputStatus = status;
         }
     }
 
