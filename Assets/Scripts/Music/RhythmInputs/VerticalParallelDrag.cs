@@ -47,9 +47,9 @@ public class VerticalParallelDrag : RhythymInput
             chosenStatus = leftStatus < rightStatus ? leftStatus : rightStatus;
         }
 
-        Debug.Log("left: " + leftStatus);
+      /*  Debug.Log("left: " + leftStatus);
         Debug.Log("right: " + rightStatus);
-        Debug.Log("Chosen: " + chosenStatus);
+        Debug.Log("Chosen: " + chosenStatus);*/
 
         return chosenStatus;
     }
