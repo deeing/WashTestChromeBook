@@ -13,6 +13,11 @@ public class SettingsMenu : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    public void SongSelection()
+    {
+        SceneManager.LoadScene("SongSelection");
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR

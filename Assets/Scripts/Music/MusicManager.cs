@@ -8,8 +8,6 @@ using System.Text;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
-    public SongData songData;
-
     [SerializeField]
     private RhythmEventProvider eventProvider;
     [SerializeField]
@@ -40,6 +38,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private RhythmData rhythmData;
     private Track<Beat> beatsData;
     private List<Beat> allBeats = new List<Beat>();
+    private SongData songData;
 
     protected override void Awake()
     {
@@ -55,6 +54,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void SetupRhythm()
     {
+        songData = SongSelection.instance.selectedSong;
+
         RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
         rhythmPlayer.rhythmData = songData.songRhythmData;
         AudioSource audioSource = GetComponent<AudioSource>();
@@ -64,10 +65,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         rhythmData = rhythmPlayer.rhythmData;
         beatsData = rhythmData.GetTrack<Beat>();
         beatsData.GetFeatures(allBeats, 0f, rhythmData.audioClip.length);
-        if (showDebug)
-        {
-            MenuManager.instance.ShowRhythmDebug();
-        }
     }
 
     private void SetupEvents()
@@ -94,6 +91,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         currentWashEvent.SetupEvent();
         isPlaying = true;
         MenuManager.instance.TogglePreSongMenu(false);
+        if (showDebug)
+        {
+            MenuManager.instance.ShowRhythmDebug();
+        }
     }
 
     private void HandleBeat(Beat beat)
