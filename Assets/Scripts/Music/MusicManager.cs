@@ -8,25 +8,26 @@ using System.Text;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
+    public SongData songData;
+
     [SerializeField]
     private RhythmEventProvider eventProvider;
     [SerializeField]
     private Transform startEventsContainer;
-    [SerializeField]
-    private float startingBeatOffset = 2f;
-    [SerializeField]
-    private int beatsPerMeasure = 4;
-    [SerializeField]
-    [Tooltip("How many beats a single input move takes")]
-    private int beatsPerInputPeriod = 1;
+  //  [SerializeField]
+  //  private float startingBeatOffset = 2f;
+   // [SerializeField]
+  //  private int beatsPerMeasure = 4;
+ //   [SerializeField]
+  //  [Tooltip("How many beats a single input move takes")]
+  //  private int beatsPerInputPeriod = 1;
     [SerializeField]
     private TMP_Text debugText;
-
-    // put these into an SO later
-    public float MISS_POINTS = 0f;
-    public float GOOD_POINTS = 1f;
-    public float GREAT_POINTS = 2f;
-    public float PERFECT_POINTS = 5f;
+    [SerializeField]
+    private bool showDebug = true;
+    [SerializeField]
+    private GameSettings _gameSettings;
+    public GameSettings gameSettings { get => _gameSettings; private set => _gameSettings = value; }
 
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -36,7 +37,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private int currentBeatIndex = 0;
     private Beat currentBeat = null;
-    private RhythmData songData;
+    private RhythmData rhythmData;
     private Track<Beat> beatsData;
     private List<Beat> allBeats = new List<Beat>();
 
@@ -54,10 +55,19 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void SetupRhythm()
     {
+        RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
+        rhythmPlayer.rhythmData = songData.songRhythmData;
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = songData.songAudio;
+        audioSource.Play();
         eventProvider.Register<Beat>(HandleBeat);
-        songData = GetComponent<RhythmPlayer>().rhythmData;
-        beatsData = songData.GetTrack<Beat>();
-        beatsData.GetFeatures(allBeats, 0f, songData.audioClip.length);
+        rhythmData = rhythmPlayer.rhythmData;
+        beatsData = rhythmData.GetTrack<Beat>();
+        beatsData.GetFeatures(allBeats, 0f, rhythmData.audioClip.length);
+        if (showDebug)
+        {
+            MenuManager.instance.ShowRhythmDebug();
+        }
     }
 
     private void SetupEvents()
@@ -90,7 +100,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         if (!isPlaying)
         {
-            if (currentBeatIndex >= startingBeatOffset)
+            if (currentBeatIndex >= songData.startingBeatOffset)
             {
                 StartWashing();
             }
@@ -106,14 +116,17 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             }
         }
         currentBeat = beat;
-        ShowDebug(beat);
+        if (showDebug)
+        {
+            ShowDebug(beat);
+        }
         IncrementBeats();
     }
 
     private void IncrementBeats()
     {
         currentBeatIndex++;
-        measure = currentBeatIndex / beatsPerMeasure;
+        measure = currentBeatIndex / songData.beatsPerMeasure;
     }
 
     // Gets the offset number of beats after current beat
@@ -136,23 +149,23 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     public Beat GetNextBeat(Beat beat)
     {
-        return GetNextBeat(beat, beatsPerInputPeriod);
+        return GetNextBeat(beat, songData.beatsPerInputPeriod);
     }
 
     public int GetBeatsPerInputPeriod()
     {
-        return beatsPerInputPeriod;
+        return songData.beatsPerInputPeriod;
     }
 
     public int GetBeatsPerMeasure()
     {
-        return beatsPerMeasure;
+        return songData.beatsPerMeasure;
     }
 
     private void ShowDebug(Beat beat)
     {
         StringBuilder text = new StringBuilder();
-        text.AppendLine("Measure: " + measure + " Beat:" + (currentBeatIndex % beatsPerMeasure + 1));
+        text.AppendLine("Measure: " + measure + " Beat:" + (currentBeatIndex % songData.beatsPerMeasure + 1));
         text.AppendLine("Total Beats: " + currentBeatIndex);
         text.AppendLine("BPM: " + beat.bpm);
         text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));

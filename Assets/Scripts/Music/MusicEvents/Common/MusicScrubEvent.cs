@@ -56,16 +56,16 @@ public class MusicScrubEvent : MusicPlayerEvent
         switch (latestRhythmInputStatus)
         {
             case RhythmInputStatus.Perfect:
-                scoreAmount = MusicManager.instance.PERFECT_POINTS;
+                scoreAmount = MusicManager.instance.gameSettings.perfectPoints;
                 break;
             case RhythmInputStatus.Great:
-                scoreAmount = MusicManager.instance.GREAT_POINTS;
+                scoreAmount = MusicManager.instance.gameSettings.greatPoints;
                 break;
             case RhythmInputStatus.Good:
-                scoreAmount = MusicManager.instance.GOOD_POINTS;
+                scoreAmount = MusicManager.instance.gameSettings.goodPoints;
                 break;
             default:
-                scoreAmount = MusicManager.instance.MISS_POINTS;
+                scoreAmount = MusicManager.instance.gameSettings.missPoints;
                 break;
         }
 

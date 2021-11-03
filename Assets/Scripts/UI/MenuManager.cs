@@ -27,6 +27,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private ScoreMenu scoreMenu;
     [SerializeField]
     private TMP_Text rhythmStatusText;
+    [SerializeField]
+    private LeftSlideMenu rhythmDebug;
 
     protected override void Awake()
     {
@@ -125,5 +127,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ShowRhythmStatus(RhythmInputStatus status)
     {
         rhythmStatusText.text = status.GetDescription();
+    }
+
+    public void ShowRhythmDebug()
+    {
+        rhythmDebug.Show();
     }
 }
