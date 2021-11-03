@@ -57,25 +57,5 @@ public abstract class RhythymInput : MonoBehaviour
         }
     }
 
-    public void DoInputMiss()
-    {
-        DoInput(RhythmInputStatus.Miss);
-    }
-
-    public void DoInputGood()
-    {
-        DoInput(RhythmInputStatus.Good);
-    }
-
-    public void DoInputGreat()
-    {
-        DoInput(RhythmInputStatus.Great);
-    }
-
-    public void DoInputPerfect()
-    {
-        DoInput(RhythmInputStatus.Perfect);
-    }
-
     public abstract void HandleBeat(Beat currentBeat, Beat nextBeat);
 }

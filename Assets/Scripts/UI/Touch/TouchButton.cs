@@ -56,12 +56,19 @@ public class TouchButton : MonoBehaviour
     private bool GetIsOverButton(Lean.Touch.LeanFinger finger)
     {
         // loop through all the fingers and see if any of the fingers are touchnig this button's touch area
-        foreach (Lean.Touch.LeanFinger currFinger in Lean.Touch.LeanTouch.Fingers)
+        bool isOverButton = false;
+        for (int i=0; i < Lean.Touch.LeanTouch.Fingers.Count; i++)
         {
+            Lean.Touch.LeanFinger currFinger = Lean.Touch.LeanTouch.Fingers[i];
+
             List<RaycastResult> hits = Lean.Touch.LeanTouch.RaycastGui(currFinger.ScreenPosition, touchMask);
+
             if (topOnly)
             {
-                return hits.Count > 0 && hits[0].gameObject == touchArea;
+                if (hits.Count > 0 && hits[0].gameObject == touchArea)
+                {
+                    isOverButton = true;
+                }
             } else
             {
                 // N SQUARED - OPTIMIZE THIS IF IT BECOMES AN ISSUE
@@ -69,13 +76,13 @@ public class TouchButton : MonoBehaviour
                 {
                     if (hit.gameObject == touchArea)
                     {
-                        return true;
+                        isOverButton = true;
                     }
                 }
             }
         }
         
-        return false;
+        return isOverButton;
     }
 
     void HandleFingerDown(Lean.Touch.LeanFinger finger)
