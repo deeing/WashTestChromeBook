@@ -12,13 +12,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private RhythmEventProvider eventProvider;
     [SerializeField]
     private Transform startEventsContainer;
-  //  [SerializeField]
-  //  private float startingBeatOffset = 2f;
-   // [SerializeField]
-  //  private int beatsPerMeasure = 4;
- //   [SerializeField]
-  //  [Tooltip("How many beats a single input move takes")]
-  //  private int beatsPerInputPeriod = 1;
     [SerializeField]
     private TMP_Text debugText;
     [SerializeField]
@@ -26,6 +19,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private GameSettings _gameSettings;
     public GameSettings gameSettings { get => _gameSettings; private set => _gameSettings = value; }
+    [SerializeField]
+    private SongData fallbackSong;
 
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -49,12 +44,18 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         SetupRhythm();
         SetupEvents();
-        //StartCoroutine(StartWashing());
     }
 
     private void SetupRhythm()
     {
-        songData = SongSelection.instance.selectedSong;
+        if (SongSelection.instance)
+        {
+            songData = SongSelection.instance.selectedSong;
+        }
+        else
+        {
+            songData = fallbackSong;
+        }
 
         RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
         rhythmPlayer.rhythmData = songData.songRhythmData;

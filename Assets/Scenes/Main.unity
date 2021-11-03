@@ -17276,7 +17276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_54_CB
+  m_text: WashTest_55
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20592,6 +20592,10 @@ PrefabInstance:
       propertyPath: debugText
       value: 
       objectReference: {fileID: 630311957}
+    - target: {fileID: 2832461823668624719, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: fallbackSong
+      value: 
+      objectReference: {fileID: 11400000, guid: 509d6c832c9b36b4bad6c51a9b0e0af1, type: 2}
     - target: {fileID: 2832461823871808823, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: videoPlayer
       value: 
@@ -20604,6 +20608,10 @@ PrefabInstance:
       propertyPath: fadeBlackImage
       value: 
       objectReference: {fileID: 748319874}
+    - target: {fileID: 2832461823938750244, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461823938750244, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20625,6 +20633,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1198479179}
     - target: {fileID: 2832461824290894381, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832461824290894381, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
       objectReference: {fileID: 772423890}
@@ -20632,6 +20644,10 @@ PrefabInstance:
       propertyPath: tutorialObject
       value: 
       objectReference: {fileID: 506470698}
+    - target: {fileID: 2832461824341948211, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461824341948211, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20641,6 +20657,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1634339933}
     - target: {fileID: 2832461824395863648, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832461824395863648, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
       objectReference: {fileID: 772423890}
@@ -20648,6 +20668,10 @@ PrefabInstance:
       propertyPath: tutorialObject
       value: 
       objectReference: {fileID: 2034811804}
+    - target: {fileID: 2832461824497535753, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461824497535753, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20661,6 +20685,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1472641844}
     - target: {fileID: 2832461824599450860, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832461824599450860, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
       objectReference: {fileID: 772423890}
@@ -20668,6 +20696,10 @@ PrefabInstance:
       propertyPath: tutorialObject
       value: 
       objectReference: {fileID: 1156493505}
+    - target: {fileID: 2832461824674150794, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461824674150794, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20757,6 +20789,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3795463}
     - target: {fileID: 2832461825128890596, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832461825128890596, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
       objectReference: {fileID: 772423890}
@@ -20772,6 +20808,10 @@ PrefabInstance:
       propertyPath: playerEventToSuds.Array.data[0].sudsParticleSystem
       value: 
       objectReference: {fileID: 1510979894}
+    - target: {fileID: 2832461825270408222, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461825270408222, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20821,9 +20861,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 736789972}
     - target: {fileID: 2832461825380688892, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832461825380688892, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
       objectReference: {fileID: 772423890}
+    - target: {fileID: 2832461825402286933, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461825402286933, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
@@ -20836,6 +20884,10 @@ PrefabInstance:
       propertyPath: tutorialObject
       value: 
       objectReference: {fileID: 1175115694}
+    - target: {fileID: 2832461825483751847, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
+      propertyPath: numMeasures
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832461825483751847, guid: 049aa8dc183086342ab2e85422d8d9b8, type: 3}
       propertyPath: rhythmInput
       value: 
