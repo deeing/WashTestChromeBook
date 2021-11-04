@@ -29,6 +29,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private TMP_Text rhythmStatusText;
     [SerializeField]
     private LeftSlideMenu rhythmDebug;
+    [SerializeField]
+    private SwitchPrompt switchPrompt;
 
     protected override void Awake()
     {
@@ -43,9 +45,9 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
     }
 
-    public void DisplayPoseOptions(MusicWashEvent nextEvent, MusicSwitchEvent currentEvent)
+    public void DisplayPoseOptions(MusicSwitchEvent currentEvent)
     {
-        poseOptionsMenu.DisplayPoseOptions(nextEvent, currentEvent);
+        poseOptionsMenu.DisplayPoseOptions(currentEvent);
     }
 
     public void DisplaySwitchPrompt(string promptText, float time)
@@ -132,5 +134,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ShowRhythmDebug()
     {
         rhythmDebug.Show();
+    }
+
+    public SwitchPrompt GetSwitchPrompt()
+    {
+        return switchPrompt;
     }
 }

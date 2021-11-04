@@ -31,11 +31,11 @@ public class PoseOptionsMenu : MonoBehaviour
         topDropMenu.Show();
     }
 
-    public void DisplayPoseOptions(MusicWashEvent nextEvent, MusicSwitchEvent currentEvent)
+    public void DisplayPoseOptions(MusicSwitchEvent currentEvent)
     {
         GameObject optionObj = Instantiate(poseOptionPrefab, poseOptionContainer);
         PoseOption option = optionObj.GetComponent<PoseOption>();
-        option.SetupPoseOption(nextEvent, currentEvent);
+        option.SetupPoseOption(currentEvent, currentEvent);
 
         topDropMenu.Show();
     }

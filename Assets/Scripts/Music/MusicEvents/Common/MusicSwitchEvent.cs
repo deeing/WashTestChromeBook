@@ -26,7 +26,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
             DisplayPoseOptions();
         } else
         {
-            DisplayPoseOptions(nextEvent);
+            DisplayPoseOptions(this);
         }
     }
 
@@ -50,19 +50,22 @@ public class MusicSwitchEvent :  MusicPlayerEvent
         MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this);
     }
 
-    public void DisplayPoseOptions(MusicWashEvent nextEvent)
+    public void DisplayPoseOptions(MusicSwitchEvent currentSwitchEvent)
     {
-        MenuManager.instance.DisplayPoseOptions(nextEvent, this);
+        MenuManager.instance.DisplayPoseOptions(currentSwitchEvent);
     }
 
-    public void SuccessfulSwitch()
+    public void SuccessfulSwitch(RhythmInputStatus inputStatus)
     {
+        MenuManager.instance.ShowAlert(inputStatus.GetDescription(), 1f);
+        MenuManager.instance.IncreaseScore(MusicManager.instance.gameSettings.GetPointsForInputStatus(inputStatus));
         EffectsManager.instance.Celebrate();
         DoSwitch();
     }
 
     public void FailedSwitch()
     {
+        MenuManager.instance.ShowAlert("Wrong option", 1f);
         DoSwitch();
     }
 

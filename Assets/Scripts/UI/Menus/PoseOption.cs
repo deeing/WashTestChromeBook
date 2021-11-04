@@ -11,12 +11,14 @@ public class PoseOption : MonoBehaviour
 
     private bool isCorrectOption = false;
     private MusicSwitchEvent currentSwitchEvent;
+    private SwitchPrompt switchPrompt;
 
-    public void SetupPoseOption(MusicWashEvent optionSwitchEvent, MusicSwitchEvent correctSwitchEvent)
+    public void SetupPoseOption(MusicSwitchEvent optionSwitchEvent, MusicSwitchEvent correctSwitchEvent)
     {
         poseText.text = optionSwitchEvent.GetEventType().GetDescription();
         isCorrectOption = optionSwitchEvent.GetEventType() == correctSwitchEvent.GetEventType();
         currentSwitchEvent = correctSwitchEvent;
+        switchPrompt = MenuManager.instance.GetSwitchPrompt();
     }
 
     public void SelectThisPose()
@@ -25,7 +27,8 @@ public class PoseOption : MonoBehaviour
 
         if (isCorrectOption)
         {
-            currentSwitchEvent.SuccessfulSwitch();
+            RhythmInputStatus inputStatus = switchPrompt.GetPromptDistanceStatus();
+            currentSwitchEvent.SuccessfulSwitch(inputStatus);
         } else
         {
             currentSwitchEvent.FailedSwitch();

@@ -23,4 +23,35 @@ public class GameSettings : ScriptableObject
     private int _perfectPoints = 5;
     public int perfectPoints { get => _perfectPoints; private set => _perfectPoints = value; }
 
+    private Dictionary<RhythmInputStatus, int> inputStatusToPoints;
+
+    private void OnEnable()
+    {
+#if UNITY_EDITOR
+        // use platform dependent compilation so it only exists in editor, otherwise it'll break the build
+        if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+        {
+            Init();
+        }
+#endif
+    }
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        inputStatusToPoints = new Dictionary<RhythmInputStatus, int>();
+        inputStatusToPoints[RhythmInputStatus.Miss] = missPoints;
+        inputStatusToPoints[RhythmInputStatus.Good] = goodPoints;
+        inputStatusToPoints[RhythmInputStatus.Great] = greatPoints;
+        inputStatusToPoints[RhythmInputStatus.Perfect] = perfectPoints;
+    }
+
+    public int GetPointsForInputStatus(RhythmInputStatus inputStatus)
+    {
+        return inputStatusToPoints[inputStatus];
+    }
 }
