@@ -26,6 +26,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public MusicWashEvent currentWashEvent { get; private set; }
 
     private bool isPlaying = false;
+    private bool isFinished = false;
     private int measure = 0;
 
     private int currentBeatIndex = 0;
@@ -73,9 +74,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         starterEvents = new List<MusicSwitchEvent>();
         foreach (Transform child in startEventsContainer)
         {
-            MusicSwitchEvent startEvent = child.GetComponent<MusicSwitchEvent>();
-            startEvent.RegisterAsStartEvent();
-            starterEvents.Add(startEvent);
+            if (child.gameObject.activeSelf)
+            {
+                MusicSwitchEvent startEvent = child.GetComponent<MusicSwitchEvent>();
+                startEvent.RegisterAsStartEvent();
+                starterEvents.Add(startEvent);
+            }
         }
         currentWashEvent = GetRandomStarter();
     }
@@ -100,6 +104,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void HandleBeat(Beat beat)
     {
+        if (isFinished)
+        {
+            return;
+        }
+
         if (!isPlaying)
         {
             if (currentBeatIndex >= songData.startingBeatOffset)
@@ -225,8 +234,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         Debug.Log("PUT END GAME STUFF HERE");
 
-        MenuManager.instance.ShowAlert("You did it! (Put end game stuf here)", 5f);
+        MenuManager.instance.ShowAlert("You did it! (Put end game stuf here)", 20f);
         isPlaying = false;
+        isFinished = true;
     }
 
     public void OnDestroy()
