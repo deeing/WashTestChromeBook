@@ -15,4 +15,9 @@ public class ScoreMenu : MonoBehaviour
         score += amount;
         scoreDisplay.text = score.ToString();
     }
+
+    public float GetTotalScore()
+    {
+        return score;
+    }
 }

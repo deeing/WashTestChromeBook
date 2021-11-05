@@ -120,6 +120,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             if (currentWashEvent.IsFinished())
             {
+                RecordResults(currentWashEvent);
                 NextEvent();
             } else
             {
@@ -230,13 +231,19 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         return false;
     }
 
+    private void RecordResults(MusicWashEvent washEvent)
+    {
+        MenuManager.instance.GetMusicResultsMenu().AddWashEventResults(washEvent);
+    }
+
     private void EndGame()
     {
-        Debug.Log("PUT END GAME STUFF HERE");
-
-        MenuManager.instance.ShowAlert("You did it! (Put end game stuf here)", 20f);
         isPlaying = false;
         isFinished = true;
+        float totalScore = MenuManager.instance.GetTotalScore();
+        MusicResultsMenu musicResultsMenu = MenuManager.instance.GetMusicResultsMenu();
+        musicResultsMenu.AddTotalScore(totalScore);
+        musicResultsMenu.Show();
     }
 
     public void OnDestroy()

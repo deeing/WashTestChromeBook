@@ -31,6 +31,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private LeftSlideMenu rhythmDebug;
     [SerializeField]
     private SwitchPrompt switchPrompt;
+    [SerializeField]
+    private MusicResultsMenu musicResultsMenu;
 
     protected override void Awake()
     {
@@ -121,9 +123,14 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         }
     }
     
-    public void IncreaseScore(float amount)
+    public void IncreaseTotalScore(float amount)
     {
         scoreMenu.IncreaseScore(amount);
+    }
+
+    public float GetTotalScore()
+    {
+        return scoreMenu.GetTotalScore();
     }
 
     public void ShowRhythmStatus(RhythmInputStatus status)
@@ -139,5 +146,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public SwitchPrompt GetSwitchPrompt()
     {
         return switchPrompt;
+    }
+
+    public MusicResultsMenu GetMusicResultsMenu()
+    {
+        return musicResultsMenu;
     }
 }

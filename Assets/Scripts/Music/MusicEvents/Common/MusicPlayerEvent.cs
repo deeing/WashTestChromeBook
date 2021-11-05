@@ -14,6 +14,7 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     private PlayerEventType eventType;
 
     protected bool hasFinished = false;
+    protected float score = 0f;
 
     public abstract void DoEvent(Beat beat);
     public PlayerEventType GetEventType()
@@ -40,5 +41,15 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     public virtual void EndEvent()
     {
         // you don't have to end if you don't want to 
+    }
+
+    public float GetScore()
+    {
+        return score;
+    }
+
+    public void IncreaseEventScore(float updateAmount)
+    {
+        score += updateAmount;
     }
 }

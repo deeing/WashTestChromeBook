@@ -57,9 +57,14 @@ public class MusicSwitchEvent :  MusicPlayerEvent
 
     public void SuccessfulSwitch(RhythmInputStatus inputStatus)
     {
+        // accolades
         MenuManager.instance.ShowAlert(inputStatus.GetDescription(), 1f);
-        MenuManager.instance.IncreaseScore(MusicManager.instance.gameSettings.GetPointsForInputStatus(inputStatus));
         EffectsManager.instance.Celebrate();
+        // score
+        float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(inputStatus);
+        IncreaseEventScore(scoreAmount);
+        MenuManager.instance.IncreaseTotalScore(scoreAmount);
+        
         DoSwitch();
     }
 

@@ -52,24 +52,9 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     private void HandleScore()
     {
-        float scoreAmount = 0f;
-        switch (latestRhythmInputStatus)
-        {
-            case RhythmInputStatus.Perfect:
-                scoreAmount = MusicManager.instance.gameSettings.perfectPoints;
-                break;
-            case RhythmInputStatus.Great:
-                scoreAmount = MusicManager.instance.gameSettings.greatPoints;
-                break;
-            case RhythmInputStatus.Good:
-                scoreAmount = MusicManager.instance.gameSettings.goodPoints;
-                break;
-            default:
-                scoreAmount = MusicManager.instance.gameSettings.missPoints;
-                break;
-        }
-
-        MenuManager.instance.IncreaseScore(scoreAmount);
+        float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
+        IncreaseEventScore(scoreAmount);
+        MenuManager.instance.IncreaseTotalScore(scoreAmount);
         MenuManager.instance.ShowRhythmStatus(latestRhythmInputStatus);
         latestRhythmInputStatus = RhythmInputStatus.Miss;
     }

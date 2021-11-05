@@ -8,4 +8,5 @@ public interface MusicWashEvent
     bool IsFinished();
     MusicWashEvent GetNextWashEvent();
     void EndEvent();
+    float GetScore();
 }
