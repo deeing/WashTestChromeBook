@@ -23,10 +23,15 @@ public class MovingButton : MonoBehaviour
     {
         if (moveToTarget)
         {
-            transform.DOMove(targetPoint.position, time, true);
-        } else
+            Sequence moveButton = DOTween.Sequence();
+            moveButton.Append(transform.DOMove(targetPoint.position, time / 4, true).SetEase(Ease.Linear));
+            //transform.DOMove(targetPoint.position, time, true).SetEase(Ease.Linear);
+        }
+        else
         {
-            transform.DOMove(startingPoint.position, time, true);
+            Sequence moveButton = DOTween.Sequence();
+            moveButton.Append(transform.DOMove(startingPoint.position, time / 4, true).SetEase(Ease.Linear));
+            //transform.DOMove(startingPoint.position, time, true).SetEase(Ease.Linear);
         }
         moveToTarget = !moveToTarget;
     }
