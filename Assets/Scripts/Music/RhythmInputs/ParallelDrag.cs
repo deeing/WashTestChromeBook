@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RhythmTool;
 
-public class ParallelDrag : RhythymInput 
+public class ParallelDrag : RhythmInput 
 {
     [SerializeField]
     private MovingButton leftButton;

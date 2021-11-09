@@ -7,7 +7,7 @@ public class MusicScrubEvent : MusicPlayerEvent
 {
     [SerializeField]
     [Tooltip("Rhythym-synced inputs for this scrub event")]
-    private RhythymInput rhythmInput;
+    private RhythmInput rhythmInput;
     [SerializeField]
     private float scrubAnimationTime = 1f;
     [SerializeField]

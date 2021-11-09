@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using RhythmTool;
 
-public abstract class RhythymInput : MonoBehaviour
+public abstract class RhythmInput : MonoBehaviour
 {
     private int beatCounter = 0;
     private int beatsPerinputPeriod = 0;
     private MusicPlayerEvent registeredEvent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         beatsPerinputPeriod = MusicManager.instance.GetBeatsPerInputPeriod();
     }
@@ -38,10 +38,15 @@ public abstract class RhythymInput : MonoBehaviour
     {
         beatCounter++;
 
-        if (beatCounter == beatsPerinputPeriod)
+        if (beatCounter == GetBeatsPerInputPeriod())
         {
             beatCounter = 0;
         }
+    }
+
+    public virtual int GetBeatsPerInputPeriod()
+    {
+        return beatsPerinputPeriod;
     }
 
     public void RegisterWashEvent(MusicPlayerEvent musicPlayerEvent)

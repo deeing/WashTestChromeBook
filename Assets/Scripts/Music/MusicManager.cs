@@ -109,6 +109,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             return;
         }
 
+        if (showDebug)
+        {
+            ShowDebug(beat);
+        }
+
         if (!isPlaying)
         {
             if (currentBeatIndex >= songData.startingBeatOffset)
@@ -128,10 +133,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             }
         }
         currentBeat = beat;
-        if (showDebug)
-        {
-            ShowDebug(beat);
-        }
+
         IncrementBeats();
     }
 
@@ -177,11 +179,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void ShowDebug(Beat beat)
     {
         StringBuilder text = new StringBuilder();
-        text.AppendLine("Measure: " + measure + " Beat:" + (currentBeatIndex % songData.beatsPerMeasure + 1));
+       //text.AppendLine("Measure: " + measure + " Beat:" + (currentBeatIndex % songData.beatsPerMeasure + 1));
         text.AppendLine("Total Beats: " + currentBeatIndex);
-        text.AppendLine("BPM: " + beat.bpm);
-        text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));
-        text.AppendLine("Next Beat: " + (Mathf.Round(GetNextBeat(1).timestamp * 100f) / 100f));
+        //text.AppendLine("BPM: " + beat.bpm);
+        //text.AppendLine("Timestamp: " + (Mathf.Round(beat.timestamp * 100f) / 100f));
+        text.AppendLine("Timestamp: " + beat.timestamp);
+        //ext.AppendLine("Next Beat: " + (Mathf.Round(GetNextBeat(1).timestamp * 100f) / 100f));
 
         debugText.text = text.ToString();
     }

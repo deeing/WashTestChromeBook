@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _songAudio: {fileID: 8300000, guid: f356241ea18ecb34bba8daf5f2ede99d, type: 3}
   _songRhythmData: {fileID: 11400000, guid: 77acfc3db2c719f47a4a33f50035f46d, type: 2}
+  _beatsPerMeasure: 4
+  _beatsPerInputPeriod: 1
+  _startingBeatOffset: 1

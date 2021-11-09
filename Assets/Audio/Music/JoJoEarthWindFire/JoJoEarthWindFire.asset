@@ -2610,46 +2610,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Beats
   _features:
-  - timestamp: 1.1842177
+  - timestamp: 0.46608818
     length: 0
     bpm: 81.00265
-  - timestamp: 1.9736961
+  - timestamp: 0.9615075
+    length: 0
+    bpm: 0
+  - timestamp: 1.4819736
+    length: 0
+    bpm: 0
+  - timestamp: 1.9960817
     length: 0
     bpm: 117.45384
-  - timestamp: 2.4613152
+  - timestamp: 2.4948936
     length: 0
     bpm: 117.45384
-  - timestamp: 2.9721541
+  - timestamp: 2.9945397
     length: 0
     bpm: 117.45384
-  - timestamp: 3.4829931
+  - timestamp: 3.4885895
     length: 0
     bpm: 117.45384
   - timestamp: 3.993832
     length: 0
     bpm: 117.45384
-  - timestamp: 4.504671
+  - timestamp: 4.4934783
     length: 0
     bpm: 117.45384
-  - timestamp: 5.01551
+  - timestamp: 4.9987206
     length: 0
     bpm: 117.45384
-  - timestamp: 5.526349
+  - timestamp: 5.498367
     length: 0
     bpm: 118.531395
-  - timestamp: 6.0139685
+  - timestamp: 5.991583
     length: 0
     bpm: 118.531395
-  - timestamp: 6.5015874
+  - timestamp: 6.51278
     length: 0
     bpm: 118.531395
-  - timestamp: 6.9892063
+  - timestamp: 7.000399
     length: 0
     bpm: 119.077614
-  - timestamp: 7.476825
+  - timestamp: 7.5160003
     length: 0
     bpm: 119.077614
-  - timestamp: 7.9644446
+  - timestamp: 8.009216
     length: 0
     bpm: 119.077614
   - timestamp: 8.475284
@@ -2664,7 +2670,7 @@ MonoBehaviour:
   - timestamp: 9.961361
     length: 0
     bpm: 119.62891
-  - timestamp: 10.448979
+  - timestamp: 10.460173
     length: 0
     bpm: 119.62891
   - timestamp: 10.959819
@@ -2676,34 +2682,34 @@ MonoBehaviour:
   - timestamp: 11.935057
     length: 0
     bpm: 120.185326
-  - timestamp: 12.422676
+  - timestamp: 12.384292
     length: 0
     bpm: 120.185326
-  - timestamp: 12.910295
+  - timestamp: 12.87191
     length: 0
     bpm: 120.74693
-  - timestamp: 13.397914
+  - timestamp: 13.351853
     length: 0
     bpm: 120.74693
-  - timestamp: 13.885533
+  - timestamp: 13.824119
     length: 0
     bpm: 120.74693
-  - timestamp: 14.373152
+  - timestamp: 14.319414
     length: 0
     bpm: 121.31383
-  - timestamp: 14.860771
+  - timestamp: 14.791679
     length: 0
     bpm: 121.31383
-  - timestamp: 15.34839
+  - timestamp: 15.256268
     length: 0
     bpm: 121.31383
-  - timestamp: 15.836009
+  - timestamp: 15.751564
     length: 0
     bpm: 121.886055
-  - timestamp: 16.323627
+  - timestamp: 16.231506
     length: 0
     bpm: 123.046875
-  - timestamp: 16.741587
+  - timestamp: 16.71088
     length: 0
     bpm: 123.046875
   - timestamp: 17.182766
@@ -2715,55 +2721,55 @@ MonoBehaviour:
   - timestamp: 18.111565
     length: 0
     bpm: 123.046875
-  - timestamp: 18.599184
+  - timestamp: 18.62989
     length: 0
     bpm: 123.63561
-  - timestamp: 19.086803
+  - timestamp: 19.102158
     length: 0
     bpm: 124.23003
-  - timestamp: 19.57442
+  - timestamp: 19.589775
     length: 0
     bpm: 124.23003
-  - timestamp: 20.06204
+  - timestamp: 20.085072
     length: 0
     bpm: 124.23003
-  - timestamp: 20.54966
+  - timestamp: 20.557337
     length: 0
     bpm: 124.23003
-  - timestamp: 21.03728
+  - timestamp: 21.06031
     length: 0
     bpm: 124.23003
-  - timestamp: 21.524899
+  - timestamp: 21.540253
     length: 0
     bpm: 124.83016
-  - timestamp: 21.989298
+  - timestamp: 22.027681
     length: 0
     bpm: 124.83016
-  - timestamp: 22.453695
+  - timestamp: 22.507433
     length: 0
     bpm: 124.83016
-  - timestamp: 22.918095
+  - timestamp: 22.97951
     length: 0
     bpm: 124.83016
-  - timestamp: 23.382494
+  - timestamp: 23.451586
     length: 0
     bpm: 124.83016
-  - timestamp: 23.870113
+  - timestamp: 23.931528
     length: 0
     bpm: 124.83016
-  - timestamp: 24.357733
+  - timestamp: 24.426825
     length: 0
     bpm: 124.23003
-  - timestamp: 24.845352
+  - timestamp: 24.89909
     length: 0
     bpm: 124.23003
-  - timestamp: 25.33297
+  - timestamp: 25.37903
     length: 0
     bpm: 124.23003
-  - timestamp: 25.84381
+  - timestamp: 25.859163
     length: 0
     bpm: 124.23003
-  - timestamp: 26.331429
+  - timestamp: 26.339106
     length: 0
     bpm: 124.23003
   - timestamp: 26.819048
@@ -2772,22 +2778,22 @@ MonoBehaviour:
   - timestamp: 27.306667
     length: 0
     bpm: 124.23003
-  - timestamp: 27.794285
+  - timestamp: 27.809639
     length: 0
     bpm: 124.23003
   - timestamp: 28.281904
     length: 0
     bpm: 124.23003
-  - timestamp: 28.746304
+  - timestamp: 28.769335
     length: 0
     bpm: 124.23003
-  - timestamp: 29.210703
+  - timestamp: 29.249086
     length: 0
     bpm: 124.23003
-  - timestamp: 29.698322
+  - timestamp: 29.721354
     length: 0
     bpm: 124.23003
-  - timestamp: 30.185942
+  - timestamp: 30.201296
     length: 0
     bpm: 124.23003
   - timestamp: 30.67356
@@ -2799,13 +2805,13 @@ MonoBehaviour:
   - timestamp: 31.648798
     length: 0
     bpm: 124.23003
-  - timestamp: 32.113197
+  - timestamp: 32.15158
     length: 0
     bpm: 124.23003
   - timestamp: 32.600815
     length: 0
     bpm: 124.23003
-  - timestamp: 33.088436
+  - timestamp: 33.09611
     length: 0
     bpm: 124.23003
   - timestamp: 33.552834
@@ -2814,70 +2820,70 @@ MonoBehaviour:
   - timestamp: 34.040455
     length: 0
     bpm: 124.23003
-  - timestamp: 34.528072
+  - timestamp: 34.51272
     length: 0
     bpm: 124.23003
-  - timestamp: 35.01569
+  - timestamp: 34.99266
     length: 0
     bpm: 124.23003
   - timestamp: 35.48009
     length: 0
     bpm: 124.23003
-  - timestamp: 35.94449
+  - timestamp: 35.959843
     length: 0
     bpm: 124.83016
-  - timestamp: 36.40889
+  - timestamp: 36.439598
     length: 0
     bpm: 124.83016
-  - timestamp: 36.873287
+  - timestamp: 36.91935
     length: 0
     bpm: 124.83016
-  - timestamp: 37.36091
+  - timestamp: 37.399292
     length: 0
     bpm: 124.83016
-  - timestamp: 37.848526
+  - timestamp: 37.879234
     length: 0
     bpm: 124.83016
-  - timestamp: 38.336143
+  - timestamp: 38.36685
     length: 0
     bpm: 124.83016
-  - timestamp: 38.823765
+  - timestamp: 38.854473
     length: 0
     bpm: 124.83016
-  - timestamp: 39.311382
+  - timestamp: 39.33441
     length: 0
     bpm: 124.83016
-  - timestamp: 39.799004
+  - timestamp: 39.822033
     length: 0
     bpm: 124.83016
-  - timestamp: 40.2634
+  - timestamp: 40.301785
     length: 0
     bpm: 124.83016
-  - timestamp: 40.727802
+  - timestamp: 40.789215
     length: 0
     bpm: 124.83016
-  - timestamp: 41.21542
+  - timestamp: 41.269157
     length: 0
     bpm: 124.83016
-  - timestamp: 41.703037
+  - timestamp: 41.733746
     length: 0
     bpm: 124.83016
-  - timestamp: 42.19066
+  - timestamp: 42.221367
     length: 0
     bpm: 124.83016
-  - timestamp: 42.678276
+  - timestamp: 42.68595
     length: 0
     bpm: 124.83016
-  - timestamp: 43.165897
+  - timestamp: 43.173573
     length: 0
     bpm: 124.83016
-  - timestamp: 43.630295
+  - timestamp: 43.63797
     length: 0
     bpm: 124.83016
-  - timestamp: 44.094692
+  - timestamp: 44.133076
     length: 0
     bpm: 124.83016
-  - timestamp: 44.582314
+  - timestamp: 44.605343
     length: 0
     bpm: 124.83016
   - timestamp: 45.06993
@@ -2889,112 +2895,112 @@ MonoBehaviour:
   - timestamp: 46.04517
     length: 0
     bpm: 124.83016
-  - timestamp: 46.509567
+  - timestamp: 46.52492
     length: 0
     bpm: 124.83016
-  - timestamp: 46.97397
+  - timestamp: 47.004677
     length: 0
     bpm: 124.83016
-  - timestamp: 47.461586
+  - timestamp: 47.484615
     length: 0
     bpm: 124.83016
-  - timestamp: 47.949207
+  - timestamp: 47.979916
     length: 0
     bpm: 124.83016
-  - timestamp: 48.436825
+  - timestamp: 48.45218
     length: 0
     bpm: 124.83016
-  - timestamp: 48.924446
+  - timestamp: 48.955154
     length: 0
     bpm: 124.83016
-  - timestamp: 49.388844
+  - timestamp: 49.39652
     length: 0
     bpm: 124.83016
-  - timestamp: 49.85324
+  - timestamp: 49.891624
     length: 0
     bpm: 124.83016
-  - timestamp: 50.340862
+  - timestamp: 50.36389
     length: 0
     bpm: 124.83016
-  - timestamp: 50.82848
+  - timestamp: 50.843834
     length: 0
     bpm: 124.83016
-  - timestamp: 51.3161
+  - timestamp: 51.323776
     length: 0
     bpm: 124.83016
-  - timestamp: 51.80372
+  - timestamp: 51.819073
     length: 0
     bpm: 124.83016
-  - timestamp: 52.26812
+  - timestamp: 52.29883
     length: 0
     bpm: 124.83016
-  - timestamp: 52.732517
+  - timestamp: 52.786255
     length: 0
     bpm: 124.83016
-  - timestamp: 53.220135
+  - timestamp: 53.250843
     length: 0
     bpm: 124.83016
-  - timestamp: 53.707756
+  - timestamp: 53.730785
     length: 0
     bpm: 124.83016
-  - timestamp: 54.195374
+  - timestamp: 54.210728
     length: 0
     bpm: 124.83016
-  - timestamp: 54.682995
+  - timestamp: 54.69067
     length: 0
     bpm: 124.83016
   - timestamp: 55.170612
     length: 0
     bpm: 124.83016
-  - timestamp: 55.63501
+  - timestamp: 55.681072
     length: 0
     bpm: 124.83016
-  - timestamp: 56.09941
+  - timestamp: 56.137794
     length: 0
     bpm: 124.83016
-  - timestamp: 56.58703
+  - timestamp: 56.625412
     length: 0
     bpm: 124.83016
-  - timestamp: 57.07465
+  - timestamp: 57.09768
     length: 0
     bpm: 124.83016
-  - timestamp: 57.562267
+  - timestamp: 57.57762
     length: 0
     bpm: 124.83016
   - timestamp: 58.049885
     length: 0
     bpm: 124.83016
-  - timestamp: 58.514286
+  - timestamp: 58.544994
     length: 0
     bpm: 124.83016
-  - timestamp: 58.978683
+  - timestamp: 59.00939
     length: 0
     bpm: 124.83016
-  - timestamp: 59.466305
+  - timestamp: 59.489334
     length: 0
     bpm: 124.83016
-  - timestamp: 59.953922
+  - timestamp: 59.98463
     length: 0
     bpm: 124.83016
-  - timestamp: 60.441544
+  - timestamp: 60.456898
     length: 0
     bpm: 124.83016
-  - timestamp: 60.92916
+  - timestamp: 60.921486
     length: 0
     bpm: 124.83016
-  - timestamp: 61.41678
+  - timestamp: 61.401424
     length: 0
     bpm: 124.83016
   - timestamp: 61.88118
     length: 0
     bpm: 124.83016
-  - timestamp: 62.345577
+  - timestamp: 62.353252
     length: 0
     bpm: 124.83016
-  - timestamp: 62.80998
+  - timestamp: 62.848362
     length: 0
     bpm: 124.83016
-  - timestamp: 63.297596
+  - timestamp: 63.31295
     length: 0
     bpm: 124.83016
   - timestamp: 63.785217
@@ -3003,34 +3009,34 @@ MonoBehaviour:
   - timestamp: 64.272835
     length: 0
     bpm: 124.83016
-  - timestamp: 64.737236
+  - timestamp: 64.75259
     length: 0
     bpm: 125.43613
-  - timestamp: 65.20163
+  - timestamp: 65.209305
     length: 0
     bpm: 125.43613
-  - timestamp: 65.66603
+  - timestamp: 65.704414
     length: 0
     bpm: 125.43613
-  - timestamp: 66.13043
+  - timestamp: 66.14578
     length: 0
     bpm: 125.43613
-  - timestamp: 66.61805
+  - timestamp: 66.625725
     length: 0
     bpm: 125.43613
   - timestamp: 67.10567
     length: 0
     bpm: 125.43613
-  - timestamp: 67.593285
+  - timestamp: 67.58561
     length: 0
     bpm: 125.43613
-  - timestamp: 68.08091
+  - timestamp: 68.05788
     length: 0
     bpm: 125.43613
-  - timestamp: 68.5453
+  - timestamp: 68.52227
     length: 0
     bpm: 125.43613
-  - timestamp: 69.009705
+  - timestamp: 69.00203
     length: 0
     bpm: 125.43613
   - timestamp: 69.474106
@@ -3042,19 +3048,19 @@ MonoBehaviour:
   - timestamp: 70.4029
     length: 0
     bpm: 126.04802
-  - timestamp: 70.8673
+  - timestamp: 70.88265
     length: 0
     bpm: 126.04802
-  - timestamp: 71.3317
+  - timestamp: 71.33938
     length: 0
     bpm: 126.04802
-  - timestamp: 71.7961
+  - timestamp: 71.83448
     length: 0
     bpm: 126.04802
-  - timestamp: 72.2605
+  - timestamp: 72.28353
     length: 0
     bpm: 126.04802
-  - timestamp: 72.748116
+  - timestamp: 72.77115
     length: 0
     bpm: 126.66591
   - timestamp: 73.23574
@@ -3063,25 +3069,25 @@ MonoBehaviour:
   - timestamp: 73.700134
     length: 0
     bpm: 126.66591
-  - timestamp: 74.164536
+  - timestamp: 74.18757
     length: 0
     bpm: 126.66591
-  - timestamp: 74.62894
+  - timestamp: 74.66732
     length: 0
     bpm: 126.66591
-  - timestamp: 75.09333
+  - timestamp: 75.12404
     length: 0
     bpm: 126.66591
-  - timestamp: 75.55773
+  - timestamp: 75.58844
     length: 0
     bpm: 126.66591
-  - timestamp: 76.04535
+  - timestamp: 76.06838
     length: 0
     bpm: 126.66591
   - timestamp: 76.532974
     length: 0
     bpm: 126.66591
-  - timestamp: 77.02059
+  - timestamp: 77.00524
     length: 0
     bpm: 126.66591
   - timestamp: 77.484985
@@ -3093,94 +3099,94 @@ MonoBehaviour:
   - timestamp: 78.41379
     length: 0
     bpm: 127.28987
-  - timestamp: 78.87819
+  - timestamp: 78.885864
     length: 0
     bpm: 127.28987
-  - timestamp: 79.34258
+  - timestamp: 79.365616
     length: 0
     bpm: 127.28987
-  - timestamp: 79.806984
+  - timestamp: 79.83769
     length: 0
     bpm: 127.28987
-  - timestamp: 80.271385
+  - timestamp: 80.30977
     length: 0
     bpm: 127.28987
-  - timestamp: 80.73578
+  - timestamp: 80.78184
     length: 0
     bpm: 127.28987
-  - timestamp: 81.20018
+  - timestamp: 81.2616
     length: 0
     bpm: 127.28987
-  - timestamp: 81.66458
+  - timestamp: 81.726
     length: 0
     bpm: 127.28987
-  - timestamp: 82.12898
+  - timestamp: 82.2211
     length: 0
     bpm: 127.28987
-  - timestamp: 82.593376
+  - timestamp: 82.67782
     length: 0
     bpm: 127.28987
-  - timestamp: 83.081
+  - timestamp: 83.17313
     length: 0
     bpm: 127.28987
-  - timestamp: 83.56862
+  - timestamp: 83.630035
     length: 0
     bpm: 127.28987
-  - timestamp: 84.05624
+  - timestamp: 84.102295
     length: 0
     bpm: 127.28987
-  - timestamp: 84.54385
+  - timestamp: 84.58991
     length: 0
     bpm: 127.28987
-  - timestamp: 85.008255
+  - timestamp: 85.05431
     length: 0
     bpm: 127.28987
-  - timestamp: 85.49587
+  - timestamp: 85.54193
     length: 0
     bpm: 126.66591
-  - timestamp: 85.98349
+  - timestamp: 86.02187
     length: 0
     bpm: 126.66591
-  - timestamp: 86.44789
+  - timestamp: 86.486275
     length: 0
     bpm: 126.66591
-  - timestamp: 86.91229
+  - timestamp: 86.950676
     length: 0
     bpm: 126.66591
-  - timestamp: 87.376686
+  - timestamp: 87.422745
     length: 0
     bpm: 126.66591
-  - timestamp: 87.86431
+  - timestamp: 87.89502
     length: 0
     bpm: 126.66591
-  - timestamp: 88.35193
+  - timestamp: 88.38264
     length: 0
     bpm: 126.66591
-  - timestamp: 88.81633
+  - timestamp: 88.85471
     length: 0
     bpm: 126.66591
-  - timestamp: 89.28072
+  - timestamp: 89.334465
     length: 0
     bpm: 126.66591
-  - timestamp: 89.76834
+  - timestamp: 89.82208
     length: 0
     bpm: 126.66591
-  - timestamp: 90.25597
+  - timestamp: 90.29435
     length: 0
     bpm: 126.66591
-  - timestamp: 90.72036
+  - timestamp: 90.76642
     length: 0
     bpm: 126.66591
-  - timestamp: 91.18476
+  - timestamp: 91.24618
     length: 0
     bpm: 126.66591
-  - timestamp: 91.67238
+  - timestamp: 91.71844
     length: 0
     bpm: 126.04802
-  - timestamp: 92.16
+  - timestamp: 92.19071
     length: 0
     bpm: 126.04802
-  - timestamp: 92.64762
+  - timestamp: 92.66297
     length: 0
     bpm: 126.04802
   - timestamp: 93.13524
@@ -3189,16 +3195,16 @@ MonoBehaviour:
   - timestamp: 93.59964
     length: 0
     bpm: 126.04802
-  - timestamp: 94.06403
+  - timestamp: 94.08707
     length: 0
     bpm: 126.04802
-  - timestamp: 94.528435
+  - timestamp: 94.55147
     length: 0
     bpm: 126.04802
-  - timestamp: 94.992836
+  - timestamp: 95.038895
     length: 0
     bpm: 126.04802
-  - timestamp: 95.48045
+  - timestamp: 95.51116
     length: 0
     bpm: 126.04802
   - timestamp: 95.96807
@@ -3207,160 +3213,160 @@ MonoBehaviour:
   - timestamp: 96.45569
     length: 0
     bpm: 126.04802
-  - timestamp: 96.92009
+  - timestamp: 96.95847
     length: 0
     bpm: 126.04802
-  - timestamp: 97.38449
+  - timestamp: 97.43055
     length: 0
     bpm: 126.04802
-  - timestamp: 97.84889
+  - timestamp: 97.92566
     length: 0
     bpm: 126.04802
-  - timestamp: 98.33651
+  - timestamp: 98.38257
     length: 0
     bpm: 126.04802
-  - timestamp: 98.82413
+  - timestamp: 98.870186
     length: 0
     bpm: 126.04802
-  - timestamp: 99.311745
+  - timestamp: 99.35013
     length: 0
     bpm: 126.04802
-  - timestamp: 99.776146
+  - timestamp: 99.81453
     length: 0
     bpm: 126.04802
-  - timestamp: 100.24055
+  - timestamp: 100.29429
     length: 0
     bpm: 126.04802
-  - timestamp: 100.70494
+  - timestamp: 100.76636
     length: 0
     bpm: 126.04802
-  - timestamp: 101.192566
+  - timestamp: 101.24631
     length: 0
     bpm: 126.04802
-  - timestamp: 101.68018
+  - timestamp: 101.71857
     length: 0
     bpm: 126.04802
-  - timestamp: 102.1678
+  - timestamp: 102.19851
     length: 0
     bpm: 126.04802
-  - timestamp: 102.6322
+  - timestamp: 102.67826
     length: 0
     bpm: 126.04802
-  - timestamp: 103.096596
+  - timestamp: 103.15034
     length: 0
     bpm: 126.04802
-  - timestamp: 103.58422
+  - timestamp: 103.622604
     length: 0
     bpm: 126.04802
-  - timestamp: 104.07184
+  - timestamp: 104.08719
     length: 0
     bpm: 126.04802
-  - timestamp: 104.53624
+  - timestamp: 104.57462
     length: 0
     bpm: 126.04802
-  - timestamp: 105.00063
+  - timestamp: 105.04669
     length: 0
     bpm: 126.04802
-  - timestamp: 105.48825
+  - timestamp: 105.526634
     length: 0
     bpm: 126.04802
-  - timestamp: 105.975876
+  - timestamp: 105.99891
     length: 0
     bpm: 126.04802
-  - timestamp: 106.46349
+  - timestamp: 106.47117
     length: 0
     bpm: 126.04802
-  - timestamp: 106.927895
+  - timestamp: 106.95093
     length: 0
     bpm: 126.04802
-  - timestamp: 107.39229
+  - timestamp: 107.40764
     length: 0
     bpm: 126.04802
-  - timestamp: 107.85669
+  - timestamp: 107.90275
     length: 0
     bpm: 126.04802
-  - timestamp: 108.32109
+  - timestamp: 108.38251
     length: 0
     bpm: 126.04802
-  - timestamp: 108.80871
+  - timestamp: 108.83942
     length: 0
     bpm: 126.04802
-  - timestamp: 109.296326
+  - timestamp: 109.31936
     length: 0
     bpm: 126.04802
-  - timestamp: 109.78394
+  - timestamp: 109.79929
     length: 0
     bpm: 126.04802
   - timestamp: 110.27157
     length: 0
     bpm: 126.04802
-  - timestamp: 110.73596
+  - timestamp: 110.74364
     length: 0
     bpm: 126.04802
-  - timestamp: 111.20036
+  - timestamp: 111.2234
     length: 0
     bpm: 126.04802
-  - timestamp: 111.664764
+  - timestamp: 111.680115
     length: 0
     bpm: 126.04802
-  - timestamp: 112.12916
+  - timestamp: 112.17522
     length: 0
     bpm: 126.04802
-  - timestamp: 112.59356
+  - timestamp: 112.6473
     length: 0
     bpm: 126.04802
-  - timestamp: 113.08118
+  - timestamp: 113.127235
     length: 0
     bpm: 126.04802
-  - timestamp: 113.5688
+  - timestamp: 113.591835
     length: 0
     bpm: 126.04802
-  - timestamp: 114.05642
+  - timestamp: 114.07177
     length: 0
     bpm: 126.04802
   - timestamp: 114.54404
     length: 0
     bpm: 126.04802
-  - timestamp: 115.00844
+  - timestamp: 115.03147
     length: 0
     bpm: 126.04802
   - timestamp: 115.47283
     length: 0
     bpm: 126.04802
-  - timestamp: 115.93723
+  - timestamp: 115.97562
     length: 0
     bpm: 126.04802
-  - timestamp: 116.401634
+  - timestamp: 116.46305
     length: 0
     bpm: 126.04802
-  - timestamp: 116.88925
+  - timestamp: 116.927635
     length: 0
     bpm: 126.04802
-  - timestamp: 117.37687
+  - timestamp: 117.39222
     length: 0
     bpm: 126.04802
   - timestamp: 117.86449
     length: 0
     bpm: 126.04802
-  - timestamp: 118.32889
+  - timestamp: 118.35192
     length: 0
     bpm: 126.04802
-  - timestamp: 118.79329
+  - timestamp: 118.824
     length: 0
     bpm: 126.04802
-  - timestamp: 119.25769
+  - timestamp: 119.265366
     length: 0
     bpm: 126.04802
-  - timestamp: 119.74531
+  - timestamp: 119.76834
     length: 0
     bpm: 126.04802
-  - timestamp: 120.2097
+  - timestamp: 120.232735
     length: 0
     bpm: 126.04802
-  - timestamp: 120.69733
+  - timestamp: 120.71268
     length: 0
     bpm: 126.04802
-  - timestamp: 121.16172
+  - timestamp: 121.17707
     length: 0
     bpm: 126.04802
   - timestamp: 121.649345
@@ -3375,31 +3381,31 @@ MonoBehaviour:
   - timestamp: 123.04254
     length: 0
     bpm: 126.66591
-  - timestamp: 123.506935
+  - timestamp: 123.52997
     length: 0
     bpm: 126.66591
-  - timestamp: 123.97134
+  - timestamp: 124.00972
     length: 0
     bpm: 126.66591
-  - timestamp: 124.43574
+  - timestamp: 124.4818
     length: 0
     bpm: 126.66591
-  - timestamp: 124.90014
+  - timestamp: 124.95388
     length: 0
     bpm: 126.66591
-  - timestamp: 125.38776
+  - timestamp: 125.42614
     length: 0
     bpm: 126.66591
-  - timestamp: 125.875374
+  - timestamp: 125.88305
     length: 0
     bpm: 126.66591
-  - timestamp: 126.36299
+  - timestamp: 126.34764
     length: 0
     bpm: 126.66591
-  - timestamp: 126.85061
+  - timestamp: 126.83526
     length: 0
     bpm: 126.66591
-  - timestamp: 127.31501
+  - timestamp: 127.307335
     length: 0
     bpm: 126.66591
   - timestamp: 127.77941
@@ -3408,139 +3414,139 @@ MonoBehaviour:
   - timestamp: 128.2438
     length: 0
     bpm: 126.66591
-  - timestamp: 128.7082
+  - timestamp: 128.72356
     length: 0
     bpm: 126.66591
-  - timestamp: 129.1726
+  - timestamp: 129.19563
     length: 0
     bpm: 126.66591
-  - timestamp: 129.63701
+  - timestamp: 129.66003
     length: 0
     bpm: 127.28987
-  - timestamp: 130.10141
+  - timestamp: 130.12444
     length: 0
     bpm: 127.28987
-  - timestamp: 130.56581
+  - timestamp: 130.6042
     length: 0
     bpm: 127.28987
-  - timestamp: 131.0302
+  - timestamp: 131.08394
     length: 0
     bpm: 127.28987
-  - timestamp: 131.4946
+  - timestamp: 131.54834
     length: 0
     bpm: 127.28987
-  - timestamp: 131.959
+  - timestamp: 132.02042
     length: 0
     bpm: 127.28987
-  - timestamp: 132.4234
+  - timestamp: 132.50784
     length: 0
     bpm: 127.28987
-  - timestamp: 132.91103
+  - timestamp: 132.97244
     length: 0
     bpm: 127.28987
-  - timestamp: 133.39864
+  - timestamp: 133.46005
     length: 0
     bpm: 127.28987
-  - timestamp: 133.88626
+  - timestamp: 133.93233
     length: 0
     bpm: 127.28987
-  - timestamp: 134.37387
+  - timestamp: 134.41226
     length: 0
     bpm: 127.28987
-  - timestamp: 134.83827
+  - timestamp: 134.86897
     length: 0
     bpm: 127.28987
-  - timestamp: 135.30267
+  - timestamp: 135.37177
     length: 0
     bpm: 127.28987
-  - timestamp: 135.76707
+  - timestamp: 135.82849
     length: 0
     bpm: 126.66591
-  - timestamp: 136.2547
+  - timestamp: 136.30077
     length: 0
     bpm: 126.66591
-  - timestamp: 136.74231
+  - timestamp: 136.78838
     length: 0
     bpm: 126.66591
-  - timestamp: 137.22993
+  - timestamp: 137.24529
     length: 0
     bpm: 126.66591
-  - timestamp: 137.69434
+  - timestamp: 137.71736
     length: 0
     bpm: 126.66591
-  - timestamp: 138.15874
+  - timestamp: 138.19713
     length: 0
     bpm: 126.66591
-  - timestamp: 138.62312
+  - timestamp: 138.67686
     length: 0
     bpm: 126.66591
-  - timestamp: 139.11075
+  - timestamp: 139.14914
     length: 0
     bpm: 126.66591
-  - timestamp: 139.59837
+  - timestamp: 139.63676
     length: 0
     bpm: 126.66591
-  - timestamp: 140.06276
+  - timestamp: 140.10883
     length: 0
     bpm: 126.66591
-  - timestamp: 140.52716
+  - timestamp: 140.56555
     length: 0
     bpm: 126.66591
-  - timestamp: 141.01479
+  - timestamp: 141.06085
     length: 0
     bpm: 126.66591
-  - timestamp: 141.50241
+  - timestamp: 141.51009
     length: 0
     bpm: 126.66591
-  - timestamp: 141.9668
+  - timestamp: 141.9975
     length: 0
     bpm: 126.66591
-  - timestamp: 142.4312
+  - timestamp: 142.48494
     length: 0
     bpm: 126.66591
-  - timestamp: 142.8956
+  - timestamp: 142.96469
     length: 0
     bpm: 126.66591
-  - timestamp: 143.38322
+  - timestamp: 143.43697
     length: 0
     bpm: 126.66591
-  - timestamp: 143.87083
+  - timestamp: 143.9169
     length: 0
     bpm: 126.04802
-  - timestamp: 144.35846
+  - timestamp: 144.37381
     length: 0
     bpm: 126.04802
-  - timestamp: 144.84608
+  - timestamp: 144.85376
     length: 0
     bpm: 126.04802
-  - timestamp: 145.3337
+  - timestamp: 145.32602
     length: 0
     bpm: 126.04802
   - timestamp: 145.7981
     length: 0
     bpm: 126.04802
-  - timestamp: 146.2625
+  - timestamp: 146.27785
     length: 0
     bpm: 126.04802
-  - timestamp: 146.7269
+  - timestamp: 146.74225
     length: 0
     bpm: 126.04802
-  - timestamp: 147.1913
+  - timestamp: 147.222
     length: 0
     bpm: 126.04802
-  - timestamp: 147.65569
+  - timestamp: 147.67871
     length: 0
     bpm: 126.04802
-  - timestamp: 148.14331
+  - timestamp: 148.16634
     length: 0
     bpm: 126.04802
-  - timestamp: 148.63094
+  - timestamp: 148.64629
     length: 0
     bpm: 126.04802
-  - timestamp: 149.11855
+  - timestamp: 149.11087
     length: 0
     bpm: 126.04802
-  - timestamp: 149.60617
+  - timestamp: 149.59082
     length: 0
     bpm: 126.04802
   - timestamp: 150.07057
@@ -3555,91 +3561,91 @@ MonoBehaviour:
   - timestamp: 151.46376
     length: 0
     bpm: 126.66591
-  - timestamp: 151.92816
+  - timestamp: 151.95119
     length: 0
     bpm: 126.66591
-  - timestamp: 152.39256
+  - timestamp: 152.43863
     length: 0
     bpm: 126.66591
-  - timestamp: 152.85696
+  - timestamp: 152.87999
     length: 0
     bpm: 126.66591
-  - timestamp: 153.32137
+  - timestamp: 153.36743
     length: 0
     bpm: 126.66591
-  - timestamp: 153.78577
+  - timestamp: 153.84718
     length: 0
     bpm: 126.66591
-  - timestamp: 154.25015
+  - timestamp: 154.31924
     length: 0
     bpm: 126.66591
-  - timestamp: 154.73778
+  - timestamp: 154.79152
     length: 0
     bpm: 126.66591
-  - timestamp: 155.2254
+  - timestamp: 155.27914
     length: 0
     bpm: 126.66591
-  - timestamp: 155.71301
+  - timestamp: 155.73604
     length: 0
     bpm: 126.66591
-  - timestamp: 156.20064
+  - timestamp: 156.21599
     length: 0
     bpm: 126.66591
-  - timestamp: 156.66504
+  - timestamp: 156.69574
     length: 0
     bpm: 126.66591
-  - timestamp: 157.12944
+  - timestamp: 157.16014
     length: 0
     bpm: 126.66591
-  - timestamp: 157.59383
+  - timestamp: 157.63222
     length: 0
     bpm: 126.66591
-  - timestamp: 158.05823
+  - timestamp: 158.11964
     length: 0
     bpm: 126.66591
-  - timestamp: 158.54585
+  - timestamp: 158.58424
     length: 0
     bpm: 126.66591
   - timestamp: 159.03346
     length: 0
     bpm: 126.66591
-  - timestamp: 159.49786
+  - timestamp: 159.54393
     length: 0
     bpm: 126.66591
-  - timestamp: 159.96227
+  - timestamp: 160.03136
     length: 0
     bpm: 126.66591
-  - timestamp: 160.44989
+  - timestamp: 160.49596
     length: 0
     bpm: 126.66591
-  - timestamp: 160.9375
+  - timestamp: 160.96053
     length: 0
     bpm: 126.66591
-  - timestamp: 161.4019
+  - timestamp: 161.45564
     length: 0
     bpm: 126.66591
-  - timestamp: 161.8663
+  - timestamp: 161.91237
     length: 0
     bpm: 126.66591
-  - timestamp: 162.3307
+  - timestamp: 162.3691
     length: 0
     bpm: 126.66591
-  - timestamp: 162.81833
+  - timestamp: 162.85672
     length: 0
     bpm: 126.66591
-  - timestamp: 163.30594
+  - timestamp: 163.32896
     length: 0
     bpm: 126.66591
-  - timestamp: 163.77034
+  - timestamp: 163.80873
     length: 0
     bpm: 126.66591
-  - timestamp: 164.23474
+  - timestamp: 164.2808
     length: 0
     bpm: 126.66591
-  - timestamp: 164.69914
+  - timestamp: 164.73753
     length: 0
     bpm: 126.66591
-  - timestamp: 165.18675
+  - timestamp: 165.20978
     length: 0
     bpm: 126.66591
   - timestamp: 165.67438
@@ -3648,28 +3654,28 @@ MonoBehaviour:
   - timestamp: 166.162
     length: 0
     bpm: 126.66591
-  - timestamp: 166.62639
+  - timestamp: 166.64174
     length: 0
     bpm: 126.66591
   - timestamp: 167.09079
     length: 0
     bpm: 126.66591
-  - timestamp: 167.55519
+  - timestamp: 167.57822
     length: 0
     bpm: 126.66591
-  - timestamp: 168.01959
+  - timestamp: 168.0503
     length: 0
     bpm: 126.66591
-  - timestamp: 168.484
+  - timestamp: 168.53773
     length: 0
     bpm: 126.66591
-  - timestamp: 168.9484
+  - timestamp: 168.99446
     length: 0
     bpm: 126.66591
-  - timestamp: 169.436
+  - timestamp: 169.4744
     length: 0
     bpm: 126.66591
-  - timestamp: 169.92363
+  - timestamp: 169.94666
     length: 0
     bpm: 126.66591
   - timestamp: 170.41124
@@ -3678,19 +3684,19 @@ MonoBehaviour:
   - timestamp: 170.87564
     length: 0
     bpm: 126.66591
-  - timestamp: 171.34004
+  - timestamp: 171.3554
     length: 0
     bpm: 126.66591
-  - timestamp: 171.80444
+  - timestamp: 171.8198
     length: 0
     bpm: 126.66591
-  - timestamp: 172.26884
+  - timestamp: 172.29955
     length: 0
     bpm: 126.66591
-  - timestamp: 172.73325
+  - timestamp: 172.76395
     length: 0
     bpm: 126.66591
-  - timestamp: 173.22086
+  - timestamp: 173.2362
     length: 0
     bpm: 126.66591
   - timestamp: 173.70848
@@ -3699,28 +3705,28 @@ MonoBehaviour:
   - timestamp: 174.17288
     length: 0
     bpm: 126.66591
-  - timestamp: 174.63728
+  - timestamp: 174.64496
     length: 0
     bpm: 126.66591
-  - timestamp: 175.10168
+  - timestamp: 175.10936
     length: 0
     bpm: 126.66591
   - timestamp: 175.56607
     length: 0
     bpm: 127.28987
-  - timestamp: 176.03047
+  - timestamp: 176.04582
     length: 0
     bpm: 127.28987
-  - timestamp: 176.49487
+  - timestamp: 176.5179
     length: 0
     bpm: 127.28987
-  - timestamp: 176.95927
+  - timestamp: 176.97462
     length: 0
     bpm: 127.28987
-  - timestamp: 177.42368
+  - timestamp: 177.4467
     length: 0
     bpm: 127.28987
-  - timestamp: 177.88808
+  - timestamp: 177.9111
     length: 0
     bpm: 127.28987
   - timestamp: 178.37569
@@ -3735,13 +3741,13 @@ MonoBehaviour:
   - timestamp: 179.79211
     length: 0
     bpm: 127.28987
-  - timestamp: 180.25652
+  - timestamp: 180.27187
     length: 0
     bpm: 127.28987
   - timestamp: 180.7209
     length: 0
     bpm: 127.28987
-  - timestamp: 181.1853
+  - timestamp: 181.20833
     length: 0
     bpm: 127.92001
   - timestamp: 181.6497
@@ -3750,70 +3756,70 @@ MonoBehaviour:
   - timestamp: 182.1141
     length: 0
     bpm: 127.92001
-  - timestamp: 182.5785
+  - timestamp: 182.59386
     length: 0
     bpm: 127.92001
-  - timestamp: 183.04291
+  - timestamp: 183.07361
     length: 0
     bpm: 127.92001
-  - timestamp: 183.50731
+  - timestamp: 183.55338
     length: 0
     bpm: 127.92001
-  - timestamp: 183.9717
+  - timestamp: 184.01776
     length: 0
     bpm: 127.92001
-  - timestamp: 184.4361
+  - timestamp: 184.48984
     length: 0
     bpm: 127.92001
-  - timestamp: 184.9005
+  - timestamp: 184.96959
     length: 0
     bpm: 127.92001
-  - timestamp: 185.3649
+  - timestamp: 185.44934
     length: 0
     bpm: 127.92001
-  - timestamp: 185.85252
+  - timestamp: 185.89859
     length: 0
     bpm: 127.92001
-  - timestamp: 186.34013
+  - timestamp: 186.3862
     length: 0
     bpm: 127.92001
-  - timestamp: 186.80453
+  - timestamp: 186.8506
     length: 0
     bpm: 127.92001
-  - timestamp: 187.26894
+  - timestamp: 187.33035
     length: 0
     bpm: 127.92001
-  - timestamp: 187.73334
+  - timestamp: 187.7794
     length: 0
     bpm: 127.92001
-  - timestamp: 188.19774
+  - timestamp: 188.2438
     length: 0
     bpm: 127.92001
-  - timestamp: 188.66212
+  - timestamp: 188.73122
     length: 0
     bpm: 127.92001
-  - timestamp: 189.14975
+  - timestamp: 189.20349
     length: 0
     bpm: 127.92001
-  - timestamp: 189.63737
+  - timestamp: 189.6604
     length: 0
     bpm: 127.92001
-  - timestamp: 190.10178
+  - timestamp: 190.14784
     length: 0
     bpm: 127.92001
-  - timestamp: 190.56616
+  - timestamp: 190.60454
     length: 0
     bpm: 127.92001
-  - timestamp: 191.03056
+  - timestamp: 191.06895
     length: 0
     bpm: 127.28987
   - timestamp: 191.51819
     length: 0
     bpm: 127.28987
-  - timestamp: 192.0058
+  - timestamp: 192.0365
     length: 0
     bpm: 127.28987
-  - timestamp: 192.49342
+  - timestamp: 192.47807
     length: 0
     bpm: 127.28987
   - timestamp: 192.95782
@@ -3837,13 +3843,13 @@ MonoBehaviour:
   - timestamp: 195.74422
     length: 0
     bpm: 127.92001
-  - timestamp: 196.20862
+  - timestamp: 196.2163
     length: 0
     bpm: 127.92001
-  - timestamp: 196.67302
+  - timestamp: 196.6807
     length: 0
     bpm: 127.92001
-  - timestamp: 197.13742
+  - timestamp: 197.1451
     length: 0
     bpm: 127.92001
   - timestamp: 197.6018
@@ -3855,121 +3861,118 @@ MonoBehaviour:
   - timestamp: 198.53061
     length: 0
     bpm: 127.92001
-  - timestamp: 198.99501
+  - timestamp: 199.0071
     length: 0
     bpm: 127.92001
-  - timestamp: 199.45941
+  - timestamp: 199.47552
     length: 0
     bpm: 127.92001
-  - timestamp: 199.92381
+  - timestamp: 199.95451
     length: 0
     bpm: 128.55644
-  - timestamp: 200.38821
+  - timestamp: 200.40834
     length: 0
     bpm: 128.55644
-  - timestamp: 200.8526
+  - timestamp: 200.87563
     length: 0
     bpm: 128.55644
-  - timestamp: 201.317
+  - timestamp: 201.34808
     length: 0
     bpm: 128.55644
-  - timestamp: 201.7814
+  - timestamp: 201.8121
     length: 0
     bpm: 128.55644
-  - timestamp: 202.2458
+  - timestamp: 202.26115
     length: 0
     bpm: 128.55644
-  - timestamp: 202.7102
+  - timestamp: 202.72632
     length: 0
     bpm: 128.55644
-  - timestamp: 203.1746
+  - timestamp: 203.21085
     length: 0
     bpm: 128.55644
-  - timestamp: 203.639
+  - timestamp: 203.68733
     length: 0
     bpm: 128.55644
-  - timestamp: 204.10341
+  - timestamp: 204.1477
     length: 0
     bpm: 128.55644
-  - timestamp: 204.5678
+  - timestamp: 204.62015
     length: 0
     bpm: 128.55644
-  - timestamp: 205.0322
+  - timestamp: 205.08052
     length: 0
     bpm: 128.55644
-  - timestamp: 205.4966
+  - timestamp: 205.55699
     length: 0
     bpm: 128.55644
-  - timestamp: 205.961
+  - timestamp: 206.0214
     length: 0
     bpm: 128.55644
-  - timestamp: 206.4254
+  - timestamp: 206.49788
     length: 0
     bpm: 128.55644
-  - timestamp: 206.8898
+  - timestamp: 206.96228
     length: 0
     bpm: 128.55644
-  - timestamp: 207.3542
+  - timestamp: 207.4146
     length: 0
     bpm: 128.55644
-  - timestamp: 207.81859
+  - timestamp: 207.88704
     length: 0
     bpm: 128.55644
-  - timestamp: 208.28299
+  - timestamp: 208.35144
     length: 0
     bpm: 128.55644
-  - timestamp: 208.74739
+  - timestamp: 208.81987
     length: 0
     bpm: 128.55644
-  - timestamp: 209.23502
+  - timestamp: 209.2914
     length: 0
     bpm: 128.55644
-  - timestamp: 209.72263
+  - timestamp: 209.75081
     length: 0
     bpm: 128.55644
-  - timestamp: 210.18703
+  - timestamp: 210.21118
     length: 0
     bpm: 128.55644
-  - timestamp: 210.65143
+  - timestamp: 210.6917
     length: 0
     bpm: 128.55644
-  - timestamp: 211.11583
+  - timestamp: 211.14804
     length: 0
     bpm: 128.55644
-  - timestamp: 211.58023
+  - timestamp: 211.60841
     length: 0
     bpm: 128.55644
-  - timestamp: 212.04463
+  - timestamp: 212.06879
     length: 0
     bpm: 128.55644
-  - timestamp: 212.50902
+  - timestamp: 212.54929
     length: 0
     bpm: 128.55644
-  - timestamp: 212.97342
+  - timestamp: 213.01369
     length: 0
     bpm: 128.55644
-  - timestamp: 213.43782
+  - timestamp: 213.4942
     length: 0
     bpm: 128.55644
-  - timestamp: 213.90222
+  - timestamp: 213.97572
     length: 0
     bpm: 128.55644
-  - timestamp: 214.36662
+  - timestamp: 214.46295
     length: 0
     bpm: 128.55644
-  - timestamp: 214.83102
+  - timestamp: 214.98514
     length: 0
     bpm: 128.55644
-  - timestamp: 215.29543
+  - timestamp: 215.50302
     length: 0
     bpm: 128.55644
-  - timestamp: 215.75981
+  - timestamp: 215.98454
     length: 0
     bpm: 128.55644
-  - timestamp: 216.22421
-    length: 0
-    bpm: 128.55644
-  - timestamp: 216.71184
+  - timestamp: 216.48714
     length: 0
     bpm: 128.55644
 --- !u!114 &11400000
