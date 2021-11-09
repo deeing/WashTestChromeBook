@@ -47,6 +47,12 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
     }
 
+    public void DisplayPoseOptions(List<MusicSwitchEvent> starterEvents, MusicSwitchEvent currentEvent, int numPoseOptions)
+    {
+        poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent, numPoseOptions);
+    }
+
+
     public void DisplayPoseOptions(MusicSwitchEvent currentEvent)
     {
         poseOptionsMenu.DisplayPoseOptions(currentEvent);

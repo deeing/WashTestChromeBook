@@ -38,4 +38,14 @@ public class RhythmTap : RhythmInput
         mySequence.Append(enclosingCircle.DOSizeDelta(originalCircleSize, 0f, true));
         mySequence.Append(enclosingCircle.DOSizeDelta(targetSize, timeUntilBeat * .7f, true));
     }
+
+    public override void SetInput(RhythmInputStatus status, bool isLeftInput)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override RhythmInputStatus GetCurrentInputStatus()
+    {
+        throw new System.NotImplementedException();
+    }
 }

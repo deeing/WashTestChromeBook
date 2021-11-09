@@ -18,10 +18,7 @@ public class ParallelDrag : RhythmInput
     private RhythmInputStatus leftStatus = RhythmInputStatus.Miss;
     private RhythmInputStatus rightStatus = RhythmInputStatus.Miss;
 
-    public void Update()
-    {
-        DoInput(GetCurrentInputStatus());
-    }
+
 
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
@@ -33,7 +30,7 @@ public class ParallelDrag : RhythmInput
         rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);
     }
 
-    public RhythmInputStatus GetCurrentInputStatus()
+    public override RhythmInputStatus GetCurrentInputStatus()
     {
         RhythmInputStatus chosenStatus;
 
@@ -54,7 +51,7 @@ public class ParallelDrag : RhythmInput
         return chosenStatus;
     }
 
-    public void SetInput(RhythmInputStatus status, bool isLeftInput)
+    public override void SetInput(RhythmInputStatus status, bool isLeftInput)
     {
         if (isLeftInput)
         {
@@ -64,25 +61,4 @@ public class ParallelDrag : RhythmInput
             rightStatus = status;
         }
     }
-
-    public void DoInputMiss(bool isLeftInput)
-    {
-        SetInput(RhythmInputStatus.Miss, isLeftInput);
-    }
-
-    public void DoInputGood(bool isLeftInput)
-    {
-        SetInput(RhythmInputStatus.Good, isLeftInput);
-    }
-
-    public void DoInputGreat(bool isLeftInput)
-    {
-        SetInput(RhythmInputStatus.Great, isLeftInput);
-    }
-
-    public void DoInputPerfect(bool isLeftInput)
-    {
-        SetInput(RhythmInputStatus.Perfect, isLeftInput);
-    }
-
 }

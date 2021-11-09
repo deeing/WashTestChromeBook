@@ -14,6 +14,11 @@ public abstract class RhythmInput : MonoBehaviour
         beatsPerinputPeriod = MusicManager.instance.GetBeatsPerInputPeriod();
     }
 
+    public void Update()
+    {
+        DoInput(GetCurrentInputStatus());
+    }
+
     public void Toggle(bool status)
     {
         gameObject.SetActive(status);
@@ -62,5 +67,28 @@ public abstract class RhythmInput : MonoBehaviour
         }
     }
 
+    public abstract RhythmInputStatus GetCurrentInputStatus();
     public abstract void HandleBeat(Beat currentBeat, Beat nextBeat);
+
+    public abstract void SetInput(RhythmInputStatus status, bool isLeftInput);
+
+    public void DoInputMiss(bool isLeftInput)
+    {
+        SetInput(RhythmInputStatus.Miss, isLeftInput);
+    }
+
+    public void DoInputGood(bool isLeftInput)
+    {
+        SetInput(RhythmInputStatus.Good, isLeftInput);
+    }
+
+    public void DoInputGreat(bool isLeftInput)
+    {
+        SetInput(RhythmInputStatus.Great, isLeftInput);
+    }
+
+    public void DoInputPerfect(bool isLeftInput)
+    {
+        SetInput(RhythmInputStatus.Perfect, isLeftInput);
+    }
 }

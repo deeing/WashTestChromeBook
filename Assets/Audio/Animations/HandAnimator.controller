@@ -293,7 +293,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Right Scrub
+  m_Name: Fingernails Left Scrub
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -397,7 +397,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Left Scrub
+  m_Name: Fingernails Right Scrub
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -605,7 +605,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Right Return
+  m_Name: Fingernails Left Return
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -631,7 +631,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Right Idle
+  m_Name: Fingernails Left Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -809,7 +809,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Left Idle
+  m_Name: Fingernails Right Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -887,7 +887,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Right Switch
+  m_Name: Fingernails Left Switch
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -1147,7 +1147,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Left Return
+  m_Name: Fingernails Right Return
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -1556,7 +1556,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fingernails Left Switch
+  m_Name: Fingernails Right Switch
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

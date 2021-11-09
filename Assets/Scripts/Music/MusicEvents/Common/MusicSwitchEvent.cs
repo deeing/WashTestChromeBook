@@ -15,6 +15,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
 
     // Just testing, see if you want to make this a field
     private float endingOffset = -.5f;
+    private int numPoseOptions = 4; // maybe this should be a gamesetting?
 
     public override void SetupEvent()
     {
@@ -23,7 +24,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
 
         if (isStarterEvent)
         {
-            DisplayPoseOptions();
+            DisplayPoseOptions(numPoseOptions);
         } else
         {
             DisplayPoseOptions(this);
@@ -45,9 +46,9 @@ public class MusicSwitchEvent :  MusicPlayerEvent
         return nextBeatTime - currentBeatTime;
     }
 
-    public void DisplayPoseOptions()
+    public void DisplayPoseOptions(int numPoseOptions)
     {
-        MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this);
+        MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this, numPoseOptions);
     }
 
     public void DisplayPoseOptions(MusicSwitchEvent currentSwitchEvent)
