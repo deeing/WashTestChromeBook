@@ -21,8 +21,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public GameSettings gameSettings { get => _gameSettings; private set => _gameSettings = value; }
     [SerializeField]
     private SongData fallbackSong;
-    [SerializeField]
-    private MusicSwitchEvent startingEvent;
 
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -83,7 +81,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
                 starterEvents.Add(startEvent);
             }
         }
-        currentWashEvent = startingEvent;
+        currentWashEvent = starterEvents[0];
     }
 
     private MusicSwitchEvent GetRandomStarter()
@@ -195,20 +193,21 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         MusicWashEvent nextEvent = currentWashEvent.GetNextWashEvent();
 
-        if (currentWashEvent is MusicSwitchEvent)
+        /*if (currentWashEvent is MusicSwitchEvent)
         {
             RemoveStarterSwitchEvent((MusicSwitchEvent)currentWashEvent);
-        }
+        }*/
 
         if (nextEvent == null)
         {
-            if (starterEvents.Count > 0)
+            /*if (starterEvents.Count > 0)
             {
                 ChangeEventRandom();
             } else
             {
                 EndGame();
-            }
+            }*/
+            EndGame();
         } else
         {
             ChangeEvent(nextEvent);

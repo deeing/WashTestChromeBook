@@ -34,13 +34,18 @@ public class PoseOptionsMenu : MonoBehaviour
 
     public void DisplayPoseOptions(List<MusicSwitchEvent> starterEvents, MusicSwitchEvent currentEvent, int numPoseOptions)
     {
+        int poseLimit = numPoseOptions;
+        if (starterEvents.Count < numPoseOptions)
+        {
+            poseLimit = starterEvents.Count;
+        }
         List<MusicSwitchEvent> randomEvents = starterEvents.Shuffle();
         randomEvents.Remove(currentEvent);
 
         // insert the correct option in one of the first four slots
-        randomEvents.Insert(Random.Range(0, numPoseOptions), currentEvent);
+        randomEvents.Insert(Random.Range(0, poseLimit), currentEvent);
 
-        for (int i=0; i < numPoseOptions; i++)
+        for (int i=0; i < poseLimit; i++)
         {
             GameObject optionObj = Instantiate(poseOptionPrefab, poseOptionContainer);
             PoseOption option = optionObj.GetComponent<PoseOption>();
