@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wash.Utilities;
 
-public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
+public abstract class PlayerEvent : WashEvent
 {
     [SerializeField]
     private float sensitivity = .005f;
@@ -17,8 +17,7 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
     [Tooltip("Whether or not we should have this as a checklist item")]
     private bool shouldBeChecklistEvent = false;
     [SerializeField]
-    [Tooltip("How much the player wants to adjust the sensitivity of this event's input")]
-    private float sensitivityAdjustment = 1f;
+    protected List<CaligraphyMove> caligraphyMoveList;
 
     // How long in seconcds it takes for player to become impatient
     protected float impatienceThreshold = 8f;
@@ -70,30 +69,34 @@ public abstract class PlayerEvent : WashEvent, AdjustableSensitivity
         }
     }
 
-    public abstract float DoTouchInput();
-    public float HandleInput()
+    public override void DoEvent()
     {
         if (WashEventManager.instance.isInspectionMode)
         {
-            return 0;
+            return;
         }
-        else
+
+        CaligraphyMove nextMove = caligraphyMoveList[0];
+        if (CaligraphyInputManager.instance.HasDoneCaligraphy(nextMove))
         {
-            return DoTouchInput() * sensitivity * GetSensitivityAdjustment();
+            HandAnimations.instance.PlayAnimationStep(nextMove.animationName, nextMove.animationStart, nextMove.animationEnd, Time.deltaTime);
+
+            // check if we have finished
+            if (HandAnimations.instance.HasAnimationReachedTime(nextMove.animationStart, nextMove.animationEnd))
+            {
+                CaligraphyInputManager.instance.ClearSymbol();
+                HandAnimations.instance.Reset();
+                caligraphyMoveList.RemoveAt(0);
+            }
         }
+    }
+
+    public override bool CheckEndEvent()
+    {
+        return caligraphyMoveList.Count <= 0;
     }
 
     public abstract PlayerEventType GetEventType();
-
-    public void SetSensitivityAdjustment(float sensitivityAdjustment)
-    {
-        this.sensitivityAdjustment = sensitivityAdjustment;
-    }
-
-    public float GetSensitivityAdjustment()
-    {
-        return sensitivityAdjustment;
-    }
 
     public string GetEventName()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wash.Utilities;
 public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
 {
     [SerializeField] 
@@ -135,6 +136,24 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     {
         anim.speed = 1;
         anim.Play(animationName, 0, animTime);
+    }
+
+    public void PlayAnimationStep(string animationName, float animStart, float animEnd, float animationIncrease)
+    {
+        anim.speed = 0;
+        animationTime += animationIncrease;
+        float normalizedTime = animStart + animationTime;
+        //normalizedTime.ClampUpper(animEnd);
+
+        if (normalizedTime < animEnd)
+        {
+            anim.Play(animationName, 0, normalizedTime);
+        }
+    }
+
+    public bool HasAnimationReachedTime(float animStart, float animEnd)
+    {
+        return animStart + animationTime >= animEnd;
     }
 
     public void CrossFade(string nextAnim, float fadeTime)

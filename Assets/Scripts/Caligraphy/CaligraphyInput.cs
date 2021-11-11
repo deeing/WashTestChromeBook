@@ -76,6 +76,8 @@ public class CaligraphyInput : MonoBehaviour
         {
             Debug.Log(connection.Key + "->" + connection.Value);
         }
+
+        CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
     }
 
     public void SetActive(bool status)

@@ -10,31 +10,9 @@ public abstract class SwitchEvent : PlayerEvent
     private bool unMoved = true;
 
     public abstract void DoSwitch();
-
-    public override void DoEvent()
+    public virtual float DoTouchInput()
     {
-        touchInputwithSensitivity = HandleInput();
-        if (touchInputwithSensitivity != 0)
-        {
-            DoSwitch();
-            ResetImpatienceTimer();
-            isIdle = false;
-            unMoved = false;
-        }
-        else if(!isImpatient)
-        {
-            IncrementImpatienceTimer(Time.deltaTime);
-            if (unMoved && impatienceTimer > impatienceThreshold)
-            {
-                HandleImpatience();
-                isIdle = false;
-            }
-            else if (!isIdle) 
-            {
-                NeutralIdle();
-                isIdle = true;
-            }
-        } 
+        return 0f;
     }
 
     private void NeutralIdle()
@@ -45,10 +23,5 @@ public abstract class SwitchEvent : PlayerEvent
     protected override string GetImpatienceAnimationName()
     {
         return "Neutral Impatience";
-    }
-
-    public override bool CheckEndEvent()
-    {
-        return HandAnimations.instance.IsAnimationFinished();
     }
 }

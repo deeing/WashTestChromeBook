@@ -40,6 +40,20 @@ public abstract class ScrubEvent : PlayerEvent
 
     public abstract void ReturnToNeutral();
 
+    public abstract float DoTouchInput();
+    public float HandleInput()
+    {
+        if (WashEventManager.instance.isInspectionMode)
+        {
+            return 0;
+        }
+        else
+        {
+            return DoTouchInput();
+        }
+    }
+
+
     public override void DoEvent()
     {
         touchInputWithSensitivity = HandleInput();
