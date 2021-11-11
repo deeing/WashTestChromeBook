@@ -34,6 +34,10 @@ public abstract class PlayerEvent : WashEvent
     {
         // make it so not all of the children need an empty function
         impatienceWait = new WaitForSeconds(impatienceAnimDuration);
+        if (caligraphyMoveList.Count > 0)
+        {
+            CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
+        }
     }
 
     public override void StartEvent()
@@ -79,6 +83,7 @@ public abstract class PlayerEvent : WashEvent
         CaligraphyMove nextMove = caligraphyMoveList[0];
         if (CaligraphyInputManager.instance.HasDoneCaligraphy(nextMove))
         {
+            CaligraphyInputManager.instance.ClearGuideLines();
             HandAnimations.instance.PlayAnimationStep(nextMove.animationName, nextMove.animationStart, nextMove.animationEnd, Time.deltaTime);
 
             // check if we have finished
@@ -87,6 +92,10 @@ public abstract class PlayerEvent : WashEvent
                 CaligraphyInputManager.instance.ClearSymbol();
                 HandAnimations.instance.Reset();
                 caligraphyMoveList.RemoveAt(0);
+                if (caligraphyMoveList.Count > 0)
+                {
+                    CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
+                } 
             }
         }
     }

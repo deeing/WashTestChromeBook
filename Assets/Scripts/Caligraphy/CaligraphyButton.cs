@@ -7,7 +7,8 @@ public class CaligraphyButton : MonoBehaviour
     [SerializeField]
     private CaligraphyInput caligraphyInput;
     [SerializeField]
-    private int id = 0;
+    private int _id = 0;
+    public int id { get => _id; private set => value = _id; }
 
     private Transform thisTransform;
 
@@ -23,7 +24,7 @@ public class CaligraphyButton : MonoBehaviour
 
     public void MarkButton(Lean.Touch.LeanFinger finger)
     {
-        if (caligraphyInput.isActive)
+        if (caligraphyInput.isDrawing)
         {
             caligraphyInput.AddMarkedPoint(thisTransform.position, id);
         }

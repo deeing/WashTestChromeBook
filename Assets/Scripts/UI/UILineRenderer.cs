@@ -57,7 +57,7 @@ public class UILineRenderer : MonoBehaviour
 	public void RenderLines()
     {
 		ClearLines();
-
+		Debug.Log("rendering:" + positions.Count);
 		if (positions.Count < 2)
         {
 			return;

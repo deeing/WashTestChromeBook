@@ -9,6 +9,18 @@ public abstract class SwitchEvent : PlayerEvent
     private bool isIdle = false;
     private bool unMoved = true;
 
+    public override void SetupEvent()
+    {
+        base.SetupEvent();
+        CaligraphyInputManager.instance.ToggleCaligraphy(true);
+    }
+
+    public override void EndEvent()
+    {
+        base.EndEvent();
+        CaligraphyInputManager.instance.ToggleCaligraphy(false);
+    }
+
     public abstract void DoSwitch();
     public virtual float DoTouchInput()
     {

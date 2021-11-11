@@ -64,4 +64,19 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         }
         return true;
     }
+
+    public void ToggleCaligraphy(bool status)
+    {
+        caligraphyInput.Toggle(status);
+    }
+
+    public void SetupGuideLines(CaligraphyMove caligraphyMove)
+    {
+        caligraphyInput.SetupGuideLines(caligraphyMove);
+    }
+
+    public void ClearGuideLines()
+    {
+        caligraphyInput.ClearGuideLines();
+    }
 }
