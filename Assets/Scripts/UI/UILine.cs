@@ -11,6 +11,7 @@ public class UILine : MonoBehaviour
     private RawImage lineImage;
 
     private RectTransform thisTransform;
+    private float offsetPercent = 1f;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class UILine : MonoBehaviour
         startPoint = start;
         endPoint = end;
 
-        float lineHeight = Vector2.Distance(startPoint, endPoint);
+        float lineHeight = Vector2.Distance(startPoint, endPoint) * offsetPercent;
 
         thisTransform.sizeDelta = new Vector2(thickness, lineHeight);
         thisTransform.up = endPoint - startPoint;
