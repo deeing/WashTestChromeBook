@@ -12,9 +12,12 @@ public class UILineRenderer : MonoBehaviour
 	private GameObject linePrefab;
 	[SerializeField]
 	private Transform lineContainer;
-
 	[SerializeField]
-	private List<GameObject> lines;
+	private float thickness = 20f;
+	[SerializeField]
+	private Color lineColor = Color.green;
+
+	private List<GameObject> lines = new List<GameObject>();
 
 	public void SetPositions(List<Vector2> pos)
     {
@@ -60,7 +63,6 @@ public class UILineRenderer : MonoBehaviour
 			return;
         }
 
-		Debug.Log("Num of positions: " + positions.Count);
 		for (int i=0; i < positions.Count - 1; i++)
         {
 			Vector2 startPos = positions[i];
@@ -69,6 +71,8 @@ public class UILineRenderer : MonoBehaviour
 			Vector2 linePos = (endPos  + startPos) / 2;
 			GameObject lineObj = Instantiate(linePrefab, linePos, Quaternion.identity, lineContainer);
 			lines.Add(lineObj);
+			UILine line = lineObj.GetComponent<UILine>();
+			line.SetupLine(startPos, endPos, thickness, lineColor);
 		}
     }
 

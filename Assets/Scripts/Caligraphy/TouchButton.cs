@@ -67,10 +67,10 @@ public class TouchButton : MonoBehaviour
             {
                 if (hit.gameObject == touchArea)
                 {
-                    isOverButton = true;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
 
