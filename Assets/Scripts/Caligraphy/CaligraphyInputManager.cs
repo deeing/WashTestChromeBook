@@ -7,7 +7,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
     [SerializeField]
     private CaligraphyInput caligraphyInput;
 
-    private Dictionary<int, int> playerSymbolConnections = null;
+    private Dictionary<int, HashSet<int>> playerSymbolConnections = null;
 
     protected override void Awake()
     {
@@ -17,7 +17,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         }
     }
 
-    public void SubmitCaligraphy(Dictionary<int, int> buttonConnectionsById)
+    public void SubmitCaligraphy(Dictionary<int, HashSet<int>> buttonConnectionsById)
     {
         playerSymbolConnections = buttonConnectionsById;
     }
@@ -35,31 +35,35 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         }
 
         List<CaligraphyConnection> expectedSymbolConnections = caligraphyMove.symbol.symbolConnections;
+        Dictionary<int, int> expectedSymbolMap = new Dictionary<int, int>();
+        foreach(CaligraphyConnection expectedConn in expectedSymbolConnections)
+        {
+            expectedSymbolMap.Add(expectedConn.buttonId1, expectedConn.buttonId2);
+        }
 
         // different number of moves
-        if (playerSymbolConnections.Count != expectedSymbolConnections.Count)
+        if (playerSymbolConnections.Count < expectedSymbolConnections.Count)
         {
             Debug.Log("not the right number of connections! Was " + playerSymbolConnections.Count + " but expected " + expectedSymbolConnections.Count);
             ClearSymbol();
             return false;
         }
 
-        foreach (CaligraphyConnection expectedConnection in expectedSymbolConnections)
+        foreach (KeyValuePair<int, HashSet<int>> connSet in playerSymbolConnections)
         {
-            int buttonOneId = expectedConnection.buttonId1;
-            int buttonTwoId = expectedConnection.buttonId2;
-
-            // check one direction  of the connection
-            bool buttonOneFirstValid = playerSymbolConnections.ContainsKey(buttonOneId) && playerSymbolConnections[buttonOneId] == buttonTwoId;
-
-            // check the other way
-            bool buttonTwoFirstValid = playerSymbolConnections.ContainsKey(buttonTwoId) && playerSymbolConnections[buttonTwoId] == buttonOneId;
-
-            if (!buttonOneFirstValid && !buttonTwoFirstValid)
+            int firstButton = connSet.Key;
+            foreach (int secondButton in connSet.Value)
             {
-                Debug.Log("Missing connection between " + buttonOneId + " and " + buttonTwoId);
-                ClearSymbol();
-                return false;
+                // check if this belongs in the expected symbols
+                bool firstButtonCheck = expectedSymbolMap.ContainsKey(firstButton) && expectedSymbolMap[firstButton] == secondButton;
+                bool secondButtonCheck = expectedSymbolMap.ContainsKey(secondButton) && expectedSymbolMap[secondButton] == firstButton;
+
+                if (!firstButtonCheck && !secondButtonCheck)
+                {
+                    Debug.Log("Did not need connection between :" + firstButton + " and " + secondButton);
+                    ClearSymbol();
+                    return false;
+                }
             }
         }
         return true;

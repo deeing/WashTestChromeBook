@@ -18,7 +18,7 @@ public class CaligraphyInput : MonoBehaviour
 
     private List<Vector2> markedPoints = new List<Vector2>();
     // connections between buttons IDs that were drawn
-    private Dictionary<int, int> buttonConnectionsById = new Dictionary<int, int>();
+    private Dictionary<int, HashSet<int>> buttonConnectionsById = new Dictionary<int, HashSet<int>>();
 
     // maps button ID to the buttons transform (makes it easier to draw)
     private Dictionary<int, RectTransform> buttonMap = null;
@@ -35,7 +35,7 @@ public class CaligraphyInput : MonoBehaviour
         lineRenderer.RemoveAllPositions();
         lineRenderer.ClearLines();
         markedPoints = new List<Vector2>();
-        buttonConnectionsById = new Dictionary<int, int>();
+        buttonConnectionsById = new Dictionary<int, HashSet<int>>();
     }
 
     private void RemoveUnmarkedPoints()
@@ -50,13 +50,30 @@ public class CaligraphyInput : MonoBehaviour
             return;
         }
 
+        Debug.Log("Adding marked point " + newPos);
+
         markedPoints.Add(newPos);
         lineRenderer.AddPosition(newPos);
         if (lastButtonId != 0)
         {
-            buttonConnectionsById.Add(lastButtonId, buttonId);
+            AddConnectionToSet(lastButtonId, buttonId);
         }
         lastButtonId = buttonId;
+    }
+
+    private void AddConnectionToSet(int lastId, int newId)
+    {
+        if (buttonConnectionsById.ContainsKey(lastId))
+        {
+            buttonConnectionsById[lastId].Add(newId);
+        }
+        else
+        {
+            HashSet<int> newSet = new HashSet<int>();
+            newSet.Add(newId);
+            // create new set
+            buttonConnectionsById.Add(lastId, newSet);
+        }
     }
 
     public void HandleHover(Lean.Touch.LeanFinger finger)
@@ -87,12 +104,23 @@ public class CaligraphyInput : MonoBehaviour
 
     public void HandleCompleteCaligraphy()
     {
-        foreach(KeyValuePair<int, int> connection in buttonConnectionsById)
+        foreach(KeyValuePair<int, HashSet<int>> connection in buttonConnectionsById)
         {
-            Debug.Log(connection.Key + "->" + connection.Value);
+            string set = "{";
+            foreach(int point in connection.Value)
+            {
+                set += point + ", ";
+            }
+            set += "}";
+            Debug.Log(connection.Key + "->" + set);
         }
 
         CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
+
+        foreach(CaligraphyButton button in buttons)
+        {
+            button.ResetButton();
+        }
     }
 
     public void ToggleDrawing(bool status)

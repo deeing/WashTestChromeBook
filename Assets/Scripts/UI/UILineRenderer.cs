@@ -45,7 +45,7 @@ public class UILineRenderer : MonoBehaviour
 
 		foreach (Vector2 pos in positions)
         {
-			if (exemptList.Contains(pos) && !renwedList.Contains(pos))
+			if (exemptList.Contains(pos))
             {
 				renwedList.Add(pos);
             }
@@ -57,7 +57,6 @@ public class UILineRenderer : MonoBehaviour
 	public void RenderLines()
     {
 		ClearLines();
-		Debug.Log("rendering:" + positions.Count);
 		if (positions.Count < 2)
         {
 			return;
