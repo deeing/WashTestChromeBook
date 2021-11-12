@@ -27,16 +27,16 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         playerSymbolConnections = null;
     }
 
-    public bool HasDoneCaligraphy(CaligraphyMove caligraphyMove)
+    public bool HasDoneCaligraphy(CaligraphySymbol symbol)
     {
         if (playerSymbolConnections == null)
         {
             return false;
         }
 
-        List<CaligraphyConnection> expectedSymbolConnections = caligraphyMove.symbol.symbolConnections;
+        List<CaligraphyConnection> expectedSymbolConnections = symbol.symbolConnections;
         Dictionary<int, int> expectedSymbolMap = new Dictionary<int, int>();
-        foreach(CaligraphyConnection expectedConn in expectedSymbolConnections)
+        foreach (CaligraphyConnection expectedConn in expectedSymbolConnections)
         {
             expectedSymbolMap.Add(expectedConn.buttonId1, expectedConn.buttonId2);
         }
@@ -90,6 +90,10 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
 
         return true;
+    }
+    public bool HasDoneCaligraphy(CaligraphyMove caligraphyMove)
+    {
+        return HasDoneCaligraphy(caligraphyMove.symbol);
     }
 
     public void ToggleCaligraphy(bool status)

@@ -14,7 +14,7 @@ public class CaligraphyInput : MonoBehaviour
     [SerializeField]
     private List<CaligraphyButton> buttons;
     
-    public bool isDrawing { get; private set; }  = false;
+    public bool userIsDrawing { get; private set; }  = false;
 
     private List<Vector2> markedPoints = new List<Vector2>();
     // connections between buttons IDs that were drawn
@@ -34,6 +34,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void ResetLines()
     {
+        lastButtonId = 0;
         lineRenderer.RemoveAllPositions();
         lineRenderer.ClearLines();
         markedPoints = new List<Vector2>();
@@ -51,8 +52,6 @@ public class CaligraphyInput : MonoBehaviour
         {
             return;
         }
-
-        Debug.Log("Adding marked point " + newPos);
 
         markedPoints.Add(newPos);
         lineRenderer.AddPosition(newPos);
@@ -80,7 +79,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void HandleHover(Lean.Touch.LeanFinger finger)
     {
-        if (isDrawing)
+        if (userIsDrawing)
         {
             RemoveUnmarkedPoints();
             lineRenderer.AddPosition(finger.ScreenPosition);
@@ -127,7 +126,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void ToggleDrawing(bool status)
     {
-        isDrawing = status;
+        userIsDrawing = status;
     }
 
     public void Toggle(bool status)

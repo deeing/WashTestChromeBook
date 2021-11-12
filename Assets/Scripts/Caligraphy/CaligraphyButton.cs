@@ -36,7 +36,7 @@ public class CaligraphyButton : MonoBehaviour
 
     public void MarkButton(Lean.Touch.LeanFinger finger)
     {
-        if (caligraphyInput.isDrawing)
+        if (caligraphyInput.userIsDrawing)
         {
             caligraphyInput.AddMarkedPoint(thisTransform.position, id);
             ToggleAltColor(true);
