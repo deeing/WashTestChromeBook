@@ -49,6 +49,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
             return false;
         }
 
+        // check for any invalid moves
         foreach (KeyValuePair<int, HashSet<int>> connSet in playerSymbolConnections)
         {
             int firstButton = connSet.Key;
@@ -66,6 +67,28 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
                 }
             }
         }
+
+        // check if all needed moves were met
+        foreach (CaligraphyConnection expectedConnection in expectedSymbolConnections)
+        {
+            int buttonOneId = expectedConnection.buttonId1;
+            int buttonTwoId = expectedConnection.buttonId2;
+
+            // check one direction  of the connection
+            bool buttonOneFirstValid = playerSymbolConnections.ContainsKey(buttonOneId) && playerSymbolConnections[buttonOneId].Contains(buttonTwoId);
+
+            // check the other way
+            bool buttonTwoFirstValid = playerSymbolConnections.ContainsKey(buttonTwoId) && playerSymbolConnections[buttonTwoId].Contains(buttonOneId);
+
+            if (!buttonOneFirstValid && !buttonTwoFirstValid)
+            {
+                Debug.Log("Missing connection between " + buttonOneId + " and " + buttonTwoId);
+                ClearSymbol();
+                return false;
+            }
+        }
+
+
         return true;
     }
 

@@ -21,16 +21,18 @@ public class CaligraphyInput : MonoBehaviour
     private Dictionary<int, HashSet<int>> buttonConnectionsById = new Dictionary<int, HashSet<int>>();
 
     // maps button ID to the buttons transform (makes it easier to draw)
-    private Dictionary<int, RectTransform> buttonMap = null;
+    public Dictionary<int, RectTransform> buttonMap { get; private set; } = null;
 
     private int lastButtonId = 0;
+    private TouchButton touchButton;
 
     private void Awake()
     {
         SetupButtonMap();
+        touchButton = GetComponent<TouchButton>();
     }
 
-    private void ResetLines()
+    public void ResetLines()
     {
         lineRenderer.RemoveAllPositions();
         lineRenderer.ClearLines();
@@ -38,7 +40,7 @@ public class CaligraphyInput : MonoBehaviour
         buttonConnectionsById = new Dictionary<int, HashSet<int>>();
     }
 
-    private void RemoveUnmarkedPoints()
+    public void RemoveUnmarkedPoints()
     {
         lineRenderer.RemoveAllExcept(markedPoints);
     }
@@ -136,7 +138,13 @@ public class CaligraphyInput : MonoBehaviour
     public void SetupGuideLines(CaligraphyMove caligraphyMove)
     {
         //ClearGuideLines();
-        List<CaligraphyConnection> connections = caligraphyMove.symbol.symbolConnections;
+        CaligraphySymbol symbol = caligraphyMove.symbol;
+        SetupGuideLines(symbol);
+    }
+
+    public void SetupGuideLines(CaligraphySymbol symbol)
+    {
+        List<CaligraphyConnection> connections = symbol.symbolConnections;
         foreach (CaligraphyConnection conn in connections)
         {
             DrawGuideLine(conn);
@@ -174,5 +182,19 @@ public class CaligraphyInput : MonoBehaviour
     private Vector2 GetCenter(RectTransform button)
     {
         return button.position;
+    }
+
+    public void ToggleInteractable(bool status)
+    {
+        touchButton.enabled = status;
+        ToggleButtonsInteractable(status);
+    }
+
+    public void ToggleButtonsInteractable(bool status)
+    {
+        foreach(CaligraphyButton button in buttons)
+        {
+            button.ToggleInteractable(status);
+        }
     }
 }

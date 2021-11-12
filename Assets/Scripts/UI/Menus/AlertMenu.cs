@@ -10,7 +10,7 @@ public class AlertMenu : MonoBehaviour
 
     private TopDropMenu topDrop;
 
-    private void Start()
+    private void Awake()
     {
         topDrop = GetComponent<TopDropMenu>();
     }

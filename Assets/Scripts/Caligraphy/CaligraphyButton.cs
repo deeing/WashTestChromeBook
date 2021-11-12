@@ -19,11 +19,13 @@ public class CaligraphyButton : MonoBehaviour
 
     private Transform thisTransform;
     private Color originalColor;
+    private TouchButton touchButton;
 
     private void Awake()
     {
         thisTransform = transform;
         originalColor = buttonImage.color;
+        touchButton = GetComponent<TouchButton>();
     }
 
     public void StartCaligraphy(Lean.Touch.LeanFinger finger)
@@ -55,5 +57,10 @@ public class CaligraphyButton : MonoBehaviour
     public void ResetButton()
     {
         ToggleAltColor(false);
+    }
+
+    public void ToggleInteractable(bool status)
+    {
+        touchButton.enabled = status;
     }
 }
