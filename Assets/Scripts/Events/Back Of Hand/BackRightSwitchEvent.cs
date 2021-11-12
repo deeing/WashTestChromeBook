@@ -9,11 +9,6 @@ public class BackRightSwitchEvent : SwitchEvent
         return PlayerEventType.BackOfHandRSwitch;
     }
 
-    public override float DoTouchInput()
-    {
-        return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
-    }
-
     public override void DoSwitch()
     {
         HandAnimations.instance.PlayAnimationStep("Back Right Switch", touchInputwithSensitivity);

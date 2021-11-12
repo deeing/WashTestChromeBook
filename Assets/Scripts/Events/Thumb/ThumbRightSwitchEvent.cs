@@ -9,11 +9,6 @@ public class ThumbRightSwitchEvent : SwitchEvent
         return PlayerEventType.ThumbRSwitch;
     }
 
-    public override float DoTouchInput()
-    {
-        return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
-    }
-
     public override void DoSwitch()
     {
         HandAnimations.instance.PlayAnimationStep("Thumb Right Switch", touchInputwithSensitivity);

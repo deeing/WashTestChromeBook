@@ -9,11 +9,6 @@ public class FingertipsLeftSwitchEvent : SwitchEvent
         return PlayerEventType.FingertipsLSwitch;
     }
 
-    public override float DoTouchInput()
-    {
-        return Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
-    }
-
     public override void DoSwitch()
     {
         HandAnimations.instance.PlayAnimationStep("Fingertips Left Switch", touchInputwithSensitivity);
