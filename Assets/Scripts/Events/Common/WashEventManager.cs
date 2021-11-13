@@ -117,7 +117,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         finishedEvents = true;
 
         float endTime = Time.time;
-        AddTimeRecording("Total Time", endTime - washEventsStartTime);
+        AddTimeRecording("Total Time:", (endTime - washEventsStartTime));
         string germReport = GermManager.instance.GetGermReport();
         MenuManager.instance.ShowEnd(GetAllTimeRecordings(), germReport);
     }

@@ -12,7 +12,6 @@ public abstract class SwitchEvent : PlayerEvent
     public override void SetupEvent()
     {
         base.SetupEvent();
-        CaligraphyInputManager.instance.ToggleCaligraphy(true);
     }
 
     public override void EndEvent()

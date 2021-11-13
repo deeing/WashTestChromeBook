@@ -36,7 +36,9 @@ public abstract class PlayerEvent : WashEvent
         impatienceWait = new WaitForSeconds(impatienceAnimDuration);
         if (caligraphyMoveList.Count > 0)
         {
+            CaligraphyInputManager.instance.ToggleCaligraphy(true);
             CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
+            CaligraphyInputManager.instance.ToggleInteractable(true);
         }
     }
 
@@ -84,6 +86,7 @@ public abstract class PlayerEvent : WashEvent
         if (CaligraphyInputManager.instance.HasDoneCaligraphy(nextMove))
         {
             CaligraphyInputManager.instance.ClearGuideLines();
+            CaligraphyInputManager.instance.ToggleInteractable(false);
             HandAnimations.instance.PlayAnimationStep(nextMove.animationName, nextMove.animationStart, nextMove.animationEnd, Time.deltaTime);
 
             // check if we have finished
@@ -94,9 +97,10 @@ public abstract class PlayerEvent : WashEvent
                 caligraphyMoveList.RemoveAt(0);
                 if (caligraphyMoveList.Count > 0)
                 {
+                    CaligraphyInputManager.instance.ToggleInteractable(true);
                     CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
                 } 
-            }
+            } 
         }
     }
 

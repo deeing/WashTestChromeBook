@@ -35,6 +35,7 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleCheckList(!status);
         MenuManager.instance.ToggleBuildPanel(!status);
         MenuManager.instance.ToggleSettings(!status);
+        CaligraphyInputManager.instance.ToggleCaligraphy(!status);
 
         if (status)
         {

@@ -40,7 +40,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
             endMenuText += record + "\n";
         }
 
-        endMenuText += germReport;
+        //endMenuText += germReport;
         return endMenuText;
     }
 

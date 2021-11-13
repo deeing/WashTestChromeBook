@@ -132,6 +132,8 @@ public class CaligraphyInput : MonoBehaviour
     public void Toggle(bool status)
     {
         gameObject.SetActive(status);
+        lineRenderer.gameObject.SetActive(status);
+        guideLineRenderer.gameObject.SetActive(status);
     }
 
     public void SetupGuideLines(CaligraphyMove caligraphyMove)

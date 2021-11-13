@@ -109,6 +109,11 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         caligraphyInput.Toggle(status);
     }
 
+    public void ToggleInteractable(bool status)
+    {
+        caligraphyInput.ToggleInteractable(status);
+    }
+
     public void SetupGuideLines(CaligraphyMove caligraphyMove)
     {
         caligraphyInput.SetupGuideLines(caligraphyMove);
