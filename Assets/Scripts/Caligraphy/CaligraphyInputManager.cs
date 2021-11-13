@@ -35,19 +35,27 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         }
 
         List<CaligraphyConnection> expectedSymbolConnections = symbol.symbolConnections;
-        Dictionary<int, int> expectedSymbolMap = new Dictionary<int, int>();
+        Dictionary<int, HashSet<int>> expectedSymbolMap = new Dictionary<int, HashSet<int>>();
         foreach (CaligraphyConnection expectedConn in expectedSymbolConnections)
         {
-            expectedSymbolMap.Add(expectedConn.buttonId1, expectedConn.buttonId2);
+            if (expectedSymbolMap.ContainsKey(expectedConn.buttonId1))
+            {
+                expectedSymbolMap[expectedConn.buttonId1].Add(expectedConn.buttonId2);
+            } else
+            {
+                HashSet<int> newSet = new HashSet<int>();
+                newSet.Add(expectedConn.buttonId2);
+                expectedSymbolMap.Add(expectedConn.buttonId1, newSet);
+            }
         }
 
         // different number of moves
-        if (playerSymbolConnections.Count < expectedSymbolConnections.Count)
+        /*if (playerSymbolConnections.Count < expectedSymbolConnections.Count)
         {
             Debug.Log("not the right number of connections! Was " + playerSymbolConnections.Count + " but expected " + expectedSymbolConnections.Count);
             ClearSymbol();
             return false;
-        }
+        }*/
 
         // check for any invalid moves
         foreach (KeyValuePair<int, HashSet<int>> connSet in playerSymbolConnections)
@@ -56,8 +64,8 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
             foreach (int secondButton in connSet.Value)
             {
                 // check if this belongs in the expected symbols
-                bool firstButtonCheck = expectedSymbolMap.ContainsKey(firstButton) && expectedSymbolMap[firstButton] == secondButton;
-                bool secondButtonCheck = expectedSymbolMap.ContainsKey(secondButton) && expectedSymbolMap[secondButton] == firstButton;
+                bool firstButtonCheck = expectedSymbolMap.ContainsKey(firstButton) && expectedSymbolMap[firstButton].Contains(secondButton);
+                bool secondButtonCheck = expectedSymbolMap.ContainsKey(secondButton) && expectedSymbolMap[secondButton].Contains(firstButton);
 
                 if (!firstButtonCheck && !secondButtonCheck)
                 {
