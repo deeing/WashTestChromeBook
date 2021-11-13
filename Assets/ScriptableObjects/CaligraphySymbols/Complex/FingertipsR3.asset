@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   symbolConnections:
   - buttonId1: 1
-    buttonId2: 8
+    buttonId2: 4
   - buttonId1: 4
     buttonId2: 7
   - buttonId1: 7

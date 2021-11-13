@@ -26,4 +26,6 @@ MonoBehaviour:
   - buttonId1: 4
     buttonId2: 7
   - buttonId1: 7
+    buttonId2: 5
+  - buttonId1: 5
     buttonId2: 3
