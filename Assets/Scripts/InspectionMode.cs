@@ -15,6 +15,7 @@ public class InspectionMode : MonoBehaviour
 
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
+    private bool wasCaligraphy = false;
 
     private void Awake()
     {
@@ -35,7 +36,11 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleCheckList(!status);
         MenuManager.instance.ToggleBuildPanel(!status);
         MenuManager.instance.ToggleSettings(!status);
-        CaligraphyInputManager.instance.ToggleCaligraphy(!status);
+
+        if (CaligraphyInputManager.instance.CurrentEventIsCaligraphy())
+        {
+            CaligraphyInputManager.instance.ToggleCaligraphy(!status);
+        }
 
         if (status)
         {

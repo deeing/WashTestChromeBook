@@ -123,4 +123,10 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
     {
         caligraphyInput.ClearGuideLines();
     }
+
+    public bool CurrentEventIsCaligraphy()
+    {
+        WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
+        return currEvent is SwitchEvent;
+    }
 }

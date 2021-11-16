@@ -194,4 +194,9 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
     {
         return prevWashEvent;
     }
+
+    public WashEvent GetCurrentEvent()
+    {
+        return currentWashEvent;
+    }
 }
