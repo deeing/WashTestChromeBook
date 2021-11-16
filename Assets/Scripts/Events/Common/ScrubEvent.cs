@@ -19,18 +19,19 @@ public abstract class ScrubEvent : PlayerEvent
     private Coroutine idleCoroutine;
     private bool isIdle = false;
     private GermType germType;
+    private bool isFinished = false;
 
     public override void SetupEvent()
     {
         base.SetupEvent();
         idleWait = new WaitForSeconds(idleTime);
         germType = GetGermType();
-        GermManager.instance.ShowGermBar(germType);
+        //GermManager.instance.ShowGermBar(germType);
     }
 
     public override bool CheckEndEvent()
     {
-        return !GermManager.instance.HasGermsOfType(germType);
+        return isFinished;
     }
 
     public abstract GermType GetGermType();
@@ -111,5 +112,10 @@ public abstract class ScrubEvent : PlayerEvent
         base.ChangeEvent();
         GermManager.instance.HideGermBar();
         ReturnToNeutral();
+    }
+
+    public void FinishEvent()
+    {
+        isFinished = true;
     }
 }
