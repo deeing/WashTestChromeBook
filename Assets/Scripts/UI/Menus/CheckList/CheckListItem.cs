@@ -13,6 +13,8 @@ public class CheckListItem : MonoBehaviour
     private Toggle checkListToggle;
 
     private WashEvent checkListEvent;
+    private WashEvent relativeSwitchEvent;
+    private int index;
 
     public void SetText(string text)
     {
@@ -26,12 +28,14 @@ public class CheckListItem : MonoBehaviour
 
     public void ChooseItem()
     {
-        WashEvent relativeSwitchEvent = WashEventManager.instance.GetSwitchEvent(checkListEvent);
         WashEventManager.instance.ChangeEvent(relativeSwitchEvent);
+        MenuManager.instance.ChecklistHightlightItem(index);
     }
 
-    public void RegisterEvent(PlayerEvent playerEvent)
+    public void RegisterEvent(PlayerEvent playerEvent, int index)
     {
+        this.index = index;
         checkListEvent = playerEvent;
+        relativeSwitchEvent = WashEventManager.instance.GetSwitchEvent(checkListEvent);
     }
 }

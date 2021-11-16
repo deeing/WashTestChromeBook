@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Reflection;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace Wash.Utilities
 {
@@ -111,6 +112,15 @@ namespace Wash.Utilities
             {
                 GameObject.Destroy(child.gameObject);
             }
+        }
+        #endregion
+
+        #region Image
+        public static void SetAlpha(this Image image, float alpha)
+        {
+            Color newColor = image.color;
+            newColor.a = alpha;
+            image.color = newColor;
         }
         #endregion
     }

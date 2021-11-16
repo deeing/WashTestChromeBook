@@ -117,6 +117,11 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         StartCoroutine(NextEvent(washEvent));
     }
 
+    public int GetEventIndex(WashEvent washEvent)
+    {
+        return washEvents.IndexOf(washEvent);
+    }
+
     public WashEvent GetSwitchEvent(WashEvent scrubEvent)
     {
         return washEvents[washEvents.IndexOf(scrubEvent) - 1];

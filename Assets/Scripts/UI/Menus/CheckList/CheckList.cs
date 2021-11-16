@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Wash.Utilities;
 
 public class CheckList : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CheckList : MonoBehaviour
 
     private void Start()
     {
+        int checkListIndex = 0;
         foreach (Transform washEvent in eventsContainer)
         {
             PlayerEvent playerEvent = washEvent.GetComponent<PlayerEvent>();
@@ -32,8 +34,8 @@ public class CheckList : MonoBehaviour
                 GameObject checklistItemObj = Instantiate(checkListItemPrefab, checkListItemContainer);
                 CheckListItem checkListItem = checklistItemObj.GetComponent<CheckListItem>();
                 checkListItem.SetText("Wash " + playerEvent.GetEventName());
-                checkListItem.RegisterEvent(playerEvent);
-
+                checkListItem.RegisterEvent(playerEvent, checkListIndex);
+                checkListIndex++;
                 checkList.Add(checkListItem);
             }
         }
@@ -55,6 +57,8 @@ public class CheckList : MonoBehaviour
         }
     }
 
+
+
     public void ScrollToItem(int checkListItemIndex)
     {
         float normalizedPosition = 1 - ((1f / checkList.Count) * (checkListItemIndex+ 1));
@@ -64,13 +68,32 @@ public class CheckList : MonoBehaviour
 
     public void HighlightItem(int index)
     {
+        Debug.Log("Highligting " + index);
         CheckListItem currentItem = checkList[index];
         currentItem.GetComponent<Image>().DOFade(255, 1f);
+    }
+
+    public void ChooseItem(int index)
+    {
+        UnHighlightItem(currentCheckListItem);
+        currentCheckListItem = index;
+        HighlightItem(index);
+        ScrollToItem(index);
+    }
+
+    public void UnHighlightItems()
+    {
+        for (int i=0; i < checkList.Count; i++)
+        {
+            UnHighlightItem(i);
+        }
     }
 
     public void UnHighlightItem(int index)
     {
         CheckListItem currentItem = checkList[index];
-        currentItem.GetComponent<Image>().DOFade(0,0f);
+        currentItem.GetComponent<Image>().SetAlpha(0f);
+        currentItem.GetComponent<Image>().DOKill();
     }
+
 }

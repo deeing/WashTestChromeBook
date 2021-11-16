@@ -68,4 +68,9 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     {
         checkList.CheckOffItem();
     }
+
+    public void ChecklistHightlightItem(int itemIndex)
+    {
+        checkList.ChooseItem(itemIndex);
+    }
 }
