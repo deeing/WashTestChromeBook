@@ -9,4 +9,5 @@ public abstract class WashEvent : MonoBehaviour
     public abstract bool CheckEndEvent();
 
     public abstract void EndEvent();
+    public abstract void ChangeEvent();
 }

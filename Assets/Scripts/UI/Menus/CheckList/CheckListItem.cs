@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class CheckListItem : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CheckListItem : MonoBehaviour
     private TMP_Text checkListText;
     [SerializeField]
     private Toggle checkListToggle;
+
+    private WashEvent checkListEvent;
 
     public void SetText(string text)
     {
@@ -19,5 +22,16 @@ public class CheckListItem : MonoBehaviour
     public void SetToggle(bool status)
     {
         checkListToggle.isOn = status;
+    }
+
+    public void ChooseItem()
+    {
+        WashEvent relativeSwitchEvent = WashEventManager.instance.GetSwitchEvent(checkListEvent);
+        WashEventManager.instance.ChangeEvent(relativeSwitchEvent);
+    }
+
+    public void RegisterEvent(PlayerEvent playerEvent)
+    {
+        checkListEvent = playerEvent;
     }
 }

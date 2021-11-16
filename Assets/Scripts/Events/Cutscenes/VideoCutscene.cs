@@ -10,6 +10,11 @@ public class VideoCutscene : CutsceneEvent
 
     private VideoManager videoManager;
 
+    public override void ChangeEvent()
+    {
+        videoManager.HideVideoCanvas(1f);
+    }
+
     public override bool CheckEndEvent()
     {
         return videoManager.isFinished;

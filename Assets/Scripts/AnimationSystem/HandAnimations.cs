@@ -39,6 +39,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         crossFadeTime = 0f;
         tweenCounter = 0;
         isTweening = false;
+        crossFadeAnimation = "";
     }
 
     public void Stop()

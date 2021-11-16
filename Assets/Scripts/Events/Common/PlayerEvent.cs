@@ -34,12 +34,6 @@ public abstract class PlayerEvent : WashEvent
     {
         // make it so not all of the children need an empty function
         impatienceWait = new WaitForSeconds(impatienceAnimDuration);
-        if (caligraphyMoveList.Count > 0)
-        {
-            CaligraphyInputManager.instance.ToggleCaligraphy(true);
-            CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
-            CaligraphyInputManager.instance.ToggleInteractable(true);
-        }
     }
 
     public override void StartEvent()
@@ -52,6 +46,16 @@ public abstract class PlayerEvent : WashEvent
         if (shouldTimeEvent)
         {
             eventStart = Time.time;
+        }
+    }
+
+
+    // handles when changing an event without "ending"
+    public override void ChangeEvent()
+    {
+        if (tutorialObject)
+        {
+            tutorialObject.SetActive(false);
         }
     }
 
@@ -75,39 +79,7 @@ public abstract class PlayerEvent : WashEvent
         }
     }
 
-    public override void DoEvent()
-    {
-        if (WashEventManager.instance.isInspectionMode)
-        {
-            return;
-        }
 
-        CaligraphyMove nextMove = caligraphyMoveList[0];
-        if (CaligraphyInputManager.instance.HasDoneCaligraphy(nextMove))
-        {
-            CaligraphyInputManager.instance.ClearGuideLines();
-            CaligraphyInputManager.instance.ToggleInteractable(false);
-            HandAnimations.instance.PlayAnimationStep(nextMove.animationName, nextMove.animationStart, nextMove.animationEnd, Time.deltaTime);
-
-            // check if we have finished
-            if (HandAnimations.instance.HasAnimationReachedTime(nextMove.animationStart, nextMove.animationEnd))
-            {
-                CaligraphyInputManager.instance.ClearSymbol();
-                HandAnimations.instance.Reset();
-                caligraphyMoveList.RemoveAt(0);
-                if (caligraphyMoveList.Count > 0)
-                {
-                    CaligraphyInputManager.instance.ToggleInteractable(true);
-                    CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
-                } 
-            } 
-        }
-    }
-
-    public override bool CheckEndEvent()
-    {
-        return caligraphyMoveList.Count <= 0;
-    }
 
     public abstract PlayerEventType GetEventType();
 

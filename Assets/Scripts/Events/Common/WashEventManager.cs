@@ -82,7 +82,8 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
             // has a next event to go to
             if (currEventIndex + 1 < washEvents.Count)
             {
-                StartCoroutine(NextEvent());
+                WashEvent nextEvent = washEvents[currEventIndex + 1];
+                ChangeEvent(nextEvent);
             }
             else
             {
@@ -92,23 +93,33 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         }
     }
 
-    private IEnumerator NextEvent()
+    private IEnumerator NextEvent(WashEvent nextEvent)
     {
         // end the old
         prevWashEvent = currentWashEvent;
-        currentWashEvent.EndEvent();
+        currentWashEvent.ChangeEvent();
         isTransitioning = true;
 
         // transition to the new
         HandAnimations.instance.Reset();
-        currEventIndex++;
-        currentWashEvent = washEvents[currEventIndex];
+        currentWashEvent = nextEvent;
+        currEventIndex = washEvents.IndexOf(currentWashEvent);
         currentWashEvent.SetupEvent();
 
         yield return waitBetweenEvents;
 
         currentWashEvent.StartEvent();
         isTransitioning = false;
+    }
+
+    public void ChangeEvent(WashEvent washEvent)
+    {
+        StartCoroutine(NextEvent(washEvent));
+    }
+
+    public WashEvent GetSwitchEvent(WashEvent scrubEvent)
+    {
+        return washEvents[washEvents.IndexOf(scrubEvent) - 1];
     }
 
     private void EndScene()

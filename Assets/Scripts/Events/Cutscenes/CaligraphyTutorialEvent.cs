@@ -75,12 +75,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
 
     public override void EndEvent()
     {
-        handExample.gameObject.SetActive(false);
-        caligraphyInput.ClearGuideLines();
-        caligraphyInput.ResetLines();
-        KillHandMove();
-        //CaligraphyInputManager.instance.ClearSymbol();
-        //caligraphyInput.ToggleInteractable(true);
+        ChangeEvent();
         MenuManager.instance.ShowAlert("Perfect! That's how you play! Now keep going!", 2f);
     }
 
@@ -156,5 +151,13 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private void FinishTutorial()
     {
         finishedTutorial = true;
+    }
+
+    public override void ChangeEvent()
+    {
+        handExample.gameObject.SetActive(false);
+        caligraphyInput.ClearGuideLines();
+        caligraphyInput.ResetLines();
+        KillHandMove();
     }
 }

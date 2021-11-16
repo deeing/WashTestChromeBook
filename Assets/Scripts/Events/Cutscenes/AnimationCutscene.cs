@@ -12,6 +12,10 @@ public class AnimationCutscene : CutsceneEvent
     [SerializeField]
     private string cameraAnimationName;
 
+    public override void ChangeEvent()
+    {
+    }
+
     public override bool CheckEndEvent()
     {
         //return !HandAnimations.instance.IsPlayingAnimation(animationName);

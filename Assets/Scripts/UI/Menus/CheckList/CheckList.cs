@@ -32,6 +32,7 @@ public class CheckList : MonoBehaviour
                 GameObject checklistItemObj = Instantiate(checkListItemPrefab, checkListItemContainer);
                 CheckListItem checkListItem = checklistItemObj.GetComponent<CheckListItem>();
                 checkListItem.SetText("Wash " + playerEvent.GetEventName());
+                checkListItem.RegisterEvent(playerEvent);
 
                 checkList.Add(checkListItem);
             }

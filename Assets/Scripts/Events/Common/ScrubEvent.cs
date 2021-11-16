@@ -105,4 +105,11 @@ public abstract class ScrubEvent : PlayerEvent
         GermManager.instance.HideGermBar();
         ReturnToNeutral();
     }
+
+    public override void ChangeEvent()
+    {
+        base.ChangeEvent();
+        GermManager.instance.HideGermBar();
+        ReturnToNeutral();
+    }
 }
