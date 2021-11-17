@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         {
             return;
         }
+        playerSymbolConnections = new Dictionary<int, HashSet<int>>();
     }
 
     public void SubmitCaligraphy(Dictionary<int, HashSet<int>> buttonConnectionsById)
@@ -24,40 +26,61 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
     public void ClearSymbol()
     {
+        Debug.Log("Clearing");
         playerSymbolConnections = null;
     }
 
-    public bool HasDoneCaligraphy(CaligraphySymbol symbol)
+    public Dictionary<int, HashSet<int>> GenerateExpectedSymbolMap(List<CaligraphyConnection> expectedSymbolConnections)
     {
-        if (playerSymbolConnections == null)
-        {
-            return false;
-        }
-
-        List<CaligraphyConnection> expectedSymbolConnections = symbol.symbolConnections;
         Dictionary<int, HashSet<int>> expectedSymbolMap = new Dictionary<int, HashSet<int>>();
         foreach (CaligraphyConnection expectedConn in expectedSymbolConnections)
         {
             if (expectedSymbolMap.ContainsKey(expectedConn.buttonId1))
             {
                 expectedSymbolMap[expectedConn.buttonId1].Add(expectedConn.buttonId2);
-            } else
+            }
+            else
             {
                 HashSet<int> newSet = new HashSet<int>();
                 newSet.Add(expectedConn.buttonId2);
                 expectedSymbolMap.Add(expectedConn.buttonId1, newSet);
             }
         }
+        return expectedSymbolMap;
+    }
 
-        // different number of moves
-        /*if (playerSymbolConnections.Count < expectedSymbolConnections.Count)
+    public int GetNumValidConnections(CaligraphySymbol symbol)
+    {
+        if (playerSymbolConnections == null)
         {
-            Debug.Log("not the right number of connections! Was " + playerSymbolConnections.Count + " but expected " + expectedSymbolConnections.Count);
-            ClearSymbol();
-            return false;
-        }*/
+            return 0;
+        }
+        HashSet<(int, int)> uniqueConnections = new HashSet<(int, int)>();
 
-        // check for any invalid moves
+        Dictionary<int, HashSet<int>> expectedSymbolMap = GenerateExpectedSymbolMap(symbol.symbolConnections);
+        foreach (KeyValuePair<int, HashSet<int>> connSet in playerSymbolConnections)
+        {
+            int firstButton = connSet.Key;
+            foreach (int secondButton in connSet.Value)
+            {
+                // check if this belongs in the expected symbols
+                bool firstButtonCheck = expectedSymbolMap.ContainsKey(firstButton) && expectedSymbolMap[firstButton].Contains(secondButton);
+                bool secondButtonCheck = expectedSymbolMap.ContainsKey(secondButton) && expectedSymbolMap[secondButton].Contains(firstButton);
+
+                if (firstButtonCheck && !uniqueConnections.Contains((firstButton, secondButton)) && !uniqueConnections.Contains((secondButton, firstButton))) {
+                    uniqueConnections.Add((firstButton, secondButton));
+                } else if (secondButtonCheck && !uniqueConnections.Contains((firstButton, secondButton)) && !uniqueConnections.Contains((secondButton, firstButton)))
+                {
+                    uniqueConnections.Add((secondButton, firstButton));
+                }
+            }
+        }
+
+        return uniqueConnections.Count;
+    }
+
+    public bool HasOnlyValidMoves(CaligraphySymbol symbol, Dictionary<int, HashSet<int>> expectedSymbolMap)
+    {
         foreach (KeyValuePair<int, HashSet<int>> connSet in playerSymbolConnections)
         {
             int firstButton = connSet.Key;
@@ -69,15 +92,23 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
                 if (!firstButtonCheck && !secondButtonCheck)
                 {
-                    Debug.Log("Did not need connection between :" + firstButton + " and " + secondButton);
-                    ClearSymbol();
+                    //Debug.Log("Did not need connection between :" + firstButton + " and " + secondButton);
                     return false;
                 }
             }
         }
+        return true;
+    }
 
-        // check if all needed moves were met
-        foreach (CaligraphyConnection expectedConnection in expectedSymbolConnections)
+    public bool HasOnlyValidMoves(CaligraphySymbol symbol)
+    {
+        Dictionary<int, HashSet<int>> expectedSymbolMap = GenerateExpectedSymbolMap(symbol.symbolConnections);
+        return HasOnlyValidMoves(symbol, expectedSymbolMap);
+    }
+
+    public bool HasAllNeededMoves(CaligraphySymbol symbol)
+    {
+        foreach (CaligraphyConnection expectedConnection in symbol.symbolConnections)
         {
             int buttonOneId = expectedConnection.buttonId1;
             int buttonTwoId = expectedConnection.buttonId2;
@@ -90,10 +121,36 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
             if (!buttonOneFirstValid && !buttonTwoFirstValid)
             {
-                Debug.Log("Missing connection between " + buttonOneId + " and " + buttonTwoId);
-                ClearSymbol();
+                //Debug.Log("Missing connection between " + buttonOneId + " and " + buttonTwoId);
+                //ClearSymbol();
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public bool HasDoneCaligraphy(CaligraphySymbol symbol)
+    {
+        if (playerSymbolConnections == null)
+        {
+            return false;
+        }
+
+        Dictionary<int, HashSet<int>> expectedSymbolMap = GenerateExpectedSymbolMap(symbol.symbolConnections);
+
+        // check for any invalid moves
+        if (!HasOnlyValidMoves(symbol, expectedSymbolMap))
+        {
+            //ClearSymbol();
+            return false;
+        }
+
+        // check if all needed moves were met
+        if(!HasAllNeededMoves(symbol))
+        {
+            //ClearSymbol();
+            return false;
         }
 
 

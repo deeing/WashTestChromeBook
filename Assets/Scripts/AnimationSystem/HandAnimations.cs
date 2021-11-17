@@ -139,17 +139,12 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.Play(animationName, 0, animTime);
     }
 
-    public void PlayAnimationStep(string animationName, float animStart, float animEnd, float animationIncrease)
+    public void PlayAnimationStep(string animationName, float animEnd, float animationIncrease)
     {
         anim.speed = 0;
         animationTime += animationIncrease;
-        float normalizedTime = animStart + animationTime;
-        //normalizedTime.ClampUpper(animEnd);
-
-        if (normalizedTime < animEnd)
-        {
-            anim.Play(animationName, 0, normalizedTime);
-        }
+        animationTime.ClampUpper(animEnd);
+        anim.Play(animationName, 0, animationTime);
     }
 
     public bool HasAnimationReachedTime(float animStart, float animEnd)

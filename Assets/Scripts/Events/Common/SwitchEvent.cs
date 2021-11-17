@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class SwitchEvent : PlayerEvent
@@ -6,9 +7,14 @@ public abstract class SwitchEvent : PlayerEvent
 
     public float touchInputwithSensitivity { get; private set; } = 0f;
 
-    int currentMoveIndex = 0;
+    public CaligraphyMove caligraphyMove;
 
-    bool switchToScrub = false;
+    private int currentMoveIndex = 0;
+    private int numConnectionsMade = 0;
+    private float animationStep = 0f;
+    private float endFrame = 0f;
+
+    private bool switchToScrub = false;
 
     public override void SetupEvent()
     {
@@ -16,12 +22,11 @@ public abstract class SwitchEvent : PlayerEvent
         HandAnimations.instance.Reset();
         switchToScrub = false;
         currentMoveIndex = 0;
-        if (caligraphyMoveList.Count > 0)
-        {
-            CaligraphyInputManager.instance.ToggleCaligraphy(true);
-            CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[0]);
-            CaligraphyInputManager.instance.ToggleInteractable(true);
-        }
+        CaligraphyInputManager.instance.ToggleCaligraphy(true);
+        CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+        CaligraphyInputManager.instance.ToggleInteractable(true);
+
+        animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
     }
 
     public override void DoEvent()
@@ -30,40 +35,36 @@ public abstract class SwitchEvent : PlayerEvent
         {
             return;
         }
-
-        CaligraphyMove nextMove = caligraphyMoveList[currentMoveIndex];
-        if (CaligraphyInputManager.instance.HasDoneCaligraphy(nextMove))
+        int newNumConnections = CaligraphyInputManager.instance.GetNumValidConnections(caligraphyMove.symbol);
+        if (newNumConnections > numConnectionsMade)
         {
-            CaligraphyInputManager.instance.ClearGuideLines();
-            CaligraphyInputManager.instance.ToggleInteractable(false);
-            HandAnimations.instance.PlayAnimationStep(nextMove.animationName, nextMove.animationStart, nextMove.animationEnd, Time.deltaTime);
-
-            // check if we have finished
-            if (HandAnimations.instance.HasAnimationReachedTime(nextMove.animationStart, nextMove.animationEnd))
-            {
-                CaligraphyInputManager.instance.ClearSymbol();
-                HandAnimations.instance.Reset();
-                currentMoveIndex++;
-                if (currentMoveIndex < caligraphyMoveList.Count)
-                {
-                    CaligraphyInputManager.instance.ToggleInteractable(true);
-                    CaligraphyInputManager.instance.SetupGuideLines(caligraphyMoveList[currentMoveIndex]);
-                } else
-                {
-                    switchToScrub = true;
-                }
-            }
+            numConnectionsMade = newNumConnections;
+            //float startOfKey = caligraphyMove.animationStart + (animationStep * numConnectionsMade - 1);
+            endFrame = caligraphyMove.animationStart + (animationStep * numConnectionsMade);
+        } 
+        else if (newNumConnections == 0)
+        {
+            numConnectionsMade = 0;
+            HandAnimations.instance.Reset();
+            NeutralIdle();
+        }
+        else if (newNumConnections == numConnectionsMade)
+        {
+            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
         }
     }
 
     public override void EndEvent()
     {
         base.EndEvent();
+        CaligraphyInputManager.instance.ClearGuideLines();
+        CaligraphyInputManager.instance.ToggleInteractable(false);
         CaligraphyInputManager.instance.ToggleCaligraphy(false);
+        switchToScrub = true;
     }
     public override bool CheckEndEvent()
     {
-        return switchToScrub;
+        return CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove);
     }
 
     public override void ChangeEvent()
@@ -77,7 +78,7 @@ public abstract class SwitchEvent : PlayerEvent
 
         if (!switchToScrub)
         {
-            NeutralIdle();
+            //NeutralIdle();
         }
     }
 
@@ -89,11 +90,19 @@ public abstract class SwitchEvent : PlayerEvent
 
     private void NeutralIdle()
     {
-        HandAnimations.instance.TransitionPlay("Idle", 1f, .2f);
+        //HandAnimations.instance.TransitionPlay("Idle", .05f, .05f);
+        HandAnimations.instance.CrossFade("Idle", .05f);
     }
 
     protected override string GetImpatienceAnimationName()
     {
         return "Neutral Impatience";
+    }
+
+    public override void ReturnFromInspect()
+    {
+        CaligraphyInputManager.instance.ClearGuideLines();
+        CaligraphyInputManager.instance.ClearSymbol();
+        SetupEvent();
     }
 }

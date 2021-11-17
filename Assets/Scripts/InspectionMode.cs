@@ -15,7 +15,6 @@ public class InspectionMode : MonoBehaviour
 
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
-    private bool wasCaligraphy = false;
 
     private void Awake()
     {
@@ -36,6 +35,7 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleCheckList(!status);
         MenuManager.instance.ToggleBuildPanel(!status);
         MenuManager.instance.ToggleSettings(!status);
+        HandAnimations.instance.Reset();
 
         if (CaligraphyInputManager.instance.CurrentEventIsCaligraphy())
         {
@@ -50,6 +50,7 @@ public class InspectionMode : MonoBehaviour
             {
                 currentTutorial.SetActive(false);
             }
+            HandAnimations.instance.TransitionPlay("Idle" );
         }
         else
         {
@@ -57,6 +58,11 @@ public class InspectionMode : MonoBehaviour
             if (currentTutorial)
             {
                 currentTutorial.SetActive(true);
+            }
+            WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
+            if (currEvent is PlayerEvent)
+            {
+                ((PlayerEvent)currEvent).ReturnFromInspect();
             }
         }
     }

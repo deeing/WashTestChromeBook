@@ -16,8 +16,6 @@ public abstract class PlayerEvent : WashEvent
     [SerializeField]
     [Tooltip("Whether or not we should have this as a checklist item")]
     private bool shouldBeChecklistEvent = false;
-    [SerializeField]
-    protected List<CaligraphyMove> caligraphyMoveList;
 
     // How long in seconcds it takes for player to become impatient
     protected float impatienceThreshold = 8f;
@@ -126,4 +124,6 @@ public abstract class PlayerEvent : WashEvent
     {
         return GetImpatienceAnimationName() != null;
     }
+
+    public abstract void ReturnFromInspect();
 }

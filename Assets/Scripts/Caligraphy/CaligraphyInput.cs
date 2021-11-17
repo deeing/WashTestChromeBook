@@ -58,8 +58,10 @@ public class CaligraphyInput : MonoBehaviour
         if (lastButtonId != 0)
         {
             AddConnectionToSet(lastButtonId, buttonId);
+            CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
         }
         lastButtonId = buttonId;
+
     }
 
     private void AddConnectionToSet(int lastId, int newId)
@@ -98,9 +100,10 @@ public class CaligraphyInput : MonoBehaviour
 
     public void Release(Lean.Touch.LeanFinger finger)
     {
-        HandleCompleteCaligraphy();
+        //HandleCompleteCaligraphy();
         ResetLines();
         ToggleDrawing(false);
+        CaligraphyInputManager.instance.ClearSymbol();
     }
 
     public void HandleCompleteCaligraphy()

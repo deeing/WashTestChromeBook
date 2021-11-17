@@ -118,4 +118,12 @@ public abstract class ScrubEvent : PlayerEvent
     {
         isFinished = true;
     }
+
+    public override void ReturnFromInspect()
+    {
+        SwitchEvent relativeSwitch = (SwitchEvent)WashEventManager.instance.GetSwitchEvent(this);
+        string switchAnimName = relativeSwitch.caligraphyMove.animationName;
+        Debug.Log("Playing animiation: " + switchAnimName);
+        HandAnimations.instance.PlayAnimation(switchAnimName, 1f);
+    }
 }
