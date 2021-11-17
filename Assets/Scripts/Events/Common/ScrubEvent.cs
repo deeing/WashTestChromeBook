@@ -20,12 +20,17 @@ public abstract class ScrubEvent : PlayerEvent
     private bool isIdle = false;
     private GermType germType;
     private bool isFinished = false;
+    private string switchAnimName;
+    private bool isReturningFromInspect = false;
 
     public override void SetupEvent()
     {
         base.SetupEvent();
         idleWait = new WaitForSeconds(idleTime);
         germType = GetGermType();
+
+        SwitchEvent relativeSwitch = (SwitchEvent)WashEventManager.instance.GetSwitchEvent(this);
+        switchAnimName = relativeSwitch.caligraphyMove.animationName;
         //GermManager.instance.ShowGermBar(germType);
     }
 
@@ -57,6 +62,23 @@ public abstract class ScrubEvent : PlayerEvent
 
     public override void DoEvent()
     {
+        if (WashEventManager.instance.isInspectionMode)
+        {
+            return;
+        }
+
+        if (isReturningFromInspect)
+        {
+            HandAnimations.instance.PlayAnimationStep(switchAnimName, Time.deltaTime);
+
+            if (HandAnimations.instance.IsAnimationFinished())
+            {
+                HandAnimations.instance.Reset();
+                isReturningFromInspect = false;
+            }
+            return;
+        }
+
         touchInputWithSensitivity = HandleInput();
         EffectsManager.instance.PlaySuds(GetEventType());
 
@@ -121,9 +143,6 @@ public abstract class ScrubEvent : PlayerEvent
 
     public override void ReturnFromInspect()
     {
-        SwitchEvent relativeSwitch = (SwitchEvent)WashEventManager.instance.GetSwitchEvent(this);
-        string switchAnimName = relativeSwitch.caligraphyMove.animationName;
-        Debug.Log("Playing animiation: " + switchAnimName);
-        HandAnimations.instance.PlayAnimation(switchAnimName, 1f);
+        isReturningFromInspect = true;
     }
 }

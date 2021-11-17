@@ -12,18 +12,34 @@ public class InspectionMode : MonoBehaviour
     private GameObject cameraButtons;
     [SerializeField]
     private Animator cinemachine;
+    [SerializeField]
+    private float coolDownRate = .5f;
 
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
+    private WaitForSeconds coolDownWait;
+    private bool isCoolingDown = false;
 
     private void Awake()
     {
         cinemachine.Play("Intro Cinematic");
+        coolDownWait = new WaitForSeconds(coolDownRate);
     }
 
     public void ToggleInspectionMode()
     {
-        SetInspectionMode(!isInspectionMode);
+        if (!isCoolingDown)
+        {
+            SetInspectionMode(!isInspectionMode);
+            isCoolingDown = true;
+            StartCoroutine(ResetCooldown());
+        }
+    }
+
+    private IEnumerator ResetCooldown()
+    {
+        yield return coolDownWait;
+        isCoolingDown = false;
     }
 
     public void SetInspectionMode(bool status)
@@ -50,7 +66,8 @@ public class InspectionMode : MonoBehaviour
             {
                 currentTutorial.SetActive(false);
             }
-            HandAnimations.instance.TransitionPlay("Idle" );
+            //HandAnimations.instance.TransitionPlay("Idle");
+            HandAnimations.instance.CrossFade("Idle", .2f);
         }
         else
         {

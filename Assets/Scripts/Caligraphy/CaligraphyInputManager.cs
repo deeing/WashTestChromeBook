@@ -26,7 +26,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
     public void ClearSymbol()
     {
-        Debug.Log("Clearing");
+        //  Debug.Log("Clearing");
         playerSymbolConnections = null;
     }
 
