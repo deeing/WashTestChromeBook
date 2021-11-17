@@ -204,6 +204,11 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         return animationTime >= 1f;
     }
 
+    public bool HasAnimationReached(float time)
+    {
+        return animationTime >= time;
+    }
+
     public bool IsCrossFadeFinished()
     {
         return crossFadeTime >= crossFadeLimit;

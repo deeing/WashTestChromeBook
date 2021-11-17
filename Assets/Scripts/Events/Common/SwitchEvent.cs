@@ -57,14 +57,14 @@ public abstract class SwitchEvent : PlayerEvent
     public override void EndEvent()
     {
         base.EndEvent();
-        CaligraphyInputManager.instance.ClearGuideLines();
-        CaligraphyInputManager.instance.ToggleInteractable(false);
-        CaligraphyInputManager.instance.ToggleCaligraphy(false);
-        switchToScrub = true;
+        //CaligraphyInputManager.instance.ClearGuideLines();
+        //CaligraphyInputManager.instance.ToggleInteractable(false);
+        //CaligraphyInputManager.instance.ToggleCaligraphy(false);
     }
+
     public override bool CheckEndEvent()
     {
-        return CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove);
+        return CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && HandAnimations.instance.HasAnimationReached(endFrame);
     }
 
     public override void ChangeEvent()
@@ -75,11 +75,6 @@ public abstract class SwitchEvent : PlayerEvent
         CaligraphyInputManager.instance.ToggleInteractable(false);
         HandAnimations.instance.Reset();
         CaligraphyInputManager.instance.ToggleCaligraphy(false);
-
-        if (!switchToScrub)
-        {
-            //NeutralIdle();
-        }
     }
 
     public abstract void DoSwitch();
