@@ -34,6 +34,23 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private bool endOfTutorialPause = false;
     private float endOfTutorialPauseTime = 2f;
 
+
+    public override void SetupEvent()
+    {
+        caligraphyInput.SetupGuideLines(tutorialSymbol);
+        originalHandPosition = handExample.position;
+        timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
+        //caligraphyInput.ToggleInteractable(false);
+        ToggleAfterTutorialUI(false);
+    }
+
+    private void ToggleAfterTutorialUI(bool status)
+    {
+        MenuManager.instance.ToggleCheckList(status);
+        MenuManager.instance.ToggleSettings(status);
+        MenuManager.instance.ToggleInspectButton(status);
+    }
+
     public override bool CheckEndEvent()
     {
         return finishedTutorial;
@@ -65,6 +82,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
         } else
         {
             userWasDrawing = false;
+            CaligraphyInputManager.instance.ClearSymbol();
 
             if (startTutorialDrawing)
             {
@@ -102,13 +120,6 @@ public class CaligraphyTutorialEvent : CutsceneEvent
         ChangeEvent();
     }
 
-    public override void SetupEvent()
-    {
-        caligraphyInput.SetupGuideLines(tutorialSymbol);
-        originalHandPosition = handExample.position;
-        timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
-        //caligraphyInput.ToggleInteractable(false);
-    }
 
     private void SetupHand()
     {
@@ -192,5 +203,6 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     {
         CaligraphyInputManager.instance.HandleCompleteCaligraphy();
         KillHandMove();
+        ToggleAfterTutorialUI(true);
     }
 }

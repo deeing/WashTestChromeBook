@@ -15,6 +15,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private GameObject buildPanel;
     [SerializeField]
     private GameObject settingsButton;
+    [SerializeField]
+    private GameObject inspectButton;
 
     protected override void Awake()
     {
@@ -57,6 +59,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ToggleCheckList(bool status)
     {
         checkList.gameObject.SetActive(status);
+    }
+    public void ToggleInspectButton(bool status)
+    {
+        inspectButton.SetActive(status);
     }
 
     public void ShowAlert(string message, float duration)
