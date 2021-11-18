@@ -14,16 +14,23 @@ public class InspectionMode : MonoBehaviour
     private Animator cinemachine;
     [SerializeField]
     private float coolDownRate = .5f;
+    [SerializeField]
+    [Tooltip("How often the inspection mode animation should switch from palm up to palm down")]
+    private float animationPeriod = 3f;
 
     private bool isInspectionMode = false;
     private GameObject currentTutorial;
     private WaitForSeconds coolDownWait;
+    private WaitForSeconds animPeriodWait;
     private bool isCoolingDown = false;
+    private bool isPalmsUp = false;
+    private Coroutine animCoroutine = null;
 
     private void Awake()
     {
         cinemachine.Play("Intro Cinematic");
         coolDownWait = new WaitForSeconds(coolDownRate);
+        animPeriodWait = new WaitForSeconds(animationPeriod);
     }
 
     public void ToggleInspectionMode()
@@ -67,7 +74,7 @@ public class InspectionMode : MonoBehaviour
                 currentTutorial.SetActive(false);
             }
             //HandAnimations.instance.TransitionPlay("Idle");
-            HandAnimations.instance.CrossFade("Idle", .2f);
+            StartInspectionAnimation();
         }
         else
         {
@@ -76,6 +83,10 @@ public class InspectionMode : MonoBehaviour
             {
                 currentTutorial.SetActive(true);
             }
+            if (animCoroutine != null)
+            {
+                StopCoroutine(animCoroutine);
+            }
             WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
             if (currEvent is PlayerEvent)
             {
@@ -83,6 +94,34 @@ public class InspectionMode : MonoBehaviour
             }
         }
     }
+
+    private void StartInspectionAnimation()
+    {
+        HandAnimations.instance.CrossFade("Idle", .2f);
+
+        animCoroutine = StartCoroutine(FlipAnimation());
+    }
+
+    private IEnumerator FlipAnimation()
+    {
+        yield return animPeriodWait;
+        ToggleInspectAnimation();
+        animCoroutine = StartCoroutine(FlipAnimation());
+    }
+
+    private void ToggleInspectAnimation()
+    {
+        isPalmsUp = !isPalmsUp;
+
+        if (isPalmsUp)
+        {
+            HandAnimations.instance.CrossFade("Idle Up", .2f);
+        } else
+        {
+            HandAnimations.instance.CrossFade("Idle", .2f);
+        }
+    }
+
 
     private GameObject FindActiveTutorial()
     {
