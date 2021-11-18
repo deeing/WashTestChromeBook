@@ -70,11 +70,7 @@ public abstract class SwitchEvent : PlayerEvent
     public override void ChangeEvent()
     {
         base.ChangeEvent();
-        CaligraphyInputManager.instance.ClearGuideLines();
-        CaligraphyInputManager.instance.ClearSymbol();
-        CaligraphyInputManager.instance.ToggleInteractable(false);
-        HandAnimations.instance.Reset();
-        CaligraphyInputManager.instance.ToggleCaligraphy(false);
+        CaligraphyInputManager.instance.HandleCompleteCaligraphy();
     }
 
     public abstract void DoSwitch();

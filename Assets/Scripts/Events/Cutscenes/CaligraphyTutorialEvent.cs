@@ -30,28 +30,52 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private Vector3 originalHandPosition;
     private WaitForSeconds timeBetweenWait;
     private Coroutine redoCoroutine = null;
+    private bool userWasDrawing = false;
+    private bool endOfTutorialPause = false;
+    private float endOfTutorialPauseTime = 2f;
 
     public override bool CheckEndEvent()
     {
-        return CaligraphyInputManager.instance.HasDoneCaligraphy(tutorialSymbol);
+        return finishedTutorial;
     }
 
     public override void DoEvent()
     {
+        if (endOfTutorialPause)
+        {
+            // user has completed and we are just letting them sit and see the completion for a second
+            return;
+        }
+
+        // check for the end
+        if (caligraphyInput.userIsDrawing && CaligraphyInputManager.instance.HasDoneCaligraphy(tutorialSymbol))
+        {
+            FinishTutorialWithPause();
+        }
+
         // cancel immediately if user is drawing
         if (caligraphyInput.userIsDrawing)
         {
             KillHandMove();
-        }
-        else if (startTutorialDrawing)
+            if (!userWasDrawing)
+            {
+                CaligraphyInputManager.instance.ClearSymbol();
+            }
+            userWasDrawing = true;
+        } else
         {
-            caligraphyInput.RemoveUnmarkedPoints();
-            lineRenderer.AddPosition(handExample.position);
-            lineRenderer.RenderLines();
-        } else if (!isMainTutorialLoop)
-        {
-            Debug.Log("Trying to redo");
-            ReDoTutorial();
+            userWasDrawing = false;
+
+            if (startTutorialDrawing)
+            {
+                caligraphyInput.RemoveUnmarkedPoints();
+                lineRenderer.AddPosition(handExample.position);
+                lineRenderer.RenderLines();
+            } else if (!isMainTutorialLoop)
+            {
+                Debug.Log("Trying to redo");
+                ReDoTutorial();
+            }
         }
     }
 
@@ -76,7 +100,6 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     public override void EndEvent()
     {
         ChangeEvent();
-        MenuManager.instance.ShowAlert("Perfect! That's how you play! Now keep going!", 2f);
     }
 
     public override void SetupEvent()
@@ -148,16 +171,26 @@ public class CaligraphyTutorialEvent : CutsceneEvent
         caligraphyInput.AddMarkedPoint(position, buttonId);
     }
 
-    private void FinishTutorial()
+    public void FinishTutorialWithPause()
     {
+        endOfTutorialPause = true;
+        MenuManager.instance.ShowAlert("Perfect! That's how you play! Now keep going!", endOfTutorialPauseTime);
+        handExample.gameObject.SetActive(false);
+        caligraphyInput.ToggleDrawing(false);
+        caligraphyInput.RemoveUnmarkedPoints();
+        caligraphyInput.ReRenderLines();
+        StartCoroutine(FinishTutorial());
+    }
+
+    private IEnumerator FinishTutorial()
+    {
+        yield return new WaitForSeconds(endOfTutorialPauseTime);
         finishedTutorial = true;
     }
 
     public override void ChangeEvent()
     {
-        handExample.gameObject.SetActive(false);
-        caligraphyInput.ClearGuideLines();
-        caligraphyInput.ResetLines();
+        CaligraphyInputManager.instance.HandleCompleteCaligraphy();
         KillHandMove();
     }
 }

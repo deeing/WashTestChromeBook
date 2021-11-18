@@ -186,4 +186,14 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
         return currEvent is SwitchEvent;
     }
+
+    public void HandleCompleteCaligraphy()
+    {
+        caligraphyInput.HandleCompleteCaligraphy();
+        ClearGuideLines();
+        ClearSymbol();
+        ToggleInteractable(false);
+        ToggleCaligraphy(false);
+        HandAnimations.instance.Reset();
+    }
 }

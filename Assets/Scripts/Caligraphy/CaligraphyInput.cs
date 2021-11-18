@@ -48,10 +48,11 @@ public class CaligraphyInput : MonoBehaviour
 
     public void AddMarkedPoint(Vector2 newPos, int buttonId)
     {
-        if (buttonId == lastButtonId)
+        if (buttonId == lastButtonId || markedPoints.Contains(newPos))
         {
             return;
         }
+        Debug.Log("Adding mark for " + buttonId);
 
         markedPoints.Add(newPos);
         lineRenderer.AddPosition(newPos);
@@ -89,6 +90,11 @@ public class CaligraphyInput : MonoBehaviour
         }
     }
 
+    public void ReRenderLines()
+    {
+        lineRenderer.RenderLines();
+    }
+
     public void SetStartingPoint(Vector2 startingPoint, int buttonId)
     {
         ResetLines();
@@ -104,6 +110,7 @@ public class CaligraphyInput : MonoBehaviour
         ResetLines();
         ToggleDrawing(false);
         CaligraphyInputManager.instance.ClearSymbol();
+        ResetAllButtonColors();
     }
 
     public void HandleCompleteCaligraphy()
@@ -119,9 +126,14 @@ public class CaligraphyInput : MonoBehaviour
             Debug.Log(connection.Key + "->" + set);
         }
 
-        CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
+        //CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
 
-        foreach(CaligraphyButton button in buttons)
+        ResetAllButtonColors();
+    }
+
+    public void ResetAllButtonColors()
+    {
+        foreach (CaligraphyButton button in buttons)
         {
             button.ResetButton();
         }
