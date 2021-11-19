@@ -48,7 +48,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void AddMarkedPoint(Vector2 newPos, int buttonId)
     {
-        if (buttonId == lastButtonId || markedPoints.Contains(newPos))
+        if (buttonId == lastButtonId)
         {
             return;
         }
