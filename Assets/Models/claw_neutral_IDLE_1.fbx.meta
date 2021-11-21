@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 7e22dda2ab9fa2746936ad19eb2bf8f5
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -9012100583405080598
+    second: claw_neutral_IDLE
+  - first:
+      74: 7082531560446070334
+    second: claws_rig_proxy|claw_neutral_IDLE
+  - first:
+      74: -1676689062339173598
+    second: claws_rig_proxy|claw_wrist_IDLE_L
+  - first:
+      74: -2367086641715228561
+    second: claws_rig_proxy|claw_wrist_IDLE_R
+  - first:
+      74: 3005837463046630416
+    second: claws_rig_proxy|claw_wrist_SCRUB_L
+  - first:
+      74: 4619868891833502539
+    second: claws_rig_proxy|claw_wrist_SCRUB_R
+  - first:
+      74: -4789032972199302465
+    second: claws_rig_proxy|claw_wrist_TRANS_BACK_L
+  - first:
+      74: 1357729176255242505
+    second: claws_rig_proxy|claw_wrist_TRANS_BACK_R
+  - first:
+      74: -4283789128109189869
+    second: claws_rig_proxy|claw_wrist_TRANS_L
+  - first:
+      74: 230320415962520443
+    second: claws_rig_proxy|claw_wrist_TRANS_R
+  - first:
+      74: -8050633786316450155
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_neutral_IDLE|rig_proxy|claw_neutra
+  - first:
+      74: 6891120781461354142
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_IDLE_L|rig_proxy|claw_wrist_
+  - first:
+      74: 6514712967115931011
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_IDLE_R|rig_proxy|claw_wrist_
+  - first:
+      74: 2664606917558097024
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_SCRUB_L|rig_proxy|claw_wrist
+  - first:
+      74: -6018377610703976652
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_SCRUB_R|rig_proxy|claw_wrist
+  - first:
+      74: -6758306065915230129
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_TRANS_BACK_L|rig_proxy|claw_
+  - first:
+      74: -7405015520146191331
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_TRANS_BACK_R|rig_proxy|claw_
+  - first:
+      74: 1583538428288559938
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_TRANS_L|rig_proxy|claw_wrist
+  - first:
+      74: 5835332304072106073
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|claw_wrist_TRANS_R|rig_proxy|claw_wrist
+  - first:
+      74: 2059608496044579906
+    second: claws_rig_proxy|rig_proxy.001|rig_proxy|rig_proxyAction|rig_proxy|rig_proxyActi
+  - first:
+      74: -1278011076383581851
+    second: claws_rig_proxy|rig_proxyAction
+  - first:
+      74: -65603930833980506
+    second: claws_rig_proxy|rig_proxyAction.001
+  - first:
+      74: -8789499865819117751
+    second: claws_rig_proxy|rig_proxyAction.002
+  - first:
+      74: 4619112966785694718
+    second: claws_rig_proxy|rig_proxyAction.003
+  - first:
+      74: 712965855706325591
+    second: claws_rig_proxy|rig_proxyAction.004
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.75
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.0075
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

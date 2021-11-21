@@ -10,13 +10,15 @@ public class UVLight : MonoBehaviour
     private SkinnedMeshRenderer skinnedMesh;
     [SerializeField]
     private Material UVSkinMaterial;
-
-    private bool isOn;
+    [SerializeField]
+    private int originalMaterialIndex = 1;
+    
     private Material originalMaterial;
+    private bool isOn;
 
     private void Awake()
     {
-        originalMaterial = skinnedMesh.materials[1];
+        originalMaterial = skinnedMesh.materials[originalMaterialIndex];
     }
 
     public void OnDisable()
@@ -51,7 +53,7 @@ public class UVLight : MonoBehaviour
     private void SetHandMaterial(bool status)
     {
         Material[] mats = skinnedMesh.materials;
-        mats[1] = status ? UVSkinMaterial : originalMaterial;
+        mats[originalMaterialIndex] = status ? UVSkinMaterial : originalMaterial;
         skinnedMesh.materials = mats;
     }
 }
