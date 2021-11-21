@@ -37,12 +37,14 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private string BuildEndMenuText(List<string> timeRecordings, string germReport)
     {
         string endMenuText = "";
-        foreach (string record in timeRecordings)
+        /*foreach (string record in timeRecordings)
         {
             endMenuText += record + "\n";
-        }
+        }*/
+        // just total time for now
+        endMenuText += timeRecordings[0] + "\n";
 
-        //endMenuText += germReport;
+        endMenuText += germReport;
         return endMenuText;
     }
 

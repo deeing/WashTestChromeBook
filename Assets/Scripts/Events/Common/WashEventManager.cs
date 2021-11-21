@@ -127,7 +127,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         return washEvents[washEvents.IndexOf(scrubEvent) - 1];
     }
 
-    private void EndScene()
+    public void EndScene()
     {
         HandAnimations.instance.Stop();
         finishedEvents = true;
