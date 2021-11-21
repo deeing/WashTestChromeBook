@@ -67,7 +67,7 @@ public class InspectionMode : MonoBehaviour
 
         if (status)
         {
-            cinemachine.Play("FrontView");
+            //cinemachine.Play("FrontView");
             currentTutorial = FindActiveTutorial();
             if (currentTutorial)
             {

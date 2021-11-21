@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FrontView
+  m_Name: RightView
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -40,10 +40,10 @@ AnimatorStateMachine:
     m_Position: {x: 380, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3597982512598329180}
-    m_Position: {x: 250, y: 240, z: 0}
+    m_Position: {x: 270, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8270728047892607210}
-    m_Position: {x: 520, y: 220, z: 0}
+    m_Position: {x: 520, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 572624642140747524}
     m_Position: {x: 360, y: 360, z: 0}
@@ -64,7 +64,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TopView
+  m_Name: LeftView
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
