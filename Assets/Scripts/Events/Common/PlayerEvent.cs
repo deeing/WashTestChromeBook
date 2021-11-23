@@ -108,7 +108,7 @@ public abstract class PlayerEvent : WashEvent
 
     protected void HandleImpatience()
     {
-        HandAnimations.instance.TransitionPlay(GetImpatienceAnimationName(), 1f, .2f);
+        HandAnimations.instance.TransitionPlay(GetImpatienceAnimationName(), .2f);
         isImpatient = true;
         StartCoroutine(ImpatienceEnd());
     }

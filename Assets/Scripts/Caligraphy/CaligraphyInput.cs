@@ -13,6 +13,9 @@ public class CaligraphyInput : MonoBehaviour
     private RectTransform canvas;
     [SerializeField]
     private List<CaligraphyButton> buttons;
+
+    [HideInInspector]
+    public bool userFinishedSymbol = false;
     
     public bool userIsDrawing { get; private set; }  = false;
 
@@ -106,6 +109,10 @@ public class CaligraphyInput : MonoBehaviour
 
     public void Release(Lean.Touch.LeanFinger finger)
     {
+        if (userFinishedSymbol)
+        {
+            return;
+        }
         //HandleCompleteCaligraphy();
         ResetLines();
         ToggleDrawing(false);
@@ -115,7 +122,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void HandleCompleteCaligraphy()
     {
-        foreach(KeyValuePair<int, HashSet<int>> connection in buttonConnectionsById)
+        /*foreach(KeyValuePair<int, HashSet<int>> connection in buttonConnectionsById)
         {
             string set = "{";
             foreach(int point in connection.Value)
@@ -124,7 +131,7 @@ public class CaligraphyInput : MonoBehaviour
             }
             set += "}";
             Debug.Log(connection.Key + "->" + set);
-        }
+        }*/
 
         //CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
 

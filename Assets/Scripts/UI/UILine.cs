@@ -9,6 +9,10 @@ public class UILine : MonoBehaviour
     private Vector2 endPoint;
     [SerializeField]
     private RawImage lineImage;
+    [SerializeField]
+    private BoxCollider2D lineCollider;
+    [SerializeField]
+    private bool useCollider;
 
     private RectTransform thisTransform;
     private float offsetPercent = 1f;
@@ -28,5 +32,11 @@ public class UILine : MonoBehaviour
         thisTransform.sizeDelta = new Vector2(thickness, lineHeight);
         thisTransform.up = endPoint - startPoint;
         lineImage.color = lineColor;
+
+        if (useCollider)
+        {
+            //lineCollider.enabled = true;
+            lineCollider.size = thisTransform.sizeDelta;
+        }
     }
 }

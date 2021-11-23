@@ -32,6 +32,6 @@ public class BetweenFingersScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.PlayAnimation("Between Fingers Return", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Between Fingers Return");
     }
 }

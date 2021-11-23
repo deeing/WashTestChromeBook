@@ -32,6 +32,6 @@ public class BackRightScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.PlayAnimation("Back Right Return", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Back Right Return");
     }
 }

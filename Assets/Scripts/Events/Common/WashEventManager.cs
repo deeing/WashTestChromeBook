@@ -101,7 +101,7 @@ public class WashEventManager : SingletonMonoBehaviour<WashEventManager>
         isTransitioning = true;
 
         // transition to the new
-        HandAnimations.instance.Reset();
+        //HandAnimations.instance.Reset();
         currentWashEvent = nextEvent;
         currEventIndex = washEvents.IndexOf(currentWashEvent);
         currentWashEvent.SetupEvent();

@@ -9,24 +9,31 @@ public abstract class SwitchEvent : PlayerEvent
 
     public CaligraphyMove caligraphyMove;
 
-    private int currentMoveIndex = 0;
+   // private int currentMoveIndex = 0;
     private int numConnectionsMade = 0;
     private float animationStep = 0f;
     private float endFrame = 0f;
 
+    private bool completedSwitch = false;
     private bool switchToScrub = false;
 
     public override void SetupEvent()
     {
         base.SetupEvent();
-        HandAnimations.instance.Reset();
+        completedSwitch = false;
         switchToScrub = false;
-        currentMoveIndex = 0;
+        //currentMoveIndex = 0;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
         CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
         CaligraphyInputManager.instance.ToggleInteractable(true);
 
         animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
+    }
+
+    public override void StartEvent()
+    {
+        base.StartEvent();
+        HandAnimations.instance.Reset();
     }
 
     public override void DoEvent()
@@ -35,7 +42,19 @@ public abstract class SwitchEvent : PlayerEvent
         {
             return;
         }
+        if (completedSwitch)
+        {
+            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+            return;
+        }
+        if (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove))
+        {
+            CompleteSwitch();
+            return;
+        }
+
         int newNumConnections = CaligraphyInputManager.instance.GetNumValidConnections(caligraphyMove.symbol);
+
         if (newNumConnections > numConnectionsMade)
         {
             numConnectionsMade = newNumConnections;
@@ -64,7 +83,7 @@ public abstract class SwitchEvent : PlayerEvent
 
     public override bool CheckEndEvent()
     {
-        return CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && HandAnimations.instance.HasAnimationReached(endFrame);
+        return switchToScrub;// CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && HandAnimations.instance.HasAnimationReached(endFrame);
     }
 
     public override void ChangeEvent()
@@ -95,5 +114,21 @@ public abstract class SwitchEvent : PlayerEvent
         CaligraphyInputManager.instance.ClearGuideLines();
         CaligraphyInputManager.instance.ClearSymbol();
         SetupEvent();
+    }
+
+    private void CompleteSwitch()
+    {
+        completedSwitch = true;
+        endFrame = caligraphyMove.animationStart + (animationStep * caligraphyMove.symbol.symbolConnections.Count);
+        CaligraphyInputManager.instance.SetUserFinishedSymbol(true);
+        StartCoroutine(SwitchToScrub());
+    }
+
+    private IEnumerator SwitchToScrub()
+    {
+        MenuManager.instance.ShowAlert("Nice!", .5f);
+        CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
+        yield return new WaitForSeconds(1f);
+        switchToScrub = true;
     }
 }

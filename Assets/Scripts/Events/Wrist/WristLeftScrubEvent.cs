@@ -32,6 +32,6 @@ public class WristLeftScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.PlayAnimation("Wrist Left Return", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Wrist Left Return");
     }
 }

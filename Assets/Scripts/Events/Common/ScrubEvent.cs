@@ -10,9 +10,6 @@ public abstract class ScrubEvent : PlayerEvent
     [SerializeField]
     [Tooltip("How long the idle transition animation should take.")]
     protected float idleTransitionTime = .25f;
-    [SerializeField]
-    [Tooltip("Time for return to neutral animation after scrubbing finishes")]
-    protected float returnNeutralTime = .5f;
 
     public float touchInputWithSensitivity { get; private set; } = 0f;
     private WaitForSeconds idleWait;
@@ -125,13 +122,14 @@ public abstract class ScrubEvent : PlayerEvent
     public override void EndEvent()
     {
         base.EndEvent();
-        GermManager.instance.HideGermBar();
-        ReturnToNeutral();
+        //GermManager.instance.HideGermBar();
+        //ReturnToNeutral();
     }
 
     public override void ChangeEvent()
     {
         base.ChangeEvent();
+        //HandAnimations.instance.Reset();
         GermManager.instance.HideGermBar();
         ReturnToNeutral();
     }

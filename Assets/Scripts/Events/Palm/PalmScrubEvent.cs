@@ -97,6 +97,6 @@ public class PalmScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.CrossFade("Idle", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Palm Return");
     }
 }

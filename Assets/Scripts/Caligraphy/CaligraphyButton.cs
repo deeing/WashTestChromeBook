@@ -20,6 +20,7 @@ public class CaligraphyButton : MonoBehaviour
     private Transform thisTransform;
     private Color originalColor;
     private TouchButton touchButton;
+    private bool isMarked = false;
 
     private void Awake()
     {
@@ -36,10 +37,16 @@ public class CaligraphyButton : MonoBehaviour
 
     public void MarkButton(Lean.Touch.LeanFinger finger)
     {
+        MarkButton();
+    }
+
+    public void MarkButton()
+    {
         if (caligraphyInput.userIsDrawing)
         {
             caligraphyInput.AddMarkedPoint(thisTransform.position, id);
             ToggleAltColor(true);
+            isMarked = true;
         }
     }
 
@@ -57,10 +64,20 @@ public class CaligraphyButton : MonoBehaviour
     public void ResetButton()
     {
         ToggleAltColor(false);
+        isMarked = false;
     }
 
     public void ToggleInteractable(bool status)
     {
         touchButton.enabled = status;
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isMarked)
+        {
+            MarkButton();
+        }
+    }
+
 }

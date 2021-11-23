@@ -67,16 +67,23 @@ public class UILineRenderer : MonoBehaviour
 			Vector2 startPos = positions[i];
 			Vector2 endPos = positions[i + 1];
 
-			Vector2 linePos = (endPos  + startPos) / 2;
-			GameObject lineObj = Instantiate(linePrefab, linePos, Quaternion.identity, lineContainer);
-			lines.Add(lineObj);
-			UILine line = lineObj.GetComponent<UILine>();
-			line.SetupLine(startPos, endPos, thickness, lineColor);
+			RenderLine(startPos, endPos);
 		}
-    }
+	}
+
+	private void RenderLine(Vector2 startPos, Vector2 endPos)
+    {
+
+		Vector2 linePos = (endPos + startPos) / 2;
+		GameObject lineObj = Instantiate(linePrefab, linePos, Quaternion.identity, lineContainer);
+		lines.Add(lineObj);
+		UILine line = lineObj.GetComponent<UILine>();
+		line.SetupLine(startPos, endPos, thickness, lineColor);
+	}
 
 	public void ClearLines()
     {
 		lineContainer.DestroyAllChildren();
+		lines = new List<GameObject>();
     }
 }

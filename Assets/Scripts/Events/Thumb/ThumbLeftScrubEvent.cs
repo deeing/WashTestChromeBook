@@ -32,6 +32,6 @@ public class ThumbLeftScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.PlayAnimation("Thumb Left Return", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Thumb Left Return");
     }
 }

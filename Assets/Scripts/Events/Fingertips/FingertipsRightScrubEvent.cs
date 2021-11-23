@@ -31,6 +31,6 @@ public class FingertipsRightScrubEvent : ScrubEvent
 
     public override void ReturnToNeutral()
     {
-        HandAnimations.instance.PlayAnimation("Fingertips Right Return", returnNeutralTime);
+        HandAnimations.instance.PlayAnimation("Fingertips Right Return");
     }
 }
