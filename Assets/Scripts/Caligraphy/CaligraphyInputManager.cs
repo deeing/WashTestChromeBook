@@ -7,6 +7,8 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 {
     [SerializeField]
     private CaligraphyInput caligraphyInput;
+    [SerializeField]
+    private Transform tutorialHand;
 
     private Dictionary<int, HashSet<int>> playerSymbolConnections = null;
 
@@ -204,5 +206,15 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
     public bool UserIsDrawing()
     {
         return caligraphyInput.userIsDrawing;
+    }
+
+    public CaligraphyInput GetCaligraphyInput()
+    {
+        return caligraphyInput;
+    }
+
+    public Transform GetTutorialHand()
+    {
+        return tutorialHand;
     }
 }

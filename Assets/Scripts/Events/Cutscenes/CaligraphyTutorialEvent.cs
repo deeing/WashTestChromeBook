@@ -7,15 +7,7 @@ using System;
 public class CaligraphyTutorialEvent : CutsceneEvent
 {
     [SerializeField]
-    private UILineRenderer lineRenderer;
-    [SerializeField]
-    private UILineRenderer guidelineRenderer;
-    [SerializeField]
     private CaligraphySymbol tutorialSymbol;
-    [SerializeField]
-    private CaligraphyInput caligraphyInput;
-    [SerializeField]
-    private Transform handExample;
     [SerializeField]
     private float handMoveSpeed = 1f;
     [SerializeField]
@@ -37,10 +29,15 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private Coroutine redoCoroutine = null;
     private bool userWasDrawing = false;
     private bool endOfTutorialPause = false;
-
+    private CaligraphyInput caligraphyInput;
+    private UILineRenderer lineRenderer;
+    private Transform handExample;
 
     public override void SetupEvent()
     {
+        caligraphyInput = CaligraphyInputManager.instance.GetCaligraphyInput();
+        lineRenderer = caligraphyInput.GetLineRenderer();
+        handExample = CaligraphyInputManager.instance.GetTutorialHand();
         if (tutorialEvent != null)
         {
             tutorialSymbol = tutorialEvent.caligraphyMove.symbol;

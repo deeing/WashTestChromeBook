@@ -220,4 +220,9 @@ public class CaligraphyInput : MonoBehaviour
             button.ToggleInteractable(status);
         }
     }
+
+    public UILineRenderer GetLineRenderer()
+    {
+        return lineRenderer;
+    }
 }
