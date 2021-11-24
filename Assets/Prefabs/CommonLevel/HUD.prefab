@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20a07ae70ad714a9de23b586527687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uvLightButton: {fileID: 7937178877516864749}
+  uvLight: {fileID: 7937178877516864751}
   tutorialCanvas: {fileID: 0}
   cameraButtons: {fileID: 7937178877354015189}
   cinemachine: {fileID: 0}
@@ -7134,7 +7134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7937178877516864749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -7942,7 +7942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7937178877705492620
 RectTransform:
   m_ObjectHideFlags: 0

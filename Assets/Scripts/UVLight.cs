@@ -31,8 +31,12 @@ public class UVLight : MonoBehaviour
         SetUvMode(!isOn);
     }
 
-    private void SetUvMode(bool status)
+    public void SetUvMode(bool status)
     {
+        if (originalMaterial == null)
+        {
+            originalMaterial = skinnedMesh.materials[originalMaterialIndex];
+        }
         isOn = status;
         SetGermsVisible(status);
         SetHandMaterial(status);

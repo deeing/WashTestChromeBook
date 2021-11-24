@@ -5,7 +5,7 @@ using UnityEngine;
 public class InspectionMode : MonoBehaviour
 {
     [SerializeField]
-    private GameObject uvLightButton;
+    private UVLight uvLight;
     [SerializeField]
     private Transform tutorialCanvas;
     [SerializeField]
@@ -52,7 +52,7 @@ public class InspectionMode : MonoBehaviour
     public void SetInspectionMode(bool status)
     {
         isInspectionMode = status;
-        uvLightButton.SetActive(status);
+        uvLight.SetUvMode(status);
         cameraButtons.SetActive(status);
         WashEventManager.instance.isInspectionMode = status;
         MenuManager.instance.ToggleCheckList(!status);
