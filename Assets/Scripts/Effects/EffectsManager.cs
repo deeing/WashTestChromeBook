@@ -12,6 +12,10 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
     private PlayerEventToSudsMapping[] playerEventToSuds;
     [SerializeField]
     private GameObject[] fires;
+    [SerializeField]
+    private GameObject defaultLights;
+    [SerializeField]
+    private GameObject uvLights;
 
     private Dictionary<PlayerEventType, ParticleSystem> playerEventsToSudsMap;
     // suds systems that are currently playing
@@ -80,6 +84,12 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
         {
             fire.SetActive(status);
         }
+    }
+
+    public void ToggleUvLights(bool status)
+    {
+        defaultLights.SetActive(!status);
+        uvLights.SetActive(status);
     }
 
 }
