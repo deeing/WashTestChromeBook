@@ -47,14 +47,13 @@ public abstract class SwitchEvent : PlayerEvent
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
             return;
         }
-        if (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove))
+        if (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && CaligraphyInputManager.instance.UserIsDrawing())
         {
             CompleteSwitch();
             return;
         }
 
         int newNumConnections = CaligraphyInputManager.instance.GetNumValidConnections(caligraphyMove.symbol);
-
         if (newNumConnections > numConnectionsMade)
         {
             numConnectionsMade = newNumConnections;
@@ -116,7 +115,7 @@ public abstract class SwitchEvent : PlayerEvent
         SetupEvent();
     }
 
-    private void CompleteSwitch()
+    public void CompleteSwitch()
     {
         completedSwitch = true;
         endFrame = caligraphyMove.animationStart + (animationStep * caligraphyMove.symbol.symbolConnections.Count);

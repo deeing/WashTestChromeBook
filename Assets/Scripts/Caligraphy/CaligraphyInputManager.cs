@@ -26,7 +26,6 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
     public void ClearSymbol()
     {
-        //  Debug.Log("Clearing");
         playerSymbolConnections = null;
     }
 
@@ -200,5 +199,10 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
     public void SetUserFinishedSymbol(bool status)
     {
         caligraphyInput.userFinishedSymbol = status;
+    }
+
+    public bool UserIsDrawing()
+    {
+        return caligraphyInput.userIsDrawing;
     }
 }

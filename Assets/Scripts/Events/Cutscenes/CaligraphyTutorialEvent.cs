@@ -22,6 +22,11 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private float handStartSpeed = 2f;
     [SerializeField]
     private float timeBetweenLoop = 2f;
+    [SerializeField]
+    private float endOfTutorialPauseTime = 2f;
+
+    [SerializeField]
+    private SwitchEvent tutorialEvent;
 
     private bool finishedTutorial = false;
     private bool isMainTutorialLoop = true;
@@ -32,12 +37,18 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private Coroutine redoCoroutine = null;
     private bool userWasDrawing = false;
     private bool endOfTutorialPause = false;
-    private float endOfTutorialPauseTime = 2f;
 
 
     public override void SetupEvent()
     {
-        caligraphyInput.SetupGuideLines(tutorialSymbol);
+        if (tutorialEvent != null)
+        {
+            tutorialSymbol = tutorialEvent.caligraphyMove.symbol;
+            tutorialEvent.SetupEvent();
+        } else
+        {
+            caligraphyInput.SetupGuideLines(tutorialSymbol);
+        }
         originalHandPosition = handExample.position;
         timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
         //caligraphyInput.ToggleInteractable(false);
@@ -47,7 +58,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private void ToggleAfterTutorialUI(bool status)
     {
         MenuManager.instance.ToggleCheckList(status);
-        MenuManager.instance.ToggleSettings(status);
+        //MenuManager.instance.ToggleSettings(status);
         MenuManager.instance.ToggleInspectButton(status);
     }
 
@@ -58,6 +69,11 @@ public class CaligraphyTutorialEvent : CutsceneEvent
 
     public override void DoEvent()
     {
+        if (tutorialEvent != null)
+        {
+            tutorialEvent.DoEvent();
+        }
+
         if (endOfTutorialPause)
         {
             // user has completed and we are just letting them sit and see the completion for a second
@@ -77,6 +93,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
             if (!userWasDrawing)
             {
                 CaligraphyInputManager.instance.ClearSymbol();
+
             }
             userWasDrawing = true;
         } else
@@ -184,6 +201,11 @@ public class CaligraphyTutorialEvent : CutsceneEvent
 
     public void FinishTutorialWithPause()
     {
+        if (tutorialEvent != null)
+        {
+            tutorialEvent.CompleteSwitch();
+        }
+
         endOfTutorialPause = true;
         MenuManager.instance.ShowAlert("Perfect! That's how you play! Now keep going!", endOfTutorialPauseTime);
         handExample.gameObject.SetActive(false);

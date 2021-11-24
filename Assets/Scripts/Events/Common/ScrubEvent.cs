@@ -10,13 +10,16 @@ public abstract class ScrubEvent : PlayerEvent
     [SerializeField]
     [Tooltip("How long the idle transition animation should take.")]
     protected float idleTransitionTime = .25f;
+    [SerializeField]
+    private SwitchEvent relativeSwitch;
+    [SerializeField]
+    private bool finishWhenGermsGone = false;
 
     public float touchInputWithSensitivity { get; private set; } = 0f;
     private WaitForSeconds idleWait;
     private Coroutine idleCoroutine;
     private bool isIdle = false;
     private GermType germType;
-    private bool isFinished = false;
     private string switchAnimName;
     private bool isReturningFromInspect = false;
 
@@ -26,14 +29,13 @@ public abstract class ScrubEvent : PlayerEvent
         idleWait = new WaitForSeconds(idleTime);
         germType = GetGermType();
 
-        SwitchEvent relativeSwitch = (SwitchEvent)WashEventManager.instance.GetSwitchEvent(this);
         switchAnimName = relativeSwitch.caligraphyMove.animationName;
         //GermManager.instance.ShowGermBar(germType);
     }
 
     public override bool CheckEndEvent()
     {
-        return isFinished;
+        return finishWhenGermsGone && !GermManager.instance.HasGermsOfType(germType);
     }
 
     public abstract GermType GetGermType();
@@ -132,11 +134,6 @@ public abstract class ScrubEvent : PlayerEvent
         //HandAnimations.instance.Reset();
         GermManager.instance.HideGermBar();
         ReturnToNeutral();
-    }
-
-    public void FinishEvent()
-    {
-        isFinished = true;
     }
 
     public override void ReturnFromInspect()
