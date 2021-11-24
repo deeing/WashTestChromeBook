@@ -10,7 +10,30 @@ public class AnimationCutscene : CutsceneEvent
     [SerializeField]
     private float animationTime = 1f;
     [SerializeField]
-    private string cameraAnimationName;
+    private string soundName;
+
+    private bool isFinished = false;
+
+    private WaitForSeconds animationWait;
+
+    public override void SetupEvent()
+    {
+        animationWait = new WaitForSeconds(animationTime);
+    }
+
+    public override void StartEvent()
+    {
+        //  HandAnimations.instance.CameraAnimation(cameraAnimationName, animationTime);
+        StartCoroutine(FinishAnimation());
+        HandAnimations.instance.PlayAnimation(animationName);
+        AudioManager.instance.PlayOneShot(soundName);
+    }
+
+    private IEnumerator FinishAnimation()
+    {
+        yield return animationWait;
+        isFinished = true;
+    }
 
     public override void ChangeEvent()
     {
@@ -18,8 +41,7 @@ public class AnimationCutscene : CutsceneEvent
 
     public override bool CheckEndEvent()
     {
-        //return !HandAnimations.instance.IsPlayingAnimation(animationName);
-        return false;
+        return isFinished;
     }
 
     public override void DoEvent()
@@ -31,13 +53,5 @@ public class AnimationCutscene : CutsceneEvent
     {
     }
 
-    public override void SetupEvent()
-    {
-    }
 
-    public override void StartEvent()
-    {
-       // HandAnimations.instance.PlayAnimation(animationName, animationTime);
-      //  HandAnimations.instance.CameraAnimation(cameraAnimationName, animationTime);
-    }
 }
