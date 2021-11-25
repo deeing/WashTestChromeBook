@@ -5,6 +5,8 @@ using UnityEngine;
 public class PalmScrubEvent : ScrubEvent
 {
     [SerializeField]
+    private bool shouldUseFire = true;
+    [SerializeField]
     [Tooltip("Max input amount that this event can take before triggering the fire event")]
     private float fireInputLimit = 15f;
 
@@ -82,7 +84,7 @@ public class PalmScrubEvent : ScrubEvent
     public override float DoTouchInput()
     {
         float input = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
-        if (input > fireInputLimit)
+        if (shouldUseFire && input > fireInputLimit)
         {
             isOnFire = true;
         }

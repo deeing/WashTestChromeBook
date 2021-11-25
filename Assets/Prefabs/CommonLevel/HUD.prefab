@@ -10293,6 +10293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Build Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 232291997756677474, guid: 237af8e969fa9c14cb01c737db6b8455, type: 3}
+      propertyPath: m_text
+      value: WashTest_91
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237af8e969fa9c14cb01c737db6b8455, type: 3}
 --- !u!224 &7937178876880121373 stripped
