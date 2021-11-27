@@ -55,7 +55,7 @@ public class CaligraphyInput : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Adding mark for " + buttonId);
+        //Debug.Log("Adding mark for " + buttonId);
 
         markedPoints.Add(newPos);
         lineRenderer.AddPosition(newPos);

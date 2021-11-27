@@ -6,7 +6,7 @@ using Wash.Utilities;
 public abstract class PlayerEvent : WashEvent
 {
     [SerializeField]
-    private float sensitivity = .005f;
+    protected float sensitivity = .005f;
     [SerializeField]
     [Tooltip("Tutorial that should show when this event starts")]
     private GameObject tutorialObject;

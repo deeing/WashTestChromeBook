@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ScrubEvent : PlayerEvent
+public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
 {
     [SerializeField]
     [Tooltip("If user gives no input after this time, we transition to the idle animation")]
@@ -22,6 +22,7 @@ public abstract class ScrubEvent : PlayerEvent
     private GermType germType;
     private string switchAnimName;
     private bool isReturningFromInspect = false;
+    private float sensitivityAdjustment = 1f;
 
     public override void SetupEvent()
     {
@@ -54,7 +55,7 @@ public abstract class ScrubEvent : PlayerEvent
         }
         else
         {
-            return DoTouchInput();
+            return DoTouchInput() * sensitivity * GetSensitivityAdjustment(); ;
         }
     }
 
@@ -140,4 +141,15 @@ public abstract class ScrubEvent : PlayerEvent
     {
         isReturningFromInspect = true;
     }
+
+    public void SetSensitivityAdjustment(float sensitivityAdjustment)
+    {
+        this.sensitivityAdjustment = sensitivityAdjustment;
+    }
+
+    public float GetSensitivityAdjustment()
+    {
+        return sensitivityAdjustment;
+    }
+
 }
