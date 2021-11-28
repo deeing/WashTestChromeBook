@@ -42,9 +42,44 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
         celebrationParticles.Play();
     }
 
-    public void Bubbles()
+    public void ToggleBubbles(bool status)
     {
-        bubblesParticles.Play();
+        if (status)
+        {
+            StartBubbles();
+        } else
+        {
+            EndBubbles();
+        }
+    }
+
+    public void SetBubbleEmission(float emissionRate)
+    {
+        ParticleSystem.EmissionModule emission = bubblesParticles.emission;
+        emission.rateOverTime = emissionRate;
+    }
+
+    public void SetBubbleSpeed(float speed)
+    {
+        ParticleSystem.MainModule particleMain = bubblesParticles.main;
+        particleMain.simulationSpeed = speed;
+    }
+
+
+    private void StartBubbles()
+    {
+        if (!bubblesParticles.isPlaying)
+        {
+            bubblesParticles.Play();
+        }
+    }
+
+    private void EndBubbles()
+    {
+        if (bubblesParticles.isPlaying)
+        {
+            bubblesParticles.Stop();
+        }
     }
 
     public void PlaySuds(PlayerEventType playerEventType)

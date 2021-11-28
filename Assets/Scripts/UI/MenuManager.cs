@@ -17,6 +17,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private GameObject settingsButton;
     [SerializeField]
     private GameObject inspectButton;
+    [SerializeField]
+    private LeftSlideMenu scrubPowerBarMenu;
+    [SerializeField]
+    private PercentageBar scrubPowerBar;
 
     protected override void Awake()
     {
@@ -80,5 +84,15 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ChecklistHightlightItem(int itemIndex)
     {
         checkList.ChooseItem(itemIndex);
+    }
+
+    public void ToggleScrubPowerBar(bool status)
+    {
+        scrubPowerBarMenu.SetVisible(status);
+    }
+
+    public void SetScrubPowerPercentage(float percentage)
+    {
+        scrubPowerBar.UpdatePercentage(percentage);
     }
 }

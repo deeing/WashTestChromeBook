@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wash.Utilities;
 
 public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
 {
@@ -14,6 +15,13 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
     private SwitchEvent relativeSwitch;
     [SerializeField]
     private bool finishWhenGermsGone = false;
+    
+    
+    protected float scrubbingSpeedMinMult = .25f;
+    protected float scrubbingSpeedMaxMult = 2f;
+    protected float scrubbingSpeedIncreaseRate = 1.01f;
+    private float scrubBubbleRateMax = 125;
+    private float bubbleSpeedMax = 5f;
 
     public float touchInputWithSensitivity { get; private set; } = 0f;
     private WaitForSeconds idleWait;
@@ -23,6 +31,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
     private string switchAnimName;
     private bool isReturningFromInspect = false;
     private float sensitivityAdjustment = 1f;
+    private float scrubbingSpeedMult;
 
     public override void SetupEvent()
     {
@@ -32,6 +41,9 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
 
         switchAnimName = relativeSwitch.caligraphyMove.animationName;
         //GermManager.instance.ShowGermBar(germType);
+        scrubbingSpeedMult = scrubbingSpeedMinMult;
+        MenuManager.instance.ToggleScrubPowerBar(true);
+        ResetScrubbingSpeed();
     }
 
     public override bool CheckEndEvent()
@@ -55,7 +67,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
         }
         else
         {
-            return DoTouchInput() * sensitivity * GetSensitivityAdjustment(); ;
+            return DoTouchInput() * sensitivity * GetSensitivityAdjustment() * GetSpeedAdjustment(); ;
         }
     }
 
@@ -85,7 +97,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
         if (touchInputWithSensitivity > 0)
         {
             GermManager.instance.KillRandomGermOfType(germType);
-            EffectsManager.instance.Bubbles();
+            EffectsManager.instance.ToggleBubbles(true);
             DoScrub();
             if (idleCoroutine != null)
             {
@@ -95,6 +107,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
                 isImpatient = false;
                 ResetImpatienceTimer();
             }
+            IncreaseScrubbingSpeed();
         } else
         {
             if (idleCoroutine == null)
@@ -111,6 +124,8 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
                 else
                 {
                     DoIdle();
+                    ResetScrubbingSpeed();
+                    EffectsManager.instance.ToggleBubbles(false);
                 }
             }
         }
@@ -134,6 +149,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
         base.ChangeEvent();
         //HandAnimations.instance.Reset();
         GermManager.instance.HideGermBar();
+        MenuManager.instance.ToggleScrubPowerBar(false);
         ReturnToNeutral();
     }
 
@@ -152,4 +168,35 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
         return sensitivityAdjustment;
     }
 
+    private float GetSpeedAdjustment()
+    {
+        Debug.Log("Scrubbing speed mult is " + scrubbingSpeedMult);
+        // increase scrubbing speed over time
+        return scrubbingSpeedMult;
+    }
+
+    private void ResetScrubbingSpeed()
+    {
+        scrubbingSpeedMult = scrubbingSpeedMinMult;
+        MenuManager.instance.SetScrubPowerPercentage(0f);
+        EffectsManager.instance.SetBubbleEmission(0f);
+        EffectsManager.instance.SetBubbleSpeed(1f);
+    }
+
+    private void IncreaseScrubbingSpeed()
+    {
+        scrubbingSpeedMult *= scrubbingSpeedIncreaseRate;
+        scrubbingSpeedMult.ClampUpper(scrubbingSpeedMaxMult);
+        MenuManager.instance.SetScrubPowerPercentage(CalcScrubPowerPecent());
+        EffectsManager.instance.SetBubbleEmission(CalcScrubPowerPecent() * scrubBubbleRateMax);
+        EffectsManager.instance.SetBubbleSpeed(1 + (CalcScrubPowerPecent() * (bubbleSpeedMax-1)));
+    }
+
+    private float CalcScrubPowerPecent()
+    {
+        float maxPower = scrubbingSpeedMaxMult - scrubbingSpeedMinMult;
+        float currPower = scrubbingSpeedMult - scrubbingSpeedMinMult;
+
+        return currPower / maxPower;
+    }
 }
