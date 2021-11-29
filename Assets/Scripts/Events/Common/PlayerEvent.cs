@@ -16,6 +16,9 @@ public abstract class PlayerEvent : WashEvent
     [SerializeField]
     [Tooltip("Whether or not we should have this as a checklist item")]
     private bool shouldBeChecklistEvent = false;
+    [SerializeField]
+    [Tooltip("Name of sound clip that plays at the start of the event")]
+    private string eventAudio;
 
     // How long in seconcds it takes for player to become impatient
     protected float impatienceThreshold = 8f;
@@ -32,6 +35,11 @@ public abstract class PlayerEvent : WashEvent
     {
         // make it so not all of the children need an empty function
         impatienceWait = new WaitForSeconds(impatienceAnimDuration);
+
+        if (!string.IsNullOrWhiteSpace(eventAudio))
+        {
+            AudioManager.instance.PlayOneShot(eventAudio);
+        }
     }
 
     public override void StartEvent()
