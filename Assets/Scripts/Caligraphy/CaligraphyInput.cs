@@ -109,7 +109,7 @@ public class CaligraphyInput : MonoBehaviour
 
     public void Release(Lean.Touch.LeanFinger finger)
     {
-        if (userFinishedSymbol)
+        if (userFinishedSymbol || !userIsDrawing)
         {
             return;
         }
@@ -135,6 +135,9 @@ public class CaligraphyInput : MonoBehaviour
 
         //CaligraphyInputManager.instance.SubmitCaligraphy(buttonConnectionsById);
 
+        ResetLines();
+        ToggleDrawing(false);
+        CaligraphyInputManager.instance.ClearSymbol();
         ResetAllButtonColors();
     }
 

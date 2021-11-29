@@ -10,6 +10,8 @@ public class AlertMenu : MonoBehaviour
 
     private TopDropMenu topDrop;
 
+    private Coroutine alertCo;
+
     private void Awake()
     {
         topDrop = GetComponent<TopDropMenu>();
@@ -19,7 +21,12 @@ public class AlertMenu : MonoBehaviour
     {
         alertText.text = message;
         topDrop.Show();
-        StartCoroutine(HideAfterTime(duration));
+        
+        if (alertCo != null)
+        {
+            StopCoroutine(alertCo);
+        }
+        alertCo = StartCoroutine(HideAfterTime(duration));
     }
 
     private IEnumerator HideAfterTime(float duration)

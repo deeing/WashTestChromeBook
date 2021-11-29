@@ -170,7 +170,7 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
 
     private float GetSpeedAdjustment()
     {
-        Debug.Log("Scrubbing speed mult is " + scrubbingSpeedMult);
+        //Debug.Log("Scrubbing speed mult is " + scrubbingSpeedMult);
         // increase scrubbing speed over time
         return scrubbingSpeedMult;
     }

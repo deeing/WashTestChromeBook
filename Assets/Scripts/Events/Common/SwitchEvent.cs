@@ -89,6 +89,7 @@ public abstract class SwitchEvent : PlayerEvent
     {
         base.ChangeEvent();
         CaligraphyInputManager.instance.HandleCompleteCaligraphy();
+        CaligraphyInputManager.instance.ClearSymbol();
     }
 
     public abstract void DoSwitch();

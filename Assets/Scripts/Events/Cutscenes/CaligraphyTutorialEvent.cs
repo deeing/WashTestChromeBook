@@ -66,6 +66,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
 
     public override void DoEvent()
     {
+
         if (tutorialEvent != null)
         {
             tutorialEvent.DoEvent();
@@ -90,7 +91,6 @@ public class CaligraphyTutorialEvent : CutsceneEvent
             if (!userWasDrawing)
             {
                 CaligraphyInputManager.instance.ClearSymbol();
-
             }
             userWasDrawing = true;
         } else
@@ -204,7 +204,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
         }
 
         endOfTutorialPause = true;
-        MenuManager.instance.ShowAlert("Perfect! That's how you play! Now keep going!", endOfTutorialPauseTime);
+        MenuManager.instance.ShowAlert("Nice!", endOfTutorialPauseTime);
         handExample.gameObject.SetActive(false);
         caligraphyInput.ToggleDrawing(false);
         caligraphyInput.RemoveUnmarkedPoints();
