@@ -462,7 +462,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8a575b1256622364598c83cc46330ca3, type: 2}
+  m_Motion: {fileID: 7400000, guid: e587e2aaf76df30418ac0c5bc3952929, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -488,7 +488,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b0dc9bd933593954c9a0ab7c9b6d8c87, type: 2}
+  m_Motion: {fileID: 7400000, guid: d50df3d06879ec541bdc9acaa6f4d6e3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1296,32 +1296,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &8065688262444835203
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: fin_rig_Action_L_flippers_intro_4_blend
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5cbf411e02064ac4ca68517b9b4e69e9, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &8216417657709723584
 AnimatorState:
   serializedVersion: 6
@@ -1513,9 +1487,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 8045845594401046773}
     m_Position: {x: 540, y: 110, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 8065688262444835203}
-    m_Position: {x: 179.36247, y: 239.2331, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
