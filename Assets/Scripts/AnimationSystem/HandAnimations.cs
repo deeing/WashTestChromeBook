@@ -42,6 +42,16 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         crossFadeAnimation = "";
     }
 
+    public void Resume()
+    {
+        anim.speed = 1f;
+    }
+
+    public void Pause()
+    {
+        anim.speed = 0f;
+    }
+
     public void Stop()
     {
         anim.enabled = false;

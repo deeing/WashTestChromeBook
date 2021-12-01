@@ -26,6 +26,19 @@ namespace Wash.Utilities
             return list[Random.Range(0, list.Count)];
         }
 
+        public static List<T> Shuffle<T>(this List<T> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                T temp = list[i];
+                int randomIndex = Random.Range(i, list.Count);
+                list[i] = list[randomIndex];
+                list[randomIndex] = temp;
+            }
+
+            return list;
+        }
+
         #endregion
 
         #region floats

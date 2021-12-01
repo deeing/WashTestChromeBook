@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Wash.Utilities;
 
 public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
@@ -21,6 +23,22 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private LeftSlideMenu scrubPowerBarMenu;
     [SerializeField]
     private PercentageBar scrubPowerBar;
+    [SerializeField]
+    private PoseOptionsMenu poseOptionsMenu;
+    [SerializeField]
+    private SwitchPrompt switchPromptMenu;
+    [SerializeField]
+    private TopDropMenu preSong;
+    [SerializeField]
+    private ScoreMenu scoreMenu;
+    [SerializeField]
+    private TMP_Text rhythmStatusText;
+    [SerializeField]
+    private LeftSlideMenu rhythmDebug;
+    [SerializeField]
+    private SwitchPrompt switchPrompt;
+    [SerializeField]
+    private MusicResultsMenu musicResultsMenu;
 
     protected override void Awake()
     {
@@ -28,6 +46,37 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         {
             return;
         }
+    }
+
+    public void DisplayPoseOptions(List<MusicSwitchEvent> starterEvents, MusicSwitchEvent currentEvent)
+    {
+        poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent);
+    }
+
+    public void DisplayPoseOptions(List<MusicSwitchEvent> starterEvents, MusicSwitchEvent currentEvent, int numPoseOptions)
+    {
+        poseOptionsMenu.DisplayPoseOptions(starterEvents, currentEvent, numPoseOptions);
+    }
+
+
+    public void DisplayPoseOptions(MusicSwitchEvent currentEvent)
+    {
+        poseOptionsMenu.DisplayPoseOptions(currentEvent);
+    }
+
+    public void DisplaySwitchPrompt(string promptText, float time)
+    {
+        switchPromptMenu.ShowPrompt(promptText, time);
+    }
+
+    public void HidePoseOptions()
+    {
+        poseOptionsMenu.Hide();
+    }
+
+    public void HideSwitchPrompt()
+    {
+        switchPromptMenu.HidePrompt();
     }
 
     public void ShowEnd(List<string> timeRecordings, string germReport)
@@ -94,5 +143,46 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void SetScrubPowerPercentage(float percentage)
     {
         scrubPowerBar.UpdatePercentage(percentage);
+    }
+
+    public void TogglePreSongMenu(bool status)
+    {
+        if (status)
+        {
+            preSong.Show();
+        } else
+        {
+            preSong.Hide();
+        }
+    }
+    
+    public void IncreaseTotalScore(float amount)
+    {
+        scoreMenu.IncreaseScore(amount);
+    }
+
+    public float GetTotalScore()
+    {
+        return scoreMenu.GetTotalScore();
+    }
+
+    public void ShowRhythmStatus(RhythmInputStatus status)
+    {
+        rhythmStatusText.text = status.GetDescription();
+    }
+
+    public void ShowRhythmDebug()
+    {
+        rhythmDebug.Show();
+    }
+
+    public SwitchPrompt GetSwitchPrompt()
+    {
+        return switchPrompt;
+    }
+
+    public MusicResultsMenu GetMusicResultsMenu()
+    {
+        return musicResultsMenu;
     }
 }

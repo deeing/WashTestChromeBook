@@ -67,4 +67,9 @@ public abstract class SlideInMenu : MonoBehaviour
     {
         menuText.text = text;
     }
+
+    private void OnDestroy()
+    {
+        rect.DOKill();
+    }
 }
