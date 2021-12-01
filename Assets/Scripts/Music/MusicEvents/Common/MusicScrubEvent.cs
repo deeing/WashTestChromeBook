@@ -90,7 +90,7 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     public void StartAnimation()
     {
-        HandAnimations.instance.PlayAnimation(animationName, scrubAnimationTime);
+        HandAnimations.instance.PlayAnimation(animationName);
     }
     public void PlayAnimation()
     {
