@@ -15,15 +15,17 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     private bool completedSwitch = false;
     private bool switchToScrub = false;
 
+    private bool eventActive = false;
+
     public override void SetupEvent()
     {
         completedSwitch = false;
         switchToScrub = false;
-        //currentMoveIndex = 0;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
         CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
         CaligraphyInputManager.instance.ToggleInteractable(true);
         HandAnimations.instance.Reset();
+        eventActive = true;
 
         animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
     }
@@ -40,6 +42,10 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         {
             return;
         }*/
+        if (!eventActive)
+        {
+            return;
+        }
         if (completedSwitch)
         {
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
@@ -66,6 +72,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         }
         else if (newNumConnections == numConnectionsMade)
         {
+            //Debug.Log("end " + endFrame);
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
         }
     }
@@ -88,6 +95,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
         CaligraphyInputManager.instance.ClearSymbol();
         gameObject.SetActive(false);
+        eventActive = false;
     }
 
     private void NeutralIdle()

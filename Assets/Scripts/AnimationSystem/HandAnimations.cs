@@ -155,6 +155,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
 
     public void PlayAnimationStep(string animationName, float animEnd, float animationIncrease)
     {
+        //Debug.Log("Playing " + animationTime);
         anim.speed = 0;
         animationTime += animationIncrease;
         animationTime.ClampUpper(animEnd);

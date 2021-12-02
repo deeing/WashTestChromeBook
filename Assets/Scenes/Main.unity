@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 1683747378}
+  nextEvent: {fileID: 469246242}
   eventType: 9
   rhythmInput: {fileID: 821858830}
   scrubAnimationTime: 1
@@ -1681,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &85802186
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,7 +1695,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335727404}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &85802187
 MonoBehaviour:
@@ -2630,7 +2630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 412668533}
+  nextEvent: {fileID: 932526250}
   eventType: 7
   rhythmInput: {fileID: 1720356929}
   scrubAnimationTime: 1
@@ -3060,7 +3060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &174108724
 Transform:
   m_ObjectHideFlags: 0
@@ -3074,7 +3074,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174108725
 MonoBehaviour:
@@ -3123,7 +3123,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282113113}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174506680
 MonoBehaviour:
@@ -3138,7 +3138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 537654137}
+  nextEvent: {fileID: 1710314118}
   eventType: 17
   rhythmInput: {fileID: 1276147897}
   scrubAnimationTime: 1
@@ -6041,6 +6041,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910442008359838239, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165552, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -6121,6 +6125,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &322179384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322179385}
+  - component: {fileID: 322179386}
+  m_Layer: 0
+  m_Name: CalThumbLeftSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322179385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322179384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322179386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322179384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 1208800887}
+  eventType: 14
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 130c5a6868daeee4ea875667603e48af, type: 2}
+    animationName: Thumb Left Switch
+    animationStart: 0
+    animationEnd: 0.633
 --- !u!1 &326975666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,6 +6388,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 932526249}
+  - {fileID: 572854393}
+  - {fileID: 465578306}
+  - {fileID: 1479988427}
+  - {fileID: 900213996}
   - {fileID: 412668532}
   - {fileID: 85802186}
   - {fileID: 2126672258}
@@ -6473,6 +6536,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336368730}
   m_CullTransparentMesh: 1
+--- !u!1 &336919960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336919961}
+  - component: {fileID: 336919962}
+  m_Layer: 0
+  m_Name: CalFingernailsLeftSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &336919961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336919960}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336919962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336919960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 1266406249}
+  eventType: 20
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 6ae24345921577343ab84b5c3d169131, type: 2}
+    animationName: Fingernails Left Switch
+    animationStart: 0
+    animationEnd: 0.733
 --- !u!1 &337174966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,7 +6686,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282113113}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337453283
 MonoBehaviour:
@@ -6584,7 +6701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 1888565016}
+  nextEvent: {fileID: 322179386}
   eventType: 23
   rhythmInput: {fileID: 1760018957}
   scrubAnimationTime: 1
@@ -7307,7 +7424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &412668532
 Transform:
   m_ObjectHideFlags: 0
@@ -7321,7 +7438,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335727404}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &412668533
 MonoBehaviour:
@@ -8043,7 +8160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456406408
 Transform:
   m_ObjectHideFlags: 0
@@ -8057,7 +8174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &456406409
 MonoBehaviour:
@@ -8211,6 +8328,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464829211}
   m_CullTransparentMesh: 1
+--- !u!1 &465578305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465578306}
+  - component: {fileID: 465578307}
+  m_Layer: 0
+  m_Name: CalFingernailsRightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465578306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465578305}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335727404}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465578307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465578305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 337453283}
+  eventType: 22
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 18ebaed4588289f48875918a828f637c, type: 2}
+    animationName: Fingernails Right Switch
+    animationStart: 0
+    animationEnd: 0.733
 --- !u!1 &467770727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8247,6 +8418,60 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &469246240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469246241}
+  - component: {fileID: 469246242}
+  m_Layer: 0
+  m_Name: CalBetweenFingersSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &469246241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469246240}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &469246242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469246240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 1590340173}
+  eventType: 18
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 92c9db170adcbe744863bb0b5bf1aeb7, type: 2}
+    animationName: Between Fingers Switch
+    animationStart: 0
+    animationEnd: 0.536
 --- !u!1 &472311147
 GameObject:
   m_ObjectHideFlags: 0
@@ -8822,7 +9047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &495673105
 Transform:
   m_ObjectHideFlags: 0
@@ -8836,7 +9061,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 4
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &495673106
 MonoBehaviour:
@@ -8900,15 +9125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 2
-  nextEvent: {fileID: 0}
+  nextEvent: {fileID: 1490519464}
   eventType: 0
   switchAnimationTime: 1
-  animationName: 
+  animationName: Palm Switch
   caligraphyMove:
     symbol: {fileID: 11400000, guid: c19f5a19b12dc46429f86abfc66fc227, type: 2}
     animationName: Palm Switch
     animationStart: 0
-    animationEnd: 1
+    animationEnd: 0.68
 --- !u!1 &505000936
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,7 +9613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &537654136
 Transform:
   m_ObjectHideFlags: 0
@@ -9402,7 +9627,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &537654137
 MonoBehaviour:
@@ -9789,6 +10014,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 497236591}
+  - {fileID: 678842039}
+  - {fileID: 469246241}
+  - {fileID: 682881428}
+  - {fileID: 336919961}
+  - {fileID: 322179385}
+  - {fileID: 1710314117}
   - {fileID: 174108724}
   - {fileID: 456406408}
   - {fileID: 1683747377}
@@ -9864,6 +10095,60 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &572854392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572854393}
+  - component: {fileID: 572854394}
+  m_Layer: 0
+  m_Name: CalFingertipsRightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &572854393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572854392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335727404}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572854394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572854392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 608426190}
+  eventType: 4
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 5ccef0102067dfa41a4e2790d1317563, type: 2}
+    animationName: Fingertips Right Switch
+    animationStart: 0
+    animationEnd: 0.65
 --- !u!1 &580139951
 GameObject:
   m_ObjectHideFlags: 0
@@ -10366,7 +10651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 1803467638}
+  nextEvent: {fileID: 336919962}
   eventType: 5
   rhythmInput: {fileID: 1567426743}
   scrubAnimationTime: 1
@@ -11997,6 +12282,114 @@ MonoBehaviour:
     animationName: 
     animationStart: 0
     animationEnd: 0
+--- !u!1 &678842038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 678842039}
+  - component: {fileID: 678842040}
+  m_Layer: 0
+  m_Name: CalBackLSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &678842039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678842038}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678842040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678842038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 154685969}
+  eventType: 6
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 0ba7b92728872424b93cdbf22bf7121f, type: 2}
+    animationName: Back Left Switch
+    animationStart: 0
+    animationEnd: 0.633
+--- !u!1 &682881427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682881428}
+  - component: {fileID: 682881429}
+  m_Layer: 0
+  m_Name: CalFingertipsLeftSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682881428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682881427}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682881429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682881427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 1886652000}
+  eventType: 2
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: b532e2dc94376e643b5795f67ffbd22e, type: 2}
+    animationName: Fingertips Left Switch
+    animationStart: 0
+    animationEnd: 0.65
 --- !u!1 &691315799
 GameObject:
   m_ObjectHideFlags: 0
@@ -12013,7 +12406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &691315800
 Transform:
   m_ObjectHideFlags: 0
@@ -12027,7 +12420,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335727404}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &691315801
 MonoBehaviour:
@@ -15227,6 +15620,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886520646}
   m_CullTransparentMesh: 1
+--- !u!1 &900213995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900213996}
+  - component: {fileID: 900213997}
+  m_Layer: 0
+  m_Name: CalWristRightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900213996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900213995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335727404}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900213997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900213995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 962912672}
+  eventType: 12
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: ef5ce5265bca76140b11c49bd1c2cb9c, type: 2}
+    animationName: Wrist Right Switch
+    animationStart: 0
+    animationEnd: 0.583
 --- !u!1 &909111862
 GameObject:
   m_ObjectHideFlags: 0
@@ -15459,6 +15906,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928845454}
   m_CullTransparentMesh: 1
+--- !u!1 &932526248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 932526249}
+  - component: {fileID: 932526250}
+  m_Layer: 0
+  m_Name: CalBackRightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &932526249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932526248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335727404}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &932526250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932526248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 13993306}
+  eventType: 8
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: d69a342239077f44f96bdcf1d138a667, type: 2}
+    animationName: Back Right Switch
+    animationStart: 0
+    animationEnd: 0.633
 --- !u!1 &941790755
 GameObject:
   m_ObjectHideFlags: 0
@@ -17797,7 +18298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1097571968
 Transform:
   m_ObjectHideFlags: 0
@@ -17811,7 +18312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335727404}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1097571969
 MonoBehaviour:
@@ -19948,7 +20449,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282113113}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208800887
 MonoBehaviour:
@@ -19963,7 +20464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 2126672259}
+  nextEvent: {fileID: 1479988428}
   eventType: 15
   rhythmInput: {fileID: 346470569}
   scrubAnimationTime: 1
@@ -20800,7 +21301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282113113}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1266406249
 MonoBehaviour:
@@ -20815,7 +21316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 691315801}
+  nextEvent: {fileID: 465578307}
   eventType: 21
   rhythmInput: {fileID: 238619228}
   scrubAnimationTime: 1
@@ -20919,10 +21420,10 @@ Transform:
   - {fileID: 1590340172}
   - {fileID: 1886651999}
   - {fileID: 608426189}
-  - {fileID: 1208800886}
-  - {fileID: 174506679}
   - {fileID: 1266406248}
   - {fileID: 337453282}
+  - {fileID: 1208800886}
+  - {fileID: 174506679}
   - {fileID: 1429538595}
   - {fileID: 962912671}
   m_Father: {fileID: 1616051208}
@@ -22791,7 +23292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 1097571969}
+  nextEvent: {fileID: 900213997}
   eventType: 11
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
@@ -23234,6 +23735,60 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: 300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1479988426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479988427}
+  - component: {fileID: 1479988428}
+  m_Layer: 0
+  m_Name: CalThumbRightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479988427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479988426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335727404}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479988428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479988426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 174506680}
+  eventType: 16
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 0513bc52a3edc70468a36a1adacc473e, type: 2}
+    animationName: Thumb Right Switch
+    animationStart: 0
+    animationEnd: 0.633
 --- !u!1 &1482301085
 GameObject:
   m_ObjectHideFlags: 0
@@ -23521,7 +24076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 456406409}
+  nextEvent: {fileID: 678842040}
   eventType: 1
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
@@ -24016,7 +24571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 495673106}
+  nextEvent: {fileID: 682881429}
   eventType: 19
   rhythmInput: {fileID: 1276147897}
   scrubAnimationTime: 1
@@ -25287,7 +25842,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1677753374
 RectTransform:
@@ -25568,7 +26123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1683747377
 Transform:
   m_ObjectHideFlags: 0
@@ -25582,7 +26137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 3
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1683747378
 MonoBehaviour:
@@ -25956,6 +26511,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709889345}
   m_CullTransparentMesh: 1
+--- !u!1 &1710314116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710314117}
+  - component: {fileID: 1710314118}
+  m_Layer: 0
+  m_Name: CalWristLeftSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1710314117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710314116}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 567194246}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710314118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710314116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27f9bd7f6e0a64ebc08b502e91fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMeasures: 2
+  nextEvent: {fileID: 1429538596}
+  eventType: 10
+  switchAnimationTime: 1
+  animationName: 
+  caligraphyMove:
+    symbol: {fileID: 11400000, guid: 8fa1b42d2f1946945993e6d712da8f90, type: 2}
+    animationName: Wrist Left Switch
+    animationStart: 0
+    animationEnd: 0.583
 --- !u!1 &1719618370
 GameObject:
   m_ObjectHideFlags: 0
@@ -26967,7 +27576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_62
+  m_text: WashTest_95
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27195,7 +27804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1803467637
 Transform:
   m_ObjectHideFlags: 0
@@ -27209,7 +27818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1803467638
 MonoBehaviour:
@@ -33082,7 +33691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numMeasures: 4
-  nextEvent: {fileID: 85802187}
+  nextEvent: {fileID: 572854394}
   eventType: 3
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
@@ -33239,7 +33848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1888565015
 Transform:
   m_ObjectHideFlags: 0
@@ -33253,7 +33862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567194246}
-  m_RootOrder: 7
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1888565016
 MonoBehaviour:
@@ -36078,7 +36687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2054719646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36941,7 +37550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2126672258
 Transform:
   m_ObjectHideFlags: 0
@@ -36955,7 +37564,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 335727404}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2126672259
 MonoBehaviour:
