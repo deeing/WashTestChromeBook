@@ -195,7 +195,7 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
         ClearSymbol();
         ToggleInteractable(false);
         ToggleCaligraphy(false);
-        HandAnimations.instance.Reset();
+        //HandAnimations.instance.Reset();
     }
 
     public void SetUserFinishedSymbol(bool status)

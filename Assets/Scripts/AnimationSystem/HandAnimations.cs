@@ -21,6 +21,8 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     private bool finishedTransition = false;
     private Coroutine transitionCoroutine = null;
 
+    private float coPeriodTime = .01f;
+
     private int tweenCounter = 0;
     private bool isTweening = false;
 
@@ -149,6 +151,7 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         //anim.Play(animationName, 0, animTime);
         anim.Play(animationName, 0);
     }
+
 
     public void PlayAnimationStep(string animationName, float animEnd, float animationIncrease)
     {

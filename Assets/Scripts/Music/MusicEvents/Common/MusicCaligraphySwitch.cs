@@ -8,15 +8,91 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     [SerializeField]
     private CaligraphyMove caligraphyMove;
 
+    private int numConnectionsMade = 0;
+    private float animationStep = 0f;
+    private float endFrame = 0f;
+
+    private bool completedSwitch = false;
+    private bool switchToScrub = false;
+
     public override void SetupEvent()
     {
+        completedSwitch = false;
+        switchToScrub = false;
+        //currentMoveIndex = 0;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
         CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
         CaligraphyInputManager.instance.ToggleInteractable(true);
+        HandAnimations.instance.Reset();
+
+        animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
     }
 
     public override void DoEvent(Beat beat)
     {
-        // do nothing based on beats
+        // do nothing
+    }
+
+    private void Update()
+    {
+        /*
+        if (WashEventManager.instance.isInspectionMode)
+        {
+            return;
+        }*/
+        if (completedSwitch)
+        {
+            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+            return;
+        }
+        if (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && CaligraphyInputManager.instance.UserIsDrawing())
+        {
+            CompleteSwitch();
+            return;
+        }
+
+        int newNumConnections = CaligraphyInputManager.instance.GetNumValidConnections(caligraphyMove.symbol);
+        if (newNumConnections > numConnectionsMade)
+        {
+            numConnectionsMade = newNumConnections;
+            //float startOfKey = caligraphyMove.animationStart + (animationStep * numConnectionsMade - 1);
+            endFrame = caligraphyMove.animationStart + (animationStep * numConnectionsMade);
+        }
+        else if (newNumConnections == 0)
+        {
+            numConnectionsMade = 0;
+            HandAnimations.instance.Reset();
+            NeutralIdle();
+        }
+        else if (newNumConnections == numConnectionsMade)
+        {
+            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+        }
+    }
+
+    public void CompleteSwitch()
+    {
+        completedSwitch = true;
+        endFrame = caligraphyMove.animationStart + (animationStep * caligraphyMove.symbol.symbolConnections.Count);
+        StartCoroutine(SwitchToScrub());
+    }
+
+    private IEnumerator SwitchToScrub()
+    {
+        MenuManager.instance.ShowAlert("Nice!", .5f);
+
+        yield return new WaitForSeconds(1f);
+        switchToScrub = true;
+        hasFinished = true;
+        CaligraphyInputManager.instance.HandleCompleteCaligraphy();
+        CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
+        CaligraphyInputManager.instance.ClearSymbol();
+        gameObject.SetActive(false);
+    }
+
+    private void NeutralIdle()
+    {
+        //HandAnimations.instance.TransitionPlay("Idle", .05f, .05f);
+        HandAnimations.instance.CrossFade("Idle", .05f);
     }
 }
