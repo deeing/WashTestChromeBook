@@ -29,7 +29,7 @@ public class CaligraphyButton : MonoBehaviour
         touchButton = GetComponent<TouchButton>();
     }
 
-    public void StartCaligraphy(Lean.Touch.LeanFinger finger)
+    public void StartCaligraphy()
     {
         caligraphyInput.SetStartingPoint(thisTransform.position, id);
         ToggleAltColor(true);

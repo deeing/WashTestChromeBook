@@ -8,7 +8,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     [SerializeField]
     protected float switchAnimationTime = 1f;
     [SerializeField]
-    private string animationName;
+    protected string animationName;
 
     private bool eventStarted = false;
     private bool isStarterEvent = false;
@@ -31,7 +31,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
         }
     }
 
-    public void ShowPrompt(Beat beat)
+    public virtual void ShowPrompt(Beat beat)
     {
         string text = GetEventType().GetDescription();
         float promptTime = GetPromptTravelTime(beat);
