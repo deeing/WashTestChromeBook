@@ -13,11 +13,14 @@ public class TouchButton : MonoBehaviour
     [SerializeField]
     [Tooltip("Whether or not we want to touch input to only account for the topmost button only")]
     private bool topOnly = false;
+    [SerializeField]
+    [Tooltip("Whether or not we want touch input to only factor in the first touch input")]
+    private bool firstTouchInputOnly = true;
 
-    public UnityEvent onPress;
-    public UnityEvent onHover;
-    public UnityEvent onExit;
-    public UnityEvent onRelease;
+    public TouchEvent onPress;
+    public TouchEvent onHover;
+    public TouchEvent onExit;
+    public TouchEvent onRelease;
 
     private bool isHovering = false;
 
@@ -55,9 +58,24 @@ public class TouchButton : MonoBehaviour
 
     private bool GetIsOverButton(Lean.Touch.LeanFinger finger)
     {
-        // loop through all the fingers and see if any of the fingers are touchnig this button's touch area
         bool isOverButton = false;
-        for (int i=0; i < Lean.Touch.LeanTouch.Fingers.Count; i++)
+        if (firstTouchInputOnly)
+        {
+            Lean.Touch.LeanFinger currFinger = Lean.Touch.LeanTouch.Fingers[0];
+            List<RaycastResult> hits = Lean.Touch.LeanTouch.RaycastGui(currFinger.ScreenPosition, touchMask);
+            foreach (RaycastResult hit in hits)
+            {
+                if (hit.gameObject == touchArea)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        // otherwise loop through all the fingers and see if any of the fingers are touchnig this button's touch area
+        for (int i = 0; i < Lean.Touch.LeanTouch.Fingers.Count; i++)
         {
             Lean.Touch.LeanFinger currFinger = Lean.Touch.LeanTouch.Fingers[i];
 
@@ -69,7 +87,8 @@ public class TouchButton : MonoBehaviour
                 {
                     isOverButton = true;
                 }
-            } else
+            }
+            else
             {
                 // N SQUARED - OPTIMIZE THIS IF IT BECOMES AN ISSUE
                 foreach (RaycastResult hit in hits)
@@ -81,7 +100,7 @@ public class TouchButton : MonoBehaviour
                 }
             }
         }
-        
+
         return isOverButton;
     }
 
@@ -89,46 +108,46 @@ public class TouchButton : MonoBehaviour
     {
         if (GetIsOverButton(finger))
         {
-            OnPress();
-        } 
+            OnPress(finger);
+        }
     }
 
     void HandleFingerHover(Lean.Touch.LeanFinger finger)
     {
         if (GetIsOverButton(finger))
         {
-            OnHover();
+            OnHover(finger);
             isHovering = true;
         }
         else if (isHovering)
         {
-            OnExit();
+            OnExit(finger);
             isHovering = false;
         }
     }
 
     void HandleFingerUp(Lean.Touch.LeanFinger finger)
     {
-        OnRelease();
+        OnRelease(finger);
     }
 
-    public void OnPress()
+    public void OnPress(Lean.Touch.LeanFinger finger)
     {
-        onPress.Invoke();
+        onPress.Invoke(finger);
     }
 
-    public void OnHover()
+    public void OnHover(Lean.Touch.LeanFinger finger)
     {
-        onHover.Invoke();
+        onHover.Invoke(finger);
     }
 
-    public void OnExit()
+    public void OnExit(Lean.Touch.LeanFinger finger)
     {
-        onExit.Invoke();
+        onExit.Invoke(finger);
     }
 
-    public void OnRelease()
+    public void OnRelease(Lean.Touch.LeanFinger finger)
     {
-        onRelease.Invoke();
+        onRelease.Invoke(finger);
     }
 }

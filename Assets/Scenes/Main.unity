@@ -6043,294 +6043,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702318939992480, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319494734311, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702319819815037, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320104686731, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320358382265, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320574324606, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320578551152, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: touchMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 299570435}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCaligraphy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaligraphyButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8045702320712807785, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2910442009935165563, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
@@ -6355,17 +6067,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2910442009935165552, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
   m_PrefabInstance: {fileID: 299570431}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &299570435 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 733223300264013737, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
-  m_PrefabInstance: {fileID: 299570431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9cc678badc6f240b1c693e95a02e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &299570436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6383,12 +6084,25 @@ MonoBehaviour:
     m_Bits: 256
   touchArea: {fileID: 299570434}
   topOnly: 1
+  firstTouchInputOnly: 1
   onPress:
     m_PersistentCalls:
       m_Calls: []
   onHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299570433}
+        m_TargetAssemblyTypeName: CaligraphyInput, Assembly-CSharp
+        m_MethodName: HandleHover
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onExit:
     m_PersistentCalls:
       m_Calls: []
@@ -6397,8 +6111,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 299570433}
         m_TargetAssemblyTypeName: CaligraphyInput, Assembly-CSharp
-        m_MethodName: ResetLines
-        m_Mode: 1
+        m_MethodName: Release
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
