@@ -6175,10 +6175,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 130c5a6868daeee4ea875667603e48af, type: 2}
+    symbol: {fileID: 11400000, guid: 64feb750f280ec446bf5a7b320f7ddac, type: 2}
     animationName: Thumb Left Switch
     animationStart: 0
     animationEnd: 0.633
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &326975666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,10 +6591,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 6ae24345921577343ab84b5c3d169131, type: 2}
+    symbol: {fileID: 11400000, guid: 9a1f62e1e9884ba48bf8f6d6acf509b4, type: 2}
     animationName: Fingernails Left Switch
     animationStart: 0
     animationEnd: 0.733
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &337174966
 GameObject:
   m_ObjectHideFlags: 0
@@ -8378,10 +8388,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 18ebaed4588289f48875918a828f637c, type: 2}
+    symbol: {fileID: 11400000, guid: d94e7e268965a244aa3e54723c00f350, type: 2}
     animationName: Fingernails Right Switch
     animationStart: 0
     animationEnd: 0.733
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &467770727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8468,7 +8483,12 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 92c9db170adcbe744863bb0b5bf1aeb7, type: 2}
+    symbol: {fileID: 11400000, guid: dbf2ebcc25725674d9a5de716c0095e3, type: 2}
+    animationName: Between Fingers Switch
+    animationStart: 0
+    animationEnd: 0.536
+  alternateMove:
+    symbol: {fileID: 11400000, guid: 4722695a322e2c64eafc513e2b1af0de, type: 2}
     animationName: Between Fingers Switch
     animationStart: 0
     animationEnd: 0.536
@@ -9130,10 +9150,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: Palm Switch
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: c19f5a19b12dc46429f86abfc66fc227, type: 2}
+    symbol: {fileID: 11400000, guid: 522955c140b27af418e78c7720211f12, type: 2}
     animationName: Palm Switch
     animationStart: 0
     animationEnd: 0.68
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &505000936
 GameObject:
   m_ObjectHideFlags: 0
@@ -10145,10 +10170,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 5ccef0102067dfa41a4e2790d1317563, type: 2}
+    symbol: {fileID: 11400000, guid: 1d99505d61c9a69438df3cf66f1d1ccb, type: 2}
     animationName: Fingertips Right Switch
     animationStart: 0
     animationEnd: 0.65
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &580139951
 GameObject:
   m_ObjectHideFlags: 0
@@ -12332,10 +12362,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 0ba7b92728872424b93cdbf22bf7121f, type: 2}
+    symbol: {fileID: 11400000, guid: 9652924801191084bbc82d98b628f556, type: 2}
     animationName: Back Left Switch
     animationStart: 0
     animationEnd: 0.633
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &682881427
 GameObject:
   m_ObjectHideFlags: 0
@@ -12386,10 +12421,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: b532e2dc94376e643b5795f67ffbd22e, type: 2}
+    symbol: {fileID: 11400000, guid: e1b66f7596929774e8e4695cbdb7014d, type: 2}
     animationName: Fingertips Left Switch
     animationStart: 0
     animationEnd: 0.65
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &691315799
 GameObject:
   m_ObjectHideFlags: 0
@@ -15670,10 +15710,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: ef5ce5265bca76140b11c49bd1c2cb9c, type: 2}
+    symbol: {fileID: 11400000, guid: aefae434d3c59e7498314bbbe87b8073, type: 2}
     animationName: Wrist Right Switch
     animationStart: 0
     animationEnd: 0.583
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &909111862
 GameObject:
   m_ObjectHideFlags: 0
@@ -15956,10 +16001,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: d69a342239077f44f96bdcf1d138a667, type: 2}
+    symbol: {fileID: 11400000, guid: 3c2b826f2a56bea4380bc78a473bae42, type: 2}
     animationName: Back Right Switch
     animationStart: 0
     animationEnd: 0.633
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &941790755
 GameObject:
   m_ObjectHideFlags: 0
@@ -23785,10 +23835,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 0513bc52a3edc70468a36a1adacc473e, type: 2}
+    symbol: {fileID: 11400000, guid: 96020a70a4b846c47b563de5657ba3d4, type: 2}
     animationName: Thumb Right Switch
     animationStart: 0
     animationEnd: 0.633
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &1482301085
 GameObject:
   m_ObjectHideFlags: 0
@@ -26561,10 +26616,15 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 8fa1b42d2f1946945993e6d712da8f90, type: 2}
+    symbol: {fileID: 11400000, guid: bef21f626be67ad4fbe9ec50e2350377, type: 2}
     animationName: Wrist Left Switch
     animationStart: 0
     animationEnd: 0.583
+  alternateMove:
+    symbol: {fileID: 0}
+    animationName: 
+    animationStart: 0
+    animationEnd: 0
 --- !u!1 &1719618370
 GameObject:
   m_ObjectHideFlags: 0
@@ -27576,7 +27636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_95
+  m_text: WashTest_96
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -7,6 +7,9 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 {
     [SerializeField]
     private CaligraphyMove caligraphyMove;
+    [SerializeField]
+    [Tooltip("Optional other possible move for the same animation")]
+    private CaligraphyMove alternateMove;
 
     private int numConnectionsMade = 0;
     private float animationStep = 0f;
@@ -51,13 +54,21 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
             return;
         }
-        if (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) && CaligraphyInputManager.instance.UserIsDrawing())
+        if (CaligraphyInputManager.instance.UserIsDrawing() &&
+            (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) || 
+                (alternateMove.symbol != null && CaligraphyInputManager.instance.HasDoneCaligraphy(alternateMove))))
         {
             CompleteSwitch();
             return;
         }
 
         int newNumConnections = CaligraphyInputManager.instance.GetNumValidConnections(caligraphyMove.symbol);
+        if (alternateMove.symbol != null)
+        {
+            // use alternate if it has more valid connections
+            int altConnections = CaligraphyInputManager.instance.GetNumValidConnections(alternateMove.symbol);
+            newNumConnections = altConnections > newNumConnections ? altConnections : newNumConnections;
+        }
         if (newNumConnections > numConnectionsMade)
         {
             numConnectionsMade = newNumConnections;
