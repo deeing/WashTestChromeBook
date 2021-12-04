@@ -35,6 +35,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private Track<Beat> beatsData;
     private List<Beat> allBeats = new List<Beat>();
     private SongData songData;
+    private AudioSource audioSource;
 
     protected override void Awake()
     {
@@ -60,13 +61,20 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
         rhythmPlayer.rhythmData = songData.songRhythmData;
-        AudioSource audioSource = GetComponent<AudioSource>();
+        rhythmPlayer.SongEnded += RestartSong;
+        audioSource = GetComponent<AudioSource>();
         audioSource.clip = songData.songAudio;
         audioSource.Play();
         eventProvider.Register<Beat>(HandleBeat);
         rhythmData = rhythmPlayer.rhythmData;
         beatsData = rhythmData.GetTrack<Beat>();
         beatsData.GetFeatures(allBeats, 0f, rhythmData.audioClip.length);
+    }
+
+    private void RestartSong()
+    {
+        Debug.Log("Replaying song");
+        audioSource.Play();
     }
 
     private void SetupEvents()
@@ -125,7 +133,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             if (currentWashEvent.IsFinished())
             {
-                RecordResults(currentWashEvent);
+                if (currentWashEvent.ShouldRecord())
+                {
+                    RecordResults(currentWashEvent);
+                }
                 NextEvent();
             } else
             {

@@ -15,5 +15,5 @@ MonoBehaviour:
   _songAudio: {fileID: 8300000, guid: 893c7b2664cea86498887943bde779ad, type: 3}
   _songRhythmData: {fileID: 11400000, guid: 8f2067ca7b69ee54dadaf54ab45e9d94, type: 2}
   _beatsPerMeasure: 4
-  _beatsPerInputPeriod: 2
+  _beatsPerInputPeriod: 1
   _startingBeatOffset: 1

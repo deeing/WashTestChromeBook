@@ -52,4 +52,9 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     {
         score += updateAmount;
     }
+
+    public virtual bool ShouldRecord()
+    {
+        return true;
+    }
 }

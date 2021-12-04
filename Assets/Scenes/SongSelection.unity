@@ -245,7 +245,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bea45eda4d8098c42a87ae69f94b958e, type: 2}
   - {fileID: 11400000, guid: 1071a57ba1cc48845a6851b2cd45cb0c, type: 2}
   - {fileID: 11400000, guid: 1fa53ce8da2ffae43b7ec172a495a01e, type: 2}
-  - {fileID: 11400000, guid: 612e4d2aef58a9740b358e098b8f5bd7, type: 2}
   possibleSongChoicePrefab: {fileID: 5154030735552156490, guid: 17b02c01115df6446963b73f27363851, type: 3}
 --- !u!4 &91195914
 Transform:

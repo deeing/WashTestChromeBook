@@ -107,4 +107,9 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     {
         isStarterEvent = true;
     }
+
+    public override bool ShouldRecord ()
+    {
+        return false;
+    }
 }

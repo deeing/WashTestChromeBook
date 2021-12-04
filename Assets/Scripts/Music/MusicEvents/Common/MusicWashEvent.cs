@@ -9,4 +9,5 @@ public interface MusicWashEvent
     MusicWashEvent GetNextWashEvent();
     void EndEvent();
     float GetScore();
+    bool ShouldRecord();
 }
