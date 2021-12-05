@@ -4373,6 +4373,8 @@ MonoBehaviour:
   button: {fileID: 403890929}
   centerPoint: {fileID: 1923292135}
   direction: 0
+  beatMultiplier: 1
+  easingPattern: 1
 --- !u!1 &240988449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6176,7 +6178,7 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 64feb750f280ec446bf5a7b320f7ddac, type: 2}
+    symbol: {fileID: 11400000, guid: 96020a70a4b846c47b563de5657ba3d4, type: 2}
     animationName: Thumb Left Switch
     animationStart: 0
     animationEnd: 0.633
@@ -23836,7 +23838,7 @@ MonoBehaviour:
   switchAnimationTime: 1
   animationName: 
   caligraphyMove:
-    symbol: {fileID: 11400000, guid: 96020a70a4b846c47b563de5657ba3d4, type: 2}
+    symbol: {fileID: 11400000, guid: 64feb750f280ec446bf5a7b320f7ddac, type: 2}
     animationName: Thumb Right Switch
     animationStart: 0
     animationEnd: 0.633
@@ -27412,6 +27414,8 @@ MonoBehaviour:
   button: {fileID: 1304440587}
   centerPoint: {fileID: 1858107744}
   direction: 1
+  beatMultiplier: 1
+  easingPattern: 1
 --- !u!1 &1768062411
 GameObject:
   m_ObjectHideFlags: 0
@@ -27773,7 +27777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_98
+  m_text: WashTest_99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -28570,6 +28574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858107744}
+  - component: {fileID: 1858107745}
   m_Layer: 5
   m_Name: Right Center
   m_TagString: Untagged
@@ -28597,6 +28602,14 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1858107745
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858107743}
+  m_CullTransparentMesh: 1
 --- !u!1 &1858911699
 GameObject:
   m_ObjectHideFlags: 0

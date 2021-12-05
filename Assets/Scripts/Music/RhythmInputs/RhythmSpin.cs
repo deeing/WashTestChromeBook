@@ -10,10 +10,14 @@ public class RhythmSpin : RhythmInput
     private RectTransform centerPoint;
     [SerializeField]
     private Direction direction = Direction.Clockwise;
+    [SerializeField]
+    private int beatMultiplier = 2;
+    [SerializeField]
+    private Ease easingPattern = Ease.OutBack;
 
     private RhythmInputStatus rhythmStatus = RhythmInputStatus.Miss;
 
-    private enum Direction
+    protected enum Direction
     {
         Clockwise,
         CounterClockwise
@@ -22,7 +26,7 @@ public class RhythmSpin : RhythmInput
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
         float duration = nextBeat.timestamp - currentBeat.timestamp;
-        button.DOShapeCircle(centerPoint.anchoredPosition, GetDirection(), duration);
+        button.DOShapeCircle(centerPoint.anchoredPosition, GetDirection(), duration).SetEase(easingPattern);
     }
 
     private float GetDirection()
@@ -42,6 +46,6 @@ public class RhythmSpin : RhythmInput
 
     public override int GetBeatsPerInputPeriod()
     {
-        return base.GetBeatsPerInputPeriod() * 2;
+        return base.GetBeatsPerInputPeriod() * beatMultiplier;
     }
 }
