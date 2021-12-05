@@ -1,51 +1,51 @@
 using System.ComponentModel;
 public enum PlayerEventType
 {
-    [Description("Palm Switch")]
+    [Description("PALMS")]
     PalmSwitch,
     [Description("Palms Scrub")]
     PalmScrub,
-    [Description("Fingertips Left Switch")]
+    [Description("FINGERTIPS (Left)")]
     FingertipsLSwitch,
     [Description("Fingertips Left Scrub")]
     FingertipsLScrub,
-    [Description("Fingertips Right Switch")]
+    [Description("FINGERTIPS (Right)")]
     FingertipsRSwitch,
     [Description("Fingertips Right Scrub")]
     FingertipsRScrub,
-    [Description("Back of Left Hand Switch")]
+    [Description("BACK (Left)")]
     BackOfHandLSwitch,
     [Description("Back of Left Hand Scrub")]
     BackOfHandLScrub,
-    [Description("Back of Right Hand Switch")]
+    [Description("BACK (Right)")]
     BackOfHandRSwitch,
     [Description("Back of Right Hand Scrub")]
     BackOfHandRScrub,
-    [Description("Left Wrist Switch")]
+    [Description("WRIST (Left)")]
     WristLSwitch,
     [Description("Left Wrist Scrub")]
     WristLScrub,
-    [Description("Right Wrist Switch")]
+    [Description("WRIST (Right)")]
     WristRSwitch,
     [Description("Right Wrist Scrub")]
     WristRScrub,
-    [Description("Left Thumb Switch")]
+    [Description("THUMB (Left)")]
     ThumbLSwitch,
     [Description("Left Thumb Scrub")]
     ThumbLScrub,
-    [Description("Right Thumb Switch")]
+    [Description("THUMB (Right)")]
     ThumbRSwitch,
     [Description("Right Thumb Scrub")]
     ThumbRScrub,
-    [Description("Between Fingers Switch")]
+    [Description("BETWEEN")]
     BetweenFingersSwitch,
     [Description("Between Fingers Scrub")]
     BetweenFingersScrub,
-    [Description("Left Fingernails Switch")]
+    [Description("NAILS (Left)")]
     FingernailsLSwitch,
     [Description("Left Fingernails Scrub")]
     FingernailsLScrub,
-    [Description("Right Fingernails Switch")]
+    [Description("NAILS (Right)")]
     FingernailsRSwitch,
     [Description("Right Fingernails Scrub")]
     FingernailsRScrub

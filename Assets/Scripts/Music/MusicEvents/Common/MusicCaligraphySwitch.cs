@@ -2,6 +2,7 @@ using RhythmTool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wash.Utilities;
 
 public class MusicCaligraphySwitch : MusicSwitchEvent
 {
@@ -22,6 +23,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     public override void SetupEvent()
     {
+        MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 3f);
         completedSwitch = false;
         switchToScrub = false;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
@@ -97,7 +99,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     private IEnumerator SwitchToScrub()
     {
-        MenuManager.instance.ShowAlert("Nice!", .5f);
+        //MenuManager.instance.ShowAlert("Nice!", .5f);
 
         yield return new WaitForSeconds(1f);
         switchToScrub = true;

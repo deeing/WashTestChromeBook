@@ -28,7 +28,7 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     public override void SetupEvent()
     {
-        MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 2f);
+        //MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 2f);
 
         isPlayingEndAnimation = false;  
         numBeatsInEvent = 0;
