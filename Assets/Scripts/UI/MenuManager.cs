@@ -39,6 +39,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private SwitchPrompt switchPrompt;
     [SerializeField]
     private MusicResultsMenu musicResultsMenu;
+    [SerializeField]
+    private AlertMenu scrubAlertMenu;
 
     protected override void Awake()
     {
@@ -123,6 +125,11 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ShowAlert(string message, float duration)
     {
         alertMenu.Alert(message, duration);
+    }
+
+    public void ShowScrubAlert(string message, float duration)
+    {
+        scrubAlertMenu.Alert(message, duration);
     }
 
     public void CheckListCheckOffItem()
