@@ -9,6 +9,9 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     private SongData[] songList;
     [SerializeField]
     private GameObject possibleSongChoicePrefab;
+    [SerializeField]
+    private LevelDifficulty _difficulty;
+    public LevelDifficulty difficulty { get => _difficulty; private set => _difficulty = value; }
 
     public SongData selectedSong { get; private set; }
 
@@ -46,5 +49,10 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     {
         selectedSong = song;
         SceneManager.LoadScene("Main");
+    }
+
+    public void SelectDifficulty(int difficultyIndex)
+    {
+        difficulty = (LevelDifficulty)difficultyIndex;
     }
 }

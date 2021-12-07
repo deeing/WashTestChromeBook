@@ -17,22 +17,32 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     private float endFrame = 0f;
 
     private bool completedSwitch = false;
-    private bool switchToScrub = false;
-
     private bool eventActive = false;
+    private float normalGuidelineWait = 3f;
 
     public override void SetupEvent()
     {
         MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 3f);
         completedSwitch = false;
-        switchToScrub = false;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
-        CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+        if (MusicManager.instance.difficulty == LevelDifficulty.Beginner)
+        {
+            CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+        } else if (MusicManager.instance.difficulty == LevelDifficulty.Intermediate)
+        {
+            StartCoroutine(DelayedGuideLines());
+        }
         CaligraphyInputManager.instance.ToggleInteractable(true);
         HandAnimations.instance.Reset();
         eventActive = true;
 
         animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
+    }
+
+    private IEnumerator DelayedGuideLines()
+    {
+        yield return new WaitForSeconds(normalGuidelineWait);
+        CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
     }
 
     public override void DoEvent(Beat beat)
@@ -102,7 +112,6 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         //MenuManager.instance.ShowAlert("Nice!", .5f);
 
         yield return new WaitForSeconds(1f);
-        switchToScrub = true;
         hasFinished = true;
         CaligraphyInputManager.instance.HandleCompleteCaligraphy();
         CaligraphyInputManager.instance.SetUserFinishedSymbol(false);

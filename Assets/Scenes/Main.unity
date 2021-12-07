@@ -25742,6 +25742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63145a2f20b7cd4198a0e72fb6f2f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   eventProvider: {fileID: 11400000, guid: abf0fb14d35a3b847b80f6d6e9d8b4f4, type: 2}
   startEventsContainer: {fileID: 567194246}
   debugText: {fileID: 630311957}
@@ -28401,7 +28402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_102
+  m_text: WashTest_104
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -8,6 +8,8 @@ using System.Text;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
+    public LevelDifficulty difficulty = LevelDifficulty.Beginner;
+
     [SerializeField]
     private RhythmEventProvider eventProvider;
     [SerializeField]
@@ -53,6 +55,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         if (SongSelection.instance)
         {
             songData = SongSelection.instance.selectedSong;
+            difficulty = SongSelection.instance.difficulty;
         }
         else
         {
@@ -163,13 +166,14 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     // Gets the offset number of beats after the given beat
     public Beat GetNextBeat(int beatIndex, int offset)
     {
-        return allBeats[beatIndex + offset];
+        int safeOffset = Mathf.Min(allBeats.Count - 1, beatIndex + offset);
+        return allBeats[safeOffset];
     }
 
     public Beat GetNextBeat(Beat beat, int offset)
     {
         int beatIndex = beatsData.GetIndex(beat);
-        return allBeats[beatIndex + offset];
+        return GetNextBeat(beatIndex, offset);
     }
 
     public Beat GetNextBeat(Beat beat)
