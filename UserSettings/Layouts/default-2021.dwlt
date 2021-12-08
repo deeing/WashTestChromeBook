@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 461}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 180
+  controlID: 141
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 181
+  controlID: 142
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 182
+  controlID: 61
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 183
+  controlID: 62
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,8 +213,8 @@ MonoBehaviour:
     y: 0
     width: 306
     height: 446
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -430,7 +430,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 7635c8ffc035c8ff3a88c8ffc0a7c9ff4ac5c9ff56c5c9ff24a1d7ff88c8d9ffccc4e5ff12c5e5ff8c17e6ff8636e7ff1054e7ff2054e7ff1a78f2ff0ccbf8ffaeeaf9ff02dafeff0afbffffd4440100be7d0100f67e0100d48301002e840100a684010016860100c6330f0096350f00ae400f00164d0f0084560f00f4700f0064850f007a9f0f0044c30f00e8c90f00c8cf0f00c4d20f00c4f00f00
+      m_ExpandedIDs: e2c0eaff28c1eaff9e13ebff2833ecffb250ecffc850ecff2c72edff0cdeeeff16deeeff26deeeff26ebeeff60ebeeff6aebeeff7aebeeff16f0eeff50f0eeff5af0eeff6af0eeff5a03efff6403efff7403efff500fefff5c0fefff840fefff8a0fefff980fefffa40fefffc40fefffaa13efffe013efffd6b5f1ff1cb6f1ff9608f2ff2028f3ffaa45f3ffba45f3ff0afbfffff4fffffff6600000d0660000b6f90d00542212002e281200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -679,9 +679,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 782.6299, y: 639.25726, z: -0.05564244}
+    m_Target: {x: 954.91266, y: 768.0835, z: -0.013059296}
     speed: 2
-    m_Value: {x: 782.6299, y: 639.25726, z: -0.05564244}
+    m_Value: {x: 954.91266, y: 768.0835, z: -0.013059296}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -732,9 +732,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 551.71185
+    m_Target: 566.686
     speed: 2
-    m_Value: 551.71185
+    m_Value: 566.686
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1032,22 +1032,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\david\Unity Projects\WashTestChromeBook
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: 323f0100
-    m_LastClickedID: 81714
-    m_ExpandedIDs: 00000000c23d0100c43d0100c63d0100c83d0100ca3d0100cc3d0100ce3d0100d03d0100d23d0100d43d0100d83d01000c3f0100289101006691010000ca9a3b
+    scrollPos: {x: 0, y: 100}
+    m_SelectedIDs: 683e0100
+    m_LastClickedID: 81512
+    m_ExpandedIDs: 00000000263e0100283e01002a3e01002c3e01002e3e0100303e0100323e0100383e01003a3e01003e3e01006c3e010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1075,7 +1075,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c23d0100c43d0100c63d0100c83d0100ca3d0100cc3d0100ce3d0100d03d0100d23d0100d43d0100d63d0100d83d0100
+    m_ExpandedIDs: 00000000263e0100283e01002a3e01002c3e01002e3e0100303e0100323e0100343e0100363e0100383e01003a3e01003c3e01003e3e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1119,7 +1119,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1189,7 +1189,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 99494
+  m_LastSelectedObjectID: -1110076
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

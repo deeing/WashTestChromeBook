@@ -62,6 +62,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             songData = fallbackSong;
         }
 
+        MenuManager.instance.SetDifficultyText(difficulty.ToString());
         RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
         rhythmPlayer.rhythmData = songData.songRhythmData;
         rhythmPlayer.SongEnded += RestartSong;

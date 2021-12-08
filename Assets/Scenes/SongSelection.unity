@@ -1280,8 +1280,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 91195913}
-        m_TargetAssemblyTypeName: SongSelection, Assembly-CSharp
+      - m_Target: {fileID: 1351975361}
+        m_TargetAssemblyTypeName: DifficultySelection, Assembly-CSharp
         m_MethodName: SelectDifficulty
         m_Mode: 0
         m_Arguments:

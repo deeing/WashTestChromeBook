@@ -9,6 +9,8 @@ public class DifficultySelection : MonoBehaviour
 {
     private Dropdown dropDown;
 
+    private const string DifficultyString = "PlayerDifficulty";
+
     private void Awake()
     {
         dropDown = GetComponent<Dropdown>();
@@ -19,5 +21,24 @@ public class DifficultySelection : MonoBehaviour
             option.text = difficulty.ToString();
             dropDown.options.Add(option);
         }
+        dropDown.value = LoadDifficulty();
+    }
+
+    public void SelectDifficulty(int difficulty)
+    {
+        SongSelection.instance.SelectDifficulty(difficulty);
+        SaveDifficulty(difficulty);
+    }
+
+    private void SaveDifficulty(int difficulty)
+    {
+        PlayerPrefs.SetInt(DifficultyString, difficulty);
+    }
+
+    private int LoadDifficulty()
+    {
+        int savedDiff = PlayerPrefs.GetInt(DifficultyString, 0);
+
+        return savedDiff;
     }
 }

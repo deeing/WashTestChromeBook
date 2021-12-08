@@ -41,6 +41,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private MusicResultsMenu musicResultsMenu;
     [SerializeField]
     private AlertMenu scrubAlertMenu;
+    [SerializeField]
+    private TMP_Text difficultyText;
 
     protected override void Awake()
     {
@@ -191,5 +193,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public MusicResultsMenu GetMusicResultsMenu()
     {
         return musicResultsMenu;
+    }
+
+    public void SetDifficultyText(string difficulty)
+    {
+        difficultyText.text = difficulty;
     }
 }
