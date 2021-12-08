@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     [SerializeField]
     private LevelDifficulty _difficulty;
     public LevelDifficulty difficulty { get => _difficulty; private set => _difficulty = value; }
+    [SerializeField]
+    private bool _nonLinear;
+    public bool nonLinear { get => _nonLinear; private set => _nonLinear = value; }
 
     public SongData selectedSong { get; private set; }
 
@@ -49,6 +53,11 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     {
         selectedSong = song;
         SceneManager.LoadScene("Main");
+    }
+
+    public void SetNonLinear(bool isOn)
+    {
+        nonLinear = isOn;
     }
 
     public void SelectDifficulty(int difficultyIndex)

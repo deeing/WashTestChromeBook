@@ -5,23 +5,27 @@ using UnityEngine.UI;
 using System;
 using static UnityEngine.UI.Dropdown;
 
-public class DifficultySelection : MonoBehaviour
+public class LevelSettings : MonoBehaviour
 {
-    private Dropdown dropDown;
+    [SerializeField]
+    private Dropdown difficultyDropDown;
+    [SerializeField]
+    private Toggle nonLinearToggle;
 
     private const string DifficultyString = "PlayerDifficulty";
+    private const string NonLinearString = "NonLinear";
 
-    private void Awake()
+    private void Start()
     {
-        dropDown = GetComponent<Dropdown>();
-
         foreach (LevelDifficulty difficulty in Enum.GetValues(typeof(LevelDifficulty)))
         {
             OptionData option = new OptionData();
             option.text = difficulty.ToString();
-            dropDown.options.Add(option);
+            difficultyDropDown.options.Add(option);
         }
-        dropDown.value = LoadDifficulty();
+        difficultyDropDown.value = LoadDifficulty();
+
+        nonLinearToggle.isOn = LoadNonLinear();
     }
 
     public void SelectDifficulty(int difficulty)
@@ -40,5 +44,22 @@ public class DifficultySelection : MonoBehaviour
         int savedDiff = PlayerPrefs.GetInt(DifficultyString, 0);
 
         return savedDiff;
+    }
+
+    public void SetNonLinear(bool isOn)
+    {
+        SongSelection.instance.SetNonLinear(isOn);
+        SaveNonLinear(isOn);
+    }
+
+    private void SaveNonLinear(bool isOn)
+    {
+        PlayerPrefs.SetInt(NonLinearString, isOn ? 1 : 0);
+    }
+
+    private bool LoadNonLinear()
+    {
+        int nonLinear = PlayerPrefs.GetInt(NonLinearString, 0);
+        return nonLinear == 1 ? true : false;
     }
 }
