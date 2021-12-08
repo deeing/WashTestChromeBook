@@ -28,7 +28,7 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
         // What to do when receives player input
     }
 
-    public MusicWashEvent GetNextWashEvent()
+    public virtual MusicWashEvent GetNextWashEvent()
     {
         return nextEvent;
     }

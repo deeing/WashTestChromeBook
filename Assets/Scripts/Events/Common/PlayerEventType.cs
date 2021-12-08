@@ -48,5 +48,7 @@ public enum PlayerEventType
     [Description("NAILS (Right)")]
     FingernailsRSwitch,
     [Description("Right Fingernails Scrub")]
-    FingernailsRScrub
+    FingernailsRScrub,
+    [Description("Non linear Switch")]
+    NonLinearSwitch
 }

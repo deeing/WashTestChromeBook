@@ -9,6 +9,7 @@ using System.Text;
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
     public LevelDifficulty difficulty = LevelDifficulty.Beginner;
+    public bool nonLinearMode = false;
 
     [SerializeField]
     private RhythmEventProvider eventProvider;
@@ -23,6 +24,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public GameSettings gameSettings { get => _gameSettings; private set => _gameSettings = value; }
     [SerializeField]
     private SongData fallbackSong;
+    [SerializeField]
+    private NonLinearCalSwitch _nonLinearCalSwitch;
+    public NonLinearCalSwitch nonLinearCalSwitch { get => _nonLinearCalSwitch; private set => _nonLinearCalSwitch = value; }
 
     public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -93,7 +97,15 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
                 starterEvents.Add(startEvent);
             }
         }
-        currentWashEvent = starterEvents[0];
+
+        if (nonLinearMode)
+        {
+            currentWashEvent = nonLinearCalSwitch;
+        }
+        else
+        {
+            currentWashEvent = starterEvents[0];
+        }
     }
 
     private MusicSwitchEvent GetRandomStarter()
@@ -141,8 +153,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
                 {
                     RecordResults(currentWashEvent);
                 }
+                currentWashEvent.EndEvent();
                 NextEvent();
-            } else
+            } 
+            else
             {
                 currentWashEvent.DoEvent(beat);
             }
@@ -209,20 +223,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         MusicWashEvent nextEvent = currentWashEvent.GetNextWashEvent();
 
-        /*if (currentWashEvent is MusicSwitchEvent)
-        {
-            RemoveStarterSwitchEvent((MusicSwitchEvent)currentWashEvent);
-        }*/
-
         if (nextEvent == null)
         {
-            /*if (starterEvents.Count > 0)
-            {
-                ChangeEventRandom();
-            } else
-            {
-                EndGame();
-            }*/
             EndGame();
         } else
         {
@@ -254,6 +256,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void RecordResults(MusicWashEvent washEvent)
     {
         MenuManager.instance.GetMusicResultsMenu().AddWashEventResults(washEvent);
+    }
+
+    public void SetNonLinearAction(MusicSwitchEvent nextEvent)
+    {
+        nonLinearCalSwitch.ChooseEvent(nextEvent);
     }
 
     private void EndGame()

@@ -117,4 +117,13 @@ public class MusicScrubEvent : MusicPlayerEvent
         hasFinished = true;
     }
 
+    public override MusicWashEvent GetNextWashEvent()
+    {
+        if (MusicManager.instance.nonLinearMode)
+        {
+            return MusicManager.instance.nonLinearCalSwitch;
+        }
+        return nextEvent;
+    }
+
 }
