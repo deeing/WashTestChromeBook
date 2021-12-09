@@ -20,9 +20,15 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     private bool completedSwitch = false;
     private float normalGuidelineWait = 3f;
+    private bool showingGuideLines = false;
+    private int numMistakesBeforeGuideLines = 0;
+
+    private const int NUM_INTERMEDIATE_MISTAKES = 3;
+    private const int NUM_EXPERT_MISTAKES = 5;
 
     public override void SetupEvent()
     {
+        CaligraphyInputManager.instance.StartCheckingForMistakes();
         hasFinished = false;
         numConnectionsMade = 0;
         endFrame = 0f;
@@ -32,10 +38,15 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         if (MusicManager.instance.difficulty == LevelDifficulty.Beginner)
         {
             CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+            showingGuideLines = true;
         } 
         else if (MusicManager.instance.difficulty == LevelDifficulty.Intermediate)
         {
-            StartCoroutine(DelayedGuideLines());
+            numMistakesBeforeGuideLines = NUM_INTERMEDIATE_MISTAKES;
+        } 
+        else
+        {
+            numMistakesBeforeGuideLines = NUM_EXPERT_MISTAKES;
         }
         CaligraphyInputManager.instance.ToggleInteractable(true);
         HandAnimations.instance.Reset();
@@ -103,6 +114,12 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         {
             //Debug.Log("end " + endFrame);
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+        }
+
+        if (!showingGuideLines && CaligraphyInputManager.instance.GetNumMistakes() >= numMistakesBeforeGuideLines)
+        {
+            CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+            showingGuideLines = true;
         }
     }
 

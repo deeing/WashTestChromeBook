@@ -60,7 +60,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             songData = SongSelection.instance.selectedSong;
             difficulty = SongSelection.instance.difficulty;
-            nonLinearMode = SongSelection.instance.nonLinear;
+            nonLinearMode = SongSelection.instance.nonLinear;   
         }
         else
         {

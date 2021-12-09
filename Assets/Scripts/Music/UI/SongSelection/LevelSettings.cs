@@ -24,6 +24,8 @@ public class LevelSettings : MonoBehaviour
             difficultyDropDown.options.Add(option);
         }
         difficultyDropDown.value = LoadDifficulty();
+        difficultyDropDown.Select();
+        difficultyDropDown.RefreshShownValue();
 
         nonLinearToggle.isOn = LoadNonLinear();
     }

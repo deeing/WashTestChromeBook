@@ -217,4 +217,14 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
     {
         return tutorialHand;
     }
+
+    public void StartCheckingForMistakes()
+    {
+        caligraphyInput.StartCheckingForMistakes();
+    }
+
+    public int GetNumMistakes()
+    {
+        return caligraphyInput.userMistakes;
+    }
 }

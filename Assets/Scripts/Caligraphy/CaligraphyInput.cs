@@ -16,8 +16,9 @@ public class CaligraphyInput : MonoBehaviour
 
     [HideInInspector]
     public bool userFinishedSymbol = false;
-    
-    public bool userIsDrawing { get; private set; }  = false;
+
+    public bool userIsDrawing { get; private set; } = false;
+    public int userMistakes { get; private set; } = 0;
 
     private List<Vector2> markedPoints = new List<Vector2>();
     // connections between buttons IDs that were drawn
@@ -28,6 +29,7 @@ public class CaligraphyInput : MonoBehaviour
 
     private int lastButtonId = 0;
     private TouchButton touchButton;
+    
 
     private void Awake()
     {
@@ -118,6 +120,7 @@ public class CaligraphyInput : MonoBehaviour
         ToggleDrawing(false);
         CaligraphyInputManager.instance.ClearSymbol();
         ResetAllButtonColors();
+        userMistakes++;
     }
 
     public void HandleCompleteCaligraphy()
@@ -227,5 +230,10 @@ public class CaligraphyInput : MonoBehaviour
     public UILineRenderer GetLineRenderer()
     {
         return lineRenderer;
+    }
+
+    public void StartCheckingForMistakes()
+    {
+        userMistakes = 0;
     }
 }
