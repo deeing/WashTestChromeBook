@@ -21,7 +21,10 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     {
         return eventType;
     }
-    public abstract void SetupEvent();
+    public virtual void SetupEvent()
+    {
+        MusicManager.instance.ToggleTransitioning(false);
+    }
 
     public virtual void OnInput(RhythmInputStatus status)
     {
@@ -40,7 +43,7 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
 
     public virtual void EndEvent()
     {
-        // you don't have to end if you don't want to 
+        MusicManager.instance.ToggleTransitioning(true);
     }
 
     public float GetScore()
@@ -56,5 +59,17 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
     public virtual bool ShouldRecord()
     {
         return true;
+    }
+
+    // setup that only needs to happen for a hard switch
+    public virtual void HardSwitchSetup()
+    {
+        SetupEvent();
+    }
+
+    // end that only needs to happen for a hard switch
+    public virtual void HardSwitchEnd()
+    {
+        EndEvent();
     }
 }

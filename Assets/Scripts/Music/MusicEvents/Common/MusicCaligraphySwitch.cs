@@ -28,6 +28,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     public override void SetupEvent()
     {
+        base.SetupEvent();
         CaligraphyInputManager.instance.StartCheckingForMistakes();
         hasFinished = false;
         numConnectionsMade = 0;
@@ -73,11 +74,6 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     private void Update()
     {
-        /*
-        if (WashEventManager.instance.isInspectionMode)
-        {
-            return;
-        }*/
         if (completedSwitch)
         {
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
@@ -136,6 +132,12 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
         yield return new WaitForSeconds(1f);
         hasFinished = true;
+        
+    }
+
+    public override void EndEvent()
+    {
+        base.EndEvent();
         CaligraphyInputManager.instance.HandleCompleteCaligraphy();
         CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
         CaligraphyInputManager.instance.ClearSymbol();
@@ -151,5 +153,11 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     {
         //HandAnimations.instance.TransitionPlay("Idle", .05f, .05f);
         HandAnimations.instance.CrossFade("Idle", .05f);
+    }
+
+    public override void HardSwitchEnd()
+    {
+        base.HardSwitchEnd();
+        MenuManager.instance.HideScrubAlert();
     }
 }

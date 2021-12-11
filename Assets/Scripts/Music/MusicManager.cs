@@ -19,6 +19,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private TMP_Text debugText;
     [SerializeField]
     private bool showDebug = true;
+
+    public bool isTransitioning { get; private set; } = true;
+
     [SerializeField]
     private GameSettings _gameSettings;
     public GameSettings gameSettings { get => _gameSettings; private set => _gameSettings = value; }
@@ -120,6 +123,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         //yield return new WaitForSeconds(startingOffset);
         currentWashEvent.SetupEvent();
         isPlaying = true;
+        isTransitioning = false;
         MenuManager.instance.TogglePreSongMenu(false);
         if (showDebug)
         {
@@ -156,7 +160,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
                 }
                 currentWashEvent.EndEvent();
                 NextEvent();
-            } 
+            }
             else
             {
                 currentWashEvent.DoEvent(beat);
@@ -277,5 +281,35 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public void OnDestroy()
     {
         eventProvider.Unregister<Beat>(HandleBeat);
+    }
+
+    public MusicWashEvent GetCurrentEvent()
+    {
+        return currentWashEvent;
+    }
+
+    // forces the finish of the current event and switches to the next
+    public void HardSwitchEvent(MusicWashEvent nextEvent)
+    {
+        // end prev
+        if (GetCurrentEvent() is MusicPlayerEvent)
+        {
+            MusicPlayerEvent prevPayerEvent = (MusicPlayerEvent)GetCurrentEvent();
+            // special setup only for hard switches
+            prevPayerEvent.HardSwitchEnd();
+        }
+
+        if (nextEvent is MusicPlayerEvent)
+        {
+            MusicPlayerEvent currPlayerEvent = (MusicPlayerEvent)nextEvent;
+            // special setup only for hard switches
+            currPlayerEvent.HardSwitchSetup();
+        }
+        currentWashEvent = nextEvent;
+    }
+
+    public void ToggleTransitioning(bool status)
+    {
+        isTransitioning = status;
     }
 }

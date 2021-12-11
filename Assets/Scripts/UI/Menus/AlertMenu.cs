@@ -29,6 +29,15 @@ public class AlertMenu : MonoBehaviour
         alertCo = StartCoroutine(HideAfterTime(duration));
     }
 
+    public void StopAlert()
+    {
+        if (alertCo != null)
+        {
+            StopCoroutine(alertCo);
+        }
+        topDrop.Hide();
+    }
+
     private IEnumerator HideAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);

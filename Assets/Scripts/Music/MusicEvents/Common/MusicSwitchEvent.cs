@@ -17,7 +17,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
     private float endingOffset = -.5f;
     private int numPoseOptions = 4; // maybe this should be a gamesetting?
 
-    public override void SetupEvent()
+    /*public override void SetupEvent()
     {
         hasFinished = false;
         eventStarted = false;
@@ -29,7 +29,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
         {
             DisplayPoseOptions(this);
         }
-    }
+    }*/
 
     public virtual void ShowPrompt(Beat beat)
     {

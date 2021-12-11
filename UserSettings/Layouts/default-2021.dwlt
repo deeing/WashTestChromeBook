@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 461}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 61
+  controlID: 122
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 62
+  controlID: 123
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 63
+  controlID: 86
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,8 +213,8 @@ MonoBehaviour:
     y: 0
     width: 306
     height: 446
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -239,8 +239,8 @@ MonoBehaviour:
     y: 0
     width: 800
     height: 446
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 446
     width: 1106
     height: 285
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 19}
@@ -427,24 +427,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 96f4f6ffdcf4f6ff5247f7ff0468f8fff485f8fffe85f8ff00b1f8ff0afbfffff066000054670000be9f0600ce9f0600de9f060028a0060040a006005ca00600
+      scrollPos: {x: 0, y: 44}
+      m_SelectedIDs: 705b0200
+      m_LastClickedID: 154480
+      m_ExpandedIDs: b28ffdff2895fdfff8e4fdffccb7feffe6cefeff9cd5feff0afbffffe66500003e5f0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Lights
+        m_OriginalName: Lights
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -158424
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -679,9 +679,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 885.3523, y: 847.2932, z: 2.7453392}
+    m_Target: {x: -0.242, y: 2.205, z: -0.91}
     speed: 2
-    m_Value: {x: 885.3523, y: 847.2932, z: 2.7453392}
+    m_Value: {x: -0.242, y: 2.205, z: -0.91}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -732,9 +732,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 287.32
+    m_Target: 10
     speed: 2
-    m_Value: 287.32
+    m_Value: 10
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -782,7 +782,7 @@ MonoBehaviour:
     x: 306.4
     y: 73.6
     width: 798
-    height: 453
+    height: 425
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -794,8 +794,8 @@ MonoBehaviour:
   m_SearchText: 
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 796e292c
-    m_LastClickedID: 740912761
+    m_SelectedIDs: 4ca9c1ec
+    m_LastClickedID: -322852532
     m_ExpandedIDs: b6739b820000000070092d36
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1032,22 +1032,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Music/UI/SongSelection
+    - Assets/Prefabs/CommonLevel
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Music/UI/SongSelection
+  - Assets/Prefabs/CommonLevel
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\david\Unity Projects\WashTestChromeBook
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 268}
-    m_SelectedIDs: e4490100
-    m_LastClickedID: 84452
-    m_ExpandedIDs: 00000000103f0100123f0100143f0100163f0100183f01001a3f01001c3f01001e3f0100203f01004e3f0100523f0100d249010000ca9a3b
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: 148f0200
+    m_LastClickedID: 167700
+    m_ExpandedIDs: 000000001c3f01001e3f0100203f0100223f0100243f0100263f0100283f01002a3f01002c3f01002e3f0100c64b010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1075,7 +1075,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000103f0100123f0100143f0100163f0100183f01001a3f01001c3f01001e3f0100203f0100
+    m_ExpandedIDs: 000000001c3f01001e3f0100203f0100223f0100243f0100263f0100283f01002a3f01002c3f01002e3f0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1100,10 +1100,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: de9f0600
-    m_LastClickedInstanceID: 434142
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000826400000e5c020070780a008c890a00f2ad0000b4b0000028a86b00000000002834010064c603005c670500f6090c00
+    m_SelectedInstanceIDs: c45e0200
+    m_LastClickedInstanceID: 155332
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000826400000e5c020070780a008c890a00f2ad0000b4b0000028a86b002834010064c603005c670500f6090c0000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1189,7 +1189,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 434142
+  m_LastSelectedObjectID: 155332
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

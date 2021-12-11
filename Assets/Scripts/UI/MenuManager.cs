@@ -34,6 +34,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     [SerializeField]
     private TMP_Text rhythmStatusText;
     [SerializeField]
+    private GameObject rhythmStatusMenu;
+    [SerializeField]
     private LeftSlideMenu rhythmDebug;
     [SerializeField]
     private SwitchPrompt switchPrompt;
@@ -43,6 +45,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private AlertMenu scrubAlertMenu;
     [SerializeField]
     private TMP_Text difficultyText;
+    [SerializeField]
+    private GameObject difficultyMenu;
+    [SerializeField]
+    private LeftSlideMenu[] poseOptions;
 
     protected override void Awake()
     {
@@ -134,6 +140,11 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         scrubAlertMenu.Alert(message, duration);
     }
 
+    public void HideScrubAlert()
+    {
+        scrubAlertMenu.StopAlert();
+    }
+
     public void CheckListCheckOffItem()
     {
         checkList.CheckOffItem();
@@ -175,14 +186,29 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         return scoreMenu.GetTotalScore();
     }
 
+    public void ToggleScoreMenu(bool status)
+    {
+        scoreMenu.gameObject.SetActive(status);
+    }
+
     public void ShowRhythmStatus(RhythmInputStatus status)
     {
         rhythmStatusText.text = status.GetDescription();
     }
 
+    public void ToggleRhythmStatus(bool status)
+    {
+        rhythmStatusMenu.SetActive(status);
+    }
+
     public void ShowRhythmDebug()
     {
         rhythmDebug.Show();
+    }
+
+    public void ToggleRhythmDebug(bool status)
+    {
+        rhythmDebug.gameObject.SetActive(status);
     }
 
     public SwitchPrompt GetSwitchPrompt()
@@ -198,5 +224,18 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void SetDifficultyText(string difficulty)
     {
         difficultyText.text = difficulty;
+    }
+
+    public void ToggleDifficultyMenu(bool status)
+    {
+        difficultyMenu.SetActive(status);
+    }
+
+    public void TogglePoseOptions(bool status)
+    {
+        foreach (LeftSlideMenu poseOption in poseOptions)
+        {
+            poseOption.SetVisible(status);
+        }
     }
 }

@@ -15,6 +15,8 @@ public class MusicScrubEvent : MusicPlayerEvent
     private string animationName;
     [SerializeField]
     private string returnAnimationName;
+    [SerializeField]
+    private string switchAnimationName;
 
     private int numBeatsInEvent = 0;
 
@@ -26,10 +28,12 @@ public class MusicScrubEvent : MusicPlayerEvent
     // latest updated rhythm input status for this beat
     private RhythmInputStatus latestRhythmInputStatus = RhythmInputStatus.Miss;
 
+    private bool hardSwitching = false;
+
     public override void SetupEvent()
     {
         //MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 2f);
-
+        base.SetupEvent();
         isPlayingEndAnimation = false;  
         numBeatsInEvent = 0;
         hasFinished = false;
@@ -41,6 +45,11 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     public override void DoEvent(Beat beat)
     {
+        if (hardSwitching)
+        {
+            return;
+        }
+
         if (numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
         {
             rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
@@ -64,6 +73,11 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     public override void OnInput(RhythmInputStatus status)
     {
+        if (hardSwitching)
+        {
+            return;
+        }
+
         base.OnInput(status);
 
         if (status == RhythmInputStatus.Miss)
@@ -88,7 +102,7 @@ public class MusicScrubEvent : MusicPlayerEvent
     public override void EndEvent()
     {
         base.EndEvent();
-        EndAnimation();
+        //EndAnimation();
     }
 
     public void StartAnimation()
@@ -105,6 +119,7 @@ public class MusicScrubEvent : MusicPlayerEvent
     }
     public void EndAnimation()
     {
+        MusicManager.instance.ToggleTransitioning(true);
         HandAnimations.instance.TransitionPlay(returnAnimationName);
         isPlayingEndAnimation = true;
         rhythmInput.Toggle(false);
@@ -126,4 +141,26 @@ public class MusicScrubEvent : MusicPlayerEvent
         return nextEvent;
     }
 
+    public override void HardSwitchSetup()
+    {
+        hardSwitching = true;
+        HandAnimations.instance.PlayAnimation(switchAnimationName);
+        StartCoroutine(FinishHardSwitchSetup());
+        rhythmInput.Toggle(true);
+    }
+
+    private IEnumerator FinishHardSwitchSetup()
+    {
+        yield return new WaitForSeconds(1.5f);
+        hardSwitching = false;
+        SetupEvent();
+    }
+
+    public override void HardSwitchEnd()
+    {
+        MusicManager.instance.ToggleTransitioning(true);
+        HandAnimations.instance.Reset();
+        HandAnimations.instance.TransitionPlay(returnAnimationName);
+        rhythmInput.Toggle(false);
+    }
 }

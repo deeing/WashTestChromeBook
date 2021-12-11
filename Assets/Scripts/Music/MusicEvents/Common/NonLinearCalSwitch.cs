@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class NonLinearCalSwitch : MusicPlayerEvent
 {
-    [SerializeField]
-    private LeftSlideMenu[] poseOptions;
-
     public void ChooseEvent(MusicSwitchEvent nextEvent)
     {
         this.nextEvent = nextEvent;
@@ -16,21 +13,20 @@ public class NonLinearCalSwitch : MusicPlayerEvent
 
     public override void SetupEvent()
     {
+        base.SetupEvent();
         hasFinished = false;
         TogglePoseOptions(true);
     }
 
     public override void EndEvent()
     {
+        base.EndEvent();
         TogglePoseOptions(false);
     }
 
     private void TogglePoseOptions(bool status)
     {
-        foreach (LeftSlideMenu poseOption in poseOptions)
-        {
-            poseOption.SetVisible(status);
-        }
+        MenuManager.instance.TogglePoseOptions(status);
     }
 
     public override bool ShouldRecord()
@@ -42,4 +38,9 @@ public class NonLinearCalSwitch : MusicPlayerEvent
     {
     }
 
+    public override void HardSwitchSetup()
+    {
+        HandAnimations.instance.CrossFade("Idle", .2f);
+        SetupEvent();
+    }
 }

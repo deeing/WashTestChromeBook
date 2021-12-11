@@ -184,8 +184,9 @@ public class CaligraphyInputManager : SingletonMonoBehaviour<CaligraphyInputMana
 
     public bool CurrentEventIsCaligraphy()
     {
-        WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
-        return currEvent is SwitchEvent;
+        //WashEvent currEvent = WashEventManager.instance.GetCurrentEvent();
+        MusicWashEvent currEvent = MusicManager.instance.GetCurrentEvent();
+        return currEvent is MusicSwitchEvent;
     }
 
     public void HandleCompleteCaligraphy()
