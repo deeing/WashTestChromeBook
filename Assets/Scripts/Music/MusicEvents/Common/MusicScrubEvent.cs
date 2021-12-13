@@ -17,6 +17,8 @@ public class MusicScrubEvent : MusicPlayerEvent
     private string returnAnimationName;
     [SerializeField]
     private string switchAnimationName;
+    [SerializeField]
+    private GermType germTypeKilled = GermType.Palm;
 
     private int numBeatsInEvent = 0;
 
@@ -53,7 +55,9 @@ public class MusicScrubEvent : MusicPlayerEvent
         if (numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
         {
             rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
+            HandleGerms();
             HandleScore();
+            ResetLatestRhythmInput();
         }
         else if (!isPlayingEndAnimation)
         {
@@ -62,12 +66,43 @@ public class MusicScrubEvent : MusicPlayerEvent
         numBeatsInEvent++;
     }
 
+    private void HandleGerms()
+    {
+
+        int numGermsToKill;
+        switch (latestRhythmInputStatus)
+        {
+            case RhythmInputStatus.Good:
+                numGermsToKill = 5;
+                break;
+            case RhythmInputStatus.Great:
+                numGermsToKill = 10;
+                break;
+            case RhythmInputStatus.Perfect:
+                numGermsToKill = 25;
+                break;
+            default:
+                numGermsToKill = 0;
+                break;
+        }
+
+        if (numGermsToKill > 0)
+        {
+            Debug.Log("Let's try and kill " + numGermsToKill + " germs");
+            GermManager.instance.KillRandomGermsOfType(germTypeKilled, numGermsToKill);
+        }
+    }
+
     private void HandleScore()
     {
         float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
         IncreaseEventScore(scoreAmount);
         MenuManager.instance.IncreaseTotalScore(scoreAmount);
         MenuManager.instance.ShowRhythmStatus(latestRhythmInputStatus);
+    }
+
+    private void ResetLatestRhythmInput()
+    {
         latestRhythmInputStatus = RhythmInputStatus.Miss;
     }
 

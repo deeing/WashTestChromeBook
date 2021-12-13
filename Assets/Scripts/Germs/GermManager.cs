@@ -72,6 +72,26 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         Destroy(randomGerm);
     }
 
+    public void KillRandomGermsOfType(GermType type, int numGermsToKill)
+    {
+        List<GameObject> germList = GetGermListOfType(type);
+        if (germList.Count <= 0)
+        {
+            return;
+        }
+
+        int numGerms = Mathf.Min(numGermsToKill, germList.Count);
+        Debug.Log("Killng " + numGerms);
+        for (int i=0; i<numGerms; i++)
+        {
+            int randomIndex = Random.Range(0, germList.Count);
+            GameObject randomGerm = germList[randomIndex];
+            germList.RemoveAt(randomIndex);
+
+            Destroy(randomGerm);
+        }
+    }
+
     private int CountAllGerms()
     {
         int numGerms = 0;

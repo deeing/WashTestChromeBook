@@ -405,6 +405,7 @@ MonoBehaviour:
   animationName: Back Right Scrub
   returnAnimationName: Back Right Return
   switchAnimationName: Back Right Switch
+  germTypeKilled: 5
 --- !u!1 &23436608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,6 +2741,7 @@ MonoBehaviour:
   animationName: Back Left Scrub
   returnAnimationName: Back Left Return
   switchAnimationName: Back Left Switch
+  germTypeKilled: 4
 --- !u!1 &167198166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3251,7 @@ MonoBehaviour:
   animationName: Thumb Right Scrub
   returnAnimationName: Thumb Right Return
   switchAnimationName: Thumb Right Switch
+  germTypeKilled: 9
 --- !u!1 &190394962
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,6 +6988,7 @@ MonoBehaviour:
   animationName: Fingernails Right Scrub
   returnAnimationName: Fingernails Right Return
   switchAnimationName: Fingernails Right Switch
+  germTypeKilled: 12
 --- !u!1 &341525692
 GameObject:
   m_ObjectHideFlags: 0
@@ -11113,6 +11117,7 @@ MonoBehaviour:
   animationName: Fingertips Right Scrub
   returnAnimationName: Fingertips Right Return
   switchAnimationName: Fingertips Right Switch
+  germTypeKilled: 3
 --- !u!1 &612561453
 GameObject:
   m_ObjectHideFlags: 0
@@ -17260,6 +17265,7 @@ MonoBehaviour:
   animationName: Wrist Right Scrub
   returnAnimationName: Wrist Right Return
   switchAnimationName: Wrist Right Switch
+  germTypeKilled: 7
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -22042,6 +22048,7 @@ MonoBehaviour:
   animationName: Thumb Left Scrub
   returnAnimationName: Thumb Left Return
   switchAnimationName: Thumb Left Switch
+  germTypeKilled: 8
 --- !u!1 &1212126232
 GameObject:
   m_ObjectHideFlags: 0
@@ -22990,6 +22997,7 @@ MonoBehaviour:
   animationName: Fingernails Left Scrub
   returnAnimationName: Fingernails Left Return
   switchAnimationName: Fingernails Left Switch
+  germTypeKilled: 11
 --- !u!1 &1276147895
 GameObject:
   m_ObjectHideFlags: 0
@@ -25060,6 +25068,7 @@ MonoBehaviour:
   animationName: Wrist Left Scrub
   returnAnimationName: Wrist Left Return
   switchAnimationName: Wrist Left Switch
+  germTypeKilled: 6
 --- !u!1 &1432909306
 GameObject:
   m_ObjectHideFlags: 0
@@ -26029,6 +26038,7 @@ MonoBehaviour:
   animationName: Palm Scrub
   returnAnimationName: Palm Return
   switchAnimationName: Palm Switch
+  germTypeKilled: 1
 --- !u!1001 &1497184111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26966,6 +26976,7 @@ MonoBehaviour:
   animationName: Between Fingers Scrub
   returnAnimationName: Between Fingers Return
   switchAnimationName: Between Fingers Switch
+  germTypeKilled: 10
 --- !u!1 &1613723935
 GameObject:
   m_ObjectHideFlags: 0
@@ -30208,7 +30219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_111
+  m_text: WashTest_112
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36480,6 +36491,7 @@ MonoBehaviour:
   animationName: Fingertips Left Scrub
   returnAnimationName: Fingertips Left Return
   switchAnimationName: Fingertips Left Switch
+  germTypeKilled: 2
 --- !u!1 &1888353001
 GameObject:
   m_ObjectHideFlags: 0
