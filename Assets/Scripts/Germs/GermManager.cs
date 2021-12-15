@@ -81,7 +81,7 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
         }
 
         int numGerms = Mathf.Min(numGermsToKill, germList.Count);
-        Debug.Log("Killng " + numGerms);
+        //  Debug.Log("Killng " + numGerms);
         for (int i=0; i<numGerms; i++)
         {
             int randomIndex = Random.Range(0, germList.Count);

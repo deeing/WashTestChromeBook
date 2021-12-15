@@ -402,10 +402,12 @@ MonoBehaviour:
   eventType: 9
   rhythmInput: {fileID: 821858830}
   scrubAnimationTime: 1
-  animationName: Back Right Scrub
+  idleAnimationName: Back Right Idle
+  scrubAnimationName: Back Right Scrub
   returnAnimationName: Back Right Return
   switchAnimationName: Back Right Switch
   germTypeKilled: 5
+  sensitivity: 0.008
 --- !u!1 &23436608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,10 +2740,12 @@ MonoBehaviour:
   eventType: 7
   rhythmInput: {fileID: 1720356929}
   scrubAnimationTime: 1
-  animationName: Back Left Scrub
+  idleAnimationName: Back Left Idle
+  scrubAnimationName: Back Left Scrub
   returnAnimationName: Back Left Return
   switchAnimationName: Back Left Switch
   germTypeKilled: 4
+  sensitivity: 0.008
 --- !u!1 &167198166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,10 +3252,12 @@ MonoBehaviour:
   eventType: 17
   rhythmInput: {fileID: 1276147897}
   scrubAnimationTime: 1
-  animationName: Thumb Right Scrub
+  idleAnimationName: Thumb Right Idle
+  scrubAnimationName: Thumb Right Scrub
   returnAnimationName: Thumb Right Return
   switchAnimationName: Thumb Right Switch
   germTypeKilled: 9
+  sensitivity: 0.006
 --- !u!1 &190394962
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,10 +6991,12 @@ MonoBehaviour:
   eventType: 23
   rhythmInput: {fileID: 1760018957}
   scrubAnimationTime: 1
-  animationName: Fingernails Right Scrub
+  idleAnimationName: Fingernails Right Idle
+  scrubAnimationName: Fingernails Right Scrub
   returnAnimationName: Fingernails Right Return
   switchAnimationName: Fingernails Right Switch
   germTypeKilled: 12
+  sensitivity: 0.04
 --- !u!1 &341525692
 GameObject:
   m_ObjectHideFlags: 0
@@ -9097,7 +9105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473426347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -11114,10 +11122,12 @@ MonoBehaviour:
   eventType: 5
   rhythmInput: {fileID: 1567426743}
   scrubAnimationTime: 1
-  animationName: Fingertips Right Scrub
+  idleAnimationName: Fingertips Right Idle
+  scrubAnimationName: Fingertips Right Scrub
   returnAnimationName: Fingertips Right Return
   switchAnimationName: Fingertips Right Switch
   germTypeKilled: 3
+  sensitivity: 0.008
 --- !u!1 &612561453
 GameObject:
   m_ObjectHideFlags: 0
@@ -17262,10 +17272,12 @@ MonoBehaviour:
   eventType: 12
   rhythmInput: {fileID: 1567426743}
   scrubAnimationTime: 1
-  animationName: Wrist Right Scrub
+  idleAnimationName: Wrist Right Idle
+  scrubAnimationName: Wrist Right Scrub
   returnAnimationName: Wrist Right Return
   switchAnimationName: Wrist Right Switch
   germTypeKilled: 7
+  sensitivity: 0.008
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -22045,10 +22057,12 @@ MonoBehaviour:
   eventType: 15
   rhythmInput: {fileID: 346470569}
   scrubAnimationTime: 1
-  animationName: Thumb Left Scrub
+  idleAnimationName: Thumb Left Idle
+  scrubAnimationName: Thumb Left Scrub
   returnAnimationName: Thumb Left Return
   switchAnimationName: Thumb Left Switch
   germTypeKilled: 8
+  sensitivity: 0.006
 --- !u!1 &1212126232
 GameObject:
   m_ObjectHideFlags: 0
@@ -22994,10 +23008,12 @@ MonoBehaviour:
   eventType: 21
   rhythmInput: {fileID: 238619228}
   scrubAnimationTime: 1
-  animationName: Fingernails Left Scrub
+  idleAnimationName: Fingernails Left Idle
+  scrubAnimationName: Fingernails Left Scrub
   returnAnimationName: Fingernails Left Return
   switchAnimationName: Fingernails Left Switch
   germTypeKilled: 11
+  sensitivity: 0.04
 --- !u!1 &1276147895
 GameObject:
   m_ObjectHideFlags: 0
@@ -25065,10 +25081,12 @@ MonoBehaviour:
   eventType: 11
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
-  animationName: Wrist Left Scrub
+  idleAnimationName: Wrist Left Idle
+  scrubAnimationName: Wrist Left Scrub
   returnAnimationName: Wrist Left Return
   switchAnimationName: Wrist Left Switch
   germTypeKilled: 6
+  sensitivity: 0.008
 --- !u!1 &1432909306
 GameObject:
   m_ObjectHideFlags: 0
@@ -26035,10 +26053,12 @@ MonoBehaviour:
   eventType: 1
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
-  animationName: Palm Scrub
+  idleAnimationName: Palm Idle
+  scrubAnimationName: Palm Scrub
   returnAnimationName: Palm Return
   switchAnimationName: Palm Switch
   germTypeKilled: 1
+  sensitivity: 0.04
 --- !u!1001 &1497184111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26973,10 +26993,12 @@ MonoBehaviour:
   eventType: 19
   rhythmInput: {fileID: 1276147897}
   scrubAnimationTime: 1
-  animationName: Between Fingers Scrub
+  idleAnimationName: Between Fingers Idle
+  scrubAnimationName: Between Fingers Scrub
   returnAnimationName: Between Fingers Return
   switchAnimationName: Between Fingers Switch
   germTypeKilled: 10
+  sensitivity: 0.008
 --- !u!1 &1613723935
 GameObject:
   m_ObjectHideFlags: 0
@@ -30219,7 +30241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WashTest_112
+  m_text: WashTest_113
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36488,10 +36510,12 @@ MonoBehaviour:
   eventType: 3
   rhythmInput: {fileID: 772423890}
   scrubAnimationTime: 1
-  animationName: Fingertips Left Scrub
+  idleAnimationName: Fingertips Left Idle
+  scrubAnimationName: Fingertips Left Scrub
   returnAnimationName: Fingertips Left Return
   switchAnimationName: Fingertips Left Switch
   germTypeKilled: 2
+  sensitivity: 0.008
 --- !u!1 &1888353001
 GameObject:
   m_ObjectHideFlags: 0

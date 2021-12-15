@@ -12,13 +12,17 @@ public class MusicScrubEvent : MusicPlayerEvent
     [SerializeField]
     private float scrubAnimationTime = 1f;
     [SerializeField]
-    private string animationName;
+    private string idleAnimationName;
+    [SerializeField]
+    private string scrubAnimationName;
     [SerializeField]
     private string returnAnimationName;
     [SerializeField]
     private string switchAnimationName;
     [SerializeField]
     private GermType germTypeKilled = GermType.Palm;
+    [SerializeField]
+    private float sensitivity = 1f;
 
     private int numBeatsInEvent = 0;
 
@@ -31,6 +35,17 @@ public class MusicScrubEvent : MusicPlayerEvent
     private RhythmInputStatus latestRhythmInputStatus = RhythmInputStatus.Miss;
 
     private bool hardSwitching = false;
+    private float idleTransitionTime = .2f;
+    private float timeUntilIdle = 1f;
+    private WaitForSeconds idleWait;
+    private bool isIdle = false;
+    private Coroutine idleCoroutine = null;
+
+    private void Awake()
+    {
+        enabled = false;
+        idleWait = new WaitForSeconds(timeUntilIdle);
+    }
 
     public override void SetupEvent()
     {
@@ -41,8 +56,48 @@ public class MusicScrubEvent : MusicPlayerEvent
         hasFinished = false;
         rhythmInput.Toggle(true);
         rhythmInput.RegisterWashEvent(this);
-        StartAnimation();
-        StopAnimation();
+        HandAnimations.instance.PlayAnimation(idleAnimationName);
+        HandAnimations.instance.Reset();
+        enabled = true;
+    }
+
+    private void Update()
+    {
+        HandleTouch();
+    }
+
+    private void HandleTouch()
+    {
+        float input = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
+        if (input != 0)
+        {
+            EffectsManager.instance.ToggleBubbles(true);
+            HandAnimations.instance.TransitionPlayStep(scrubAnimationName, idleTransitionTime, input * sensitivity);
+            if (idleCoroutine != null)
+            {
+                StopCoroutine(idleCoroutine);
+                idleCoroutine = null;
+                isIdle = false;
+            }
+        }
+        else
+        {
+            if (idleCoroutine == null)
+            {
+                idleCoroutine = StartCoroutine(SetIdle());
+            }
+            else if (isIdle)
+            {
+                HandAnimations.instance.CrossFade(idleAnimationName, idleTransitionTime);
+                EffectsManager.instance.ToggleBubbles(false);
+            }
+        }
+    }
+
+    private IEnumerator SetIdle()
+    {
+        yield return idleWait;
+        isIdle = true;
     }
 
     public override void DoEvent(Beat beat)
@@ -115,15 +170,6 @@ public class MusicScrubEvent : MusicPlayerEvent
 
         base.OnInput(status);
 
-        if (status == RhythmInputStatus.Miss)
-        {
-            StopAnimation();
-        }
-        else
-        {
-            PlayAnimation();
-        }
-
         UpdateRhythmInputStatus(status);
     }
 
@@ -140,20 +186,9 @@ public class MusicScrubEvent : MusicPlayerEvent
         //EndAnimation();
     }
 
-    public void StartAnimation()
-    {
-        HandAnimations.instance.PlayAnimation(animationName);
-    }
-    public void PlayAnimation()
-    {
-        HandAnimations.instance.Resume();
-    }
-    public void StopAnimation()
-    {
-        HandAnimations.instance.Pause();
-    }
     public void EndAnimation()
     {
+        enabled = false;
         MusicManager.instance.ToggleTransitioning(true);
         HandAnimations.instance.TransitionPlay(returnAnimationName);
         isPlayingEndAnimation = true;
@@ -197,5 +232,6 @@ public class MusicScrubEvent : MusicPlayerEvent
         HandAnimations.instance.Reset();
         HandAnimations.instance.TransitionPlay(returnAnimationName);
         rhythmInput.Toggle(false);
+        enabled = false;
     }
 }
