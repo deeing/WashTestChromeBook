@@ -128,13 +128,13 @@ public class MusicScrubEvent : MusicPlayerEvent
         switch (latestRhythmInputStatus)
         {
             case RhythmInputStatus.Good:
-                numGermsToKill = 5;
-                break;
-            case RhythmInputStatus.Great:
                 numGermsToKill = 10;
                 break;
-            case RhythmInputStatus.Perfect:
+            case RhythmInputStatus.Great:
                 numGermsToKill = 25;
+                break;
+            case RhythmInputStatus.Perfect:
+                numGermsToKill = 50;
                 break;
             default:
                 numGermsToKill = 0;

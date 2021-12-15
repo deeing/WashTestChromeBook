@@ -14,6 +14,8 @@ public class InspectionMode : MonoBehaviour
     private Animator cinemachine;
     [SerializeField]
     private float coolDownRate = .5f;
+    [SerializeField]
+    private GermMap germMap;
 
     [SerializeField]
     private MusicPlayerEvent inspectionEvent;
@@ -62,6 +64,7 @@ public class InspectionMode : MonoBehaviour
         uvLight.SetUvMode(status);
         cameraButtons.SetActive(status);
         ToggleNonUVMenus(status);
+        germMap.ToggleMap(status);
 
         if (status)
         {

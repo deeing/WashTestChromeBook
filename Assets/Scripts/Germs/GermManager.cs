@@ -176,4 +176,20 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
 
         return report;
     }
+
+    public List<GermType> GetRemaningGermTypes()
+    {
+        List<GermType> remainingGerms = new List<GermType>();
+        foreach (KeyValuePair<GermType, List<GameObject>> germMapPair in allGerms)
+        {
+            int germsLeft = germMapPair.Value.Count;
+
+            if (germsLeft > 0)
+            {
+                remainingGerms.Add(germMapPair.Key);
+            }
+        }
+
+        return remainingGerms;
+    }
 }
