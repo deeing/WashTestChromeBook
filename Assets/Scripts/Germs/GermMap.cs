@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GermMap : MonoBehaviour
 {
@@ -18,6 +19,16 @@ public class GermMap : MonoBehaviour
     private GameObject thumbsMap;
     [SerializeField]
     private GameObject wristMap;
+    [SerializeField]
+    private float flipSpeed = 1f;
+
+    private RectTransform thisTransform;
+    private bool isFlipped = false;
+
+    private void Awake()
+    {
+        thisTransform = (RectTransform)transform;
+    }
 
     public void ToggleMap(bool status) {
         gameObject.SetActive(status);
@@ -78,5 +89,18 @@ public class GermMap : MonoBehaviour
         fingernailsMap.SetActive(false);
         thumbsMap.SetActive(false);
         wristMap.SetActive(false);
+    }
+
+    // flips germ map upside down for better orientation from front view
+    public void ToggleFlipped(bool status)
+    {
+        isFlipped = status;
+        Vector3 rotationVector = status ? new Vector3(0f, 0f, 180f) : Vector3.zero;
+        thisTransform.DORotate(rotationVector, flipSpeed);
+    }
+
+    public void ToggleFlipped()
+    {
+        ToggleFlipped(!isFlipped);
     }
 }

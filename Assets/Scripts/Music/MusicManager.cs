@@ -312,4 +312,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         isTransitioning = status;
     }
+
+    public void ReturnToNonLinearNeutral()
+    {
+        HardSwitchEvent(_nonLinearCalSwitch);
+    }
 }

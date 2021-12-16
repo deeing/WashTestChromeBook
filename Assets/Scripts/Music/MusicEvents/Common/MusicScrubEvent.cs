@@ -40,6 +40,7 @@ public class MusicScrubEvent : MusicPlayerEvent
     private WaitForSeconds idleWait;
     private bool isIdle = false;
     private Coroutine idleCoroutine = null;
+    private bool isNonLinearMode = false;
 
     private void Awake()
     {
@@ -59,6 +60,11 @@ public class MusicScrubEvent : MusicPlayerEvent
         HandAnimations.instance.PlayAnimation(idleAnimationName);
         HandAnimations.instance.Reset();
         enabled = true;
+        isNonLinearMode = MusicManager.instance.nonLinearMode;
+        if (isNonLinearMode)
+        {
+            MenuManager.instance.ToggleFinishScrubButton(true);
+        }
     }
 
     private void Update()
@@ -107,14 +113,14 @@ public class MusicScrubEvent : MusicPlayerEvent
             return;
         }
 
-        if (numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
+        if (isNonLinearMode || numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
         {
             rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
             HandleGerms();
             HandleScore();
             ResetLatestRhythmInput();
         }
-        else if (!isPlayingEndAnimation)
+        else if (!isPlayingEndAnimation && !isNonLinearMode)
         {
             EndAnimation();
         }
@@ -193,6 +199,7 @@ public class MusicScrubEvent : MusicPlayerEvent
         HandAnimations.instance.TransitionPlay(returnAnimationName);
         isPlayingEndAnimation = true;
         rhythmInput.Toggle(false);
+        MenuManager.instance.ToggleFinishScrubButton(false);
         StartCoroutine(FinishScrub());
     }
 
@@ -232,6 +239,7 @@ public class MusicScrubEvent : MusicPlayerEvent
         HandAnimations.instance.Reset();
         HandAnimations.instance.TransitionPlay(returnAnimationName);
         rhythmInput.Toggle(false);
+        MenuManager.instance.ToggleFinishScrubButton(false);
         enabled = false;
     }
 }

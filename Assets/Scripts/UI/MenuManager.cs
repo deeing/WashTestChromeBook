@@ -49,6 +49,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private GameObject difficultyMenu;
     [SerializeField]
     private LeftSlideMenu[] poseOptions;
+    [SerializeField]
+    private LeftSlideMenu finishScrubButton;
 
     protected override void Awake()
     {
@@ -237,5 +239,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         {
             poseOption.SetVisible(status);
         }
+    }
+
+    public void ToggleFinishScrubButton(bool status)
+    {
+        finishScrubButton.SetVisible(status);
     }
 }
