@@ -16,6 +16,8 @@ public class InspectionMode : MonoBehaviour
     private float coolDownRate = .5f;
     [SerializeField]
     private GermMap germMap;
+    [SerializeField]
+    private ToggleImage toggleImage;
 
     [SerializeField]
     private MusicPlayerEvent inspectionEvent;
@@ -66,6 +68,7 @@ public class InspectionMode : MonoBehaviour
         cameraButtons.SetActive(status);
         ToggleNonUVMenus(status);
         germMap.ToggleMap(status);
+        toggleImage.ShowToggleSprite(status);
 
         if (status)
         {
