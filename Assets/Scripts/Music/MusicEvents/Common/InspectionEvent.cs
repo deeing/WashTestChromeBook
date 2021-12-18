@@ -8,6 +8,8 @@ public class InspectionEvent : MusicPlayerEvent
     [SerializeField]
     [Tooltip("How often the inspection mode animation should switch from palm up to palm down")]
     private float animationPeriod = 3f;
+    [SerializeField]
+    GermMap germMap;
 
     private bool isPalmsUp = false;
     private WaitForSeconds animPeriodWait;
@@ -18,6 +20,9 @@ public class InspectionEvent : MusicPlayerEvent
         base.SetupEvent();
         hasFinished = false;
         animPeriodWait = new WaitForSeconds(animationPeriod);
+        isPalmsUp = false;
+        ToggleInspectAnimation(false);
+
         StartInspectionAnimation();
     }
 
@@ -31,8 +36,14 @@ public class InspectionEvent : MusicPlayerEvent
     private void ToggleInspectAnimation()
     {
         isPalmsUp = !isPalmsUp;
+        ToggleInspectAnimation(isPalmsUp);
+    }
 
-        if (isPalmsUp)
+    private void ToggleInspectAnimation(bool status)
+    {
+        germMap.SetViewMode(status ? GermMap.HandViewMode.Up : GermMap.HandViewMode.Down);
+
+        if (status)
         {
             HandAnimations.instance.CrossFade("Idle Up", .2f);
         }

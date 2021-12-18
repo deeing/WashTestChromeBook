@@ -58,7 +58,6 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleScoreMenu(!status);
         MenuManager.instance.ToggleRhythmDebug(!status);
         MenuManager.instance.ToggleRhythmStatus(!status);
-        MenuManager.instance.ToggleFinishScrubButton(!status);
     }
 
     public void SetInspectionMode(bool status)
