@@ -6,9 +6,9 @@ using DG.Tweening;
 public class GermMap : MonoBehaviour
 {
     [SerializeField]
-    private GameObject upView;
+    private CanvasGroup upView;
     [SerializeField]
-    private GameObject downView;
+    private CanvasGroup downView;
 
     [SerializeField]
     private GameObject palmsMap;
@@ -48,6 +48,8 @@ public class GermMap : MonoBehaviour
     private GameObject wristRUpMap;
     [SerializeField]
     private float flipSpeed = 1f;
+    [SerializeField]
+    private float upDownTransitionSpeed = 1f;
 
     private RectTransform thisTransform;
     private bool isFlipped = false;
@@ -64,7 +66,6 @@ public class GermMap : MonoBehaviour
     }
 
     public void ToggleMap(bool status) {
-        gameObject.SetActive(status);
         if (status)
         {
             List<GermType> remainingGermTypes = GermManager.instance.GetRemaningGermTypes();
@@ -72,8 +73,14 @@ public class GermMap : MonoBehaviour
             {
                 ActivateGermMap(type);
             }
-        } else
+            downView.alpha = 1f;
+        }
+        else
         {
+            upView.alpha = 0f;
+            upView.DOKill();
+            downView.alpha = 0f;
+            downView.DOKill();
             DeactivateAllGermMaps();
         }
     }
@@ -167,9 +174,7 @@ public class GermMap : MonoBehaviour
     public void SetViewMode(HandViewMode mode)
     {
         bool isUpMode = mode == HandViewMode.Up;
-
-
-        upView.SetActive(isUpMode);
-        downView.SetActive(!isUpMode);
+        upView.DOFade( isUpMode ? 1f : 0f, upDownTransitionSpeed);
+        downView.DOFade(isUpMode ? 0f: 1f, upDownTransitionSpeed);
     }
 }
