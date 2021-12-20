@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wash.Utilities;
+using Lean.Touch;
 
-public class MusicScrubEvent : MusicPlayerEvent
+public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 {
     [SerializeField]
     [Tooltip("Rhythym-synced inputs for this scrub event")]
@@ -41,6 +42,7 @@ public class MusicScrubEvent : MusicPlayerEvent
     private bool isIdle = false;
     private Coroutine idleCoroutine = null;
     private bool isNonLinearMode = false;
+    private float sensitivityAdjustment = 1f;
 
     private void Awake()
     {
@@ -74,11 +76,20 @@ public class MusicScrubEvent : MusicPlayerEvent
 
     private void HandleTouch()
     {
-        float input = Mathf.Abs(Lean.Touch.LeanGesture.GetTwistDegrees());
+        List<LeanFinger> fingers = LeanTouch.Fingers;
+        Debug.Log(fingers.Count);
+        if (fingers == null || fingers.Count == 0)
+        {
+            return;
+        }
+
+        float fingerMovement = LeanGesture.GetScaledDelta(fingers).magnitude;
+        float input = fingerMovement * sensitivity * GetSensitivityAdjustment();
+
         if (input != 0)
         {
             EffectsManager.instance.ToggleBubbles(true);
-            HandAnimations.instance.TransitionPlayStep(scrubAnimationName, idleTransitionTime, input * sensitivity);
+            HandAnimations.instance.TransitionPlayStep(scrubAnimationName, idleTransitionTime, input);
             if (idleCoroutine != null)
             {
                 StopCoroutine(idleCoroutine);
@@ -241,5 +252,20 @@ public class MusicScrubEvent : MusicPlayerEvent
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         enabled = false;
+    }
+
+    public void SetSensitivityAdjustment(float sensitivityAdjustment)
+    {
+        this.sensitivityAdjustment = sensitivityAdjustment;
+    }
+
+    public float GetSensitivityAdjustment()
+    {
+        return sensitivityAdjustment;
+    }
+
+    public string GetEventName()
+    {
+        return scrubAnimationName;
     }
 }
