@@ -7,8 +7,6 @@ using Wash.Utilities;
 public class MusicCaligraphySwitch : MusicSwitchEvent
 {
     [SerializeField]
-    private GameObject handSymbolIcon;
-    [SerializeField]
     private CaligraphyMove caligraphyMove;
     [SerializeField]
     [Tooltip("Optional other possible move for the same animation")]
@@ -53,10 +51,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         HandAnimations.instance.Reset();
         enabled = true;
 
-        if (handSymbolIcon != null)
-        {
-            handSymbolIcon.SetActive(true);
-        }
+        MenuManager.instance.ShowLineArt(GetEventType());
 
         animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
     }
@@ -141,12 +136,8 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         CaligraphyInputManager.instance.HandleCompleteCaligraphy();
         CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
         CaligraphyInputManager.instance.ClearSymbol();
+        MenuManager.instance.HideLineArt();
         enabled = false;
-
-        if (handSymbolIcon != null)
-        {
-            handSymbolIcon.SetActive(false);
-        }
     }
 
     private void NeutralIdle()

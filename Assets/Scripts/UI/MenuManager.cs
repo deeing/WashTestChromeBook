@@ -51,6 +51,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private LeftSlideMenu[] poseOptions;
     [SerializeField]
     private LeftSlideMenu finishScrubButton;
+    [SerializeField]
+    private CaligraphyLineArt caligraphyLineArt;
 
     protected override void Awake()
     {
@@ -244,5 +246,15 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ToggleFinishScrubButton(bool status)
     {
         finishScrubButton.SetVisible(status);
+    }
+
+    public void ShowLineArt(PlayerEventType eventType)
+    {
+        caligraphyLineArt.ShowLineArt(eventType);
+    }
+
+    public void HideLineArt()
+    {
+        caligraphyLineArt.HideLineArt();
     }
 }
