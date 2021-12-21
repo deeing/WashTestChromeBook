@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: FingernailsLeft
   m_EditorClassIdentifier: 
   symbolConnections:
-  - buttonId1: 2
-    buttonId2: 1
   - buttonId1: 1
     buttonId2: 5
   - buttonId1: 5
@@ -25,3 +23,5 @@ MonoBehaviour:
     buttonId2: 9
   - buttonId1: 9
     buttonId2: 6
+  - buttonId1: 6
+    buttonId2: 3

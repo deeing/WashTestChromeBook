@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: WristLeft
   m_EditorClassIdentifier: 
   symbolConnections:
-  - buttonId1: 9
-    buttonId2: 6
-  - buttonId1: 6
-    buttonId2: 2
-  - buttonId1: 2
+  - buttonId1: 1
     buttonId2: 4
   - buttonId1: 4
+    buttonId2: 7
+  - buttonId1: 7
     buttonId2: 8
+  - buttonId1: 8
+    buttonId2: 6
+  - buttonId1: 6
+    buttonId2: 3

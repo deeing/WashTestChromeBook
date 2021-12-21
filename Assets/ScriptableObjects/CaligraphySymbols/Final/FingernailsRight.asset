@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: FingernailsRight
   m_EditorClassIdentifier: 
   symbolConnections:
-  - buttonId1: 2
-    buttonId2: 3
-  - buttonId1: 3
-    buttonId2: 5
-  - buttonId1: 5
-    buttonId2: 9
-  - buttonId1: 9
-    buttonId2: 8
-  - buttonId1: 8
+  - buttonId1: 1
+    buttonId2: 4
+  - buttonId1: 4
     buttonId2: 7
   - buttonId1: 7
-    buttonId2: 4
+    buttonId2: 8
+  - buttonId1: 8
+    buttonId2: 9
+  - buttonId1: 9
+    buttonId2: 5
+  - buttonId1: 5
+    buttonId2: 3
