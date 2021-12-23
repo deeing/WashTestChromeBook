@@ -21,7 +21,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     private bool showingGuideLines = false;
     private int numMistakesBeforeGuideLines = 0;
 
-    private const int NUM_INTERMEDIATE_MISTAKES = 3;
+    private const int NUM_INTERMEDIATE_MISTAKES = 1;
     private const int NUM_EXPERT_MISTAKES = 5;
 
     public override void SetupEvent()
@@ -34,6 +34,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 3f);
         completedSwitch = false;
         CaligraphyInputManager.instance.ToggleCaligraphy(true);
+        showingGuideLines = false;
         if (MusicManager.instance.difficulty == LevelDifficulty.Beginner)
         {
             CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
