@@ -3,7 +3,7 @@ public enum PlayerEventType
 {
     [Description("PALMS")]
     PalmSwitch,
-    [Description("Palms Scrub")]
+    [Description("Palms")]
     PalmScrub,
     [Description("FINGERTIPS - Left")]
     FingertipsLSwitch,
@@ -11,43 +11,43 @@ public enum PlayerEventType
     FingertipsLScrub,
     [Description("FINGERTIPS - Right")]
     FingertipsRSwitch,
-    [Description("Fingertips Right Scrub")]
+    [Description("Fingertips Right")]
     FingertipsRScrub,
     [Description("BACK - Left")]
     BackOfHandLSwitch,
-    [Description("Back of Left Hand Scrub")]
+    [Description("Back Left")]
     BackOfHandLScrub,
     [Description("BACK - Right")]
     BackOfHandRSwitch,
-    [Description("Back of Right Hand Scrub")]
+    [Description("Back Right")]
     BackOfHandRScrub,
     [Description("WRIST - Left")]
     WristLSwitch,
-    [Description("Left Wrist Scrub")]
+    [Description("Left Wrist")]
     WristLScrub,
     [Description("WRIST - Right")]
     WristRSwitch,
-    [Description("Right Wrist Scrub")]
+    [Description("Right Wrist")]
     WristRScrub,
     [Description("THUMB - Left")]
     ThumbLSwitch,
-    [Description("Left Thumb Scrub")]
+    [Description("Left Thumb")]
     ThumbLScrub,
     [Description("THUMB - Right")]
     ThumbRSwitch,
-    [Description("Right Thumb Scrub")]
+    [Description("Right Thumb")]
     ThumbRScrub,
     [Description("BETWEEN")]
     BetweenFingersSwitch,
-    [Description("Between Fingers Scrub")]
+    [Description("Between Fingers")]
     BetweenFingersScrub,
     [Description("NAILS - Left")]
     FingernailsLSwitch,
-    [Description("Left Fingernails Scrub")]
+    [Description("Left Fingernails")]
     FingernailsLScrub,
     [Description("NAILS - Right")]
     FingernailsRSwitch,
-    [Description("Right Fingernails Scrub")]
+    [Description("Right Fingernails")]
     FingernailsRScrub,
     [Description("Non linear Switch")]
     NonLinearSwitch

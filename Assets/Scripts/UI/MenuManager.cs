@@ -53,6 +53,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private LeftSlideMenu finishScrubButton;
     [SerializeField]
     private CaligraphyLineArt caligraphyLineArt;
+    [SerializeField]
+    private GameObject finishButton;
 
     protected override void Awake()
     {
@@ -256,5 +258,17 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void HideLineArt()
     {
         caligraphyLineArt.HideLineArt();
+    }
+
+    public void HideUIForEndGame()
+    {
+        finishButton.SetActive(false);
+        ToggleRhythmDebug(false);
+        TogglePoseOptions(false);
+        ToggleDifficultyMenu(false);
+        ToggleRhythmStatus(false);
+        ToggleInspectButton(false);
+        ToggleSettings(false);
+        ToggleScoreMenu(false);
     }
 }

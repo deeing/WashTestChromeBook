@@ -77,7 +77,6 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private void HandleTouch()
     {
         List<LeanFinger> fingers = LeanTouch.Fingers;
-        Debug.Log(fingers.Count);
         if (fingers == null || fingers.Count == 0)
         {
             return;

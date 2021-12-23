@@ -16,6 +16,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private Transform startEventsContainer;
     [SerializeField]
+    private Transform scrubEventsContainer;
+    [SerializeField]
     private TMP_Text debugText;
     [SerializeField]
     private bool showDebug = true;
@@ -154,10 +156,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             if (currentWashEvent.IsFinished())
             {
-                if (currentWashEvent.ShouldRecord())
-                {
-                    RecordResults(currentWashEvent);
-                }
                 currentWashEvent.EndEvent();
                 NextEvent();
             }
@@ -258,24 +256,46 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         return false;
     }
 
-    private void RecordResults(MusicWashEvent washEvent)
+    /*private void RecordResults(MusicWashEvent washEvent)
     {
         MenuManager.instance.GetMusicResultsMenu().AddWashEventResults(washEvent);
-    }
+    }*/
 
     public void SetNonLinearAction(MusicSwitchEvent nextEvent)
     {
         nonLinearCalSwitch.ChooseEvent(nextEvent);
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         isPlaying = false;
         isFinished = true;
         float totalScore = MenuManager.instance.GetTotalScore();
         MusicResultsMenu musicResultsMenu = MenuManager.instance.GetMusicResultsMenu();
         musicResultsMenu.AddTotalScore(totalScore);
+
+        // add scores for all the scrub events only
+        List<MusicScrubEvent> scrubEvents = GetScrubEvents();
+        foreach (MusicScrubEvent scrubEvent in scrubEvents)
+        {
+            musicResultsMenu.AddWashEventResults(scrubEvent);
+        }
         musicResultsMenu.Show();
+        MenuManager.instance.HideUIForEndGame();
+    }
+
+    private List<MusicScrubEvent> GetScrubEvents()
+    {
+        List<MusicScrubEvent> musicScrubEvents = new List<MusicScrubEvent>();
+        foreach(Transform scrubChild in scrubEventsContainer)
+        {
+            MusicScrubEvent scrubEvent = scrubChild.GetComponent<MusicScrubEvent>();
+            if (scrubEvent != null)
+            {
+                musicScrubEvents.Add(scrubEvent);
+            }
+        }
+        return musicScrubEvents;
     }
 
     public void OnDestroy()
