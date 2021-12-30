@@ -159,7 +159,6 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 
         if (numGermsToKill > 0)
         {
-            Debug.Log("Let's try and kill " + numGermsToKill + " germs");
             GermManager.instance.KillRandomGermsOfType(germTypeKilled, numGermsToKill);
         }
     }
