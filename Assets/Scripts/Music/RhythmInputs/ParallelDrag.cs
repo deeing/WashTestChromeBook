@@ -18,8 +18,6 @@ public class ParallelDrag : RhythmInput
     private RhythmInputStatus leftStatus = RhythmInputStatus.Miss;
     private RhythmInputStatus rightStatus = RhythmInputStatus.Miss;
 
-
-
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
         if (debugFreeze)

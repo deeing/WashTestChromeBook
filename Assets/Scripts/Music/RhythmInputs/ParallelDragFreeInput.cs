@@ -9,6 +9,10 @@ public class ParallelDragFreeInput : RhythmInput
     private SlideableButton leftButton;
     [SerializeField]
     private SlideableButton rightButton;
+    [SerializeField]
+    private MovingButton leftGuide;
+    [SerializeField]
+    private MovingButton rightGuide;
 
     // suceeds if one of the fingers is touching
     private bool forgivingInput = true;
@@ -19,6 +23,12 @@ public class ParallelDragFreeInput : RhythmInput
     private bool targetingEnd = true;
 
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
+    {
+        HandleStatus();
+        MoveGuides(nextBeat, currentBeat);
+    }
+
+    private void HandleStatus()
     {
         float leftPercentage = leftButton.GetPercentage();
         float rightPercentage = rightButton.GetPercentage();
@@ -37,6 +47,12 @@ public class ParallelDragFreeInput : RhythmInput
             targetingEnd = true;
             Debug.Log("Left percentage: " + leftPercentage + " aim was " + 0f + " status is : " + leftStatus);
         }
+    }
+
+    private void MoveGuides(Beat nextBeat, Beat currentBeat)
+    {
+        leftGuide.Move(nextBeat.timestamp - currentBeat.timestamp);
+        rightGuide.Move(nextBeat.timestamp - currentBeat.timestamp);
     }
 
     private RhythmInputStatus GetStatusByPercentage(float percentage, float targetPercentage) 

@@ -9,6 +9,8 @@ public class MovingButton : MonoBehaviour
     private RectTransform startingPoint;
     [SerializeField]
     private RectTransform targetPoint;
+    [SerializeField]
+    private Ease easing = Ease.OutBack;
 
     private RectTransform thisTransform;
     private bool moveToTarget = true;
@@ -26,13 +28,13 @@ public class MovingButton : MonoBehaviour
         if (moveToTarget)
         {
             Sequence moveButton = DOTween.Sequence();
-            moveButton.Append(transform.DOMove(targetPoint.position, time / speedFactor, true).SetEase(Ease.OutBack));
+            moveButton.Append(transform.DOMove(targetPoint.position, time / speedFactor, true).SetEase(easing));
             //transform.DOMove(targetPoint.position, time, true).SetEase(Ease.Linear);
         }
         else
         {
             Sequence moveButton = DOTween.Sequence();
-            moveButton.Append(transform.DOMove(startingPoint.position, time / speedFactor, true).SetEase(Ease.OutBack));
+            moveButton.Append(transform.DOMove(startingPoint.position, time / speedFactor, true).SetEase(easing));
             //transform.DOMove(startingPoint.position, time, true).SetEase(Ease.Linear);
         }
         moveToTarget = !moveToTarget;
