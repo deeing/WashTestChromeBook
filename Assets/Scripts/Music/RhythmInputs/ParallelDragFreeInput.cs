@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RhythmTool;
+using TMPro;
 
 public class ParallelDragFreeInput : RhythmInput 
 {
@@ -13,6 +14,8 @@ public class ParallelDragFreeInput : RhythmInput
     private MovingButton leftGuide;
     [SerializeField]
     private MovingButton rightGuide;
+    [SerializeField]
+    private TMP_Text debugText;
 
     // suceeds if one of the fingers is touching
     private bool forgivingInput = true;
@@ -35,17 +38,20 @@ public class ParallelDragFreeInput : RhythmInput
 
         if (targetingEnd)
         {
-            leftStatus = GetStatusByPercentage(leftPercentage, 1f);
-            rightStatus = GetStatusByPercentage(rightPercentage, 1f);
+            // it means the previous score was at the start so score based on zero
+            leftStatus = GetStatusByPercentage(leftPercentage, 0f);
+            rightStatus = GetStatusByPercentage(rightPercentage, 0f);
             targetingEnd = false;
-            Debug.Log("Left percentage: " + leftPercentage + " aim was " + 1f + " status is : " + leftStatus);
+            //Debug.Log("Left percentage: " + leftPercentage + " aim was " + 1f + " status is : " + leftStatus);
+            debugText.text = "Aim: 0f, status: " + leftStatus + ", percent: " + leftPercentage;
         }
         else
         {
-            leftStatus = GetStatusByPercentage(leftPercentage, 0f);
-            rightStatus = GetStatusByPercentage(rightPercentage, 0f);
+            leftStatus = GetStatusByPercentage(leftPercentage, 1f);
+            rightStatus = GetStatusByPercentage(rightPercentage, 1f);
             targetingEnd = true;
-            Debug.Log("Left percentage: " + leftPercentage + " aim was " + 0f + " status is : " + leftStatus);
+            //Debug.Log("Left percentage: " + leftPercentage + " aim was " + 0f + " status is : " + leftStatus);
+            debugText.text = "Aim: 1f, status: " + leftStatus + ", percent: " + leftPercentage;
         }
     }
 

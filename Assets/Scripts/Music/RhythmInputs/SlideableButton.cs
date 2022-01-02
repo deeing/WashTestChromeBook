@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Touch;
-using Wash.Utilities;
+using TMPro;
 
 public class SlideableButton : MonoBehaviour
 {
@@ -10,30 +10,43 @@ public class SlideableButton : MonoBehaviour
     private RectTransform startingPoint;
     [SerializeField]
     private RectTransform endingPoint;
+    [SerializeField]
+    private TMP_Text debugText;
 
     private RectTransform thisTransform;
     private LeanFinger finger;
     private bool isSliding = false;
 
+    private float startingY = 0f;
+    private float endingY = 0f;
     private float lowestY = 0f;
     private float highestY = 0f;
     private float totalDistance = 0f;
 
+    private float sliderPercentage = -1f;
+    private bool slidingUp = false;
+
     private void Awake()
     {
         thisTransform = (RectTransform)transform;
-        float startingY = startingPoint.position.y;
-        float endingY = endingPoint.position.y;
+        startingY = startingPoint.position.y;
+        endingY = endingPoint.position.y;
 
         lowestY = Mathf.Min(startingY, endingY);
         highestY = Mathf.Max(startingY, endingY);
         totalDistance = highestY - lowestY;
+
+        if (startingY < endingY)
+        {
+            slidingUp = true;
+        }
     }
 
     private void Update()
     {
         if (!isSliding)
         {
+            sliderPercentage = -1f;
             return;
         }
 
@@ -45,6 +58,37 @@ public class SlideableButton : MonoBehaviour
         Vector3 newPosition = thisTransform.position;
         newPosition.y = Mathf.Clamp(finger.ScreenPosition.y, lowestY, highestY);
         thisTransform.position = newPosition;
+        sliderPercentage = CalculateSliderPercentage(newPosition.y);
+        debugText.text = sliderPercentage.ToString();
+    }
+
+    private float CalculateSliderPercentage(float newPosition)
+    {
+        if (slidingUp)
+        {
+            if (newPosition <= startingY)
+            {
+                return 0f;
+            } 
+            else if (newPosition >= endingY)
+            {
+                return 1f;
+            }
+        } 
+        else
+        {
+            if (newPosition >= startingY)
+            {
+                return 0f;
+            }
+            else if (newPosition <= endingY)
+            {
+                return 1f;
+            }
+        }
+
+        float distanceFromStart = Mathf.Abs(newPosition - startingY);
+        return distanceFromStart / totalDistance;
     }
 
     public void StartSlide(LeanFinger finger)
@@ -62,14 +106,6 @@ public class SlideableButton : MonoBehaviour
     // percentage towards the end the button is slid
     public float GetPercentage()
     {
-        if (!isSliding)
-        {
-            return -1;
-        }
-        float currentDistance = finger.ScreenPosition.y - lowestY;
-        currentDistance.ClampLower(0f);
-        float percentage = currentDistance / totalDistance;
-        percentage.Clamp(0f, 1f);
-        return percentage;
+        return sliderPercentage;
     }
 }
