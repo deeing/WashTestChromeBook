@@ -15,19 +15,31 @@ public class CaligraphyTutorialHand : MonoBehaviour
     private float timeBetweenLoop = 2f;
     [SerializeField]
     private Transform tutorialHandImageContainer;
+    [SerializeField]
+    private UILineRenderer lineRenderer;
 
-    public bool isDoingTutorial { private set; get; } = false;
+    public bool isInTutorialLoop { private set; get; } = false;
+    private bool tutorialDrawing = false;
 
     private CaligraphySymbol tutorialSymbol;
     private Sequence handMoveSequence = null;
     private Vector3 originalHandPosition;
     private WaitForSeconds timeBetweenWait;
     private Coroutine redoCoroutine = null;
-    private UILineRenderer lineRenderer;
 
     private void Awake()
     {
         timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
+    }
+
+    private void Update()
+    {
+        if (isInTutorialLoop && tutorialDrawing)
+        {
+            caligraphyInput.RemoveUnmarkedPoints();
+            lineRenderer.AddPosition(tutorialHandImageContainer.position);
+            lineRenderer.RenderLines();
+        }
     }
 
     public void SetupHand(CaligraphySymbol symbol)
@@ -45,11 +57,12 @@ public class CaligraphyTutorialHand : MonoBehaviour
 
         originalHandPosition = tutorialHandImageContainer.position;
         timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
-        isDoingTutorial = true;
+        isInTutorialLoop = true;
     }
 
     private void MoveHand()
     {
+        tutorialDrawing = true;
         List<CaligraphyConnection> connections = tutorialSymbol.symbolConnections;
         int firstButtonId = tutorialSymbol.symbolConnections[0].buttonId1;
         Transform firstButton = caligraphyInput.buttonMap[firstButtonId];
@@ -80,12 +93,13 @@ public class CaligraphyTutorialHand : MonoBehaviour
             StopCoroutine(redoCoroutine);
             redoCoroutine = null;
         }
-        isDoingTutorial = false;
+        isInTutorialLoop = false;
     }
 
     public void ReDoTutorial()
     {
-        Debug.Log("trying to redo");    
+        Debug.Log("trying to redo");
+        tutorialDrawing = false;
         tutorialHandImageContainer.gameObject.SetActive(false);
         tutorialHandImageContainer.position = originalHandPosition;
         if (redoCoroutine == null)

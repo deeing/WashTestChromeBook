@@ -77,7 +77,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
         if (CaligraphyInputManager.instance.UserIsDrawing())
         {
-            if (calgraphyTutorialHand.isDoingTutorial)
+            if (calgraphyTutorialHand.isInTutorialLoop)
             {
                 calgraphyTutorialHand.KillHandMove();
 
@@ -88,7 +88,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
             numConnectionsMade = 0;
             HandAnimations.instance.Reset();
             NeutralIdle();
-            if (!calgraphyTutorialHand.isDoingTutorial)
+            if (!calgraphyTutorialHand.isInTutorialLoop)
             {
                 calgraphyTutorialHand.ReDoTutorial();
             }
