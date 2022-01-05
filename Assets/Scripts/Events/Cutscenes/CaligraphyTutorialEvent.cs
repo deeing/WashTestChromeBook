@@ -18,7 +18,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
     private float endOfTutorialPauseTime = 2f;
 
     [SerializeField]
-    private SwitchEvent tutorialEvent;
+    private MusicCaligraphySwitch tutorialEvent;
 
     private bool finishedTutorial = false;
     private bool isMainTutorialLoop = true;
@@ -69,7 +69,7 @@ public class CaligraphyTutorialEvent : CutsceneEvent
 
         if (tutorialEvent != null)
         {
-            tutorialEvent.DoEvent();
+           // tutorialEvent.DoEvent();
         }
 
         if (endOfTutorialPause)

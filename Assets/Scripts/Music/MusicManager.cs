@@ -94,15 +94,15 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void SetupEvents()
     {
         starterEvents = new List<MusicSwitchEvent>();
-        foreach (Transform child in startEventsContainer)
+       /* foreach (Transform child in startEventsContainer)
         {
             if (child.gameObject.activeSelf)
             {
-                MusicSwitchEvent startEvent = child.GetComponent<MusicSwitchEvent>();
+                CaligraphyTutorialEvent startEvent = child.GetComponent<CaligraphyTutorialEvent>();
                 startEvent.RegisterAsStartEvent();
                 starterEvents.Add(startEvent);
             }
-        }
+        }*/
 
         if (nonLinearMode)
         {

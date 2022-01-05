@@ -7,7 +7,7 @@ using Wash.Utilities;
 public class MusicCaligraphySwitch : MusicSwitchEvent
 {
     [SerializeField]
-    private CaligraphyMove caligraphyMove;
+    public CaligraphyMove caligraphyMove;
     [SerializeField]
     [Tooltip("Optional other possible move for the same animation")]
     private CaligraphyMove alternateMove;
@@ -23,6 +23,8 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
 
     private const int NUM_INTERMEDIATE_MISTAKES = 1;
     private const int NUM_EXPERT_MISTAKES = 5;
+
+    private CaligraphyTutorialHand calgraphyTutorialHand;
 
     public override void SetupEvent()
     {
@@ -55,12 +57,9 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         MenuManager.instance.ShowLineArt(GetEventType());
 
         animationStep = (caligraphyMove.animationEnd - caligraphyMove.animationStart) / caligraphyMove.symbol.symbolConnections.Count;
-    }
 
-    private IEnumerator DelayedGuideLines()
-    {
-        yield return new WaitForSeconds(normalGuidelineWait);
-        CaligraphyInputManager.instance.SetupGuideLines(caligraphyMove);
+        calgraphyTutorialHand = MenuManager.instance.GetCaligraphyTutorialHand();
+        calgraphyTutorialHand.SetupHand(caligraphyMove.symbol);
     }
 
     public override void DoEvent(Beat beat)
@@ -75,6 +74,27 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
             HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
             return;
         }
+
+        if (CaligraphyInputManager.instance.UserIsDrawing())
+        {
+            if (calgraphyTutorialHand.isDoingTutorial)
+            {
+                calgraphyTutorialHand.KillHandMove();
+
+            }
+        }
+        else
+        {
+            numConnectionsMade = 0;
+            HandAnimations.instance.Reset();
+            NeutralIdle();
+            if (!calgraphyTutorialHand.isDoingTutorial)
+            {
+                calgraphyTutorialHand.ReDoTutorial();
+            }
+            return;
+        }
+
         if (CaligraphyInputManager.instance.UserIsDrawing() &&
             (CaligraphyInputManager.instance.HasDoneCaligraphy(caligraphyMove) || 
                 (alternateMove.symbol != null && CaligraphyInputManager.instance.HasDoneCaligraphy(alternateMove))))
@@ -119,6 +139,8 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     {
         completedSwitch = true;
         endFrame = caligraphyMove.animationStart + (animationStep * caligraphyMove.symbol.symbolConnections.Count);
+        calgraphyTutorialHand.KillHandMove();
+
         StartCoroutine(SwitchToScrub());
     }
 
@@ -152,4 +174,6 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         base.HardSwitchEnd();
         MenuManager.instance.HideScrubAlert();
     }
+
+
 }

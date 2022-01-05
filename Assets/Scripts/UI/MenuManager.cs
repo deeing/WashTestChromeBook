@@ -55,6 +55,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private CaligraphyLineArt caligraphyLineArt;
     [SerializeField]
     private GameObject finishButton;
+    [SerializeField]
+    private CaligraphyTutorialHand caligraphyTutorialHand;
 
     protected override void Awake()
     {
@@ -270,5 +272,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         ToggleInspectButton(false);
         ToggleSettings(false);
         ToggleScoreMenu(false);
+    }
+
+    public CaligraphyTutorialHand GetCaligraphyTutorialHand()
+    {
+        return caligraphyTutorialHand;
     }
 }
