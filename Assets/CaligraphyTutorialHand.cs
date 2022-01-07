@@ -74,7 +74,8 @@ public class CaligraphyTutorialHand : MonoBehaviour
             Transform nextButton = caligraphyInput.buttonMap[conn.buttonId2];
             handMoveSequence.Append(tutorialHandImageContainer.DOMove(nextButton.position, handMoveSpeed)
                 .OnComplete(() => MarkPosition(nextButton.position, conn.buttonId2)))
-                    .OnComplete(() => ReDoTutorial());
+                    .OnComplete(() => KillHandMove());
+                    //.OnComplete(() => ReDoTutorial());
         }
     }
 

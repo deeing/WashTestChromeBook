@@ -88,10 +88,10 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
             numConnectionsMade = 0;
             HandAnimations.instance.Reset();
             NeutralIdle();
-            if (!calgraphyTutorialHand.isInTutorialLoop)
+            /* (!calgraphyTutorialHand.isInTutorialLoop)
             {
                 calgraphyTutorialHand.ReDoTutorial();
-            }
+            }*/
             return;
         }
 
