@@ -21,7 +21,7 @@ public class InspectionEvent : MusicPlayerEvent
         hasFinished = false;
         animPeriodWait = new WaitForSeconds(animationPeriod);
         isPalmsUp = false;
-        ToggleInspectAnimation(false);
+        //ToggleInspectAnimation(false);
 
         StartInspectionAnimation();
     }

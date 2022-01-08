@@ -81,7 +81,6 @@ public class CaligraphyTutorialHand : MonoBehaviour
 
     public void KillHandMove()
     {
-        CaligraphyInputManager.instance.ClearSymbol();
         tutorialHandImageContainer.DOKill();
         if (handMoveSequence != null)
         {
@@ -95,6 +94,8 @@ public class CaligraphyTutorialHand : MonoBehaviour
             redoCoroutine = null;
         }
         isInTutorialLoop = false;
+        lineRenderer.ClearLines();
+        CaligraphyInputManager.instance.ClearSymbol();
     }
 
     public void ReDoTutorial()

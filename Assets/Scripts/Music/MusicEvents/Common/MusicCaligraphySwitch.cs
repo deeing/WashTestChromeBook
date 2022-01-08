@@ -80,7 +80,6 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
             if (calgraphyTutorialHand.isInTutorialLoop)
             {
                 calgraphyTutorialHand.KillHandMove();
-
             }
         }
         else

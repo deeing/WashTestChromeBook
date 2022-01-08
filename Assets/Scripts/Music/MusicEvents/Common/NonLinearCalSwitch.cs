@@ -16,7 +16,7 @@ public class NonLinearCalSwitch : MusicPlayerEvent
         base.SetupEvent();
         hasFinished = false;
         TogglePoseOptions(true);
-        HandAnimations.instance.CrossFade("Idle", .2f);
+        //HandAnimations.instance.CrossFade("Idle", .2f);
 
     }
 

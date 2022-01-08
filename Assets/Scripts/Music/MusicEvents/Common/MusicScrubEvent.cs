@@ -205,7 +205,9 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     {
         enabled = false;
         MusicManager.instance.ToggleTransitioning(true);
-        HandAnimations.instance.TransitionPlay(returnAnimationName);
+        //HandAnimations.instance.TransitionPlay(returnAnimationName);
+        Debug.Log("end switch");
+        HandAnimations.instance.PlayAnimation(returnAnimationName);
         isPlayingEndAnimation = true;
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
@@ -246,7 +248,9 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     {
         MusicManager.instance.ToggleTransitioning(true);
         HandAnimations.instance.Reset();
-        HandAnimations.instance.TransitionPlay(returnAnimationName);
+        //HandAnimations.instance.TransitionPlay(returnAnimationName);
+        Debug.Log("hard switch");
+        HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         enabled = false;
