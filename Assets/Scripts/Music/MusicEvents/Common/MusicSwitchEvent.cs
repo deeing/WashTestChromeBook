@@ -48,7 +48,7 @@ public class MusicSwitchEvent :  MusicPlayerEvent
 
     public void DisplayPoseOptions(int numPoseOptions)
     {
-        MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this, numPoseOptions);
+        //MenuManager.instance.DisplayPoseOptions(MusicManager.instance.starterEvents, this, numPoseOptions);
     }
 
     public void DisplayPoseOptions(MusicSwitchEvent currentSwitchEvent)

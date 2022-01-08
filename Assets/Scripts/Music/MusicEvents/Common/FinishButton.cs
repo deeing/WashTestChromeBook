@@ -9,6 +9,14 @@ public class FinishButton : MonoBehaviour
 
     private bool isShowingConfirmation = false;
 
+    private void Start()
+    {
+        if (!MusicManager.instance.nonLinearMode)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void ToggleConfirmation(bool status)
     {
         isShowingConfirmation = status;

@@ -33,7 +33,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private NonLinearCalSwitch _nonLinearCalSwitch;
     public NonLinearCalSwitch nonLinearCalSwitch { get => _nonLinearCalSwitch; private set => _nonLinearCalSwitch = value; }
 
-    public List<MusicSwitchEvent> starterEvents { get; private set; } = new List<MusicSwitchEvent>();
+    public List<MusicCaligraphySwitch> starterEvents { get; private set; } = new List<MusicCaligraphySwitch>();
     public MusicWashEvent currentWashEvent { get; private set; }
 
     private bool isPlaying = false;
@@ -93,16 +93,15 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void SetupEvents()
     {
-        starterEvents = new List<MusicSwitchEvent>();
-       /* foreach (Transform child in startEventsContainer)
+        starterEvents = new List<MusicCaligraphySwitch>();
+        foreach (Transform child in startEventsContainer)
         {
             if (child.gameObject.activeSelf)
             {
-                CaligraphyTutorialEvent startEvent = child.GetComponent<CaligraphyTutorialEvent>();
-                startEvent.RegisterAsStartEvent();
+                MusicCaligraphySwitch startEvent = child.GetComponent<MusicCaligraphySwitch>();
                 starterEvents.Add(startEvent);
             }
-        }*/
+        }
 
         if (nonLinearMode)
         {
@@ -114,11 +113,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         }
     }
 
-    private MusicSwitchEvent GetRandomStarter()
+    /*private MusicSwitchEvent GetRandomStarter()
     {
         MusicSwitchEvent randomStarter = starterEvents.RandomElement<MusicSwitchEvent>();
         return randomStarter;
-    }
+    }*/
 
     private void StartWashing()
     {
@@ -241,7 +240,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         nextEvent.SetupEvent();
     }
 
-    public void ChangeEventRandom()
+    /*public void ChangeEventRandom()
     {
         ChangeEvent(GetRandomStarter());
     }
@@ -254,7 +253,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             return true;
         }
         return false;
-    }
+    }*/
 
     /*private void RecordResults(MusicWashEvent washEvent)
     {
