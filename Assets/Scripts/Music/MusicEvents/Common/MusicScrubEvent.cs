@@ -43,6 +43,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private Coroutine idleCoroutine = null;
     private bool isNonLinearMode = false;
     private float sensitivityAdjustment = 1f;
+    private bool isDisplayingTip = false;
 
     private void Awake()
     {
@@ -162,11 +163,10 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             GermManager.instance.KillRandomGermsOfType(germTypeKilled, numGermsToKill);
         }
 
-        if (isNonLinearMode && !GermManager.instance.HasGermsOfType(germTypeKilled))
+        if (isNonLinearMode && !isDisplayingTip && !GermManager.instance.HasGermsOfType(germTypeKilled))
         {
-            // show tip if they need it
-            // maybe change to first time only later?
             MenuManager.instance.ToggleInspectTipMenu(true);
+            isDisplayingTip = true;
         }
     }
 
@@ -261,6 +261,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
+        MenuManager.instance.ToggleInspectTipMenu(false);
         enabled = false;
     }
 

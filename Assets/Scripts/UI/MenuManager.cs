@@ -7,6 +7,8 @@ using Wash.Utilities;
 
 public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
+    public bool tipsEnabled = true;
+
     [SerializeField]
     private TopDropMenu endMenu;
     [SerializeField]
