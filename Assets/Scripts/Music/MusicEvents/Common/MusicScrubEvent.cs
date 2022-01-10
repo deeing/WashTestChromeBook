@@ -161,6 +161,13 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         {
             GermManager.instance.KillRandomGermsOfType(germTypeKilled, numGermsToKill);
         }
+
+        if (isNonLinearMode && !GermManager.instance.HasGermsOfType(germTypeKilled))
+        {
+            // show tip if they need it
+            // maybe change to first time only later?
+            MenuManager.instance.ToggleInspectTipMenu(true);
+        }
     }
 
     private void HandleScore()
@@ -199,6 +206,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     {
         base.EndEvent();
         //EndAnimation();
+        MenuManager.instance.ToggleInspectTipMenu(false);
     }
 
     public void EndAnimation()
