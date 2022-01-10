@@ -282,9 +282,4 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     {
         return caligraphyTutorialHand;
     }
-
-    public void ToggleInspectTipMenu(bool status)
-    {
-        inspectTipMenu.ToggleTipMenus(status);
-    }
 }

@@ -163,9 +163,12 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             GermManager.instance.KillRandomGermsOfType(germTypeKilled, numGermsToKill);
         }
 
-        if (isNonLinearMode && !isDisplayingTip && !GermManager.instance.HasGermsOfType(germTypeKilled))
+        if (isNonLinearMode && 
+            !isDisplayingTip && 
+            !GermManager.instance.HasGermsOfType(germTypeKilled) &&
+            !HintManager.instance.hasUsedInspect)
         {
-            MenuManager.instance.ToggleInspectTipMenu(true);
+            HintManager.instance.ToggleInspectTipMenu(true);
             isDisplayingTip = true;
         }
     }
@@ -206,7 +209,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     {
         base.EndEvent();
         //EndAnimation();
-        MenuManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectTipMenu(false);
     }
 
     public void EndAnimation()
@@ -261,7 +264,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
-        MenuManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectTipMenu(false);
         enabled = false;
     }
 

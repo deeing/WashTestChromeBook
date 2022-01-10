@@ -58,7 +58,7 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleScoreMenu(!status);
         MenuManager.instance.ToggleRhythmDebug(!status);
         MenuManager.instance.ToggleRhythmStatus(!status);
-        MenuManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectTipMenu(false);
     }
 
     public void SetInspectionMode(bool status)
@@ -81,6 +81,10 @@ public class InspectionMode : MonoBehaviour
             //HandAnimations.instance.TransitionPlay("Idle");
             prevEvent = MusicManager.instance.GetCurrentEvent();
             MusicManager.instance.HardSwitchEvent(inspectionEvent);
+            if (!HintManager.instance.hasUsedInspect)
+            {
+                HintManager.instance.RegisterUsedInspect();
+            }
         }
         else
         {
