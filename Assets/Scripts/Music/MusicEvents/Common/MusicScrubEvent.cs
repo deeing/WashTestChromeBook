@@ -175,6 +175,12 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 
     private void HandleScore()
     {
+        // don't score if there are no germs left to scrub
+        if (!GermManager.instance.HasGermsOfType(germTypeKilled))
+        {
+            return;
+        }
+
         float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
         IncreaseEventScore(scoreAmount);
         MenuManager.instance.IncreaseTotalScore(scoreAmount);
