@@ -16,3 +16,7 @@ MonoBehaviour:
   _goodPoints: 1
   _greatPoints: 2
   _perfectPoints: 5
+  skinMappings:
+  - {fileID: 11400000, guid: 729a1e922dbf21d43ba33e98350e5f3d, type: 2}
+  - {fileID: 11400000, guid: ebb37bdb6f179014288b056d4f80a44e, type: 2}
+  defaultSkin: {fileID: 11400000, guid: 729a1e922dbf21d43ba33e98350e5f3d, type: 2}

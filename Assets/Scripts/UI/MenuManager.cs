@@ -61,6 +61,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private CaligraphyTutorialHand caligraphyTutorialHand;
     [SerializeField]
     private TutorialTipMenu inspectTipMenu;
+    [SerializeField]
+    private SkinsMenu skinMenu;
 
     protected override void Awake()
     {
@@ -278,5 +280,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public CaligraphyTutorialHand GetCaligraphyTutorialHand()
     {
         return caligraphyTutorialHand;
+    }
+
+    public void ToggleSkinMenu(bool status)
+    {
+        skinMenu.ToggleSkinMenu(status);
     }
 }

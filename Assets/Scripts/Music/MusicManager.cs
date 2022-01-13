@@ -5,11 +5,13 @@ using UnityEngine;
 using Wash.Utilities;
 using TMPro;
 using System.Text;
+using System;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
     public LevelDifficulty difficulty = LevelDifficulty.Beginner;
     public bool nonLinearMode = false;
+
 
     [SerializeField]
     private RhythmEventProvider eventProvider;
@@ -21,6 +23,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private TMP_Text debugText;
     [SerializeField]
     private bool showDebug = true;
+    [SerializeField]
+    private SkinnedMeshRenderer skinnedMesh;
 
     public bool isTransitioning { get; private set; } = true;
 
@@ -57,6 +61,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         SetupRhythm();
         SetupEvents();
+        SetupSkin();
     }
 
     private void SetupRhythm()
@@ -111,6 +116,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             currentWashEvent = starterEvents[0];
         }
+    }
+
+    private void SetupSkin()
+    {
+        SkinMapping savedSkin = gameSettings.GetChosenSkin();
+        SetSkin(savedSkin);
     }
 
     /*private MusicSwitchEvent GetRandomStarter()
@@ -335,5 +346,14 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public void ReturnToNonLinearNeutral()
     {
         HardSwitchEvent(_nonLinearCalSwitch);
+    }
+
+
+    public void SetSkin(SkinMapping skin)
+    {
+        gameSettings.SetChosenSkin(skin);
+        Material[] mats = skinnedMesh.materials;
+        mats[1] = skin.skinMaterial;
+        skinnedMesh.materials = mats;
     }
 }
