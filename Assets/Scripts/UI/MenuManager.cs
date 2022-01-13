@@ -50,7 +50,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     [SerializeField]
     private GameObject difficultyMenu;
     [SerializeField]
-    private LeftSlideMenu[] poseOptions;
+    private NonLinearSwitchOptions nonLinearSwitchOptions;
     [SerializeField]
     private LeftSlideMenu finishScrubButton;
     [SerializeField]
@@ -243,12 +243,9 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
         difficultyMenu.SetActive(status);
     }
 
-    public void TogglePoseOptions(bool status)
+    public void ToggleNonLinearSwitchOptions(bool status)
     {
-        foreach (LeftSlideMenu poseOption in poseOptions)
-        {
-            poseOption.SetVisible(status);
-        }
+        nonLinearSwitchOptions.TogglePoseOptions(status);
     }
 
     public void ToggleFinishScrubButton(bool status)
@@ -270,7 +267,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     {
         finishButton.SetActive(false);
         ToggleRhythmDebug(false);
-        TogglePoseOptions(false);
+        ToggleNonLinearSwitchOptions(false);
         ToggleDifficultyMenu(false);
         ToggleRhythmStatus(false);
         ToggleInspectButton(false);
