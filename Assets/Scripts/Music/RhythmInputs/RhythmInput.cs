@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RhythmTool;
+using Lean.Touch;
 
 public abstract class RhythmInput : MonoBehaviour
 {
+    protected float microTurotialWaitTime = 3f;
+
     private int beatCounter = 0;
     private int beatsPerinputPeriod = 0;
     private MusicPlayerEvent registeredEvent;
+    private WaitForSeconds microTutorialWait;
+    private Coroutine microTutorialCoroutine;
 
     protected virtual void Awake()
     {
         beatsPerinputPeriod = MusicManager.instance.GetBeatsPerInputPeriod();
+        microTutorialWait = new WaitForSeconds(microTurotialWaitTime);
     }
 
     public void Update()
     {
         DoInput(GetCurrentInputStatus());
+        HandleMicroTutorial();
     }
 
     public void Toggle(bool status)
@@ -90,5 +97,49 @@ public abstract class RhythmInput : MonoBehaviour
     public void DoInputPerfect(bool isLeftInput)
     {
         SetInput(RhythmInputStatus.Perfect, isLeftInput);
+    }
+    private void HandleMicroTutorial()
+    {
+        // only proceed if user is note touching
+        List<LeanFinger> fingers = LeanTouch.GetFingers(false, false, 1);
+        if (fingers == null || fingers.Count == 0)
+        {
+            if (microTutorialCoroutine == null)
+            {
+                Debug.Log("Starting coroutine");
+                microTutorialCoroutine = StartCoroutine(MicroTutorial());
+            }
+        }
+        else
+        {
+            foreach(LeanFinger fing in fingers)
+            {
+                Debug.Log(fing);
+            }
+            if (microTutorialCoroutine != null)
+            {
+                Debug.Log("Stopping coroutine");
+
+                StopCoroutine(microTutorialCoroutine);
+                microTutorialCoroutine = null;
+            }
+            StopMicroTutorial();
+        }
+    }
+
+    private IEnumerator MicroTutorial()
+    {
+        yield return microTutorialWait;
+        DoMicroTutorial();
+    }
+
+    protected virtual void DoMicroTutorial()
+    {
+        // optionally implemetned
+    }
+
+    protected virtual void StopMicroTutorial()
+    {
+        // optionally implemetned
     }
 }
