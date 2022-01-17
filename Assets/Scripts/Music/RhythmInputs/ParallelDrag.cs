@@ -4,6 +4,7 @@ using UnityEngine;
 using RhythmTool;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class ParallelDrag : RhythmInput 
 {
@@ -17,6 +18,8 @@ public class ParallelDrag : RhythmInput
     private Image leftTutorialImage;
     [SerializeField]
     private Image rightTutorialImage;
+    [SerializeField]
+    private StatusDisplay statusDisplay;
 
     // suceeds if one of the fingers is touching
     private bool forgivingInput = true;
@@ -42,6 +45,7 @@ public class ParallelDrag : RhythmInput
         }
         leftButton.Move(nextBeat.timestamp - currentBeat.timestamp);
         rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);
+        statusDisplay.ShowStatusDisplay(GetCurrentInputStatus());
     }
 
     public override RhythmInputStatus GetCurrentInputStatus()
