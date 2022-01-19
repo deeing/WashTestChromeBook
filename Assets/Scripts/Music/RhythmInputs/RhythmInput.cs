@@ -70,6 +70,7 @@ public abstract class RhythmInput : MonoBehaviour
     {
         if (registeredEvent)
         {
+            Debug.Log(status);
             registeredEvent.OnInput(status);
         }
     }
@@ -106,20 +107,13 @@ public abstract class RhythmInput : MonoBehaviour
         {
             if (microTutorialCoroutine == null)
             {
-                Debug.Log("Starting coroutine");
                 microTutorialCoroutine = StartCoroutine(MicroTutorial());
             }
         }
         else
         {
-            foreach(LeanFinger fing in fingers)
-            {
-                Debug.Log(fing);
-            }
             if (microTutorialCoroutine != null)
             {
-                Debug.Log("Stopping coroutine");
-
                 StopCoroutine(microTutorialCoroutine);
                 microTutorialCoroutine = null;
             }

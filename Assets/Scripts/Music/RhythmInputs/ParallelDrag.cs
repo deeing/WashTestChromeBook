@@ -37,6 +37,11 @@ public class ParallelDrag : RhythmInput
        // originalTutorialPosRight = rightTutorialImage.position;
     }
 
+    private void OnDisable()
+    {
+        statusDisplay.HideStatusDisplay();
+    }
+
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
         if (debugFreeze)

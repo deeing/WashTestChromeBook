@@ -14,6 +14,8 @@ public class RhythmSpin : RhythmInput
     private int beatMultiplier = 2;
     [SerializeField]
     private Ease easingPattern = Ease.OutBack;
+    [SerializeField]
+    private StatusDisplay statusDisplay;
 
     private RhythmInputStatus rhythmStatus = RhythmInputStatus.Miss;
 
@@ -23,10 +25,16 @@ public class RhythmSpin : RhythmInput
         CounterClockwise
     }
 
+    private void OnDisable()
+    {
+        statusDisplay.HideStatusDisplay();
+    }
+
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
         float duration = nextBeat.timestamp - currentBeat.timestamp;
         button.DOShapeCircle(centerPoint.anchoredPosition, GetDirection(), duration).SetEase(easingPattern);
+        statusDisplay.ShowStatusDisplay(GetCurrentInputStatus());
     }
 
     private float GetDirection()

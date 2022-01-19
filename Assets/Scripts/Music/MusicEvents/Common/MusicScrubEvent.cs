@@ -180,6 +180,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         {
             return;
         }
+        Debug.Log("Scoring for " + latestRhythmInputStatus);
 
         float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
         IncreaseEventScore(scoreAmount);
