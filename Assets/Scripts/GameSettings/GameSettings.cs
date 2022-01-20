@@ -99,4 +99,18 @@ public class GameSettings : ScriptableObject
 
         return foundMapping;
     }
+
+    public List<SkinMapping> GetUnlockableSkinMappings()
+    {
+        List<SkinMapping> unlockableSkins = new List<SkinMapping>();
+        foreach (SkinMapping skinMapping in skinMappings)
+        {
+            if (skinMapping.isUnlockable)
+            {
+                unlockableSkins.Add(skinMapping);
+            }
+        }
+
+        return unlockableSkins;
+    }
 }

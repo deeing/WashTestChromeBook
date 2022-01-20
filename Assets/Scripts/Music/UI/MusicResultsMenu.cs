@@ -10,6 +10,8 @@ public class MusicResultsMenu : MonoBehaviour
     private GameObject totalResultPrefab;
     [SerializeField]
     private Transform resultsContainer;
+    [SerializeField]
+    private UnlockSkinMenu unlockSkinMenu;
 
     private TopDropMenu topDropMenu;
 
@@ -35,5 +37,11 @@ public class MusicResultsMenu : MonoBehaviour
     public void Show()
     {
         topDropMenu.Show();
+
+        // TODO: EVENTUALLY FLIP THE LOGIC ON THIS
+        if (GermManager.instance.HasGerms())
+        {
+            unlockSkinMenu.UnlockSkin();
+        }
     }
 }
