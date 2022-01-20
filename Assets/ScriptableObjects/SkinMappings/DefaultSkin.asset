@@ -15,3 +15,4 @@ MonoBehaviour:
   displayName: Default
   id: default
   skinMaterial: {fileID: 2100000, guid: dc6ace555409f284fa222cd4a7c838ac, type: 2}
+  isUnlockable: 0

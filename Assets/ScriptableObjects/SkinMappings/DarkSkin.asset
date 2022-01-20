@@ -15,3 +15,4 @@ MonoBehaviour:
   displayName: Dark Skin Tone
   id: dark_skin
   skinMaterial: {fileID: 2100000, guid: ffbb7c7f1e9c36e42b7bb1b492af9f3e, type: 2}
+  isUnlockable: 0

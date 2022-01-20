@@ -18,8 +18,8 @@ MonoBehaviour:
   _perfectPoints: 5
   skinMappings:
   - {fileID: 11400000, guid: 729a1e922dbf21d43ba33e98350e5f3d, type: 2}
+  - {fileID: 11400000, guid: 134eb5f5068880a408718cab9ac181c4, type: 2}
   - {fileID: 11400000, guid: ebb37bdb6f179014288b056d4f80a44e, type: 2}
   - {fileID: 11400000, guid: dc7931483b302ba4baf6ef922037f053, type: 2}
-  - {fileID: 11400000, guid: 134eb5f5068880a408718cab9ac181c4, type: 2}
   - {fileID: 11400000, guid: f4d5ae3342a662345883b6720f76f662, type: 2}
   defaultSkin: {fileID: 11400000, guid: 729a1e922dbf21d43ba33e98350e5f3d, type: 2}
