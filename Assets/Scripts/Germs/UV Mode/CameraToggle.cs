@@ -29,20 +29,5 @@ public class CameraToggle : MonoBehaviour
             anim.Play("Default");
         }
         germMap.ToggleFlipped(isFront);
-
-        if (!HintManager.instance.hasUsedCameraToggle)
-        {
-            HintManager.instance.hasUsedCameraToggle = true;
-            HintManager.instance.ToggleCameraToggleHint(false);
-
-            if (GermManager.instance.HasGerms())
-            {
-                HintManager.instance.ToggleStillWashHint(true);
-            }
-            else
-            {
-                HintManager.instance.ToggleNormalLightHint(true);
-            }
-        }
     }
 }
