@@ -5,9 +5,20 @@ using UnityEngine;
 public class HintManager : SingletonMonoBehaviour<HintManager>
 {
     [SerializeField]
-    private TutorialTipMenu inspectTipMenu;
+    private TutorialHintMenu inspectHintMenu;
+    [SerializeField]
+    private TutorialHintMenu UVHintMenu;
+    [SerializeField]
+    private TutorialHintMenu cameraToggleHint;
+    [SerializeField]
+    private TutorialHintMenu stillWashHint;
+    [SerializeField]
+    private TutorialHintMenu normalLightHint;
+    [SerializeField]
+    private Transform UVModeHintsContainer;
 
-    public bool hasUsedInspect { private set; get; } = false;
+    public bool hasUsedInspect = false;
+    public bool hasUsedCameraToggle = false;
 
 
     protected override void Awake()
@@ -18,14 +29,37 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
         }
     }
 
-    public void RegisterUsedInspect()
+    public void ToggleInspectHintMenu(bool status)
     {
-        hasUsedInspect = true;
+        inspectHintMenu.ToggleHintMenu(status);
     }
 
-    public void ToggleInspectTipMenu(bool status)
+    public void ToggleUVHintMenu(bool status)
     {
-        inspectTipMenu.ToggleTipMenus(status);
+        UVHintMenu.ToggleHintMenu(status);
     }
 
+    public void ToggleCameraToggleHint(bool status)
+    {
+        cameraToggleHint.ToggleHintMenu(status);
+    }
+
+    public void ToggleStillWashHint(bool status)
+    {
+        stillWashHint.ToggleHintMenu(status);
+    }
+
+    public void ToggleNormalLightHint(bool status)
+    {
+        normalLightHint.ToggleHintMenu(status);
+    }
+
+    public void DisableAllUVHints()
+    {
+        foreach(Transform child in UVModeHintsContainer)
+        {
+            TutorialHintMenu hintMenu = child.GetComponent<TutorialHintMenu>();
+            hintMenu.ToggleHintMenu(false);
+        }
+    }
 }

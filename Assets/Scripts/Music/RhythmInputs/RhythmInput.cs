@@ -70,7 +70,6 @@ public abstract class RhythmInput : MonoBehaviour
     {
         if (registeredEvent)
         {
-            Debug.Log(status);
             registeredEvent.OnInput(status);
         }
     }

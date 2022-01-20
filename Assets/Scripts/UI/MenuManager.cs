@@ -60,7 +60,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     [SerializeField]
     private CaligraphyTutorialHand caligraphyTutorialHand;
     [SerializeField]
-    private TutorialTipMenu inspectTipMenu;
+    private TutorialHintMenu inspectTipMenu;
     [SerializeField]
     private SkinsMenu skinMenu;
 

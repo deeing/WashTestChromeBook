@@ -168,7 +168,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             !GermManager.instance.HasGermsOfType(germTypeKilled) &&
             !HintManager.instance.hasUsedInspect)
         {
-            HintManager.instance.ToggleInspectTipMenu(true);
+            HintManager.instance.ToggleInspectHintMenu(true);
             isDisplayingTip = true;
         }
     }
@@ -180,7 +180,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         {
             return;
         }
-        Debug.Log("Scoring for " + latestRhythmInputStatus);
+        //Debug.Log("Scoring for " + latestRhythmInputStatus);
 
         float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
         IncreaseEventScore(scoreAmount);
@@ -216,7 +216,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     {
         base.EndEvent();
         //EndAnimation();
-        HintManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectHintMenu(false);
     }
 
     public void EndAnimation()
@@ -271,7 +271,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
-        HintManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectHintMenu(false);
         enabled = false;
     }
 

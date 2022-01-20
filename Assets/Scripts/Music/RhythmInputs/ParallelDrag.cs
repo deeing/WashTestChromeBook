@@ -110,7 +110,7 @@ public class ParallelDrag : RhythmInput
             Debug.Log("MISSING TUTORIAL HAND INMAGE FOR RHYTHM INPUT " + gameObject.name);
             return;
         }
-        Debug.Log("Ending microtutorial");
+        //Debug.Log("Ending microtutorial");
         leftTutorialImage.DOFade(0f, .2f);
         rightTutorialImage.DOFade(0f, .2f);
         // leftTutorialImage.gameObject.SetActive(false);

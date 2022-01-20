@@ -159,6 +159,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         CaligraphyInputManager.instance.SetUserFinishedSymbol(false);
         CaligraphyInputManager.instance.ClearSymbol();
         MenuManager.instance.HideLineArt();
+        calgraphyTutorialHand.KillHandMove();
         enabled = false;
     }
 

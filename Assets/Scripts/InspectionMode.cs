@@ -18,6 +18,8 @@ public class InspectionMode : MonoBehaviour
     private GermMap germMap;
     [SerializeField]
     private ToggleImage toggleImage;
+    [SerializeField]
+    private CameraToggle cameraToggle;
 
     [SerializeField]
     private MusicPlayerEvent inspectionEvent;
@@ -58,7 +60,7 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleScoreMenu(!status);
         MenuManager.instance.ToggleRhythmDebug(!status);
         MenuManager.instance.ToggleRhythmStatus(!status);
-        HintManager.instance.ToggleInspectTipMenu(false);
+        HintManager.instance.ToggleInspectHintMenu(false);
     }
 
     public void SetInspectionMode(bool status)
@@ -83,7 +85,8 @@ public class InspectionMode : MonoBehaviour
             MusicManager.instance.HardSwitchEvent(inspectionEvent);
             if (!HintManager.instance.hasUsedInspect)
             {
-                HintManager.instance.RegisterUsedInspect();
+                HintManager.instance.ToggleUVHintMenu(true);
+                HintManager.instance.hasUsedInspect = true;
             }
         }
         else
@@ -94,6 +97,8 @@ public class InspectionMode : MonoBehaviour
                 currentTutorial.SetActive(true);
             }
             MusicManager.instance.HardSwitchEvent(prevEvent);
+            HintManager.instance.DisableAllUVHints();
+            cameraToggle.ToggleCameraView(false);
         }
     }
 
