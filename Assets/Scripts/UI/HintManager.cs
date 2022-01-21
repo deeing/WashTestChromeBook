@@ -16,9 +16,12 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
     private TutorialHintMenu normalLightHint;
     [SerializeField]
     private Transform UVModeHintsContainer;
+    [SerializeField]
+    private TutorialHintMenu finishUVHint;
 
     public bool hasUsedInspect = false;
-    public bool hasUsedCameraToggle = false;
+
+    private HashSet<string> seenHintSet;
 
 
     protected override void Awake()
@@ -27,6 +30,8 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
         {
             return;
         }
+
+        seenHintSet = new HashSet<string>();
     }
 
     public void ToggleInspectHintMenu(bool status)
@@ -54,6 +59,11 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
         normalLightHint.ToggleHintMenu(status);
     }
 
+    public void ToggleFinishUVHint(bool status)
+    {
+        finishUVHint.ToggleHintMenu(status);
+    }
+
     public void DisableAllUVHints()
     {
         foreach(Transform child in UVModeHintsContainer)
@@ -61,5 +71,15 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
             TutorialHintMenu hintMenu = child.GetComponent<TutorialHintMenu>();
             hintMenu.ToggleHintMenu(false);
         }
+    }
+
+    public void SeenHint(string hintId)
+    {
+        seenHintSet.Add(hintId);
+    }
+
+    public bool HasSeenHint(string hintId)
+    {
+        return seenHintSet.Contains(hintId);
     }
 }

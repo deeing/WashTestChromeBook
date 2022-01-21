@@ -5,7 +5,9 @@ using UnityEngine;
 public class TutorialHintMenu : MonoBehaviour
 {
     [SerializeField]
-    TutorialHintMenu nextTip;
+    private TutorialHintMenu nextTip;
+    [SerializeField]
+    private string seenHintId;
 
     private bool hasAlreadyShown = false;
 
@@ -15,13 +17,17 @@ public class TutorialHintMenu : MonoBehaviour
         {
             gameObject.SetActive(true);
             hasAlreadyShown = true;
+
+            // register the hint as seen
+            if (seenHintId != null && seenHintId.Length > 0)
+            {
+                HintManager.instance.SeenHint(seenHintId);
+            }
         } 
         else
         {
             gameObject.SetActive(false);
         }
-
-
     }
 
     public void PlayNextTip()

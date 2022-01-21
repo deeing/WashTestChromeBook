@@ -71,6 +71,7 @@ public class InspectionMode : MonoBehaviour
         ToggleNonUVMenus(status);
         germMap.ToggleMap(status);
         toggleImage.ShowToggleSprite(status);
+        HandleHints(status);
 
         if (status)
         {
@@ -83,11 +84,7 @@ public class InspectionMode : MonoBehaviour
             //HandAnimations.instance.TransitionPlay("Idle");
             prevEvent = MusicManager.instance.GetCurrentEvent();
             MusicManager.instance.HardSwitchEvent(inspectionEvent);
-            if (!HintManager.instance.hasUsedInspect)
-            {
-                HintManager.instance.ToggleUVHintMenu(true);
-                HintManager.instance.hasUsedInspect = true;
-            }
+
         }
         else
         {
@@ -97,8 +94,28 @@ public class InspectionMode : MonoBehaviour
                 currentTutorial.SetActive(true);
             }
             MusicManager.instance.HardSwitchEvent(prevEvent);
-            HintManager.instance.DisableAllUVHints();
             cameraToggle.ToggleCameraView(false);
+        }
+    }
+
+    private void HandleHints(bool status)
+    {
+        if (status)
+        {
+            if (!HintManager.instance.hasUsedInspect)
+            {
+                HintManager.instance.ToggleUVHintMenu(true);
+                HintManager.instance.hasUsedInspect = true;
+            }
+        }
+        else
+        {
+            HintManager.instance.DisableAllUVHints();
+            if (HintManager.instance.HasSeenHint("ReturnNormalLight") &&
+                !HintManager.instance.HasSeenHint("FinishUVHint"))
+            {
+                HintManager.instance.ToggleFinishUVHint(true);
+            }
         }
     }
 
