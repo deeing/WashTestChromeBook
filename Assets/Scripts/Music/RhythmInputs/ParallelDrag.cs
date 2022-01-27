@@ -48,8 +48,17 @@ public class ParallelDrag : RhythmInput
         {
             return;
         }
-        leftButton.Move(nextBeat.timestamp - currentBeat.timestamp);
-        rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);
+
+        if (leftButton != null)
+        {
+            leftButton.Move(nextBeat.timestamp - currentBeat.timestamp);
+        }
+
+        if (rightButton != null)
+        {
+            rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);
+        }
+
         statusDisplay.ShowStatusDisplay(GetCurrentInputStatus());
     }
 

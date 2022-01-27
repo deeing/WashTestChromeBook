@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class NonLinearCalSwitch : MusicPlayerEvent
 {
+    [SerializeField,
+        Tooltip("How long it pauses before applying the neutral idle animation")]
+    private float neutralIdleDelay = 1f;
+
+    private WaitForSeconds neutralIdleWait;
+
+    private void Awake()
+    {
+        neutralIdleWait = new WaitForSeconds(neutralIdleDelay);
+    }
+
     public void ChooseEvent(MusicSwitchEvent nextEvent)
     {
         this.nextEvent = nextEvent;
@@ -16,6 +27,7 @@ public class NonLinearCalSwitch : MusicPlayerEvent
         base.SetupEvent();
         hasFinished = false;
         TogglePoseOptions(true);
+        StartCoroutine(PlayNeutralIdleAnimation());
     }
 
     public override void EndEvent()
@@ -41,5 +53,11 @@ public class NonLinearCalSwitch : MusicPlayerEvent
     public override void HardSwitchSetup()
     {
         SetupEvent();
+    }
+
+    private IEnumerator PlayNeutralIdleAnimation()
+    {
+        yield return neutralIdleWait;
+        HandAnimations.instance.PlayAnimation("Idle");
     }
 }

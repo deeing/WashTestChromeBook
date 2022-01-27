@@ -61,13 +61,13 @@ public abstract class MusicPlayerEvent : MonoBehaviour, MusicWashEvent
         return true;
     }
 
-    // setup that only needs to happen for a hard switch
+    // setup (for next event) that only needs to happen for a hard switch
     public virtual void HardSwitchSetup()
     {
         SetupEvent();
     }
 
-    // end that only needs to happen for a hard switch
+    // end (for the prev event) that only needs to happen for a hard switch
     public virtual void HardSwitchEnd()
     {
         EndEvent();

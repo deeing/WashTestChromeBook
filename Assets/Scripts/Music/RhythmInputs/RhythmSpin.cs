@@ -17,6 +17,9 @@ public class RhythmSpin : RhythmInput
     [SerializeField]
     private StatusDisplay statusDisplay;
 
+    [SerializeField]
+    private bool longBeat = false;
+
     private RhythmInputStatus rhythmStatus = RhythmInputStatus.Miss;
 
     protected enum Direction
@@ -32,7 +35,17 @@ public class RhythmSpin : RhythmInput
 
     public override void HandleBeat(Beat currentBeat, Beat nextBeat)
     {
-        float duration = nextBeat.timestamp - currentBeat.timestamp;
+        // TODO: Clean this up if we actually use this
+        MusicManager.instance.GetNextBeat(nextBeat);
+        Beat trueNextBeat = nextBeat;
+
+        if (longBeat)
+        {
+            trueNextBeat = MusicManager.instance.GetNextBeat(nextBeat);
+        }
+
+
+        float duration = trueNextBeat.timestamp - currentBeat.timestamp;
         button.DOShapeCircle(centerPoint.anchoredPosition, GetDirection(), duration).SetEase(easingPattern);
         statusDisplay.ShowStatusDisplay(GetCurrentInputStatus());
     }
