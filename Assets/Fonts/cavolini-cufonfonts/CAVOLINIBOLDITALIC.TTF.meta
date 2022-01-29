@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: bc829aa12cb7f674ebc62cbf8fc77ee0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cavolini
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 70c2bf4aaf455e948bb2a46f4870d221, type: 3}
+  - {fileID: 12800000, guid: f39238507530f154f834515655e0f644, type: 3}
+  - {fileID: 12800000, guid: cb4c6451ddd259c49b3c0e5d7c994735, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
