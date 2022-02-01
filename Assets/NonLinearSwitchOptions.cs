@@ -5,14 +5,14 @@ using UnityEngine;
 public class NonLinearSwitchOptions : MonoBehaviour
 {
     [SerializeField]
-    private LeftSlideMenu[] poseOptions;
+    private SlideInMenu[] poseOptions;
     [SerializeField]
     private GameObject poseOptionContainer;
 
     public void TogglePoseOptions(bool status)
     {
         poseOptionContainer.SetActive(status);
-        foreach (LeftSlideMenu poseOption in poseOptions)
+        foreach (SlideInMenu poseOption in poseOptions)
         {
             poseOption.SetVisible(status);
         }
