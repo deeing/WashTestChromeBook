@@ -302,4 +302,9 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     {
         Debug.Log("water");
     }
+
+    public float GetAnimationTime()
+    {
+        return animationTime;
+    }
 }

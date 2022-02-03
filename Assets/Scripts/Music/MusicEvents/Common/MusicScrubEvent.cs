@@ -24,6 +24,8 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private GermType germTypeKilled = GermType.Palm;
     [SerializeField]
     private float sensitivity = 1f;
+    [SerializeField]
+    private SyncedAnimation syncedAnimation;
 
     private int numBeatsInEvent = 0;
 
@@ -67,6 +69,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         if (isNonLinearMode)
         {
             MenuManager.instance.ToggleFinishScrubButton(true);
+        }
+
+        if (syncedAnimation)
+        {
+            syncedAnimation.enabled = true;
         }
     }
 
@@ -231,6 +238,10 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         StartCoroutine(FinishScrub());
+        if (syncedAnimation)
+        {
+            syncedAnimation.enabled = false;
+        }
     }
 
     private IEnumerator FinishScrub()
@@ -268,11 +279,14 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         MusicManager.instance.ToggleTransitioning(true);
         HandAnimations.instance.Reset();
         //HandAnimations.instance.TransitionPlay(returnAnimationName);
-        Debug.Log("hard switch");
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         HintManager.instance.ToggleInspectHintMenu(false);
+        if (syncedAnimation)
+        {
+            syncedAnimation.enabled = false;
+        }
         enabled = false;
     }
 
