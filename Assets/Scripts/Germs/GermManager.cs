@@ -163,6 +163,11 @@ public class GermManager : SingletonMonoBehaviour<GermManager>
 
     public bool HasGermsOfType(GermType type)
     {
+        if (!allGerms.ContainsKey(type))
+        {
+            return false;
+        }
+
         return allGerms[type].Count > 0;
     }
 

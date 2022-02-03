@@ -165,6 +165,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 
         if (isNonLinearMode && 
             !isDisplayingTip && 
+            germTypeKilled != GermType.NO_TYPE &&
             !GermManager.instance.HasGermsOfType(germTypeKilled) &&
             !HintManager.instance.hasUsedInspect)
         {

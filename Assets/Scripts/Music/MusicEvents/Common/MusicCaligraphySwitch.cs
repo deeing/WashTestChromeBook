@@ -11,6 +11,8 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
     [SerializeField]
     [Tooltip("Optional other possible move for the same animation")]
     private CaligraphyMove alternateMove;
+    [SerializeField]
+    private bool withEvents = false;
 
     private int numConnectionsMade = 0;
     private float animationStep = 0f;
@@ -67,11 +69,23 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         // do nothing
     }
 
+    private void PlaySwitchAnimation(string animationName, float animEnd, float animationIncrease)
+    {
+        if (withEvents)
+        {
+            HandAnimations.instance.PlayAnimationStepWithEvents(caligraphyMove.animationName, endFrame, Time.deltaTime);
+        }
+        else
+        {
+            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+        }
+    }
+
     private void Update()
     {
         if (completedSwitch)
         {
-            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+            PlaySwitchAnimation(caligraphyMove.animationName, endFrame, Time.deltaTime);
             return;
         }
 
@@ -123,8 +137,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         }
         else if (newNumConnections == numConnectionsMade)
         {
-            //Debug.Log("end " + endFrame);
-            HandAnimations.instance.PlayAnimationStep(caligraphyMove.animationName, endFrame, Time.deltaTime);
+            PlaySwitchAnimation(caligraphyMove.animationName, endFrame, Time.deltaTime);
         }
 
         if (!showingGuideLines && CaligraphyInputManager.instance.GetNumMistakes() >= numMistakesBeforeGuideLines)

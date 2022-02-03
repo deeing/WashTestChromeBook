@@ -162,6 +162,38 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
         anim.Play(animationName, 0, animationTime);
     }
 
+    public void PlayAnimationStepWithEvents(string animationName, float animEnd, float animationIncrease)
+    {
+        //Debug.Log("Playing " + animationTime);
+        anim.speed = 0;
+        animationTime += animationIncrease;
+        animationTime.ClampUpper(animEnd);
+        anim.Play(animationName, 0, animationTime);
+
+        CheckCurrentAnimationsEvents();
+    }
+
+    private void CheckCurrentAnimationsEvents()
+    {
+        AnimatorClipInfo[] animatorInfo = anim.GetCurrentAnimatorClipInfo(0);
+        if (animatorInfo == null || animatorInfo.Length <= 0)
+        {
+            return;
+        }
+
+        AnimationClip currentClip = animatorInfo[0].clip;
+        AnimationEvent[] events = currentClip.events;
+        if (events != null && events.Length > 0)
+        {
+            Debug.Log(currentClip.name);
+            Debug.Log("Current time: " + animationTime);
+            foreach(AnimationEvent evt in events)
+            {
+                Debug.Log("Event at: " + evt.time);
+            }
+        }
+    }
+
     public bool HasAnimationReachedTime(float animStart, float animEnd)
     {
         return animStart + animationTime >= animEnd;
@@ -259,5 +291,15 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public void CameraAnimation(string animationName, float animTime)
     {
         cinemachine.Play(animationName, 0, animTime);
+    }
+
+    public void TurnOnFaucet()
+    {
+        Debug.Log("Turn on the faucet");
+    }
+
+    public void TurnOnWater()
+    {
+        Debug.Log("water");
     }
 }
