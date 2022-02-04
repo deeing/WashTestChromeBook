@@ -5,7 +5,7 @@ using UnityEngine;
 public class NonLinearOption : MonoBehaviour
 {
     [SerializeField]
-    MusicSwitchEvent musicSwitchEvent;
+    private MusicSwitchEvent musicSwitchEvent;
 
     public void ChooseOption()
     {
