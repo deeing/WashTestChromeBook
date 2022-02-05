@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ToggleColor : MonoBehaviour
 {
@@ -17,12 +16,34 @@ public class ToggleColor : MonoBehaviour
     private Image image;
     [SerializeField]
     private float transitionTime = .25f;
+    [SerializeField]
+    private bool autoToggle = false;
 
     private bool isToggled = false;
+    private WaitForSeconds autoToggleWait;
+
+    private void OnEnable()
+    {
+        if (autoToggle)
+        {
+            autoToggleWait = new WaitForSeconds(transitionTime);
+            StartCoroutine(AutoToggle());
+        }
+    }
+
+    private IEnumerator AutoToggle()
+    {
+        while(enabled)
+        {
+            yield return autoToggleWait;
+            Toggle();
+        }
+    }
 
     public void OnDisable()
     {
         Toggle(false);
+        image.DOKill();
     }
 
     public void Toggle()
@@ -36,10 +57,10 @@ public class ToggleColor : MonoBehaviour
 
         if (status)
         {
-            image.CrossFadeColor(toggledColor, transitionTime, false, false);
+            image.DOColor(toggledColor, transitionTime);
         } else
         {
-            image.CrossFadeColor(startingColor, transitionTime, false, false);
+            image.DOColor(startingColor, transitionTime);
         }
     }
 

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using TMPro;
 
 public class TopDropMenu : SlideInMenu
 {
@@ -18,6 +15,9 @@ public class TopDropMenu : SlideInMenu
 
     public override void SetVisible(bool status)
     {
-        rect.DOAnchorPosY(status ? targetY : originalY, transitionTime);
+        if (rect != null)
+        {
+            rect.DOAnchorPosY(status ? targetY : originalY, transitionTime);
+        }
     }
 }

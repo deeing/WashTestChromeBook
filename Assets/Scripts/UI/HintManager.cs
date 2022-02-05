@@ -20,6 +20,7 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
     private TutorialHintMenu finishUVHint;
 
     public bool hasUsedInspect = false;
+    public bool hasUsedWet = false;
 
     private HashSet<string> seenHintSet;
 

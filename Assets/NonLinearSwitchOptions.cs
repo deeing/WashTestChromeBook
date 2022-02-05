@@ -8,6 +8,8 @@ public class NonLinearSwitchOptions : MonoBehaviour
     private SlideInMenu[] poseOptions;
     [SerializeField]
     private GameObject poseOptionContainer;
+    [SerializeField]
+    private ToggleColor wetButtonColor;
 
     public void TogglePoseOptions(bool status)
     {
@@ -15,6 +17,14 @@ public class NonLinearSwitchOptions : MonoBehaviour
         foreach (SlideInMenu poseOption in poseOptions)
         {
             poseOption.SetVisible(status);
+        }
+
+        if (status && !HintManager.instance.hasUsedWet)
+        {
+            wetButtonColor.enabled = true;
+        } else
+        {
+            wetButtonColor.enabled = false;
         }
     }
 }
