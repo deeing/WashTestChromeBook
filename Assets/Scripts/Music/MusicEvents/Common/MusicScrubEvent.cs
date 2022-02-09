@@ -24,8 +24,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private GermType germTypeKilled = GermType.Palm;
     [SerializeField]
     private float sensitivity = 1f;
-    [SerializeField]
-    private SyncedAnimation syncedAnimation;
+    
 
     private int numBeatsInEvent = 0;
 
@@ -35,7 +34,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private float endingOffset = -.5f;
 
     // latest updated rhythm input status for this beat
-    private RhythmInputStatus latestRhythmInputStatus = RhythmInputStatus.Miss;
+    protected RhythmInputStatus latestRhythmInputStatus = RhythmInputStatus.Miss;
 
     private bool hardSwitching = false;
     private float idleTransitionTime = .2f;
@@ -69,11 +68,6 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         if (isNonLinearMode)
         {
             MenuManager.instance.ToggleFinishScrubButton(true);
-        }
-
-        if (syncedAnimation)
-        {
-            syncedAnimation.enabled = true;
         }
     }
 
@@ -181,7 +175,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         }
     }
 
-    private void HandleScore()
+    protected virtual void HandleScore()
     {
         // don't score if there are no germs left to scrub
         if (!GermManager.instance.HasGermsOfType(germTypeKilled))
@@ -227,21 +221,16 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HintManager.instance.ToggleInspectHintMenu(false);
     }
 
-    public void EndAnimation()
+    public virtual void EndAnimation()
     {
         enabled = false;
         MusicManager.instance.ToggleTransitioning(true);
         //HandAnimations.instance.TransitionPlay(returnAnimationName);
-        Debug.Log("end switch");
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         isPlayingEndAnimation = true;
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         StartCoroutine(FinishScrub());
-        if (syncedAnimation)
-        {
-            syncedAnimation.enabled = false;
-        }
     }
 
     private IEnumerator FinishScrub()
@@ -283,10 +272,6 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
         HintManager.instance.ToggleInspectHintMenu(false);
-        if (syncedAnimation)
-        {
-            syncedAnimation.enabled = false;
-        }
         enabled = false;
     }
 

@@ -18,6 +18,8 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     private Animator cinemachine;
     [SerializeField]
     private Animator towelAnimator;
+    [SerializeField]
+    private Animator faucetAnimator;
 
     private string crossFadeAnimation = "";
     private bool finishedTransition = false;
@@ -298,6 +300,16 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public void GrabTowel()
     {
         towelAnimator.Play("Grab Towel");
+    }
+
+    public void FaucetOn()
+    {
+        faucetAnimator.Play("Faucet On");
+    }
+
+    public void FaucetOff()
+    {
+        faucetAnimator.Play("Faucet Off");
     }
 
     public float GetAnimationTime()

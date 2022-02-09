@@ -53,10 +53,10 @@ public enum PlayerEventType
     NonLinearSwitch,
     [Description("Wet")]
     WetSwitch,
-    [Description("Wet Scrub")]
+    [Description("Wet")]
     WetScrub,
     [Description("Soap")]
     SoapSwitch,
-    [Description("Soap Scrub")]
+    [Description("Soap")]
     SoapScrub
 }

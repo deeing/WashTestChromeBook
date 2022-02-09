@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 3ee9260731172144ebf7f35ed0a39cd7
+  - enabled: 1
     path: Assets/Scenes/SongSelection.unity
     guid: 39f5e3494792d9741ad8597ca74cfb32
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FlipperScene.unity
     guid: 761953b7bf483304fb78c37763e83aff
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CrabScene.unity
     guid: d41deb67bbe166f44a47dbd3b7ad9daf
   m_configObjects: {}

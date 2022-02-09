@@ -22,6 +22,10 @@ public class GameSettings : ScriptableObject
     [Tooltip("How many points you get when you hit an input at level 'perfect'")]
     private int _perfectPoints = 5;
     public int perfectPoints { get => _perfectPoints; private set => _perfectPoints = value; }
+    [SerializeField]
+    [Tooltip("Max number of points you can get for soap")]
+    private int _maxSoapPoints = 20;
+    public int maxSoapPoints { get => _maxSoapPoints; private set => _maxSoapPoints = value; }
 
     [SerializeField]
     private SkinMapping[] skinMappings;
