@@ -15,6 +15,8 @@ public class LevelSettings : MonoBehaviour
     private const string DifficultyString = "PlayerDifficulty";
     private const string NonLinearString = "NonLinear";
 
+    private bool setupDone = false;
+
     private void Start()
     {
         foreach (LevelDifficulty difficulty in Enum.GetValues(typeof(LevelDifficulty)))
@@ -28,12 +30,18 @@ public class LevelSettings : MonoBehaviour
         difficultyDropDown.RefreshShownValue();
 
         nonLinearToggle.isOn = LoadNonLinear();
+        setupDone = true;
     }
 
     public void SelectDifficulty(int difficulty)
     {
         SongSelection.instance.SelectDifficulty(difficulty);
         SaveDifficulty(difficulty);
+
+        if (setupDone)
+        {
+            SongSelectionHintManager.instance.RegisterChoseDifficulty();
+        }
     }
 
     private void SaveDifficulty(int difficulty)

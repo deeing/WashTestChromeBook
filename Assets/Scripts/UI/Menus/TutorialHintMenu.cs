@@ -13,7 +13,7 @@ public class TutorialHintMenu : MonoBehaviour
 
     public void ToggleHintMenu(bool status)
     {
-        if (status && !hasAlreadyShown && MenuManager.instance.tipsEnabled)
+        if (status && !hasAlreadyShown && HintManagerBase.instance.hintsEnabled)
         {
             gameObject.SetActive(true);
             hasAlreadyShown = true;
@@ -21,7 +21,7 @@ public class TutorialHintMenu : MonoBehaviour
             // register the hint as seen
             if (seenHintId != null && seenHintId.Length > 0)
             {
-                HintManager.instance.SeenHint(seenHintId);
+                HintManagerBase.instance.SeenHint(seenHintId);
             }
         } 
         else
@@ -43,6 +43,6 @@ public class TutorialHintMenu : MonoBehaviour
     public void DisableTips()
     {
         ToggleHintMenu(false);
-        MenuManager.instance.tipsEnabled = false;
+        HintManagerBase.instance.hintsEnabled = false;
     }
 }

@@ -11,13 +11,18 @@ public class LoadNextScene : MonoBehaviour
     private PercentageBar loadingBar;
     [SerializeField]
     private float loadDelay = 1f;
+    [SerializeField]
+    private bool loadOnAwake = true;
 
     private AsyncOperation loadingOperation;
     private WaitForSeconds delayWait;
 
     private void Awake()
     {
-        StartCoroutine(LoadOnDelay());
+        if (loadOnAwake)
+        {
+            StartCoroutine(LoadOnDelay());
+        }
     }
 
     private IEnumerator LoadOnDelay()
@@ -26,14 +31,17 @@ public class LoadNextScene : MonoBehaviour
         LoadScene();
     }
 
-    private void LoadScene()
+    public void LoadScene()
     {
         loadingOperation = SceneManager.LoadSceneAsync(sceneToLoad);
     }
 
     void Update()
     {
-        float progressValue = Mathf.Clamp01(loadingOperation.progress / 0.9f);
-        loadingBar.UpdatePercentage(progressValue);
+        if (loadingBar && loadingOperation != null)
+        {
+            float progressValue = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+            loadingBar.UpdatePercentage(progressValue);
+        }
     }
 }

@@ -39,6 +39,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     public List<MusicCaligraphySwitch> starterEvents { get; private set; } = new List<MusicCaligraphySwitch>();
     public MusicWashEvent currentWashEvent { get; private set; }
+    public MusicScrubEvent fireDoubleScrubEvent { get; private set; }
 
     private bool isPlaying = false;
     private bool isFinished = false;
@@ -116,6 +117,16 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             currentWashEvent = starterEvents[0];
         }
+
+        SetupFireDouble();
+    }
+
+    private void SetupFireDouble()
+    {
+        List<MusicScrubEvent> scrubEvents = GetScrubEvents();
+        fireDoubleScrubEvent = scrubEvents.RandomElement();
+
+        MenuManager.instance.ShowAlert("Fire:" + fireDoubleScrubEvent.name, 5f);
     }
 
     private void SetupSkin()

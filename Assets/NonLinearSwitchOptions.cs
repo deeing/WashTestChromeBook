@@ -10,6 +10,8 @@ public class NonLinearSwitchOptions : MonoBehaviour
     private GameObject poseOptionContainer;
     [SerializeField]
     private ToggleColor wetButtonColor;
+    [SerializeField]
+    private ToggleColor soapButtonColor;
 
     public void TogglePoseOptions(bool status)
     {
@@ -19,12 +21,41 @@ public class NonLinearSwitchOptions : MonoBehaviour
             poseOption.SetVisible(status);
         }
 
-        if (status && !HintManager.instance.hasUsedWet)
+        if (status)
         {
-            wetButtonColor.enabled = true;
-        } else
-        {
-            wetButtonColor.enabled = false;
+            if (!HintManager.instance.hasUsedWet)
+            {
+                wetButtonColor.ToggleAuto(true);
+                HintManager.instance.ToggleWetHint(true);
+            }
+            else if (!HintManager.instance.hasUsedSoap)
+            {
+                wetButtonColor.ToggleAuto(false);
+                soapButtonColor.ToggleAuto(true);
+                HintManager.instance.ToggleSoapHint(true);
+            }
+            else
+            {
+                wetButtonColor.ToggleAuto(false);
+                soapButtonColor.ToggleAuto(false);
+                HintManager.instance.ToggleWetHint(false);
+                HintManager.instance.ToggleSoapHint(false);
+            }
         }
+        else
+        {
+            HintManager.instance.ToggleWetHint(false);
+            HintManager.instance.ToggleSoapHint(false);
+        }
+    }
+
+    public void RegisterUsedWetButton()
+    {
+        HintManager.instance.hasUsedWet = true;
+    }
+
+    public void RegisterUsedSoapButton()
+    {
+        HintManager.instance.hasUsedSoap = true;
     }
 }

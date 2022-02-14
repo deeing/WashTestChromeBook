@@ -8,6 +8,8 @@ public class PossibleSongChoice : MonoBehaviour
 {
     [SerializeField]
     TMP_Text songText;
+    [SerializeField]
+    private ToggleColor songColor;
 
     private SongData songData;
 
@@ -20,5 +22,11 @@ public class PossibleSongChoice : MonoBehaviour
     public void ChooseThisSong()
     {
         SongSelection.instance.ChooseSong(songData);
+        SongSelectionHintManager.instance.RegisterChoseSong();
     }
+
+    public ToggleColor GetColor()
+    {
+        return songColor;
+    }    
 }

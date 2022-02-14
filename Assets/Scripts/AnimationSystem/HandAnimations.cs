@@ -305,11 +305,13 @@ public class HandAnimations : SingletonMonoBehaviour<HandAnimations>
     public void FaucetOn()
     {
         faucetAnimator.Play("Faucet On");
+        EffectsManager.instance.ToggleFaucet(true);
     }
 
     public void FaucetOff()
     {
         faucetAnimator.Play("Faucet Off");
+        EffectsManager.instance.ToggleFaucet(false);
     }
 
     public float GetAnimationTime()

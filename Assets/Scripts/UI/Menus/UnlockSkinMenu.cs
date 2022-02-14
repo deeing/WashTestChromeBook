@@ -28,6 +28,7 @@ public class UnlockSkinMenu : MonoBehaviour
         // check if there are any skins to unlock
         List<SkinMapping> stillLockedSkins = GetLockedSkins();
 
+        Debug.Log(stillLockedSkins.Count);
         if (stillLockedSkins.Count > 0)
         {
             SkinMapping newlyUnlocked = stillLockedSkins.RandomElement<SkinMapping>();

@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SongSelection : SingletonMonoBehaviour<SongSelection>
 {
@@ -44,15 +42,19 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
         Debug.Log("Setting up song list");
         foreach(SongData song in songList)
         {
-            GameObject songChoiceObj = Instantiate(possibleSongChoicePrefab, SongSelectionMenu.instance.songSelectionContainer);
-            songChoiceObj.GetComponent<PossibleSongChoice>().Setup(song);
+            Transform songContainer = SongSelectionMenu.instance.songSelectionContainer;
+            GameObject songChoiceObj = Instantiate(possibleSongChoicePrefab, songContainer);
+            ToggleColorGroup toggleColorGroup = songContainer.GetComponent<ToggleColorGroup>();
+            PossibleSongChoice songChoice = songChoiceObj.GetComponent<PossibleSongChoice>();
+            toggleColorGroup.AddToggleColor(songChoice.GetColor());
+            songChoice.Setup(song);
         }
     }
 
     public void ChooseSong(SongData song)
     {
         selectedSong = song;
-        SceneManager.LoadScene("Main");
+        SongSelectionMenu.instance.ToggleStartButton(true);
     }
 
     public void SetNonLinear(bool isOn)
@@ -63,5 +65,10 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     public void SelectDifficulty(int difficultyIndex)
     {
         difficulty = (LevelDifficulty)difficultyIndex;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Main");
     }
 }

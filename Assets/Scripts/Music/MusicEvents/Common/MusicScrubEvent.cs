@@ -24,7 +24,9 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private GermType germTypeKilled = GermType.Palm;
     [SerializeField]
     private float sensitivity = 1f;
-    
+
+    // how much fire affets the score of the scrub
+    private const float FIRE_SCORE_MULT = 2;
 
     private int numBeatsInEvent = 0;
 
@@ -45,6 +47,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private bool isNonLinearMode = false;
     private float sensitivityAdjustment = 1f;
     private bool isDisplayingTip = false;
+    private bool isFireDoubleEvent = false;
 
     private void Awake()
     {
@@ -68,6 +71,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         if (isNonLinearMode)
         {
             MenuManager.instance.ToggleFinishScrubButton(true);
+        }
+        if (MusicManager.instance.fireDoubleScrubEvent == this)
+        {
+            EffectsManager.instance.ToggleFire(true);
+            isFireDoubleEvent = true;
         }
     }
 
@@ -185,6 +193,10 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         //Debug.Log("Scoring for " + latestRhythmInputStatus);
 
         float scoreAmount = MusicManager.instance.gameSettings.GetPointsForInputStatus(latestRhythmInputStatus);
+        if (isFireDoubleEvent)
+        {
+            scoreAmount *= FIRE_SCORE_MULT;
+        }
         IncreaseEventScore(scoreAmount);
         MenuManager.instance.IncreaseTotalScore(scoreAmount);
         MenuManager.instance.ShowRhythmStatus(latestRhythmInputStatus);
@@ -273,6 +285,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         MenuManager.instance.ToggleFinishScrubButton(false);
         HintManager.instance.ToggleInspectHintMenu(false);
         enabled = false;
+        EffectsManager.instance.ToggleFire(false);
     }
 
     public void SetSensitivityAdjustment(float sensitivityAdjustment)

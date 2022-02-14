@@ -16,6 +16,10 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
     private GameObject defaultLights;
     [SerializeField]
     private GameObject uvLights;
+    [SerializeField]
+    private ParticleSystem waterFaucet;
+    [SerializeField]
+    private ParticleSystem waterFaucetDrops;
 
     private Dictionary<PlayerEventType, ParticleSystem> playerEventsToSudsMap;
     // suds systems that are currently playing
@@ -127,4 +131,17 @@ public class EffectsManager : SingletonMonoBehaviour<EffectsManager>
         uvLights.SetActive(status);
     }
 
+    public void ToggleFaucet(bool status)
+    {
+        if (status)
+        {
+            waterFaucet.Play();
+            waterFaucetDrops.Play();
+        }
+        else
+        {
+            waterFaucet.Stop();
+            waterFaucetDrops.Stop();
+        }
+    }
 }

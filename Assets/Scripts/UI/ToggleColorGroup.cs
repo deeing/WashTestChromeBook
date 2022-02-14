@@ -35,4 +35,14 @@ public class ToggleColorGroup : MonoBehaviour
             toggleColor.Toggle(status);
         }
     }
+
+    public void AddToggleColor(ToggleColor toggleColor)
+    {
+        List<ToggleColor> toggleColorList = new List<ToggleColor>(toggleColorGroup);
+
+        toggleColorList.Add(toggleColor);
+        toggleColor.SetGroup(this);
+
+        toggleColorGroup = toggleColorList.ToArray();
+    }
 }
