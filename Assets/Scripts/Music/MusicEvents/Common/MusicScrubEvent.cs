@@ -24,6 +24,8 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private GermType germTypeKilled = GermType.Palm;
     [SerializeField]
     private float sensitivity = 1f;
+    [SerializeField]
+    private bool showBubbles = true;
 
     // how much fire affets the score of the scrub
     private const float FIRE_SCORE_MULT = 2;
@@ -97,7 +99,10 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 
         if (input != 0)
         {
-            EffectsManager.instance.ToggleBubbles(true);
+            if (showBubbles)
+            {
+                EffectsManager.instance.ToggleBubbles(true);
+            }
             HandAnimations.instance.TransitionPlayStep(scrubAnimationName, idleTransitionTime, input);
             if (idleCoroutine != null)
             {

@@ -78,7 +78,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             songData = fallbackSong;
         }
 
-        MenuManager.instance.SetDifficultyText(difficulty.ToString());
+        MenuManager.instance.SetDifficultyText(difficulty.GetDescription());
         RhythmPlayer rhythmPlayer = GetComponent<RhythmPlayer>();
         rhythmPlayer.rhythmData = songData.songRhythmData;
         rhythmPlayer.SongEnded += RestartSong;
@@ -303,6 +303,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         }
         musicResultsMenu.Show();
         MenuManager.instance.HideUIForEndGame();
+        AudioManager.instance.PlayOneShot("End Music");
+        audioSource.Stop();
     }
 
     private List<MusicScrubEvent> GetScrubEvents()

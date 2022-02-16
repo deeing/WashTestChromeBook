@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using static UnityEngine.UI.Dropdown;
+using Wash.Utilities;
 
 public class LevelSettings : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class LevelSettings : MonoBehaviour
         foreach (LevelDifficulty difficulty in Enum.GetValues(typeof(LevelDifficulty)))
         {
             OptionData option = new OptionData();
-            option.text = difficulty.ToString();
+            option.text = difficulty.GetDescription();
             difficultyDropDown.options.Add(option);
         }
         difficultyDropDown.value = LoadDifficulty();
