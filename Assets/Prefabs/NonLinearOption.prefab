@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5372660208088721804}
   - component: {fileID: 5372660208088721795}
   - component: {fileID: 2480144037248499618}
+  - component: {fileID: 7130618025176369844}
   m_Layer: 5
   m_Name: NonLinearOption
   m_TagString: Untagged
@@ -148,6 +149,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSwitchEvent: {fileID: 0}
+--- !u!114 &7130618025176369844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5372660208088721793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54683ab3d550f3941ab7ffcdc3ce037d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleColorGroup: {fileID: 0}
+  startingColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  toggledColor: {r: 0.23058024, g: 0.9622642, b: 0.67570543, a: 1}
+  image: {fileID: 5372660208088721804}
+  transitionTime: 0.75
 --- !u!1 &5372660208462988354
 GameObject:
   m_ObjectHideFlags: 0

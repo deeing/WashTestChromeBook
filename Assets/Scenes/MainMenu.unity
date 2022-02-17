@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63856d42f79fcde40b16b0c501d5717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Loading
+  sceneToLoad: Survey
   loadingBar: {fileID: 0}
   loadDelay: 0
   loadOnAwake: 0

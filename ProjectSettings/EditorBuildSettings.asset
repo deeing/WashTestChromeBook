@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Survey.unity
+    guid: 2ac6c1aae4a60ce479299c62c37cb616
   - enabled: 0
     path: Assets/Scenes/CrabScene.unity
     guid: d41deb67bbe166f44a47dbd3b7ad9daf

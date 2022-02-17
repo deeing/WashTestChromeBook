@@ -40,9 +40,14 @@ public class NonLinearAnimationSwitch : MusicSwitchEvent
         MenuManager.instance.IncreaseTotalScore(pointsForEvent);
     }
 
-    private IEnumerator FinishAnimation()
+    private  IEnumerator FinishAnimation()
     {
         yield return animationWait;
+        EndAnimationEvent();
+    }
+
+    protected virtual void EndAnimationEvent()
+    {
         hasFinished = true;
     }
 

@@ -22,10 +22,13 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
     private TutorialHintMenu wetHint;
     [SerializeField]
     private TutorialHintMenu soapHint;
+    [SerializeField]
+    private TutorialHintMenu twelveStepsHint;
 
     public bool hasUsedInspect = false;
     public bool hasUsedWet = false;
     public bool hasUsedSoap = false;
+    public bool hasSeenTwelveStepsHint = false;
 
     private HashSet<string> seenHintSet;
 
@@ -78,6 +81,11 @@ public class HintManager : SingletonMonoBehaviour<HintManager>
     public void ToggleSoapHint(bool status)
     {
         soapHint.ToggleHintMenu(status);
+    }
+
+    public void ToggleTwelveStepsHint(bool status)
+    {
+        twelveStepsHint.ToggleHintMenu(status);
     }
 
     public void DisableAllUVHints()

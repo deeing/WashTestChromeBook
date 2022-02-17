@@ -11,5 +11,15 @@ public class NonLinearOption : MonoBehaviour
     public void ChooseOption()
     {
         MusicManager.instance.SetNonLinearAction(musicSwitchEvent);
+        RegisterUsedTwelveSteps();
+    }
+
+    public void RegisterUsedTwelveSteps()
+    {
+        if (HintManager.instance.hasUsedSoap)
+        {
+            HintManager.instance.hasSeenTwelveStepsHint = true;
+            HintManager.instance.ToggleTwelveStepsHint(false);
+        }
     }
 }

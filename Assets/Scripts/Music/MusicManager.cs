@@ -305,6 +305,28 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         MenuManager.instance.HideUIForEndGame();
         AudioManager.instance.PlayOneShot("End Music");
         audioSource.Stop();
+
+        if (SurveyManager.instance != null)
+        {
+            HandleSurvey();
+        }
+    }
+
+    private void HandleSurvey()
+    {
+        SurveySongData surveySongData = new SurveySongData();
+        surveySongData.songName = songData.name;
+        surveySongData.totalPoints = MenuManager.instance.GetTotalScore();
+
+        Dictionary<string, float> surveyScrubResults = new Dictionary<string, float>();
+        List<MusicScrubEvent> scrubEvents = GetScrubEvents();
+        foreach (MusicScrubEvent scrubEvent in scrubEvents)
+        {
+            surveyScrubResults.Add(scrubEvent.GetEventType().GetDescription(), scrubEvent.GetScore());
+        }
+        surveySongData.scrubResults = surveyScrubResults;
+
+        SurveyManager.instance.AddSongData(surveySongData);
     }
 
     private List<MusicScrubEvent> GetScrubEvents()
