@@ -89,8 +89,8 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
 
     public void  OnApplicationQuit()
     {
-        SaveCurrentSurveyData();
-        SendDataToServer();
+        //SaveCurrentSurveyData();
+        //SendDataToServer();
     }
 
     public void SendDataToServer()

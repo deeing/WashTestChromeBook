@@ -327,6 +327,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         surveySongData.scrubResults = surveyScrubResults;
 
         SurveyManager.instance.AddSongData(surveySongData);
+        SurveyManager.instance.SendDataToServer();
     }
 
     private List<MusicScrubEvent> GetScrubEvents()
