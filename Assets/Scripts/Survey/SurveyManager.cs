@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using Wash.Utilities;
 
 public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
@@ -89,5 +90,25 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
     public void  OnApplicationQuit()
     {
         SaveCurrentSurveyData();
+        SendDataToServer();
+    }
+
+    public void SendDataToServer()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("gender", currentSurveyData.gender);
+        form.AddField("age", currentSurveyData.age);
+        form.AddField("timestamp", currentSurveyData.timeStarted);
+        if (currentSurveyData.songData != null)
+        {
+            form.AddField("wash_results", currentSurveyData.songData.ToString());
+        }
+        else
+        {
+            form.AddField("wash_results", "");
+        }
+
+        UnityWebRequest uwr = UnityWebRequest.Post("https://eou6x1wkkjjh9fu.m.pipedream.net", form);
+        uwr.SendWebRequest();
     }
 }
