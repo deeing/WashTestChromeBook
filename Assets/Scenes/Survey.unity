@@ -1874,6 +1874,7 @@ GameObject:
   - component: {fileID: 1081240494}
   - component: {fileID: 1081240493}
   - component: {fileID: 1081240496}
+  - component: {fileID: 1081240497}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -2038,6 +2039,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b06148badbab444b07c97a65bd8a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1081240497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081240491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0716500d1f2d642b7695898a47ef35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultText: Select Age
+  dropdownMenu: {fileID: 1081240493}
 --- !u!1 &1145913070
 GameObject:
   m_ObjectHideFlags: 0
