@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -33,14 +32,14 @@ public class AudioManager : MonoBehaviour
     private void initInstance() {
         if (instance == null) {
             instance = this;
-            setup();
+            Setup();
         }
         else {
             Destroy(this);
         }
     }
 
-    private void setup() {
+    private void Setup() {
         foreach (Sound sound in soundClips) {
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = sound.clip;
@@ -53,7 +52,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private Sound findSound(string soundName)
+    private Sound FindSound(string soundName)
     {
         foreach (Sound sound in soundClips)
         {
@@ -67,9 +66,14 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
+    public bool SoundIsPlaying(string soundName)
+    {
+        return FindSound(soundName).audioSource.isPlaying;
+    }
+
     // TODO: Maybe convert private dictionary to make more effecient
-    public void playSound(string soundName) {
-        Sound sound = findSound(soundName);
+    public void PlaySound(string soundName) {
+        Sound sound = FindSound(soundName);
         if (sound != null)
         {
             sound.audioSource.Play();
@@ -78,49 +82,58 @@ public class AudioManager : MonoBehaviour
 
     public void PlayOneShot(string soundName)
     {
-        Sound sound = findSound(soundName);
+        Sound sound = FindSound(soundName);
         if (sound != null)
         {
             sound.audioSource.PlayOneShot(sound.audioSource.clip);
         }
     }
 
-    public void playBackground(string soundName)
+    public void PlayBackground(string soundName)
     {
-        Sound sound = findSound(soundName);
+        Sound sound = FindSound(soundName);
         if (sound != null && sound != backgroundMusic)
         {
             if(backgroundMusic != null)
             {
-                fadeOut(backgroundMusic);
+                FadeOut(backgroundMusic);
             }
             sound.audioSource.Play();
-            fadeIn(sound);
+            FadeIn(sound);
             backgroundMusic = sound;
         }
     }
 
-    public void fadeOut(Sound sound)
+    public void FadeOut(string soundName)
+    {
+        Sound sound = FindSound(soundName);
+        if (sound != null)
+        {
+            FadeOut(sound);
+        }
+    }
+
+    public void FadeOut(Sound sound)
     {
         if (fadeOutCoroutine != null)
         {
             StopCoroutine(fadeOutCoroutine);
         }
 
-        fadeOutCoroutine = StartCoroutine(startFade(sound, FadeDirection.FadeOut));
+        fadeOutCoroutine = StartCoroutine(StartFade(sound, FadeDirection.FadeOut));
     }
 
-    public void fadeIn(Sound sound)
+    public void FadeIn(Sound sound)
     {
         if (fadeInCoroutine != null)
         {
             StopCoroutine(fadeInCoroutine);
         }
 
-        fadeInCoroutine = StartCoroutine(startFade(sound, FadeDirection.FadeIn));
+        fadeInCoroutine = StartCoroutine(StartFade(sound, FadeDirection.FadeIn));
     }
 
-    private IEnumerator startFade(Sound sound, FadeDirection fadeDirection)
+    private IEnumerator StartFade(Sound sound, FadeDirection fadeDirection)
     {
         timeFaded = 0f;
         float startVolume = sound.audioSource.volume;

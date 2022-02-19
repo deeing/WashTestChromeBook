@@ -8,7 +8,8 @@ public class SurveyData
     public string gender;
     public string age;
     public string timeStarted;
-    public List<SurveySongData> songData;
+    public string buildNumber;
+    public string songData;
 
     public override string ToString()
     {

@@ -51,15 +51,11 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
     public void AddSongData(SurveySongData songData)
     {
         Debug.Log("Adding song data");
-        if (currentSurveyData.songData == null)
-        {
-            currentSurveyData.songData = new List<SurveySongData>();
-        }
-        currentSurveyData.songData.Add(songData);
+        currentSurveyData.songData = songData.ToString();
     }
 
 
-    public void SaveCurrentSurveyData()
+    /*public void SaveCurrentSurveyData()
     {
         List<SurveyData> previousSurveyData;
 
@@ -85,20 +81,42 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
             newSurveyData.Add(currentSurveyData);
             ES3.Save(surveyKey, newSurveyData, surveyFile);
         }
-    }
+    }*/
 
-    public void  OnApplicationQuit()
+    private void SanitizeSurveyData()
     {
-        //SaveCurrentSurveyData();
-        //SendDataToServer();
+
+        if (currentSurveyData.gender == null)
+        {
+            currentSurveyData.gender = Gender.Other.GetDescription();
+        }
+
+        if (currentSurveyData.age == null)
+        {
+            currentSurveyData.age = minAge.ToString();
+        }
+
+        if (currentSurveyData.buildNumber == null)
+        {
+            currentSurveyData.buildNumber = "No build found";
+        }
+
+        if (currentSurveyData.timeStarted == null)
+        {
+            currentSurveyData.timeStarted = "No timestamp found";
+        }
     }
 
     public void SendDataToServer()
     {
+        currentSurveyData.buildNumber = AllScenes.instance.build;
+        SanitizeSurveyData();
+
         WWWForm form = new WWWForm();
         form.AddField("gender", currentSurveyData.gender);
         form.AddField("age", currentSurveyData.age);
         form.AddField("timestamp", currentSurveyData.timeStarted);
+        form.AddField("build", currentSurveyData.buildNumber);
         if (currentSurveyData.songData != null)
         {
             form.AddField("wash_results", currentSurveyData.songData.ToString());

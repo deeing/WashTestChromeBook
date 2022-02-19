@@ -15,7 +15,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
             instance = singleton;
             return true;
         }
-        Destroy(this);
+        Destroy(gameObject);
         return false;
     }
 }

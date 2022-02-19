@@ -17,6 +17,11 @@ public class SongSelectionMenu : SingletonMonoBehaviour<SongSelectionMenu>
         {
             return;
         }
+
+        if (!AudioManager.instance.SoundIsPlaying("Main Menu Music"))
+        {
+            AudioManager.instance.PlaySound("Main Menu Music");
+        }
     }
 
     public void ToggleStartButton(bool status)
@@ -26,6 +31,7 @@ public class SongSelectionMenu : SingletonMonoBehaviour<SongSelectionMenu>
 
     public void StartGame()
     {
+        AudioManager.instance.FadeOut("Main Menu Music");
         SongSelection.instance.StartGame();
     }
 }
