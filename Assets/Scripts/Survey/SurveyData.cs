@@ -10,14 +10,5 @@ public class SurveyData
     public string timeStarted;
     public string buildNumber;
     public string songData;
-
-    public override string ToString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Gender:" + gender);
-        sb.AppendLine("Age: " + age);
-        sb.AppendLine("TimeStarted: " + timeStarted);
-
-        return sb.ToString();
-    }
+    public string deviceId;
 }

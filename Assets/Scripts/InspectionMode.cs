@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InspectionMode : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class InspectionMode : MonoBehaviour
     private ToggleImage toggleImage;
     [SerializeField]
     private CameraToggle cameraToggle;
+    [SerializeField]
+    private TMP_Text modeDisplay;
 
     [SerializeField]
     private MusicPlayerEvent inspectionEvent;
@@ -29,6 +32,7 @@ public class InspectionMode : MonoBehaviour
     private WaitForSeconds coolDownWait;
     private bool isCoolingDown = false;
     private MusicWashEvent prevEvent = null;
+    private bool allDone = false;
 
     private void Awake()
     {
@@ -58,8 +62,8 @@ public class InspectionMode : MonoBehaviour
         MenuManager.instance.ToggleSettings(!status);
         MenuManager.instance.ToggleDifficultyMenu(!status);
         MenuManager.instance.ToggleScoreMenu(!status);
-        MenuManager.instance.ToggleRhythmDebug(!status);
-        MenuManager.instance.ToggleRhythmStatus(!status);
+        //MenuManager.instance.ToggleRhythmDebug(!status);
+        //MenuManager.instance.ToggleRhythmStatus(!status);
         HintManager.instance.ToggleInspectHintMenu(false);
     }
 
@@ -72,6 +76,8 @@ public class InspectionMode : MonoBehaviour
         germMap.ToggleMap(status);
         toggleImage.ShowToggleSprite(status);
         HandleHints(status);
+
+        modeDisplay.text = status ? "INSPECTING" : "TRAINING";
 
         if (status)
         {
@@ -93,7 +99,15 @@ public class InspectionMode : MonoBehaviour
             {
                 currentTutorial.SetActive(true);
             }
-            MusicManager.instance.HardSwitchEvent(prevEvent);
+
+            if (allDone)
+            {
+                MusicManager.instance.ReturnToNonLinearNeutral();
+            }
+            else
+            {
+                MusicManager.instance.HardSwitchEvent(prevEvent);
+            }
             cameraToggle.ToggleCameraView(false);
         }
     }
@@ -102,7 +116,13 @@ public class InspectionMode : MonoBehaviour
     {
         if (status)
         {
-            if (!HintManager.instance.hasUsedInspect)
+            if (!GermManager.instance.HasGerms())
+            {
+                HintManager.instance.hasFinishedAllGerms = true;
+                HintManager.instance.ToggleAllCleanHint(true);
+                allDone = true;
+            }
+            else if (!HintManager.instance.hasUsedInspect)
             {
                 HintManager.instance.ToggleUVHintMenu(true);
                 HintManager.instance.hasUsedInspect = true;

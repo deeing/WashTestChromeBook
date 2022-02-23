@@ -105,11 +105,18 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         {
             currentSurveyData.timeStarted = "No timestamp found";
         }
+
+        if (currentSurveyData.deviceId == null)
+        {
+            currentSurveyData.deviceId = "No device id found";
+        }
     }
 
     public void SendDataToServer()
     {
         currentSurveyData.buildNumber = AllScenes.instance.build;
+        currentSurveyData.deviceId = AllScenes.instance.deviceId;
+
         SanitizeSurveyData();
 
         WWWForm form = new WWWForm();
@@ -117,6 +124,7 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         form.AddField("age", currentSurveyData.age);
         form.AddField("timestamp", currentSurveyData.timeStarted);
         form.AddField("build", currentSurveyData.buildNumber);
+        form.AddField("deviceId", currentSurveyData.deviceId);
         if (currentSurveyData.songData != null)
         {
             form.AddField("wash_results", currentSurveyData.songData.ToString());

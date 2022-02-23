@@ -126,7 +126,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         List<MusicScrubEvent> scrubEvents = GetScrubEvents();
         fireDoubleScrubEvent = scrubEvents.RandomElement();
 
-        MenuManager.instance.ShowAlert("Fire:" + fireDoubleScrubEvent.name, 5f);
+        //MenuManager.instance.ShowAlert("Fire:" + fireDoubleScrubEvent.name, 5f);
     }
 
     private void SetupSkin()
