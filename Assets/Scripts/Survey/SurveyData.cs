@@ -8,7 +8,10 @@ public class SurveyData
     public string gender;
     public string age;
     public string timeStarted;
+    public string timeTaken;
     public string buildNumber;
-    public string songData;
+    public Dictionary<string, float> scrubResults;
     public string deviceId;
+    public string songName;
+    public string totalPoints;
 }

@@ -7,6 +7,7 @@ public class SurveySongData
 {
     public string songName;
     public float totalPoints;
+    public string timeTaken;
     public Dictionary<string, float> scrubResults;
 
     public override string ToString()

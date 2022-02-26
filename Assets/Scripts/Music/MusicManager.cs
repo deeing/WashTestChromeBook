@@ -36,6 +36,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     [SerializeField]
     private NonLinearCalSwitch _nonLinearCalSwitch;
     public NonLinearCalSwitch nonLinearCalSwitch { get => _nonLinearCalSwitch; private set => _nonLinearCalSwitch = value; }
+    [SerializeField]
+    private NonLinearAnimationSwitch[] nonScrubPointEvents;
 
     public List<MusicCaligraphySwitch> starterEvents { get; private set; } = new List<MusicCaligraphySwitch>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -52,6 +54,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private List<Beat> allBeats = new List<Beat>();
     private SongData songData;
     private AudioSource audioSource;
+    private DateTime songStart;
 
     protected override void Awake()
     {
@@ -89,6 +92,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         rhythmData = rhythmPlayer.rhythmData;
         beatsData = rhythmData.GetTrack<Beat>();
         beatsData.GetFeatures(allBeats, 0f, rhythmData.audioClip.length);
+        songStart = DateTime.Now;
     }
 
     private void RestartSong()
@@ -312,18 +316,38 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         }
     }
 
+    private string TimeSpanToString(TimeSpan time)
+    {
+        string t =  " Minutes: " + Mathf.Round((float)time.TotalMinutes) +
+                    " Seconds: " + Mathf.Round((float)time.TotalSeconds);
+        return t;
+    }
+
+    private string GetTimeTaken()
+    {
+        TimeSpan timeDifference = DateTime.Now - songStart;
+        return TimeSpanToString(timeDifference);
+    }
+
     private void HandleSurvey()
     {
         SurveySongData surveySongData = new SurveySongData();
         surveySongData.songName = songData.name;
         surveySongData.totalPoints = MenuManager.instance.GetTotalScore();
+        surveySongData.timeTaken = GetTimeTaken();
 
         Dictionary<string, float> surveyScrubResults = new Dictionary<string, float>();
         List<MusicScrubEvent> scrubEvents = GetScrubEvents();
         foreach (MusicScrubEvent scrubEvent in scrubEvents)
         {
-            surveyScrubResults.Add(scrubEvent.GetEventType().GetDescription(), scrubEvent.GetScore());
+            surveyScrubResults.Add(scrubEvent.GetEventType().ToString(), scrubEvent.GetScore());
         }
+
+        foreach (NonLinearAnimationSwitch pointEvent in nonScrubPointEvents)
+        {
+            surveyScrubResults.Add(pointEvent.GetEventType().ToString(), pointEvent.pointsEarned);
+        }
+
         surveySongData.scrubResults = surveyScrubResults;
 
         SurveyManager.instance.AddSongData(surveySongData);

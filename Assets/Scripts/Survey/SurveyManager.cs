@@ -51,7 +51,10 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
     public void AddSongData(SurveySongData songData)
     {
         Debug.Log("Adding song data");
-        currentSurveyData.songData = songData.ToString();
+        currentSurveyData.scrubResults = songData.scrubResults;
+        currentSurveyData.songName = songData.songName;
+        currentSurveyData.totalPoints = songData.totalPoints.ToString();
+        currentSurveyData.timeTaken = songData.timeTaken;
     }
 
 
@@ -110,6 +113,11 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         {
             currentSurveyData.deviceId = "No device id found";
         }
+
+        if (currentSurveyData.timeTaken == null)
+        {
+            currentSurveyData.timeTaken = "No timeTaken found";
+        }
     }
 
     public void SendDataToServer()
@@ -125,13 +133,15 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         form.AddField("timestamp", currentSurveyData.timeStarted);
         form.AddField("build", currentSurveyData.buildNumber);
         form.AddField("deviceId", currentSurveyData.deviceId);
-        if (currentSurveyData.songData != null)
+        form.AddField("timeTaken", currentSurveyData.timeTaken);
+        form.AddField("songName", currentSurveyData.songName);
+        form.AddField("totalPoints", currentSurveyData.totalPoints);
+        if (currentSurveyData.scrubResults != null)
         {
-            form.AddField("wash_results", currentSurveyData.songData.ToString());
-        }
-        else
-        {
-            form.AddField("wash_results", "");
+            foreach (KeyValuePair<string, float> washResult in currentSurveyData.scrubResults)
+            {
+                form.AddField(washResult.Key, washResult.Value.ToString());
+            }
         }
 
         UnityWebRequest uwr = UnityWebRequest.Post("https://eou6x1wkkjjh9fu.m.pipedream.net", form);

@@ -39,7 +39,7 @@ public class MusicResultsMenu : MonoBehaviour
         topDropMenu.Show();
 
         // TODO: EVENTUALLY FLIP THE LOGIC ON THIS
-        if (GermManager.instance.HasGerms())
+        if (!GermManager.instance.HasGerms())
         {
             unlockSkinMenu.UnlockSkin();
         }

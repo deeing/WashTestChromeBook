@@ -4625,7 +4625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numMeasures: 2
   nextEvent: {fileID: 1180077551}
-  eventType: 0
+  eventType: 29
   switchAnimationTime: 0
   animationName: Rinse
   animationTime: 4
@@ -37630,7 +37630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numMeasures: 2
   nextEvent: {fileID: 1180077551}
-  eventType: 0
+  eventType: 30
   switchAnimationTime: 0
   animationName: Wet
   animationTime: 4
@@ -40150,6 +40150,10 @@ MonoBehaviour:
   _gameSettings: {fileID: 11400000, guid: a4917e0615270bd49b9cac0d7ab5b10b, type: 2}
   fallbackSong: {fileID: 11400000, guid: 1fa53ce8da2ffae43b7ec172a495a01e, type: 2}
   _nonLinearCalSwitch: {fileID: 1180077551}
+  nonScrubPointEvents:
+  - {fileID: 1477545282}
+  - {fileID: 1789359760}
+  - {fileID: 174340086}
 --- !u!1001 &1617464149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45231,7 +45235,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789359757}
-  - component: {fileID: 1789359759}
   - component: {fileID: 1789359760}
   m_Layer: 0
   m_Name: TowelCutscene
@@ -45255,25 +45258,6 @@ Transform:
   m_Father: {fileID: 1952861670}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1789359759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789359756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef7c73a9b995444fb580969581ffcc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numMeasures: 2
-  nextEvent: {fileID: 0}
-  eventType: 0
-  switchAnimationTime: 1
-  animationName: Towel Grab
-  animationTime: 1
-  pointsForEvent: 10
 --- !u!114 &1789359760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45288,7 +45272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numMeasures: 2
   nextEvent: {fileID: 0}
-  eventType: 0
+  eventType: 31
   switchAnimationTime: 1
   animationName: Towel Grab
   animationTime: 1
@@ -55214,7 +55198,7 @@ PrefabInstance:
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: musicSwitchEvent
       value: 
-      objectReference: {fileID: 1789359759}
+      objectReference: {fileID: 1789359760}
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: animationCutscene
       value: 

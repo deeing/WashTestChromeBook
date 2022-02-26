@@ -10,7 +10,7 @@ public class NonLinearAnimationSwitch : MusicSwitchEvent
     [SerializeField]
     private float pointsForEvent = 0f;
 
-    private float pointsEarned = 0f;
+    public float pointsEarned { get; private set; } = 0f;
     private WaitForSeconds animationWait;
 
     public override void SetupEvent()

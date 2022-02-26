@@ -58,5 +58,11 @@ public enum PlayerEventType
     [Description("Soap")]
     SoapSwitch,
     [Description("Soap")]
-    SoapScrub
+    SoapScrub,
+    [Description("Rinse")]
+    Rinse,
+    [Description("Wet")]
+    Wet,
+    [Description("Towel")]
+    Towel
 }
