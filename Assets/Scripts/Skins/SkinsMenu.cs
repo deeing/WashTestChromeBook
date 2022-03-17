@@ -16,13 +16,19 @@ public class SkinsMenu : MonoBehaviour
     private List<GameObject> skinChoiceObjs;
 
     private bool isShowing = false;
+    private bool hasInit = false;
 
     private void Awake()
     {
+        Init();
+        SetupList();
+    }
+
+    private void Init()
+    {
         allSkins = MusicManager.instance.gameSettings.GetAllSkinMappings();
         skinChoiceObjs = new List<GameObject>();
-        SetupList();
-
+        hasInit = true;
     }
 
     private void SetupList()
@@ -71,5 +77,22 @@ public class SkinsMenu : MonoBehaviour
         }
 
         SetupList();
+    }
+
+    private void ForceShowHands()
+    {
+        HandAnimations.instance.PlayAnimation("Idle");
+    }
+
+    public void ShowSkinsListAtEnd()
+    {
+        if (!hasInit)
+        {
+            Init();
+        }
+
+        SetupList();
+        ToggleSkinMenu(true);
+        ForceShowHands();
     }
 }

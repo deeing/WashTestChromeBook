@@ -12,14 +12,10 @@ public class SkinChoice : MonoBehaviour
     private GameObject lockIcon;
     [SerializeField]
     private GameObject unlockIcon;
+    [SerializeField]
+    private Button thisButton;
 
     private SkinMapping skin;
-    private Button thisButton; 
-
-    private void Awake()
-    {
-        thisButton = GetComponent<Button>();
-    }
 
     public void SetChoiceForButton(SkinMapping skinChoice)
     {
