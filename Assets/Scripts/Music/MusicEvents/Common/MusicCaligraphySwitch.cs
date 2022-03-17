@@ -154,6 +154,7 @@ public class MusicCaligraphySwitch : MusicSwitchEvent
         calgraphyTutorialHand.KillHandMove();
 
         StartCoroutine(SwitchToScrub());
+        EffectsManager.instance.Celebrate();
     }
 
     private IEnumerator SwitchToScrub()

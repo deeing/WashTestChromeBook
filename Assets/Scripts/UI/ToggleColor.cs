@@ -16,9 +16,19 @@ public class ToggleColor : MonoBehaviour
     private Image image;
     [SerializeField]
     private float transitionTime = .25f;
+    [SerializeField]
+    private bool isAuto = false;
 
     private bool isToggled = false;
     private WaitForSeconds autoToggleWait;
+
+    private void Awake()
+    {
+        if (isAuto)
+        {
+            ToggleAuto(true);
+        }
+    }
 
     private IEnumerator AutoToggle()
     {
@@ -33,8 +43,11 @@ public class ToggleColor : MonoBehaviour
     {
         ToggleAuto(false);
         Toggle(false);
-        image.DOKill();
-        image.color = startingColor;
+        if (image != null)
+        {
+            image.DOKill();
+            image.color = startingColor;
+        }
     }
 
     public void Toggle()
@@ -65,6 +78,8 @@ public class ToggleColor : MonoBehaviour
 
     public void ToggleAuto(bool status)
     {
+        isAuto = status;
+        Toggle(status);
         if (status)
         {
             autoToggleWait = new WaitForSeconds(transitionTime);

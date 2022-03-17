@@ -25,6 +25,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private bool showDebug = true;
     [SerializeField]
     private SkinnedMeshRenderer skinnedMesh;
+    [SerializeField]
+    private MusicSwitchEvent firstEvent;
 
     public bool isTransitioning { get; private set; } = true;
 
@@ -38,6 +40,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     public NonLinearCalSwitch nonLinearCalSwitch { get => _nonLinearCalSwitch; private set => _nonLinearCalSwitch = value; }
     [SerializeField]
     private NonLinearAnimationSwitch[] nonScrubPointEvents;
+    [SerializeField]
+    private InspectionEvent _inspectionEvent;
+    public InspectionEvent inspectionEvent { get => _inspectionEvent; private set => _inspectionEvent = value; }
 
     public List<MusicCaligraphySwitch> starterEvents { get; private set; } = new List<MusicCaligraphySwitch>();
     public MusicWashEvent currentWashEvent { get; private set; }
@@ -115,7 +120,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         if (nonLinearMode)
         {
-            currentWashEvent = nonLinearCalSwitch;
+            currentWashEvent = firstEvent;
         }
         else
         {
@@ -396,6 +401,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             currPlayerEvent.HardSwitchSetup();
         }
         currentWashEvent = nextEvent;
+    }
+
+    public void HardSwitchEvent(MusicSwitchEvent nextEvent)
+    {
+        HardSwitchEvent((MusicWashEvent)nextEvent);
     }
 
     public void ToggleTransitioning(bool status)

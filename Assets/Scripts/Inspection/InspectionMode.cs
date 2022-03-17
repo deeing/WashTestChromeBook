@@ -34,7 +34,6 @@ public class InspectionMode : MonoBehaviour
     private WaitForSeconds coolDownWait;
     private bool isCoolingDown = false;
     private MusicWashEvent prevEvent = null;
-    private bool allDone = false;
 
     private void Awake()
     {
@@ -69,7 +68,7 @@ public class InspectionMode : MonoBehaviour
         HintManager.instance.ToggleInspectHintMenu(false);
     }
 
-    public void SetInspectionMode(bool status)
+    private void HandleInspectionMode(bool status)
     {
         isInspectionMode = status;
         uvLight.SetUvMode(status);
@@ -103,29 +102,31 @@ public class InspectionMode : MonoBehaviour
                 currentTutorial.SetActive(true);
             }
 
-            if (allDone)
-            {
-                MusicManager.instance.ReturnToNonLinearNeutral();
-            }
-            else
-            {
-                MusicManager.instance.HardSwitchEvent(prevEvent);
-            }
             cameraToggle.ToggleCameraView(false);
         }
+    }
+
+    public void SetInspectionMode(bool status)
+    {
+        HandleInspectionMode(status);
+
+        if (!status)
+        {
+            MusicManager.instance.HardSwitchEvent(prevEvent);
+        }
+
+    }
+
+    public void HardSwitchEnd()
+    {
+        HandleInspectionMode(false);
     }
 
     private void HandleHints(bool status)
     {
         if (status)
         {
-            if (!GermManager.instance.HasGerms())
-            {
-                HintManager.instance.hasFinishedAllGerms = true;
-                HintManager.instance.ToggleAllCleanHint(true);
-                allDone = true;
-            }
-            else if (!HintManager.instance.hasUsedInspect)
+            if (GermManager.instance.HasGerms() && !HintManager.instance.hasUsedInspect)
             {
                 HintManager.instance.ToggleUVHintMenu(true);
                 HintManager.instance.hasUsedInspect = true;

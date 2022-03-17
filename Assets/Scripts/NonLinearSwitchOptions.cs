@@ -58,49 +58,22 @@ public class NonLinearSwitchOptions : MonoBehaviour
 
         if (HintManagerBase.instance.hintsEnabled)
         { 
-            if (!hintManager.hasUsedWet)
-            {
-                wetButtonColor.ToggleAuto(true);
-                hintManager.ToggleWetHint(true);
-            }
-            else if (!hintManager.hasUsedSoap)
-            {
-                soapButtonColor.ToggleAuto(true);
-                hintManager.ToggleSoapHint(true);
-            }
-            else if (!hintManager.hasSeenTwelveStepsHint)
+            if (!hintManager.hasSeenTwelveStepsHint)
             {
                 hintManager.ToggleTwelveStepsHint(true);
                 ToggleAllPoseColors(true);
             }
-            else if (hintManager.hasFinishedAllGerms && isEasyMode)
+            else if (hintManager.hasSeenTwelveStepsHint && !hintManager.hasUsedInspect)
             {
-                if (!hintManager.hasRinsed)
-                {
-                    hintManager.ToggleRinseHint(true);
-                    rinseButtonColor.ToggleAuto(true);
-                }
-                else
-                {
-                    hintManager.ToggleTowelHint(true);
-                    towelButtonColor.ToggleAuto(true);
-                }
+                hintManager.ToggleInspectHintMenu(true);
             }
         }
     }
 
     private void DisableAllRelatedHints()
     {
-        hintManager.ToggleRinseHint(false);
-        wetButtonColor.ToggleAuto(false);
-        soapButtonColor.ToggleAuto(false);
-        rinseButtonColor.ToggleAuto(false);
-        towelButtonColor.ToggleAuto(false);
-        hintManager.ToggleWetHint(false);
-        hintManager.ToggleSoapHint(false);
         hintManager.ToggleTwelveStepsHint(false);
-        hintManager.ToggleRinseHint(false);
-        hintManager.ToggleTowelHint(false);
+        hintManager.ToggleInspectHintMenu(false);
         ToggleAllPoseColors(false);
     }
 

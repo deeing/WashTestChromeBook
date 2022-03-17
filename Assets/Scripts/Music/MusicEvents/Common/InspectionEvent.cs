@@ -2,6 +2,7 @@ using RhythmTool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class InspectionEvent : MusicPlayerEvent
 {
@@ -10,10 +11,16 @@ public class InspectionEvent : MusicPlayerEvent
     private float animationPeriod = 3f;
     [SerializeField]
     GermMap germMap;
+    [SerializeField]
+    private InspectionMode inspectionMode;
+    [SerializeField]
+    private Transform rinseMenu;
 
-    private bool isPalmsUp = false;
+    public bool isPalmsUp { get; private set; } = false;
+
     private WaitForSeconds animPeriodWait;
     private Coroutine animCoroutine = null;
+    private InspectionStepButton currentGermLineButton = null;
 
     public override void SetupEvent()
     {
@@ -24,6 +31,11 @@ public class InspectionEvent : MusicPlayerEvent
         //ToggleInspectAnimation(false);
 
         StartInspectionAnimation();
+
+        if (!GermManager.instance.HasGermsOfType(GermType.Palm))
+        {
+            rinseMenu.DOScale(1f, 1f);
+        }
     }
 
     private void StartInspectionAnimation()
@@ -80,6 +92,15 @@ public class InspectionEvent : MusicPlayerEvent
     {
     }
 
+    public void SetGermLineButton(InspectionStepButton button)
+    {
+        currentGermLineButton = button;
+    }
 
+    public override void HardSwitchEnd()
+    {
+        EndEvent();
+        inspectionMode.HardSwitchEnd();
+    }
 
 }
