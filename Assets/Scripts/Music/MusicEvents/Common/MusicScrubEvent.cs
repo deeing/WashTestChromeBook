@@ -79,6 +79,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             EffectsManager.instance.ToggleFire(true);
             isFireDoubleEvent = true;
         }
+        MusicManager.instance.ToggleCrosshairSystem(true);
     }
 
     private void Update()
@@ -291,6 +292,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HintManager.instance.ToggleInspectHintMenu(false);
         enabled = false;
         EffectsManager.instance.ToggleFire(false);
+        MusicManager.instance.ToggleCrosshairSystem(false);
     }
 
     public void SetSensitivityAdjustment(float sensitivityAdjustment)

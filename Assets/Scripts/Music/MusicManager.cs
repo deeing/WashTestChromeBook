@@ -27,6 +27,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private SkinnedMeshRenderer skinnedMesh;
     [SerializeField]
     private MusicSwitchEvent firstEvent;
+    [SerializeField]
+    private CrosshairSystem crosshairSystem;
 
     public bool isTransitioning { get; private set; } = true;
 
@@ -425,5 +427,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         Material[] mats = skinnedMesh.materials;
         mats[1] = skin.skinMaterial;
         skinnedMesh.materials = mats;
+    }
+
+    public void ToggleCrosshairSystem(bool status)
+    {
+        crosshairSystem.enabled = status;
     }
 }

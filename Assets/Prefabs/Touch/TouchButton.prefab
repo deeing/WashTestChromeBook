@@ -350,9 +350,9 @@ GameObject:
   - component: {fileID: 4852302289643660196}
   - component: {fileID: 4852302289643660197}
   - component: {fileID: 4852302289643662427}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: TouchButton
-  m_TagString: Untagged
+  m_TagString: TouchBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9e6a08030c4fdb4bad9dd040701366b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e1ed4cdc1e182a469a42d6c4469b5c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
