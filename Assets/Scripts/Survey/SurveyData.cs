@@ -14,4 +14,5 @@ public class SurveyData
     public string deviceId;
     public string songName;
     public string totalPoints;
+    public string order;
 }

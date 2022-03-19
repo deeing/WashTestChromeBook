@@ -57,6 +57,11 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         currentSurveyData.timeTaken = songData.timeTaken;
     }
 
+    public void AddOrder(string order)
+    {
+        currentSurveyData.order = order;
+    }
+
 
     /*public void SaveCurrentSurveyData()
     {
@@ -118,6 +123,11 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         {
             currentSurveyData.timeTaken = "No timeTaken found";
         }
+
+        if (currentSurveyData.order == null)
+        {
+            currentSurveyData.timeTaken = "No order found";
+        }
     }
 
     public void SendDataToServer()
@@ -136,6 +146,7 @@ public class SurveyManager : SingletonMonoBehaviour<SurveyManager>
         form.AddField("timeTaken", currentSurveyData.timeTaken);
         form.AddField("songName", currentSurveyData.songName);
         form.AddField("totalPoints", currentSurveyData.totalPoints);
+        form.AddField("order", currentSurveyData.order);
         if (currentSurveyData.scrubResults != null)
         {
             foreach (KeyValuePair<string, float> washResult in currentSurveyData.scrubResults)

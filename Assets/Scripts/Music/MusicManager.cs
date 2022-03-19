@@ -62,6 +62,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private SongData songData;
     private AudioSource audioSource;
     private DateTime songStart;
+    // the order that the player chooses wash steps for record keeping
+    private StringBuilder playerOrderForSurvey;
 
     protected override void Awake()
     {
@@ -111,6 +113,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void SetupEvents()
     {
         starterEvents = new List<MusicCaligraphySwitch>();
+        playerOrderForSurvey = new StringBuilder();
         foreach (Transform child in startEventsContainer)
         {
             if (child.gameObject.activeSelf)
@@ -257,6 +260,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     private void NextEvent()
     {
         MusicWashEvent nextEvent = currentWashEvent.GetNextWashEvent();
+        RecordEventOrder(nextEvent);
 
         if (nextEvent == null)
         {
@@ -265,6 +269,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             ChangeEvent(nextEvent);
         }
+    }
+
+    private void RecordEventOrder(MusicWashEvent nextEvent)
+    {
+        playerOrderForSurvey.Append(nextEvent.GetEventType().ToString() + " | ");
     }
 
     public void ChangeEvent(MusicWashEvent nextEvent) 
@@ -358,6 +367,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         surveySongData.scrubResults = surveyScrubResults;
 
         SurveyManager.instance.AddSongData(surveySongData);
+        SurveyManager.instance.AddOrder(playerOrderForSurvey.ToString());
         SurveyManager.instance.SendDataToServer();
     }
 
@@ -403,6 +413,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             currPlayerEvent.HardSwitchSetup();
         }
         currentWashEvent = nextEvent;
+
+        // record this event in the players order
+        RecordEventOrder(nextEvent);
     }
 
     public void HardSwitchEvent(MusicSwitchEvent nextEvent)
