@@ -63,6 +63,8 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     private TutorialHintMenu inspectTipMenu;
     [SerializeField]
     private SkinsMenu skinMenu;
+    [SerializeField]
+    private LeftSlideMenu switchHandsButton;
 
     protected override void Awake()
     {
@@ -253,6 +255,11 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void ToggleFinishScrubButton(bool status)
     {
         finishScrubButton.SetVisible(status);
+    }
+
+    public void ToggleSwitchHandsButton(bool status)
+    {
+        switchHandsButton.SetVisible(status);
     }
 
     public void ShowLineArt(PlayerEventType eventType)

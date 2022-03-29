@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Decal
   - TouchUI
+  - TouchBase
+  - PerfectArea
+  - GreatArea
+  - GoodArea
   layers:
   - Default
   - TransparentFX

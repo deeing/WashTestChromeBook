@@ -26,6 +26,8 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     private float sensitivity = 1f;
     [SerializeField]
     private bool showBubbles = true;
+    [SerializeField]
+    private MusicScrubEvent otherHand;
 
     // how much fire affets the score of the scrub
     private const float FIRE_SCORE_MULT = 2;
@@ -73,13 +75,17 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         if (isNonLinearMode)
         {
             MenuManager.instance.ToggleFinishScrubButton(true);
+            if (otherHand != null)
+            {
+                MenuManager.instance.ToggleSwitchHandsButton(true);
+            }
         }
         if (MusicManager.instance.fireDoubleScrubEvent == this)
         {
             EffectsManager.instance.ToggleFire(true);
             isFireDoubleEvent = true;
         }
-        MusicManager.instance.ToggleCrosshairSystem(true);
+        MusicManager.instance.ToggleCrosshairSystem(true, rhythmInput);
     }
 
     private void Update()
@@ -248,6 +254,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         isPlayingEndAnimation = true;
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
+        MenuManager.instance.ToggleSwitchHandsButton(false);
         StartCoroutine(FinishScrub());
     }
 
@@ -289,10 +296,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.PlayAnimation(returnAnimationName);
         rhythmInput.Toggle(false);
         MenuManager.instance.ToggleFinishScrubButton(false);
+        MenuManager.instance.ToggleSwitchHandsButton(false);
         HintManager.instance.ToggleInspectHintMenu(false);
         enabled = false;
         EffectsManager.instance.ToggleFire(false);
-        MusicManager.instance.ToggleCrosshairSystem(false);
+        MusicManager.instance.ToggleCrosshairSystem(false, null);
     }
 
     public void SetSensitivityAdjustment(float sensitivityAdjustment)
@@ -308,5 +316,18 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     public string GetEventName()
     {
         return scrubAnimationName;
+    }
+
+    public void SwitchToOtherHand()
+    {
+        HardSwitchEnd();
+        HandAnimations.instance.PlayAnimation(returnAnimationName);
+        StartCoroutine(DoHandSwitch());
+    }
+
+    private IEnumerator DoHandSwitch()
+    {
+        yield return new WaitForSeconds(1f);
+        MusicManager.instance.HardSwitchEvent(otherHand);
     }
 }

@@ -1,4 +1,5 @@
 using Lean.Touch;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class CrosshairSystem : MonoBehaviour
     private int maxCrosshairNum = 2;
 
     private Transform thisTransform;
+
+    public RhythmInput rhythmInput { get; private set; }
 
     private void Awake()
     {
@@ -33,7 +36,9 @@ public class CrosshairSystem : MonoBehaviour
         for (int i = 0; i < maxCrosshairNum; i++)
         {
             GameObject crossObj = Instantiate(crosshairPrefab, thisTransform);
-            crosshairPool.Add(crossObj.GetComponent<Crosshair>());
+            Crosshair crosshair = crossObj.GetComponent<Crosshair>();
+            crosshair.RegisterSystem(this);
+            crosshairPool.Add(crosshair);
         }
     }
 
@@ -78,4 +83,8 @@ public class CrosshairSystem : MonoBehaviour
         }
     }
 
+    public void SetRhythmInput(RhythmInput rhythmInput)
+    {
+        this.rhythmInput = rhythmInput;
+    }
 }

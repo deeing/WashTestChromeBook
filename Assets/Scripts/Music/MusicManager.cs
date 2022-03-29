@@ -273,7 +273,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     private void RecordEventOrder(MusicWashEvent nextEvent)
     {
-        playerOrderForSurvey.Append(nextEvent.GetEventType().ToString() + " | ");
+        if (nextEvent != null)
+        {
+            playerOrderForSurvey.Append(nextEvent.GetEventType().ToString() + " | ");
+        }
     }
 
     public void ChangeEvent(MusicWashEvent nextEvent) 
@@ -442,8 +445,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         skinnedMesh.materials = mats;
     }
 
-    public void ToggleCrosshairSystem(bool status)
+    public void ToggleCrosshairSystem(bool status, RhythmInput rhythmInput)
     {
         crosshairSystem.enabled = status;
+        crosshairSystem.SetRhythmInput(rhythmInput);
     }
 }

@@ -1,4 +1,5 @@
 using Lean.Touch;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +11,19 @@ public class Crosshair : MonoBehaviour
     [SerializeField]
     private GameObject crosshairsBase;
     [SerializeField]
-    private GameObject crosshairsLocked;
+    private GameObject crosshairsGood;
+    [SerializeField]
+    private GameObject crosshairsGreat;
+    [SerializeField]
+    private GameObject crosshairsPerfect;
     [SerializeField]
     private Vector3 hidePosition = new Vector3(-100f, -100f);
     [SerializeField]
     private LayerMask touchMask;
 
     private Transform thisTransform;
-    private bool active = false;
     private LeanFinger touchFinger;
+    private CrosshairSystem crosshairSystem;
 
     private void Awake()
     {
@@ -57,6 +62,11 @@ public class Crosshair : MonoBehaviour
         }
     }
 
+    public void RegisterSystem(CrosshairSystem crosshairSystem)
+    {
+        this.crosshairSystem = crosshairSystem;
+    }
+
     private GameObject GetIsOverButton()
     {
         if (touchFinger == null)
@@ -68,8 +78,9 @@ public class Crosshair : MonoBehaviour
 
         if (hits.Count > 0)
         {
-            RaycastResult firstHit = hits[0];
-            return firstHit.gameObject;
+
+            GameObject firstHit = hits[0].gameObject;
+            return firstHit;
         }
 
         return null;
@@ -78,7 +89,9 @@ public class Crosshair : MonoBehaviour
     private void NoButtonPosition()
     {
         crosshairsBase.SetActive(true);
-        crosshairsLocked.SetActive(false);
+        crosshairsGood.SetActive(false);
+        crosshairsGreat.SetActive(false);
+        crosshairsPerfect.SetActive(false);
         if (touchFinger == null)
         {
             thisTransform.position = hidePosition;
@@ -92,7 +105,24 @@ public class Crosshair : MonoBehaviour
     private void LockCrosshair(GameObject button)
     {
         crosshairsBase.SetActive(false);
-        crosshairsLocked.SetActive(true);
+        crosshairsGood.SetActive(false);
+        crosshairsGreat.SetActive(false);
+        crosshairsPerfect.SetActive(false);
         thisTransform.position = button.transform.position;
+
+        switch (crosshairSystem.rhythmInput.GetCurrentInputStatus())
+        {
+            case RhythmInputStatus.Good:
+                crosshairsGood.SetActive(true);
+                break;
+            case RhythmInputStatus.Great:
+                crosshairsGreat.SetActive(true);
+                break;
+            case RhythmInputStatus.Perfect:
+                crosshairsPerfect.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 }
