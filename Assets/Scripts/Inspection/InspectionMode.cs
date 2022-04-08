@@ -84,11 +84,7 @@ public class InspectionMode : MonoBehaviour
         if (status)
         {
             //cinemachine.Play("FrontView");
-            currentTutorial = FindActiveTutorial();
-            if (currentTutorial)
-            {
-                currentTutorial.SetActive(false);
-            }
+         
             //HandAnimations.instance.TransitionPlay("Idle");
             prevEvent = MusicManager.instance.GetCurrentEvent();
             MusicManager.instance.HardSwitchEvent(inspectionEvent);
@@ -143,16 +139,4 @@ public class InspectionMode : MonoBehaviour
         }
     }
 
-    private GameObject FindActiveTutorial()
-    {
-        foreach (Transform child in tutorialCanvas)
-        {
-            GameObject tutorialObj = child.gameObject;
-            if (tutorialObj.activeInHierarchy)
-            {
-                return tutorialObj;
-            }
-        }
-        return null;
-    }
 }

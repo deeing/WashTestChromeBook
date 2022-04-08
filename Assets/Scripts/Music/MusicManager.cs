@@ -125,7 +125,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
         if (nonLinearMode)
         {
-            currentWashEvent = firstEvent;
+            currentWashEvent = nonLinearCalSwitch;
         }
         else
         {
