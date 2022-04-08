@@ -73590,6 +73590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 1691556853635520417, guid: 8616d50d34f676446aca7553878587e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1997614916825476449, guid: 8616d50d34f676446aca7553878587e5, type: 3}
       propertyPath: m_IsActive
       value: 1
