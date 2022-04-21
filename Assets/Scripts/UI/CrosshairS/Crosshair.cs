@@ -81,7 +81,17 @@ public class Crosshair : MonoBehaviour
 
             GameObject firstHit = hits[0].gameObject;
             return firstHit;
+
+            // revisit this if it's a performance issue
+            foreach(RaycastResult hit in hits)
+            {
+                if (hit.gameObject.CompareTag("TouchBase"))
+                {
+                    return hit.gameObject;
+                }
+            }
         }
+
 
         return null;
     }
@@ -122,6 +132,7 @@ public class Crosshair : MonoBehaviour
                 crosshairsPerfect.SetActive(true);
                 break;
             default:
+                crosshairsGood.SetActive(true);
                 break;
         }
     }

@@ -194,7 +194,7 @@ MonoBehaviour:
     m_Bits: 256
   touchArea: {fileID: 1568709617}
   topOnly: 1
-  firstTouchInputOnly: 1
+  firstTouchInputOnly: 0
   onPress:
     m_PersistentCalls:
       m_Calls: []
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_Bits: 256
   touchArea: {fileID: 4852302288421319733}
   topOnly: 1
-  firstTouchInputOnly: 1
+  firstTouchInputOnly: 0
   onPress:
     m_PersistentCalls:
       m_Calls: []
@@ -520,7 +520,7 @@ MonoBehaviour:
     m_Bits: 256
   touchArea: {fileID: 4852302289643660192}
   topOnly: 1
-  firstTouchInputOnly: 1
+  firstTouchInputOnly: 0
   onPress:
     m_PersistentCalls:
       m_Calls: []

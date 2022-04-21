@@ -67,6 +67,10 @@ public class TouchButton : MonoBehaviour
             touchFinger = Lean.Touch.LeanTouch.Fingers[0];
         }
 
+        // issue with touch pads is that the start caligraphy on the input buttons doesn't work.
+        // maybe investigate the start caligraphy on click as well? Or perhaps the top only thing isn't super working?
+        // maybe try turning off first touch input only?
+
         List<RaycastResult> hits = Lean.Touch.LeanTouch.RaycastGui(touchFinger.ScreenPosition, touchMask);
         // if we only want it to hit the top buttons
         if (topOnly)
