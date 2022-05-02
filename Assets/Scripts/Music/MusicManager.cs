@@ -10,7 +10,7 @@ using System;
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
     public LevelDifficulty difficulty = LevelDifficulty.Beginner;
-    public bool nonLinearMode = false;
+    public bool touchScreenMode = false;
 
 
     [SerializeField]
@@ -83,7 +83,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         {
             songData = SongSelection.instance.selectedSong;
             difficulty = SongSelection.instance.difficulty;
-            nonLinearMode = SongSelection.instance.nonLinear;   
+            touchScreenMode = SongSelection.instance.touchScreenMode;   
         }
         else
         {
@@ -123,16 +123,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             }
         }
 
-        if (nonLinearMode)
-        {
-            currentWashEvent = nonLinearCalSwitch;
-        }
-        else
-        {
-            currentWashEvent = starterEvents[0];
-        }
+        currentWashEvent = nonLinearCalSwitch;
 
-        SetupFireDouble();
+        //SetupFireDouble();
     }
 
     private void SetupFireDouble()

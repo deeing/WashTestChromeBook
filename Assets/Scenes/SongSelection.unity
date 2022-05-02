@@ -248,7 +248,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c12625c09e06e394d83276a9ee331616, type: 2}
   possibleSongChoicePrefab: {fileID: 5154030735552156490, guid: 17b02c01115df6446963b73f27363851, type: 3}
   _difficulty: 0
-  _nonLinear: 1
+  _touchScreenMode: 0
+  numberSongsLocked: 4
 --- !u!4 &91195914
 Transform:
   m_ObjectHideFlags: 0
@@ -1028,12 +1029,12 @@ GameObject:
   - component: {fileID: 823497861}
   - component: {fileID: 823497862}
   m_Layer: 5
-  m_Name: Non-linear Check
+  m_Name: Touch Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &823497861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1051,10 +1052,10 @@ RectTransform:
   m_Father: {fileID: 2142146932}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 472.5, y: -50}
-  m_SizeDelta: {x: 255, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &823497862
 MonoBehaviour:
@@ -1105,7 +1106,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2142146933}
         m_TargetAssemblyTypeName: LevelSettings, Assembly-CSharp
-        m_MethodName: SetNonLinear
+        m_MethodName: SetTouchScreen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3324,7 +3325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Non-Linear
+  m_Text: Touch Screen Mode
 --- !u!222 &1871923429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3909,7 +3910,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -175}
-  m_SizeDelta: {x: 600, y: 100}
+  m_SizeDelta: {x: 650, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2142146933
 MonoBehaviour:
@@ -3924,7 +3925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyDropDown: {fileID: 1351975358}
-  nonLinearToggle: {fileID: 823497862}
+  touchScreenMode: {fileID: 823497862}
 --- !u!114 &2142146934
 MonoBehaviour:
   m_ObjectHideFlags: 0

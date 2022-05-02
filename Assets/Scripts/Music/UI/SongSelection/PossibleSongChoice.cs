@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PossibleSongChoice : MonoBehaviour
 {
@@ -10,6 +8,10 @@ public class PossibleSongChoice : MonoBehaviour
     TMP_Text songText;
     [SerializeField]
     private ToggleColor songColor;
+    [SerializeField]
+    private Button thisButton;
+    [SerializeField]
+    private GameObject lockImage;
 
     private SongData songData;
 
@@ -29,4 +31,10 @@ public class PossibleSongChoice : MonoBehaviour
     {
         return songColor;
     }    
+
+    public void SetLocked()
+    {
+        thisButton.interactable = false;
+        lockImage.SetActive(true);
+    }
 }

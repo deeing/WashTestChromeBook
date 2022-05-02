@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SongSelection : SingletonMonoBehaviour<SongSelection>
 {
@@ -12,8 +13,10 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
     private LevelDifficulty _difficulty;
     public LevelDifficulty difficulty { get => _difficulty; private set => _difficulty = value; }
     [SerializeField]
-    private bool _nonLinear;
-    public bool nonLinear { get => _nonLinear; private set => _nonLinear = value; }
+    private bool _touchScreenMode;
+    public bool touchScreenMode { get => _touchScreenMode; private set => _touchScreenMode = value; }
+    [SerializeField]
+    private int numberSongsLocked = 0;
 
     public SongData selectedSong { get; private set; }
 
@@ -39,6 +42,8 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
 
     private void SetupSongList()
     {
+        List<PossibleSongChoice> songChoiceList = new List<PossibleSongChoice>();
+
         Debug.Log("Setting up song list");
         foreach(SongData song in songList)
         {
@@ -46,8 +51,14 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
             GameObject songChoiceObj = Instantiate(possibleSongChoicePrefab, songContainer);
             ToggleColorGroup toggleColorGroup = songContainer.GetComponent<ToggleColorGroup>();
             PossibleSongChoice songChoice = songChoiceObj.GetComponent<PossibleSongChoice>();
+            songChoiceList.Add(songChoice);
             toggleColorGroup.AddToggleColor(songChoice.GetColor());
             songChoice.Setup(song);
+        }
+
+        for(int i=0; i < numberSongsLocked; i++)
+        {
+            songChoiceList[songChoiceList.Count - 1 - i].SetLocked();
         }
     }
 
@@ -57,9 +68,9 @@ public class SongSelection : SingletonMonoBehaviour<SongSelection>
         SongSelectionMenu.instance.ToggleStartButton(true);
     }
 
-    public void SetNonLinear(bool isOn)
+    public void SetTouchScreen(bool isOn)
     {
-        nonLinear = isOn;
+        touchScreenMode = isOn;
     }
 
     public void SelectDifficulty(int difficultyIndex)

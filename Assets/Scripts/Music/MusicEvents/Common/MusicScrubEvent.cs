@@ -71,14 +71,10 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.PlayAnimation(idleAnimationName);
         HandAnimations.instance.Reset();
         enabled = true;
-        isNonLinearMode = MusicManager.instance.nonLinearMode;
-        if (isNonLinearMode)
+        MenuManager.instance.ToggleFinishScrubButton(true);
+        if (otherHand != null)
         {
-            MenuManager.instance.ToggleFinishScrubButton(true);
-            if (otherHand != null)
-            {
-                MenuManager.instance.ToggleSwitchHandsButton(true);
-            }
+            MenuManager.instance.ToggleSwitchHandsButton(true);
         }
         if (MusicManager.instance.fireDoubleScrubEvent == this)
         {
@@ -145,17 +141,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             return;
         }
 
-        if (isNonLinearMode || numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
-        {
-            rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
-            HandleGerms();
-            HandleScore();
-            ResetLatestRhythmInput();
-        }
-        else if (!isPlayingEndAnimation && !isNonLinearMode)
-        {
-            EndAnimation();
-        }
+        rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
+        HandleGerms();
+        HandleScore();
+        ResetLatestRhythmInput();
+    
         numBeatsInEvent++;
     }
 
@@ -266,11 +256,7 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
 
     public override MusicWashEvent GetNextWashEvent()
     {
-        if (MusicManager.instance.nonLinearMode)
-        {
-            return MusicManager.instance.nonLinearCalSwitch;
-        }
-        return nextEvent;
+        return MusicManager.instance.nonLinearCalSwitch;
     }
 
     public override void HardSwitchSetup()

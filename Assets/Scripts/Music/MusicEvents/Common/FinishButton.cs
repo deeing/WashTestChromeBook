@@ -11,10 +11,7 @@ public class FinishButton : MonoBehaviour
 
     private void Start()
     {
-        if (!MusicManager.instance.nonLinearMode)
-        {
-            gameObject.SetActive(false);
-        }
+
     }
 
     public void ToggleConfirmation(bool status)

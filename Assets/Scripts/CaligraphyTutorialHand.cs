@@ -16,6 +16,8 @@ public class CaligraphyTutorialHand : MonoBehaviour
     [SerializeField]
     private Transform tutorialHandImageContainer;
     [SerializeField]
+    private Transform tutorialMouseImageContainer;
+    [SerializeField]
     private UILineRenderer lineRenderer;
 
     public bool isInTutorialLoop { private set; get; } = false;
@@ -26,10 +28,20 @@ public class CaligraphyTutorialHand : MonoBehaviour
     private Vector3 originalHandPosition;
     private WaitForSeconds timeBetweenWait;
     private Coroutine redoCoroutine = null;
+    private Transform tutorialImageContainer;
 
     private void Awake()
     {
         timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
+
+        if (SongSelection.instance != null)
+        {
+            tutorialImageContainer = SongSelection.instance.touchScreenMode ? tutorialHandImageContainer : tutorialMouseImageContainer;
+        }
+        else
+        {
+            tutorialImageContainer = tutorialMouseImageContainer;
+        }
     }
 
     private void Update()
@@ -37,7 +49,7 @@ public class CaligraphyTutorialHand : MonoBehaviour
         if (isInTutorialLoop && tutorialDrawing)
         {
             caligraphyInput.RemoveUnmarkedPoints();
-            lineRenderer.AddPosition(tutorialHandImageContainer.position);
+            lineRenderer.AddPosition(tutorialImageContainer.position);
             lineRenderer.RenderLines();
         }
     }
@@ -48,14 +60,14 @@ public class CaligraphyTutorialHand : MonoBehaviour
         caligraphyInput.ResetLines();
         int firstButtonId = tutorialSymbol.symbolConnections[0].buttonId1;
         Transform firstButton = caligraphyInput.buttonMap[firstButtonId];
-        tutorialHandImageContainer.gameObject.SetActive(true);
+        tutorialImageContainer.gameObject.SetActive(true);
 
-        tutorialHandImageContainer.DOMove(firstButton.position, handStartSpeed)
+        tutorialImageContainer.DOMove(firstButton.position, handStartSpeed)
             .OnComplete(() => MoveHand());
 
         lineRenderer = caligraphyInput.GetLineRenderer();
 
-        originalHandPosition = tutorialHandImageContainer.position;
+        originalHandPosition = tutorialImageContainer.position;
         timeBetweenWait = new WaitForSeconds(timeBetweenLoop);
         isInTutorialLoop = true;
     }
@@ -72,7 +84,7 @@ public class CaligraphyTutorialHand : MonoBehaviour
         foreach (CaligraphyConnection conn in connections)
         {
             Transform nextButton = caligraphyInput.buttonMap[conn.buttonId2];
-            handMoveSequence.Append(tutorialHandImageContainer.DOMove(nextButton.position, handMoveSpeed)
+            handMoveSequence.Append(tutorialImageContainer.DOMove(nextButton.position, handMoveSpeed)
                 .OnComplete(() => MarkPosition(nextButton.position, conn.buttonId2)))
                     .OnComplete(() => KillHandMove());
                     //.OnComplete(() => ReDoTutorial());
@@ -81,13 +93,13 @@ public class CaligraphyTutorialHand : MonoBehaviour
 
     public void KillHandMove()
     {
-        tutorialHandImageContainer.DOKill();
+        tutorialImageContainer.DOKill();
         if (handMoveSequence != null)
         {
             handMoveSequence.Kill();
         }
-        tutorialHandImageContainer.gameObject.SetActive(false);
-        tutorialHandImageContainer.position = originalHandPosition;
+        tutorialImageContainer.gameObject.SetActive(false);
+        tutorialImageContainer.position = originalHandPosition;
         if (redoCoroutine != null)
         {
             StopCoroutine(redoCoroutine);
@@ -102,8 +114,8 @@ public class CaligraphyTutorialHand : MonoBehaviour
     {
         Debug.Log("trying to redo");
         tutorialDrawing = false;
-        tutorialHandImageContainer.gameObject.SetActive(false);
-        tutorialHandImageContainer.position = originalHandPosition;
+        tutorialImageContainer.gameObject.SetActive(false);
+        tutorialImageContainer.position = originalHandPosition;
         if (redoCoroutine == null)
         {
             redoCoroutine = StartCoroutine(QueueTutorial());
@@ -125,7 +137,7 @@ public class CaligraphyTutorialHand : MonoBehaviour
 
     public void FinishTutorialWithPause()
     {
-        tutorialHandImageContainer.gameObject.SetActive(false);
+        tutorialImageContainer.gameObject.SetActive(false);
         caligraphyInput.ToggleDrawing(false);
         caligraphyInput.RemoveUnmarkedPoints();
         caligraphyInput.ReRenderLines();

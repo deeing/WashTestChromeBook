@@ -13,6 +13,14 @@ public class CaligraphyInput : MonoBehaviour
     private RectTransform canvas;
     [SerializeField]
     private List<CaligraphyButton> buttons;
+    [SerializeField]
+    private Transform buttonsContainer;
+    [SerializeField]
+    private Transform caligraphyHandContainer;
+    [SerializeField]
+    private Vector3 fullScreenScale;
+    [SerializeField]
+    private Vector3 nonFullScreenScale;
 
     [HideInInspector]
     public bool userFinishedSymbol = false;
@@ -29,12 +37,54 @@ public class CaligraphyInput : MonoBehaviour
 
     private int lastButtonId = 0;
     private TouchButton touchButton;
-    
+
+    private bool wasFullScreen = false;
+    private CaligraphySymbol lastSymbol;
 
     private void Awake()
     {
         SetupButtonMap();
         touchButton = GetComponent<TouchButton>();
+        SizeToScreen();
+    }
+
+    private void OnEnable()
+    {
+        HandleResize();
+    }
+
+    private void Update()
+    {
+        HandleResize();
+    }
+
+    private void HandleResize()
+    {
+        if (ShouldResize())
+        {
+            SizeToScreen();
+            wasFullScreen = Screen.fullScreen;
+        }
+    }
+
+    private bool ShouldResize()
+    {
+        return (wasFullScreen && !Screen.fullScreen) || (!wasFullScreen && Screen.fullScreen);
+    }
+
+     private void SizeToScreen()
+    {
+        if (Screen.fullScreen)
+        {
+            buttonsContainer.localScale = fullScreenScale;
+            caligraphyHandContainer.localScale = fullScreenScale;
+        }
+        else
+        {
+            buttonsContainer.localScale = nonFullScreenScale;
+            caligraphyHandContainer.localScale = nonFullScreenScale;
+        }
+        RedrawGuidelines();
     }
 
     public void ResetLines()
@@ -179,6 +229,17 @@ public class CaligraphyInput : MonoBehaviour
             DrawGuideLine(conn);
         }
         guideLineRenderer.RenderLines();
+
+        lastSymbol = symbol;
+    }
+
+    private void RedrawGuidelines()
+    {
+        if (lastSymbol != null)
+        {
+            ClearGuideLines();
+            SetupGuideLines(lastSymbol);
+        }
     }
 
     public void ClearGuideLines()

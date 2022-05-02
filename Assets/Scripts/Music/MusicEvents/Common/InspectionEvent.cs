@@ -32,7 +32,7 @@ public class InspectionEvent : MusicPlayerEvent
 
         StartInspectionAnimation();
 
-        if (!GermManager.instance.HasGermsOfType(GermType.Palm))
+        if (!GermManager.instance.HasGerms())
         {
             rinseMenu.DOScale(1f, 1f);
         }

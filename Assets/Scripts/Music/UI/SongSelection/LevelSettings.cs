@@ -11,10 +11,10 @@ public class LevelSettings : MonoBehaviour
     [SerializeField]
     private Dropdown difficultyDropDown;
     [SerializeField]
-    private Toggle nonLinearToggle;
+    private Toggle touchScreenMode;
 
     private const string DifficultyString = "PlayerDifficulty";
-    private const string NonLinearString = "NonLinear";
+    private const string TouchScreenMode = "TouchScreen";
 
     private bool setupDone = false;
 
@@ -30,7 +30,7 @@ public class LevelSettings : MonoBehaviour
         difficultyDropDown.Select();
         difficultyDropDown.RefreshShownValue();
 
-        nonLinearToggle.isOn = LoadNonLinear();
+        touchScreenMode.isOn = LoadTouchScreen();
         setupDone = true;
     }
 
@@ -57,20 +57,21 @@ public class LevelSettings : MonoBehaviour
         return savedDiff;
     }
 
-    public void SetNonLinear(bool isOn)
+    public void SetTouchScreen(bool isOn)
     {
-        SongSelection.instance.SetNonLinear(isOn);
-        SaveNonLinear(isOn);
+        SongSelection.instance.SetTouchScreen(isOn);
+        SaveTouchScreen(isOn);
     }
 
-    private void SaveNonLinear(bool isOn)
+    private void SaveTouchScreen(bool isOn)
     {
-        PlayerPrefs.SetInt(NonLinearString, isOn ? 1 : 0);
+        PlayerPrefs.SetInt(TouchScreenMode, isOn ? 1 : 0);
     }
 
-    private bool LoadNonLinear()
+
+    private bool LoadTouchScreen()
     {
-        int nonLinear = PlayerPrefs.GetInt(NonLinearString, 0);
-        return nonLinear == 1 ? true : false;
+        int touchMode = PlayerPrefs.GetInt(TouchScreenMode, 0);
+        return touchMode == 1 ? true : false;
     }
 }
