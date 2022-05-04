@@ -68,7 +68,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863385171483725227}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -147,8 +147,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 974746126977427291}
-  - {fileID: 5927397448812214471}
   - {fileID: 4863385171386277994}
+  - {fileID: 5927397448812214471}
   - {fileID: 6466688355936189193}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -269,6 +269,7 @@ MonoBehaviour:
   toggledColor: {r: 0.023529412, g: 0.90588236, b: 0.011764706, a: 1}
   image: {fileID: 4863385171483725221}
   transitionTime: 0.5
+  isAuto: 0
 --- !u!114 &3578428923102959607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +380,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7524930105964621795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -415,10 +416,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleColorGroup: {fileID: 0}
-  startingColor: {r: 0.6666667, g: 0.7725491, b: 0.7843138, a: 1}
-  toggledColor: {r: 0.023529412, g: 0.90588236, b: 0.011764706, a: 1}
+  startingColor: {r: 0.6666667, g: 0.7725491, b: 0.7843138, a: 0.49019608}
+  toggledColor: {r: 0.023529412, g: 0.90588236, b: 0.011764706, a: 0.49019608}
   image: {fileID: 2769613782514045874}
   transitionTime: 0.5
+  isAuto: 0
 --- !u!1 &9185059877282690499
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +505,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4863385171483725227}
     m_Modifications:
     - target: {fileID: 6012581523940160299, guid: 08e4a45f31347eb43aedbc005ea85409, type: 3}
+      propertyPath: m_Color.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012581523940160299, guid: 08e4a45f31347eb43aedbc005ea85409, type: 3}
       propertyPath: m_Color.g
       value: 0.16331251
       objectReference: {fileID: 0}
@@ -520,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870550825089306037, guid: 08e4a45f31347eb43aedbc005ea85409, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6870550825089306037, guid: 08e4a45f31347eb43aedbc005ea85409, type: 3}
       propertyPath: m_AnchorMax.x

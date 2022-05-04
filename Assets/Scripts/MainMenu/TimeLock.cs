@@ -47,14 +47,13 @@ public class TimeLock : MonoBehaviour
 
     private string GetTitleText()
     {
-        return "This is a free trial that ends in " + (daysUntilLock - timePassed.TotalSeconds).ToString("F2") + " seconds.";
+        return "This is a free trial that ends in " + Mathf.CeilToInt((daysUntilLock - ((float)timePassed.TotalDays))).ToString() + " days.";
     }
 
     private void CheckExpired()
     {
-        if (timePassed.TotalSeconds > daysUntilLock)
+        if (timePassed.TotalDays > daysUntilLock)
         {
-            Debug.Log("Locking");
             startButton.SetActive(false);
             freeTrialDialog.UpdateText("Trial has expired!");
         }
@@ -62,6 +61,10 @@ public class TimeLock : MonoBehaviour
 
     public void Refresh()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         PlayerPrefs.SetString(DAY_STARTED_KEY, null);
         Setup();
     }
