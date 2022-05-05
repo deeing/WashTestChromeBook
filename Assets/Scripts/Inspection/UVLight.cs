@@ -16,11 +16,6 @@ public class UVLight : MonoBehaviour
     private Material originalMaterial;
     private bool isOn;
 
-    private void Awake()
-    {
-        originalMaterial = skinnedMesh.materials[originalMaterialIndex];
-    }
-
     public void OnDisable()
     {
         SetUvMode(false);
@@ -33,10 +28,6 @@ public class UVLight : MonoBehaviour
 
     public void SetUvMode(bool status)
     {
-        if (originalMaterial == null)
-        {
-            originalMaterial = skinnedMesh.materials[originalMaterialIndex];
-        }
         isOn = status;
         SetGermsVisible(status);
         SetHandMaterial(status);
@@ -57,6 +48,11 @@ public class UVLight : MonoBehaviour
 
     private void SetHandMaterial(bool status)
     {
+        if (status)
+        {
+            originalMaterial = skinnedMesh.materials[originalMaterialIndex];
+        }
+
         Material[] mats = skinnedMesh.materials;
         mats[originalMaterialIndex] = status ? UVSkinMaterial : originalMaterial;
         skinnedMesh.materials = mats;
