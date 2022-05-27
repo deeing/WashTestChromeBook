@@ -34,7 +34,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     [SerializeField]
     private ScoreMenu scoreMenu;
     [SerializeField]
-    private TMP_Text rhythmStatusText;
+    private StatusDisplay statusDisplay;
     [SerializeField]
     private GameObject rhythmStatusMenu;
     [SerializeField]
@@ -209,7 +209,7 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
 
     public void ShowRhythmStatus(RhythmInputStatus status)
     {
-        rhythmStatusText.text = status.GetDescription();
+        statusDisplay.ShowStatusDisplay(status);
     }
 
     public void ToggleRhythmStatus(bool status)

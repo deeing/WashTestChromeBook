@@ -59,7 +59,6 @@ public class ParallelDrag : RhythmInput
             rightButton.Move(nextBeat.timestamp - currentBeat.timestamp);
         }
 
-        statusDisplay.ShowStatusDisplay(GetCurrentInputStatus());
     }
 
     public override RhythmInputStatus GetCurrentInputStatus()

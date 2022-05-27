@@ -32,7 +32,9 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
     // how much fire affets the score of the scrub
     private const float FIRE_SCORE_MULT = 2;
 
-    private int numBeatsInEvent = 0;
+    // how often we score and clean germs in seconds
+    private const float SCORING_PERIOD = .2f;
+    private float currentScoreWait = 0f;
 
     private bool isPlayingEndAnimation = false;
 
@@ -64,7 +66,6 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         //MenuManager.instance.ShowScrubAlert(GetEventType().GetDescription(), 2f);
         base.SetupEvent();
         isPlayingEndAnimation = false;  
-        numBeatsInEvent = 0;
         hasFinished = false;
         rhythmInput.Toggle(true);
         rhythmInput.RegisterWashEvent(this);
@@ -72,14 +73,13 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         HandAnimations.instance.Reset();
         enabled = true;
         isNonLinearMode = MusicManager.instance.nonLinearMode;
-        if (isNonLinearMode)
+
+        MenuManager.instance.ToggleFinishScrubButton(true);
+        if (otherHand != null)
         {
-            MenuManager.instance.ToggleFinishScrubButton(true);
-            if (otherHand != null)
-            {
-                MenuManager.instance.ToggleSwitchHandsButton(true);
-            }
+            MenuManager.instance.ToggleSwitchHandsButton(true);
         }
+
         if (MusicManager.instance.fireDoubleScrubEvent == this)
         {
             EffectsManager.instance.ToggleFire(true);
@@ -145,18 +145,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
             return;
         }
 
-        if (isNonLinearMode || numBeatsInEvent < numMeasures * MusicManager.instance.GetBeatsPerMeasure())
-        {
-            rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
-            HandleGerms();
-            HandleScore();
-            ResetLatestRhythmInput();
-        }
-        else if (!isPlayingEndAnimation && !isNonLinearMode)
-        {
-            EndAnimation();
-        }
-        numBeatsInEvent++;
+        rhythmInput.DoBeat(beat, MusicManager.instance.GetNextBeat(beat));
+        //HandleGerms();
+        //HandleScore();
+        //ResetLatestRhythmInput();
+
     }
 
     private void HandleGerms()
@@ -227,6 +220,14 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         }
 
         base.OnInput(status);
+
+        currentScoreWait += Time.deltaTime;
+        if(currentScoreWait >= SCORING_PERIOD)
+        {
+            HandleGerms();
+            HandleScore();
+            currentScoreWait = 0f;
+        }
 
         UpdateRhythmInputStatus(status);
     }

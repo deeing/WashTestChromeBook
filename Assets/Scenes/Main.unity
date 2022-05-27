@@ -5480,7 +5480,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664565115}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SensitivityAdjustment, Assembly-CSharp
         m_MethodName: ExportValues
         m_Mode: 1
@@ -5907,7 +5907,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664565115}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SensitivityAdjustment, Assembly-CSharp
         m_MethodName: CopyToClipboard
         m_Mode: 1
@@ -7739,7 +7739,7 @@ MonoBehaviour:
   switchPromptMenu: {fileID: 736789972}
   preSong: {fileID: 1163165291}
   scoreMenu: {fileID: 1768062415}
-  rhythmStatusText: {fileID: 1958947587}
+  statusDisplay: {fileID: 740585261}
   rhythmStatusMenu: {fileID: 1740306593}
   rhythmDebug: {fileID: 882222215}
   switchPrompt: {fileID: 736789972}
@@ -8401,7 +8401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664565115}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SensitivityAdjustment, Assembly-CSharp
         m_MethodName: SaveAllValues
         m_Mode: 1
@@ -9716,11 +9716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910442009542296101, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2910442009542296101, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2910442009666190432, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: m_IsActive
@@ -9729,6 +9729,38 @@ PrefabInstance:
     - target: {fileID: 2910442009935165552, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910442009935165567, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 5382736471834012268, guid: 62739903c6f24444e9661adec7e7db02, type: 3}
       propertyPath: topOnly
@@ -14261,10 +14293,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664565111}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 543246616}
+        m_TargetAssemblyTypeName: SensitivityAdjustment, Assembly-CSharp
+        m_MethodName: Button_PressBuild
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15505,6 +15537,7 @@ GameObject:
   - component: {fileID: 543246614}
   - component: {fileID: 543246613}
   - component: {fileID: 543246612}
+  - component: {fileID: 543246616}
   m_Layer: 5
   m_Name: Sensitivity Adjustment
   m_TagString: Untagged
@@ -15594,6 +15627,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &543246616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543246611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7222f4424878f54da725ff27678f2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsContainer: {fileID: 1282113113}
+  sensitivityAdjustmentContainer: {fileID: 1507267737}
+  exportArea: {fileID: 530124917}
+  exportText: {fileID: 1190103891}
+  sensitivityInputValuePrefab: {fileID: 8486674873519590484, guid: dd5d1edcb11dc604693b651823750c75, type: 3}
+  numPressesToOpen: 10
+  pressDecay: 2
+  sensitivityMenu: {fileID: 1664565111}
 --- !u!1 &550125563
 GameObject:
   m_ObjectHideFlags: 0
@@ -44160,7 +44213,6 @@ GameObject:
   - component: {fileID: 1664565112}
   - component: {fileID: 1664565114}
   - component: {fileID: 1664565113}
-  - component: {fileID: 1664565115}
   m_Layer: 5
   m_Name: Sensitivity Adjustment
   m_TagString: Untagged
@@ -44232,23 +44284,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664565111}
   m_CullTransparentMesh: 1
---- !u!114 &1664565115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664565111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7222f4424878f54da725ff27678f2f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventsContainer: {fileID: 1282113113}
-  sensitivityAdjustmentContainer: {fileID: 1507267737}
-  exportArea: {fileID: 530124917}
-  exportText: {fileID: 1190103891}
-  sensitivityInputValuePrefab: {fileID: 8486674873519590484, guid: dd5d1edcb11dc604693b651823750c75, type: 3}
 --- !u!1 &1665538389
 GameObject:
   m_ObjectHideFlags: 0
@@ -47108,7 +47143,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664565115}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SensitivityAdjustment, Assembly-CSharp
         m_MethodName: DeleteAllValues
         m_Mode: 1
@@ -59270,11 +59305,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c179d01ab14f9b445b14407486084700, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c179d01ab14f9b445b14407486084700, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4866
+      value: 0.4966
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c179d01ab14f9b445b14407486084700, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59330,7 +59365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7506087141421643914, guid: c179d01ab14f9b445b14407486084700, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 8.011946e-31
+      value: 6.966067e-31
       objectReference: {fileID: 0}
     - target: {fileID: -1761525004327057115, guid: c179d01ab14f9b445b14407486084700, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

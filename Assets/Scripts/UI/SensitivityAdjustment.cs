@@ -17,6 +17,12 @@ public class SensitivityAdjustment : MonoBehaviour
     private TMP_InputField exportText;
     [SerializeField]
     private GameObject sensitivityInputValuePrefab;
+    [SerializeField]
+    private int numPressesToOpen = 10;
+    [SerializeField]
+    private float pressDecay = 2f;
+    [SerializeField]
+    private GameObject sensitivityMenu;
 
     // map of the event name to the sensitivity value
     private Dictionary<string, float> savedAdjustmentValues = new Dictionary<string, float>();
@@ -24,8 +30,13 @@ public class SensitivityAdjustment : MonoBehaviour
     private const string savedAdjustementsKey = "Sensitivity Adjustment Values";
     private const string savedAdjustmentFile = "sensitivityAdjustments.json";
 
+    private int numButtonPresses = 0;
+    private WaitForSeconds pressDecayWait;
+    private Coroutine pressDecayCoroutine;
+
     private void Start()
     {
+        pressDecayWait = new WaitForSeconds(pressDecay);
         Dictionary<string, float> previousSave;
         
         try
@@ -126,5 +137,33 @@ public class SensitivityAdjustment : MonoBehaviour
     {
         GUIUtility.systemCopyBuffer = PrintSavedValues();
         MenuManager.instance.ShowAlert("Copied to clipboard", 1f);
+    }
+
+    public void Button_PressBuild()
+    {
+        numButtonPresses++;
+        if (numButtonPresses >= numPressesToOpen)
+        {
+            OpenSensitivityMenu();
+            return;
+        }
+
+        if (pressDecayCoroutine != null)
+        {
+            StopCoroutine(pressDecayCoroutine);
+        }
+        pressDecayCoroutine = StartCoroutine(ResetButtonPresses());
+    }
+
+    private void OpenSensitivityMenu()
+    {
+        sensitivityMenu.SetActive(true);
+    }
+
+    private IEnumerator ResetButtonPresses()
+    {
+        yield return pressDecayWait;
+        numButtonPresses = 0;
+        pressDecayCoroutine = null;
     }
 }
