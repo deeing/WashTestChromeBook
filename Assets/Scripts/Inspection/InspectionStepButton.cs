@@ -30,7 +30,7 @@ public class InspectionStepButton : MonoBehaviour
 
     private void OnDisable()
     {
-        ToggleGermMapHighlight(false);
+        //ToggleGermMapHighlight(false);
     }
 
     private void Init()
