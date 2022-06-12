@@ -314,16 +314,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         isPlaying = false;
         isFinished = true;
-        float totalScore = MenuManager.instance.GetTotalScore();
-        MusicResultsMenu musicResultsMenu = MenuManager.instance.GetMusicResultsMenu();
-        musicResultsMenu.AddTotalScore(totalScore);
 
-        // add scores for all the scrub events only
-        List<MusicScrubEvent> scrubEvents = GetScrubEvents();
-        foreach (MusicScrubEvent scrubEvent in scrubEvents)
-        {
-            musicResultsMenu.AddWashEventResults(scrubEvent);
-        }
+        MusicResultsMenu musicResultsMenu = MenuManager.instance.GetMusicResultsMenu();
         musicResultsMenu.Show();
         MenuManager.instance.HideUIForEndGame();
         AudioManager.instance.PlayOneShot("End Music");
@@ -374,7 +366,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         SurveyManager.instance.SendDataToServer();
     }
 
-    private List<MusicScrubEvent> GetScrubEvents()
+    public List<MusicScrubEvent> GetScrubEvents()
     {
         List<MusicScrubEvent> musicScrubEvents = new List<MusicScrubEvent>();
         foreach(Transform scrubChild in scrubEventsContainer)
@@ -450,4 +442,10 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         crosshairSystem.enabled = status;
         crosshairSystem.SetRhythmInput(rhythmInput);
     }
+
+    public NonLinearAnimationSwitch[] GetNonSrubPointEvents()
+    {
+        return nonScrubPointEvents;
+    }
+
 }

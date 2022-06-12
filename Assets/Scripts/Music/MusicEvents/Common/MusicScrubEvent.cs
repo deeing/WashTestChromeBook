@@ -314,6 +314,11 @@ public class MusicScrubEvent : MusicPlayerEvent, AdjustableSensitivity
         return sensitivityAdjustment;
     }
 
+    public float GetBaseSensitivity()
+    {
+        return sensitivity;
+    }
+
     public string GetEventName()
     {
         return scrubAnimationName;

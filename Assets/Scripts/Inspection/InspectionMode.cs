@@ -24,7 +24,7 @@ public class InspectionMode : MonoBehaviour
     [SerializeField]
     private TMP_Text modeDisplay;
     [SerializeField]
-    private GameObject stepButtons;
+    private Inspect12Steps stepButtons;
 
     [SerializeField]
     private MusicPlayerEvent inspectionEvent;
@@ -77,7 +77,7 @@ public class InspectionMode : MonoBehaviour
         germMap.ToggleMap(status);
         toggleImage.ShowToggleSprite(status);
         HandleHints(status);
-        stepButtons.SetActive(status);
+        stepButtons.Toggle(status);
 
         modeDisplay.text = status ? "INSPECTING" : "TRAINING";
 

@@ -7,5 +7,7 @@ public interface AdjustableSensitivity
     public void SetSensitivityAdjustment(float sensitivityAdjustment);
     public float GetSensitivityAdjustment();
 
+    public float GetBaseSensitivity();
+
     public string GetEventName();
 }

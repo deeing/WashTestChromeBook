@@ -8,6 +8,8 @@ public class AdjustableInputValue : MonoBehaviour
     [SerializeField]
     private TMP_Text title;
     [SerializeField]
+    private TMP_Text baseSensitivity;
+    [SerializeField]
     private TMP_InputField input;
 
     private AdjustableSensitivity adjustable;
@@ -17,12 +19,18 @@ public class AdjustableInputValue : MonoBehaviour
     {
         this.adjustable = adjustable;
         SetTitle(this.adjustable.GetEventName());
+        SetBaseSensitivitty(this.adjustable.GetBaseSensitivity().ToString());
         SetInputText(this.adjustable.GetSensitivityAdjustment());
     }
 
     public void SetTitle(string titleText)
     {
         title.text = titleText;
+    }
+
+    public void SetBaseSensitivitty(string sensitivity)
+    {
+        baseSensitivity.text = sensitivity;
     }
 
     public void SetInputText(float val)

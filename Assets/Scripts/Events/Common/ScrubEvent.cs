@@ -168,6 +168,11 @@ public abstract class ScrubEvent : PlayerEvent, AdjustableSensitivity
         return sensitivityAdjustment;
     }
 
+    public float GetBaseSensitivity()
+    {
+        return sensitivity;
+    }
+
     private float GetSpeedAdjustment()
     {
         //Debug.Log("Scrubbing speed mult is " + scrubbingSpeedMult);

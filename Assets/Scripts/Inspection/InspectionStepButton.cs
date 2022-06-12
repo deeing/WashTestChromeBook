@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class InspectionStepButton : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class InspectionStepButton : MonoBehaviour
     private GameObject highlightBackground;
     [SerializeField]
     private Inspect12Steps inspect12Steps;
+    [SerializeField]
+    private Button button;
 
     private bool germMapHighlight = false;
 
@@ -67,5 +70,10 @@ public class InspectionStepButton : MonoBehaviour
             inspect12Steps.SetCurrentButton(this);
         }
     
+    }
+
+    public void DisableButton()
+    {
+        button.interactable = false;
     }
 }
