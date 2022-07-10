@@ -249,7 +249,7 @@ MonoBehaviour:
   possibleSongChoicePrefab: {fileID: 5154030735552156490, guid: 17b02c01115df6446963b73f27363851, type: 3}
   _difficulty: 0
   _touchScreenMode: 0
-  numberSongsLocked: 4
+  numberSongsLocked: 0
 --- !u!4 &91195914
 Transform:
   m_ObjectHideFlags: 0

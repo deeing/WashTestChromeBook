@@ -5134,7 +5134,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6, y: 1}
+    m_SensorSize: {x: 1.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11072,7 +11072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: isLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: musicSwitchEvent
@@ -18865,7 +18865,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6, y: 1}
+    m_SensorSize: {x: 1.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22014,7 +22014,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: isLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: musicSwitchEvent
@@ -31300,7 +31300,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6, y: 1}
+    m_SensorSize: {x: 1.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -33621,7 +33621,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: isLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: musicSwitchEvent
@@ -34387,7 +34387,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: isLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480144037248499618, guid: 9b2cb603b1c49d242b5bb352a6633efa, type: 3}
       propertyPath: musicSwitchEvent
